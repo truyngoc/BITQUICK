@@ -155,7 +155,7 @@
             <!-- ABOUT US -->
             <div  style="padding: 30px 0; " class="col-lg-12" >
                 <div class="col-lg-6">
-                    <img style="border: 5px solid #404041; height: 425px;" src="images/pic_aboutus.jpg" />
+                    <img style="border: 5px solid #404041;" src="images/pic_aboutus.jpg" />
                 </div>
                 <div class="col-lg-6 txtpadding">
                     <h2 class="aboutus title_lg" style="color: #F6921E;">ABOUT <span>US</span></h2>

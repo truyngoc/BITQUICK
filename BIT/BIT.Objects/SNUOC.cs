@@ -20,6 +20,17 @@ namespace BIT.Objects
         public string NAME { get; set; }
 
     }
+
+    public class SPACKAGE
+    {
+        public int ID { get; set; }
+
+        public int PackageID { get; set; }
+
+        public decimal PINAmount { get; set; }
+
+        public string PackageName {get;set;}
+    }
 }
 
 

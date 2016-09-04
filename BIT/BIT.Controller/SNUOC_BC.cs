@@ -27,4 +27,14 @@ namespace BIT.Controller
 			return ctl.SelectAllItems().ToList();
 		}					
 	}
+
+    public class SPACKAGE_BC
+    {
+        private SPACKAGE_DH ctl = new SPACKAGE_DH();
+
+        public List<SPACKAGE> SelectAllItems()
+        {
+            return ctl.SelectAllItems().ToList();
+        }
+    }
 }

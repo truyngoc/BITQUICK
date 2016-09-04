@@ -26,6 +26,14 @@ namespace BIT.DataHelper
 		{
 			return defaultDB.ExecuteSprocAccessor<SNUOC>("sp_SNUOC_SelectAllItems");
 		}
-		
 	}
+
+    public class SPACKAGE_DH : DataAccessBase
+    {
+        public IEnumerable<SPACKAGE> SelectAllItems()
+        {
+            return defaultDB.ExecuteSprocAccessor<SPACKAGE>("sp_SPACKAGE_SelectAllItems");
+        }
+
+    }
 }

@@ -25,9 +25,12 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">Select time invest</label>
+                        <label class="control-label col-lg-3">Select invest time </label>
                         <div class="col-lg-6">
                             <asp:DropDownList runat="server" ID="drTimeInvest">
+                                <asp:ListItem Text="1" Value="1" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="2" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="3" Value="1"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>

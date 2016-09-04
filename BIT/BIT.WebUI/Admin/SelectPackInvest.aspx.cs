@@ -72,7 +72,13 @@ namespace BIT.WebUI.Admin
 
         public void getSpackage()
         {
+            List<SPACKAGE> lstPackage = Singleton<SPACKAGE_BC>.Inst.SelectAllItems();
 
+            drPackSelectTion.DataSource = lstPackage;
+            drPackSelectTion.DataValueField = "PackageID";
+            drPackSelectTion.DataTextField = "PINAmount";
+            drPackSelectTion.DataBind();
         }
+
     }
 }

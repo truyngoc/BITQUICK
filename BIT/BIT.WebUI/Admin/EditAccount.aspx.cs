@@ -52,7 +52,7 @@ namespace BIT.WebUI.Admin
             txtFullName.Text = obj.Fullname;
             txtPhone.Text = obj.Phone;
             txtWallet.Text = obj.Wallet;
-            txtSysWallet.Text = obj.Sys_Wallet;
+            //txtSysWallet.Text = obj.Sys_Wallet;
 
             hidCodeId.Value = obj.CodeId;
         }

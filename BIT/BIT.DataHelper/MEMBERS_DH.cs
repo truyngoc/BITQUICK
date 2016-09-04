@@ -23,9 +23,28 @@ namespace BIT.DataHelper
 	public class MEMBERS_DH : DataAccessBase
 	{
         public void InsertItem(MEMBERS obj)
-        {            
-            defaultDB.ExecuteNonQuery("sp_MEMBERS_Insert"
-                , obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.UpLine, obj.Status);
+        {
+            defaultDB.ExecuteNonQuery("sp_MEMBERS_Insert",
+                //Eobj.CodeId,// @CodeId varchar(250)
+            obj.Username,//@Username	varchar(50)
+            obj.Password,//@Password	varchar(50)
+            obj.CodeId_Sponsor,//@CodeId_Sponsor	varchar(250)
+            obj.Password_PIN, //@Password_PIN varchar(50)
+            obj.Fullname, //@Fullname	nvarchar(250)
+            obj.Phone,//@Phone	varchar(50)
+            obj.Email,//@Email	varchar(100)
+            obj.Wallet, //@Wallet	nvarchar(250)
+            obj.CreateDate, //@CreateDate	datetime
+            obj.Level,//@Level  varchar(50)
+            obj.ExistsChild, //@ExistsChild bit
+            obj.Status, //@Status	int
+            obj.Country, //@Country	nvarchar(250)
+            obj.ActiveDate, //@ActiveDate datetime
+            obj.ExpiredDate, //@ExpiredDate datetime
+            obj.IsLock, //@IsLock int
+            obj.Upline //@UpLine varchar(250)
+                //, obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.IsLock, obj.Status
+                );
         }
 
         public void UpdateItem(MEMBERS obj)

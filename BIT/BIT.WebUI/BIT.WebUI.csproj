@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Account\Login.aspx" />
     <Content Include="Account\LogOn.aspx" />
     <Content Include="Admin\AccountManager.aspx" />
     <Content Include="Admin\ChangePassword.aspx" />
@@ -320,6 +321,13 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\LogOn.aspx.cs">
       <DependentUpon>LogOn.aspx</DependentUpon>

@@ -13,43 +13,43 @@ namespace BIT.Objects
     public class MEMBERS
     {
 
-        public int ID { get; set; }
-
         public string CodeId { get; set; }
-
+        //[Username]			[varchar](50) NOT NULL,
         public string Username { get; set; }
-
+        //[Password]			[varchar](50) NOT NULL,
         public string Password { get; set; }
-
-        public string Password_PIN { get; set; }
-
+        //[CodeId_Sponsor]		[varchar](50) NULL,
         public string CodeId_Sponsor { get; set; }
-
+        public string Password_PIN { get; set; }
+        //[Password_PIN]		[varchar](50) NOT NULL,
+        //[Fullname]			[nvarchar](250) NULL,
         public string Fullname { get; set; }
-
+        //[Phone]				[varchar](50) NOT NULL,
         public string Phone { get; set; }
-
+        //[Email]			[varchar](100) NULL,
         public string Email { get; set; }
 
+        //[Wallet]			[nvarchar](250) NULL,
         public string Wallet { get; set; }
-
-        public string Sys_Wallet { get; set; }
-
+        //[CreateDate]			[datetime] NULL,
         public DateTime? CreateDate { get; set; }
-
+        //[ID]			[int] IDENTITY(1,1) NOT NULL,
+        public int ID { get; set; }
+        //[Level]			[varchar](50) NOT NULL,
         public string Level { get; set; }
-
-        public int IsLock { get; set; }
-
+        //[ExistsChild] [bit] NOT NULL,
+        public bool ExistsChild { get; set; }
+        public int Status { get; set; }
+        //[Status] [int] NOT NULL,
+        //[Country] [nvarchar](250) NULL,
         public string Country { get; set; }
+        //[ActiveDate] [datetime] NULL,
+        public DateTime ActiveDate { get; set; }
+        //[ExpiredDate] [datetime] NULL,
+        public DateTime ExpiredDate { get; set; }
+        public int? IsLock { get; set; }
 
-        public string UpLine { get; set; }
-
-        public int? Branch { get; set; }
-
-        public int? Status { get; set; }
-        public int? IsAdmin { get; set; }
-        public int? IsVirtualWallet { get; set; }
+        public string Upline { get; set; }
 
     }
 }

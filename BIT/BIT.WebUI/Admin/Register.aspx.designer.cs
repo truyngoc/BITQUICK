@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BITQUICK.WebUI.Admin {
+namespace BIT.WebUI.Admin {
     
     
     public partial class Register {

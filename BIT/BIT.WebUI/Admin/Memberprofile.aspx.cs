@@ -43,7 +43,7 @@ namespace BIT.WebUI.Admin
             txtFullName.Text = obj.Fullname;
             txtPhone.Text = obj.Phone;
             txtWallet.Text = obj.Wallet;
-            txtSysWallet.Text = obj.Sys_Wallet;
+            //txtSysWallet.Text = obj.Sys_Wallet;
             lnkSendMail.Text = "Click here to receive Transaction password via email: " + obj.Email;
         }
 

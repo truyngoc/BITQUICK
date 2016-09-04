@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BITQUICK.Objects;
-using BITQUICK.Controller;
-using BITQUICK.Common;
+using BIT.Objects;
+using BIT.Controller;
+using BIT.Common;
 
 using System.Text;
 
-namespace BITQUICK.WebUI.Admin
+namespace BIT.WebUI.Admin
 {
     public partial class Register : System.Web.UI.Page
     {
@@ -31,7 +31,7 @@ namespace BITQUICK.WebUI.Admin
                 }
                 else
                 {
-                    if (!Singleton<BITQUICKCurrentSession>.Inst.isLoginUser)
+                    if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                     {
                         Response.Redirect("../Account/Login.aspx");
                     }
@@ -57,7 +57,7 @@ namespace BITQUICK.WebUI.Admin
             {
                 
                 Load_SNUOC();
-                Load_UpLine(Singleton<BITQUICKCurrentSession>.Inst.SessionMember.CodeId);
+                Load_UpLine(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
             }
         }
 
@@ -128,7 +128,7 @@ namespace BITQUICK.WebUI.Admin
             {
                 obj.CodeId_Sponsor = "0";
             }
-            else { obj.CodeId_Sponsor = Singleton<BITQUICKCurrentSession>.Inst.SessionMember.CodeId; }
+            else { obj.CodeId_Sponsor = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId; }
 
             obj.Password_PIN = HashPassword.RandomTransactionPassword();
             obj.Fullname = txtFullName.Text.Trim();

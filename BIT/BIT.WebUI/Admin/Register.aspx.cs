@@ -7,40 +7,39 @@ using System.Web.UI.WebControls;
 using BIT.Objects;
 using BIT.Controller;
 using BIT.Common;
-
+using System.IO;
 using System.Text;
+using System.Security.Cryptography;
 
 namespace BIT.WebUI.Admin
 {
+
     public partial class Register : System.Web.UI.Page
     {
+        public string strLink
+        {
+            get { return (string)ViewState["strLink"]; }
+            set { ViewState["strLink"] = value; }
+        }
+
         bool newRegist = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["Parameter"] != null)
-            {
-                newRegist = (Server.UrlDecode(Request.QueryString["Parameter"].ToString()) == "0");
-            }
+
             if (!this.IsPostBack)
             {
-                if (newRegist)
-                {
-                    txtUserName.Attributes.Add("readonly", "readonly");
 
-                    Load_Category();
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
+                {
+                    Response.Redirect("../Account/Login.aspx");
                 }
                 else
                 {
-                    if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
-                    {
-                        Response.Redirect("../Account/Login.aspx");
-                    }
-                    else
-                    {
-                        txtUserName.Attributes.Add("readonly", "readonly");
+                    dynamic h1 = Request.Url.Host;
+                    dynamic h2 = Request.Url.Authority;
+                    this.strLink = h2 + "/RegisterTransfermember?ref=" + MaHoa(Singleton<BITCurrentSession>.Inst.SessionMember.Username);
 
-                        Load_Category();
-                    }
+                    Load_Category();
                 }
             }
         }
@@ -55,7 +54,7 @@ namespace BIT.WebUI.Admin
             }
             else
             {
-                
+
                 Load_SNUOC();
                 Load_UpLine(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
             }
@@ -95,50 +94,37 @@ namespace BIT.WebUI.Admin
         }
         #endregion
 
+        private string MaHoa(string UserName)
+        {
+            byte[] keyArray = null;
+            byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(UserName);
+            MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+            keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(Constants.KeyEncriptRef.ToString()));
+            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+            tdes.Key = keyArray;
+            tdes.Mode = CipherMode.ECB;
+            tdes.Padding = PaddingMode.PKCS7;
+            ICryptoTransform cTransform = tdes.CreateEncryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+            return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+        }
+
         #region "Get data on form"
 
         public MEMBERS GetDataOnForm()
         {
             MEMBERS obj = new MEMBERS();
 
-            ////obj.CodeId,// @CodeId varchar(250)
-            //obj.Username,//@Username	varchar(50)
-            //obj.Password ,//@Password	varchar(50)
-            //obj.CodeId_Sponsor,//@CodeId_Sponsor	varchar(250)
-            //obj.Password_PIN, //@Password_PIN varchar(50)
-            //obj.Fullname, //@Fullname	nvarchar(250)
-            //obj.Phone,//@Phone	varchar(50)
-            //obj.Email,//@Email	varchar(100)
-            //obj.Wallet, //@Wallet	nvarchar(250)
-            //obj.CreateDate, //@CreateDate	datetime
-            //obj.Level ,//@Level  varchar(50)
-            //obj.ExistsChild, //@ExistsChild bit
-            //obj.Status, //@Status	int
-            //obj.Country, //@Country	nvarchar(250)
-            //obj.ActiveDate , //@ActiveDate datetime
-            //obj.ExpiredDate, //@ExpiredDate datetime
-            //obj.IsLock, //@IsLock int
-            //obj.Upline //@UpLine varchar(250)
-
-
             obj.Username = txtUserName.Text.Trim();
             obj.Password = txtPassword.Text;
-            
-            if(newRegist)
-            {
-                obj.CodeId_Sponsor = "0";
-                obj.Upline = "BITQUICK24";
 
-            }
-            else 
-            { 
-                obj.CodeId_Sponsor = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
-                obj.Upline = Singleton<BITCurrentSession>.Inst.SessionMember.Username;
-            }
+
+            obj.CodeId_Sponsor = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+            obj.Upline = Singleton<BITCurrentSession>.Inst.SessionMember.Username;
 
             obj.Password_PIN = txtPassword_PIN.Text;
             obj.Fullname = txtFullName.Text.Trim();
-            
+
             obj.Phone = txtPhone.Text;
             obj.Email = txtEmail.Text.Trim();
             obj.Wallet = txtWallet.Text;
@@ -167,37 +153,16 @@ namespace BIT.WebUI.Admin
                 // check sponsor acc have execute PH success
 
                 bool bSponsorPH = true;
-                //if (Singleton<BITQUICKCurrentSession>.Inst.SessionMember.IsAdmin == 1)
-                //    bSponsorPH = true;
-                //else
-                //{
-                //    bSponsorPH = ctlMember.IsExecutionPHSuccess(Singleton<BITQUICKCurrentSession>.Inst.SessionMember.CodeId);
-                //}
-                // check exist account
                 bool bExistAcc = ctlMember.IsExistsItem(obj.Username);
 
                 if (bSponsorPH)
                 {
                     if (!bExistAcc)
                     {
-                        // check sponsor PIN balance
-                        //WALLET_BC ctlWallet = new WALLET_BC();
-                        //var sponsor_wallet = ctlWallet.SelectItemByCodeId(obj.CodeId_Sponsor);
-                        //if (sponsor_wallet.PIN_Wallet > Constants.PIN_MINIMUM_FOR_CREATE_ACCOUNT)
-                        //{
-                        //    // create account
                         ctlMember.InsertItem(obj);
-
                         SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
-
                         lblMessage.Visible = false;
                         Response.Redirect("../Admin/Dashboard.aspx");
-                        //}
-                        //else
-                        //{
-                        //    lblMessage.Text = "You not enough PIN for create account";
-                        //    lblMessage.Visible = true;
-                        //}
                     }
                     else
                     {
@@ -207,7 +172,7 @@ namespace BIT.WebUI.Admin
                 }
                 else
                 {
-                    lblMessage.Text = "You can't create account member, please execute PH transaction!";
+                    lblMessage.Text = "You can't create account member, please execute Active Package Invest transaction!";
                     lblMessage.Visible = true;
                 }
             }

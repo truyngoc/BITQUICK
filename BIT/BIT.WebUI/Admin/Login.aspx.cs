@@ -47,7 +47,7 @@ namespace BIT.WebUI.Admin
         private List<string> m_ErrorCodes;
     }
 
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : Page
     {
         protected void btnLogin_Click(object sender, EventArgs e)
         {

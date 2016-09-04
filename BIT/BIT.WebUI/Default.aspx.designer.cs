@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BITQUICK.WebUI
+namespace BIT.WebUI
 {
 
 

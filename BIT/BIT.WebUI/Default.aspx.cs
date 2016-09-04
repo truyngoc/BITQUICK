@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BITQUICK.WebUI
+namespace BIT.WebUI
 {
-    public partial class _Default : Page
+    public partial class Default : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

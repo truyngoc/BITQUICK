@@ -39,20 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="COMMISION_MONTHLY.cs" />
     <Compile Include="DASHBOARD.cs" />
     <Compile Include="MEMBERS.cs" />
-    <Compile Include="PIN_TRANS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Commission.cs" />
-    <Compile Include="RECEIVE.cs" />
-    <Compile Include="RECHARGE.cs" />
-    <Compile Include="SPH.cs" />
     <Compile Include="SNUOC.cs" />
-    <Compile Include="SWALLET.cs" />
-    <Compile Include="SEND.cs" />
-    <Compile Include="WITHDRAW.cs" />
-    <Compile Include="WALLET.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

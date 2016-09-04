@@ -23,9 +23,9 @@ namespace BIT.WebUI.Admin
                 }
                 else
                 {
-                    TNotify.Alerts.Danger("what'up?", true);
+                    //TNotify.Alerts.Danger("what up?", true);
 
-                    TNotify.Toastr.Information("What's up", "Notify", TNotify.NotifyPositions.toast_top_full_width, true);
+                    //TNotify.Toastr.Information("Whats up", "Notify", TNotify.NotifyPositions.toast_top_full_width, true);
                     //LoadUserInfor();
 
                     txtUserName.Attributes.Add("readonly", "readonly");

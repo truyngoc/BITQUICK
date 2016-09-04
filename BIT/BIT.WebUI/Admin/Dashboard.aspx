@@ -8,7 +8,7 @@
         <div class="row state-overview">
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
-                    <section class="panel front">
+                    <section class="panel front divdashboard">
                         <div class="symbol">
                             <img src="../images/earn.png" />
                         </div>
@@ -24,7 +24,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
-                    <section class="panel front">
+                    <section class="panel front divdashboard">
                         <div class="symbol">
                             <img src="../images/c.png" />
                         </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
-                    <section class="panel front">
+                    <section class="panel front divdashboard">
                         <div class="symbol">
                             <img src="../images/r.png" />
                         </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
-                    <section class="panel front">
+                    <section class="panel front divdashboard">
                         <div class="symbol">
                             <img src="../images/pin.png" />
                         </div>
@@ -79,7 +79,7 @@
         <div class="row state-overview">
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
-                    <section class="panel front">
+                    <section class="panel front divdashboard">
                         <div class="symbol">
                             <img src="../images/direct.png" />
                         </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
-                    <section class="panel front">
+                    <section class="panel front divdashboard">
                         <div class="symbol">
                             <img src="../images/total.png" />
                         </div>
@@ -110,7 +110,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
-                    <section class="panel front">
+                    <section class="panel front divdashboard">
                         <div class="symbol">
                             <img src="../images/PD.png" />
                         </div>
@@ -126,7 +126,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
-                    <section class="panel front">
+                    <section class="panel front divdashboard">
                         <div class="symbol">
                             <img src="../images/GD.png" />
                         </div>
@@ -143,7 +143,7 @@
 
         <div class="row state-overview infor_b">
             <div class="col-lg-8 col-sm-6">
-                <section class="panel front">
+                <section class="panel front divdashboard">
                     <div class="panel-heading">
                         <strong>NOTIFICATION FOR SEPTEMPER</strong>
                     </div>
@@ -172,7 +172,7 @@
                 </section>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <section class="panel front">
+                <section class="panel front divdashboard">
                     <div class="panel-heading">
                         <strong>NOTIFICATION FOR AUGUST</strong>
                     </div>

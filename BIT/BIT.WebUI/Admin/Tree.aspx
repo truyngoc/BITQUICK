@@ -12,7 +12,7 @@
     
     <%--<link href="../Content/ace.min.css" rel="stylesheet" />--%>
 
-     <script>
+     <script type="text/javascript">
 
          $(document).ready(function () {
              //jQuery.noConflict();

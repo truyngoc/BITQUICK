@@ -6447,13 +6447,15 @@ ul.sidebar-menu .hovered .bgslide {
 .col-lg-12 {
     float: left;
 }
-
+.divdashboard{
+    background-color: #F1F1F1 !important ;
+}
 .panel-heading h3, .panel-heading strong {
-    color: #E73737;
+    color: #FFFFFF;
     margin: 5px 0 !important;
 }
 .panel-body{
-    background-color:#E6E7E8; 
+    background-color:#F1F1F1; 
 }
 
 .panel {

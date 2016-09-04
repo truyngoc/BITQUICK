@@ -1,0 +1,244 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BIT.WebUI.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head runat="server">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VirginBTC.Com</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Mosaddek" />
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta name="csrf-token" content="AvJsvFUkFTxZxtYHOn19V6YN6zqQExtwl6k0WVSd" />
+    <!-- Bootstrap core CSS -->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-reset.css" rel="stylesheet" />
+    <!--external css-->
+    <link href="Content/font-awesome.css" rel="stylesheet" />
+    <link href="Content/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="Content/owl.carousel.css" type="text/css" />
+    <link rel="stylesheet" href="Content/Site.css" type="text/css" />
+    <link rel="stylesheet" href="Content/myjs.js" type="text/css" />
+    <!--right slidebar-->
+    <link href="Content/slidebars.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="Content/AdminStyle.css" rel="stylesheet" />
+    <link href="Content/style-responsive.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="https://bitsun.org/home/js/jquery.js">
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Start Alexa Certify Javascript -->
+    <script type="text/javascript">
+        _atrk_opts = { atrk_acct: "HIwpn1aMp410Y8", domain: "virginbtc.com", dynamic: true };
+        (function () { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(as, s); })();
+    </script>
+    <noscript>
+        <img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=HIwpn1aMp410Y8" style="display: none" height="1" width="1" alt="" />
+    </noscript>
+    <!-- End Alexa Certify Javascript -->
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="menu-navigation">
+        <nav class="navbar navbar-inverse mitads" role="navigation" style="background-image: url('images/backgroup_site.jpg'); border-bottom: 10px solid #ffffff;">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header ">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img style="height: 62px; position: relative; top: 0px !important; width: 136px;"
+                        src="images/logo-prymi.png">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="mnvav" style="background-color: #E10A0A; color: #ffffff; font-weight: bolder;" href="/">HOME</a>
+                    </li>
+                    <li>
+                        <a class="mnvav" style="background-color: #E10A0A; color: #ffffff; font-weight: bolder;" href="#about">ABOUT</a>
+                    </li>
+
+                    <li>
+                        <a class="mnvav" style="background-color: #E10A0A; color: #ffffff; font-weight: bolder;" href="/Admin/login.aspx">LOGIN</a>
+                    </li>
+                    <li>
+                        <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({ pageLanguage: 'vi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, multilanguagePage: true }, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+
+            <!-- /.container -->
+        </nav>
+    </div>
+    <!-- end header -->
+    <!-- Full Page Image Background Carousel Header -->
+    <header class="carousel slide" id="myCarousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li class="" data-slide-to="0" data-target="#myCarousel"></li>
+            <li data-slide-to="1" data-target="#myCarousel" class=""></li>
+            <li data-slide-to="2" data-target="#myCarousel" class="active"></li>
+        </ol>
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item next left">
+                <!-- Set the third background image using inline CSS below. -->
+                <div style="background-image: url('images/slide-2.jpg');" class="fill">
+                    <img src="images/slide-2.jpg" />
+                </div>
+                <div class="carousel-caption">
+                </div>
+                <div class="grid"></div>
+            </div>
+            <div class="item">
+                <!-- Set the first background image using inline CSS below. -->
+                <div style="background-image: url('images/slide-3.jpg');" class="fill">
+                    <img src="images/slide-3.jpg" />
+                </div>
+                <div class="carousel-caption">
+                </div>
+                <div class="grid"></div>
+            </div>
+            <div class="item active left">
+                <!-- Set the second background image using inline CSS below. -->
+                <div style="background-image: url('images/slide-1.jpg');" class="fill">
+                    <img src="images/slide-1.jpg" />
+                </div>
+                <div class="carousel-caption">
+                </div>
+                <div class="grid"></div>
+            </div>
+        </div>
+        <!-- Controls -->
+        <a data-slide="prev" href="#myCarousel" class="left carousel-control">
+            <span class="icon-prev"></span>
+        </a>
+        <a data-slide="next" href="#myCarousel" class="right carousel-control">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+
+    <!-- VISION -->
+    <div id="vision">
+        <div class="container">
+            <div class="col-lg-12" style="padding: 10px;">
+                <div class="col-lg-6" >
+                    <a href="https://www.youtube.com/embed/l9jOJk30eQs" target="_blank">
+                        <img src="images/pic_youtube.png" />
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/Billgate.jpg" />
+                </div>
+            </div>
+            <%-- <div class="mid col-lg-4 txtpadding">
+                <div class="txt_content">
+                    <iframe src="http://btcwidget.com/price-ticker-v2/widg.php?color=FFFFFF&amp;font=Ubuntu&amp;bgcolor=FF0A0A&amp;footer=FFFFFF" frameborder="0" width="279" height="95" scrolling="no"></iframe>
+                </div>
+            </div>
+            <div class="mid col-lg-4 txtpadding" style="padding: 0px 54px;">
+                <div class="txt_content">
+                    <iframe src="http://btcwidget.com/price-chart/widget.php?color=FFFFFF&amp;bgcolor=FF0D25&amp;chartbg=F5FDFF&amp;lineco=FF0F17&amp;xco=3888FF&amp;yco=1F3DFF" frameborder="0" width="245" height="242" scrolling="no"></iframe>
+                </div>
+            </div>
+            <div class="mid col-lg-4 txtpadding">
+                <div class="txt_content">
+                    <iframe src="http://btcwidget.com/widgets/convert/widget.php?cur=usd&amp;color=FFFFFF&amp;bgcolor=FF0505&amp;border=FFFFFF&amp;font=Roboto&amp;boxColor=FF0303&amp;boxBgColor=FEFFFC" frameborder="0" width="279" height="100" scrolling="no"></iframe>
+                </div>
+            </div>--%>
+        </div>
+    </div>
+    <!-- end VISION -->
+
+    <!-- Register Now -->
+    <div id="register">
+        <div class="container">
+            <div class="col-lg-12 text-center">
+                <h2 class="light" style="margin: 0; padding: 0;">Like What You See?
+                    <br>
+                    We’re Just Getting Started</h2>
+                <br>
+                <a class="regis" href="Admin/Login.aspx">LOGIN</a>
+            </div>
+        </div>
+    </div>
+    <!-- end Register Now -->
+
+    <!-- Page Content -->
+    <div id="about" style="margin: 10px 0;">
+        <div class="container">
+            <!-- ABOUT US -->
+            <div class="col-lg-12">
+                <div style="padding-left: 40px;" class="mid col-lg-4">
+                    <img style="border: 5px solid #404041;" src="images/Bitcoint_Pic.jpg" />
+                </div>
+                <div class="col-lg-8 txtpadding">
+                    <h2 class="aboutus title_lg">ABOUT <span>US</span></h2>
+                    <p>VirginBTC is a community of people who provide financial helping on the principle of reciprocity of mercy. We use infrastructure of Bitcoin in our transactions. In VirginBTC, people don’t have to make any contracts of property. In VirginBTC, where is no lender and no debtors. Everything is very simple: one participant asks for help &ndash; another one helps. The only thing that VirginBTC demands from its participants is to be honest and kind to each other. People ask for financial helping when they need it, and then people also need to give financial helping to the others when they are able to do it. With VirginBTC everyone has an equal chance to make money and build their wealth and dream and it is unique in the way that it is a community project based on honesty and trust of the members.</p>
+                    <p>VirginBTC uses Bitcoin as a currency for trading. It is the best possible way for participants from different countries. As Bitcoin cause a revolution in financial relationship between people and people, this combination of VirginBTC and Bitcoin ideas, which is fair and free financial system, make possible for us to create significant changes in modern world.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end ABOUT US -->
+
+
+    <!-- footer -->
+    <div id="footer">
+        <div class="container">
+            <div class="col-lg-5">
+                <span>support@virginbtc.com</span>
+            </div>
+            <!--/span_5-->
+            <%--<div class="col-lg-7">
+                <div id="social">
+                    <span><a target="_blank" href=""><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></span>
+                    <span><a target="_blank" href="https://www.facebook.com/Bitsun.org/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></span>
+                </div>
+            </div>--%>
+            <!--/span_7-->
+        </div>
+        <!--/container-->
+    </div>
+    <!--/row-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://bitsun.org/home/js/myjs.js"></script>
+    <script src="https://bitsun.org/home/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://bitsun.org/home/js/bootstrap.min.js"></script>
+    <!-- Script to Activate the Carousel -->
+    <script>
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
+    </script>
+    <div class="container body-content">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>

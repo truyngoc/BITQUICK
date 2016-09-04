@@ -142,5 +142,17 @@ namespace BIT.Controller
         {
             ctl.UnLockAccount(ID);
         }
+
+        #region "TRUYBN - Show Tree BITQUICK"
+        public List<MEMBERS> Tree_GetData(string Username, string CodeId_Sponsor, string Fullname, string Email, string Level)
+        {
+            return ctl.Tree_GetData(Username, CodeId_Sponsor, Fullname, Email, Level).ToList();
+        }
+
+        public List<MEMBERS> Tree_GetItem_By_CodeId(String CodeID)
+        {
+            return ctl.Tree_GetItem_By_CodeId(CodeID).ToList();
+        }
+        #endregion
 	}
 }

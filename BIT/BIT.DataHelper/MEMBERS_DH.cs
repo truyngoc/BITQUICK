@@ -212,5 +212,17 @@ namespace BIT.DataHelper
             defaultDB.ExecuteNonQuery("sp_MEMBERS_UnLock"
                 , ID);
         }
-	}
+
+        #region "TRUYBN - Show Tree BITQUICK"
+        public IEnumerable<MEMBERS> Tree_GetData(string Username, string CodeId_Sponsor, string Fullname, string Email, string Level)
+        {
+            return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_Tree_GetData", Username, CodeId_Sponsor, Fullname, Email, Level);
+        }
+
+        public IEnumerable<MEMBERS> Tree_GetItem_By_CodeId(String CodeID)
+        {
+            return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_Tree_GetItem_By_CodeId", CodeID);
+        }
+        #endregion
+    }
 }

@@ -21,46 +21,44 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
-                //if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
-                //{
-                //    Response.Redirect("~/Admin/Login");
-                //}
-                //else
-                //{
-                //}
-            }
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
+                {
+                    Response.Redirect("~/Admin/Login");
+                }
+                else
+                {
+                    var ParentCodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+                    List<MEMBERS> lstMember = new List<MEMBERS>();
+
+                    if (Singleton<BITCurrentSession>.Inst.SessionMember.Username.ToUpper().IndexOf("ADMIN") > 0)
+                    {
+                        lstMember = Singleton<MEMBERS_BC>.Inst.Tree_GetData(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+                    }
+                    else
+                    {
+                        lstMember = Singleton<MEMBERS_BC>.Inst.Tree_GetItem_By_CodeId(ParentCodeId);
+                    }
+
+                    List<MemberTree> lstTreemember = new List<MemberTree>();
+                    foreach (var _item in lstMember)
+                    {
+                        MemberTree itemTree = new MemberTree(_item);
+                        lstTreemember.Add(itemTree);
+                    }
+                    if (lstMember != null && lstMember.Count > 0)
+                    {
+                        MemberTree root = new MemberTree();
+                        root.CodeId_Sponsor = null;
+                        root.CodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId_Sponsor;
+                        root.Fullname = "Đây là root node";
+                        root.IsLock = 1;
+                        lstTreemember.Add(root);
 
 
-            dynamic ParentCodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
-            List<MEMBERS> lstMember = new List<MEMBERS>();
-
-            if (Singleton<BITCurrentSession>.Inst.SessionMember.Username.ToUpper().IndexOf("ADMIN") > 0)
-            {
-                //lstMember = Singleton<MSA_MemberDAO>.Inst.GetData(null, null, null, null, null);
-            }
-            else
-            {
-                //lstMember = Singleton<MSA_MemberDAO>.Inst.FindByCodeId(ParentCodeId);
-            }
-
-            List<MemberTree> lstTreemember = new List<MemberTree>();
-            foreach (var _item in lstMember)
-            {
-                MemberTree itemTree = new MemberTree(_item);
-                lstTreemember.Add(itemTree);
-            }
-            if (lstMember != null && lstMember.Count > 0)
-            {
-                MemberTree root = new MemberTree();
-                root.CodeId_Sponsor = null;
-                root.CodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId_Sponsor;
-                root.Fullname = "Đây là root node";
-                root.IsLock = 1;
-                lstTreemember.Add(root);
-                
-                
-                var tree = lstTreemember.ToTree();
-                ltrTree.Text = this.ShowTree(tree.Childens);
+                        var tree = lstTreemember.ToTree();
+                        ltrTree.Text = this.ShowTree(tree.Childens);
+                    }
+                }
             }
         }
 
@@ -83,7 +81,7 @@ namespace BIT.WebUI.Admin
                 }
                 else
                 {
-                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/file.gif"" /> &nbsp;<a href=""Memberdetail.aspx?m="
+                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/file.gif""  width=""13px"" height=""20px""  /> &nbsp;<a href=""Memberdetail.aspx?m="
                         + item.Username
                         + @""" target=""_blank"" title="""
                         + item.Fullname.Trim() + @"/"

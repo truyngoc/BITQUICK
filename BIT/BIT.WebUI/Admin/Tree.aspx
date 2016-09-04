@@ -1,20 +1,36 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminSite.Master" AutoEventWireup="true" CodeBehind="Tree.aspx.cs" Inherits="BIT.WebUI.Admin.Tree" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <link href="../Content/Tree/Styles/jquery-treeview/jquery.treeview.css" rel="stylesheet" />
-    <script src="../Scripts/WebForms/TreeView.js"></script>
-    <script src="../Scripts/jquery-1.10.2.js"></script>
-    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+   <%-- <script src="../Scripts/WebForms/TreeView.js"></script>--%>
+   <%-- <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>--%>
     <script src="../Scripts/jquery-treeview/jquery.treeview.js"></script>
-    <script src="../Scripts/ace-extra.min.js"></script>
+   <%-- <script src="../Scripts/ace-extra.min.js"></script>--%>
     
     <%--<link href="../Content/ace.min.css" rel="stylesheet" />--%>
 
-    
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <script>
 
-   
+         $(document).ready(function () {
+             //jQuery.noConflict();
+
+             alert('abc');
+             $("#navigation").treeview({
+                 persist: "location",
+                 collapsed: true,
+                 animated: "medium"
+             });
+
+             alert('abcd');
+
+             $("#navarea").css("display", "");
+
+         });
+
+    </script>
 
 
     <style type="text/css">
@@ -50,7 +66,7 @@
                         <div class="panel">
 
                             <div class="panel-body">
-                                <div id="navarea" style="display: none;">
+                                <div id="navarea" >
 
                                     <ul id="navigation" class="treeview">
                                         <asp:Literal runat="server" ID="ltrTree"></asp:Literal>
@@ -70,21 +86,6 @@
     </section>
 
 
-<%-- <script>
 
-     $(document).ready(function () {
-         //jQuery.noConflict();
-
-         $("#navigation").treeview({
-             persist: "location",
-             collapsed: true,
-             animated: "medium"
-         });
-
-         $("#navarea").css("display", "");
-
-     });
-
-    </script>--%>
 
 </asp:Content>

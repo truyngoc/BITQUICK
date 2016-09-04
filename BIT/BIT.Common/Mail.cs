@@ -23,7 +23,7 @@ namespace BIT.Common
                 // smtp server address here…
                 SmtpClient smtp = new SmtpClient
                 {
-                    Host = "mail.virginbtc.com",
+                    Host = "mail.BITQUICK24.org",
                     Port = 25,
                     EnableSsl = false,
                     DeliveryMethod = SmtpDeliveryMethod.Network,

@@ -124,7 +124,7 @@ namespace BIT.WebUI.Admin
 
         public void SendMailToRegisterUser(string username, string fullname, string passwordPIN, string mailto)
         {
-            string sSubject = "VIRGINBTC INFORMATON ACCOUNT";
+            string sSubject = "BITQUICK24 INFORMATON ACCOUNT";
 
             StringBuilder strBuilder = new StringBuilder();
 
@@ -133,13 +133,13 @@ namespace BIT.WebUI.Admin
             strBuilder.Append("<body>");
             strBuilder.Append("<table>");
             strBuilder.AppendLine("<tr><td><b>Hello  " + fullname + "</b><br/></td></tr>");
-            strBuilder.AppendLine("<tr><td><b>Welcome to VIRGINBTC family. </b><br/></td></tr></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Welcome to BITQUICK24 family. </b><br/></td></tr></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Your username is: " + username + "</b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Your transaction password: " + passwordPIN + " </b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Please change the transaction password after first login of you to secure your account. </b><br/></td></tr>");
-            strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  VIRGINBTC's support to support you everything. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  BITQUICK24's support to support you everything. </b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
-            strBuilder.AppendLine("<tr><td><b><br/>VIRGINBTC</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/>BITQUICK24</b><br/></td></tr>");
             strBuilder.Append("</table>");
             strBuilder.Append("</body>");
             strBuilder.Append("</html>");

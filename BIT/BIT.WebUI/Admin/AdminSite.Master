@@ -1,5 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminSite.master.cs" Inherits="BIT.WebUI.Admin.AdminSite" %>
 
+<%@ Register Src="_Alerts.ascx" TagName="alert" TagPrefix="t" %>
+<%@ Register Src="_Notify.ascx" TagName="notify" TagPrefix="t" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -27,6 +30,7 @@
     <link rel="stylesheet" href="../Content/owl.carousel.css" type="text/css" />
     <!--right slidebar-->
 
+    <link rel="stylesheet" href="../Content/toastr.min.css" type="text/css" />
 
     <!-- Start Alexa Certify Javascript -->
     <script type="text/javascript">
@@ -36,7 +40,6 @@
     <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=HIwpn1aMp410Y8" style="display:none" height="1" width="1" alt="" /></noscript>
     <!-- End Alexa Certify Javascript -->
     <asp:ContentPlaceHolder ID="head" runat="server">
-        
     </asp:ContentPlaceHolder>
 </head>
 <script>
@@ -51,7 +54,7 @@
     ga('send', 'pageview');
 
 </script>
-<body >
+<body>
     <form id="form1" runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -70,6 +73,7 @@
                 <asp:ScriptReference Path="~/Scripts/jquery-1.10.2.min.js" />
                 <asp:ScriptReference Path="~/Scripts/WebForms/TreeView.js" />
                 <asp:ScriptReference Path="~/Scripts/jquery-treeview/jquery.treeview.js" />
+                <asp:ScriptReference Path="~/Scripts/toastr.min.js" />
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
@@ -232,6 +236,9 @@
                 <section id="main-content">
                     <section class="wrapper" style="margin-top: 90px;">
                         <div>
+                            <t:alert ID="talerts" runat="server" />
+                            <t:notify ID="tnotifys" runat="server" />
+
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
                         </div>
@@ -263,7 +270,7 @@
     <script src="../Scripts/Admin/easy-pie-chart.js"></script>
     <script src="../Scripts/Admin/tree.min.js"></script>
     <script src="../Scripts/Admin/minimal.min.js"></script>
-      
+
     <script>
         //owl carousel
         $(document).ready(function () {

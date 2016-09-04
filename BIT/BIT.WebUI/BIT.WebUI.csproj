@@ -78,6 +78,10 @@
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="TNotify, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\TNotify.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -116,6 +120,8 @@
     <Content Include="Admin\Memberprofile.aspx" />
     <Content Include="Admin\Register.aspx" />
     <Content Include="Admin\Tree.aspx" />
+    <Content Include="Admin\_Alerts.ascx" />
+    <Content Include="Admin\_Notify.ascx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\ace.min.css" />
     <Content Include="Content\AdminStyle.css" />
@@ -146,6 +152,7 @@
     <Content Include="Content\slidebars.css" />
     <Content Include="Content\style-responsive.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\Tree\jquery.css" />
     <Content Include="Content\Tree\jquery.treeview.css" />
     <Content Include="Content\Tree\style.css" />
@@ -291,6 +298,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\smart.resize.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\transition.js" />
     <Content Include="Scripts\Tree\common.js" />
     <Content Include="Scripts\Tree\demo.js" />
@@ -323,6 +331,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Start.aspx" />
+    <Content Include="TNotify.dll" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -442,6 +451,20 @@
     </Compile>
     <Compile Include="Admin\Tree.aspx.designer.cs">
       <DependentUpon>Tree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\_Alerts.ascx.cs">
+      <DependentUpon>_Alerts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\_Alerts.ascx.designer.cs">
+      <DependentUpon>_Alerts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\_Notify.ascx.cs">
+      <DependentUpon>_Notify.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\_Notify.ascx.designer.cs">
+      <DependentUpon>_Notify.ascx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

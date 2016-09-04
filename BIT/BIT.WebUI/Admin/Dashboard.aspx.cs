@@ -46,13 +46,13 @@ namespace BIT.WebUI.Admin
             lblR_Wallet.Text = o.R_Wallet.ToString();
             lblPIN_Wallet.Text = o.PIN_Wallet.ToString();
             lblTotalDownline.Text = o.Total_Downline.ToString();
-            lblDownline_Left.Text = o.Total_Downline_Left.ToString();
-            lblDownline_Right.Text = o.Total_Downline_Right.ToString();
+            //lblDownline_Left.Text = o.Total_Downline_Left.ToString();
+            //lblDownline_Right.Text = o.Total_Downline_Right.ToString();
             lblTotalGH.Text = o.Total_GH.ToString();
             lblTotalPH.Text = o.Total_PH.ToString();
             lblDirectDownline.Text = o.Direct_Downline.ToString();
-            lblDownline_BTC_Left.Text = o.Total_GH_Downline_Left.ToString();
-            lblDownline_BTC_Right.Text = o.Total_GH_Downline_Right.ToString();
+            //lblDownline_BTC_Left.Text = o.Total_GH_Downline_Left.ToString();
+            //lblDownline_BTC_Right.Text = o.Total_GH_Downline_Right.ToString();
         }
     }
 }

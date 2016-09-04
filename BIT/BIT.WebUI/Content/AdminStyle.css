@@ -58,8 +58,7 @@ a, a:hover, a:focus {
     margin: 100px auto 0;
     border-radius: 5px;
     -webkit-border-radius: 5px;
-    background-color: #eceef1;
-
+    background-color: #F5921E;
     /*#F5921E*/
     color: #fff;
 }
@@ -113,7 +112,7 @@ a, a:hover, a:focus {
     }
 
     .form-signin .btn-login {
-        background-color: #E10A0A;
+        background-color: #000;
         color: #ffffff;
         text-transform: uppercase;
         font-weight: bold;
@@ -223,6 +222,10 @@ a, a:hover, a:focus {
 .nav-collapse.collapse {
     display: inline;
 }
+.nav-collapse{
+    background-color: #E6E7E8 !important;
+    padding: 0;
+}
 
 ul.sidebar-menu, ul.sidebar-menu li ul.sub {
     margin: -2px 0 0;
@@ -292,7 +295,7 @@ ul.sidebar-menu li {
     }
 
     ul.sidebar-menu li a {
-        color: #ffffff;
+        color: #F5921E;
         text-decoration: none;
         display: block;
         padding: 7px;
@@ -305,6 +308,9 @@ ul.sidebar-menu li {
         transition: all 0.3s ease;
         text-transform: uppercase;
         font-weight: bold;
+    }
+    ul.sidebar-menu li a span{
+         color: #E73737;
     }
 
         ul.sidebar-menu li a.active, ul.sidebar-menu li a:focus {
@@ -360,8 +366,8 @@ ul.sidebar-menu li {
 }
 
 .white-bg {
-    background: #3f51b5;
-    border-bottom: 1px solid #f1f2f7;
+    background-color: #E6E7E8;
+    border-bottom: 10px solid #F5921E;
 }
 
 .wrapper {
@@ -376,7 +382,7 @@ a.logo {
     color: #fff;
     float: left;
     font-weight: bold;
-    padding: 15px;
+    padding: 5px;
     text-transform: uppercase;
 }
 
@@ -733,8 +739,8 @@ ul.top-menu > li > a {
 
 .sidebar-toggle-box {
     float: left;
-    line-height: 110px;
-    margin: 0 20px;
+    /*line-height: 110px;
+    margin: 0 20px;*/
 }
 
     .sidebar-toggle-box .fa-bars {
@@ -6340,8 +6346,11 @@ header.blue-bg .search {
     }
 
 .logo img {
-    height: 91px;
-    width: 130px;
+    height: 62px;
+    width: 120px;
+}
+.logo strong{
+    color: #E73737;
 }
 
 .panel {
@@ -6350,8 +6359,8 @@ header.blue-bg .search {
 }
 
 ul.sidebar-menu .hovered .bgslide {
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
+    background: -webkit-linear-gradient(left, #F5921E 0%, transparent 100%);
+    background: linear-gradient(to right, #F5921E 0%, transparent 100%);
     color: #fff;
     display: block;
     -webkit-transition: all 0.3s ease;
@@ -6363,12 +6372,15 @@ ul.sidebar-menu .hovered .bgslide {
 }
 
 .bgslide {
-    background: rgba(0, 0, 0, 0.2);
+    background: #E73737;
     width: 3px;
     position: absolute;
     height: 50px;
     left: 0;
     top: 0;
+}
+.sub-menu a i{
+    background-color: #F5921E;
 }
 
 .fliphover {
@@ -6423,7 +6435,7 @@ ul.sidebar-menu .hovered .bgslide {
 }
 
 .panel-heading {
-    background-color: #375A7F;
+    background-color: #F5921E;
 }
 
 .form-group {
@@ -6436,9 +6448,12 @@ ul.sidebar-menu .hovered .bgslide {
     float: left;
 }
 
-.panel-heading h3 {
-    color: #ffffff;
+.panel-heading h3, .panel-heading strong {
+    color: #E73737;
     margin: 5px 0 !important;
+}
+.panel-body{
+    background-color:#E6E7E8; 
 }
 
 .panel {
@@ -6537,16 +6552,28 @@ img {
     color: #E73538;
     font-weight: bold;
 }
+
 .goog-te-menu-value img, .goog-te-menu-value span, .goog-te-gadget-simple img {
     display: none;
 }
+
 .goog-te-gadget div {
     height: 50px;
     white-space: nowrap;
     width: 50px;
     background-image: url(../images/icon_translate.jpg);
 }
+
 .goog-te-gadget-simple, .goog-te-gadget div {
     background-color: none !important;
     border: none;
+}
+
+.logo_login img {
+    width: 160px;
+    height: 75px;
+}
+
+.logo_login strong {
+    color: #E73737;
 }

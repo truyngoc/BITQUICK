@@ -13,12 +13,12 @@ namespace BIT.WebUI.Admin {
     public partial class Tree {
         
         /// <summary>
-        /// hidUserName control.
+        /// ltrTree control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidUserName;
+        protected global::System.Web.UI.WebControls.Literal ltrTree;
     }
 }

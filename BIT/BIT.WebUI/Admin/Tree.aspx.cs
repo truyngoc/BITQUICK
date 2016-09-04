@@ -8,6 +8,7 @@ using System.Data;
 using System.Web.Services;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Text;
 using BIT.Controller;
 using BIT.Objects;
 using BIT.Common;
@@ -20,27 +21,159 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
-                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
-                {
-                    Response.Redirect("~/Admin/Login");
-                }
-                else
-                {
-                    string username = Singleton<BITCurrentSession>.Inst.SessionMember.Username;
+                //if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
+                //{
+                //    Response.Redirect("~/Admin/Login");
+                //}
+                //else
+                //{
+                //}
+            }
 
-                    hidUserName.Value = username;
-                }
+
+            dynamic ParentCodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+            List<MEMBERS> lstMember = new List<MEMBERS>();
+
+            if (Singleton<BITCurrentSession>.Inst.SessionMember.Username.ToUpper().IndexOf("ADMIN") > 0)
+            {
+                //lstMember = Singleton<MSA_MemberDAO>.Inst.GetData(null, null, null, null, null);
+            }
+            else
+            {
+                //lstMember = Singleton<MSA_MemberDAO>.Inst.FindByCodeId(ParentCodeId);
+            }
+
+            List<MemberTree> lstTreemember = new List<MemberTree>();
+            foreach (var _item in lstMember)
+            {
+                MemberTree itemTree = new MemberTree(_item);
+                lstTreemember.Add(itemTree);
+            }
+            if (lstMember != null && lstMember.Count > 0)
+            {
+                MemberTree root = new MemberTree();
+                root.CodeId_Sponsor = null;
+                root.CodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId_Sponsor;
+                root.Fullname = "Đây là root node";
+                root.IsLock = 1;
+                lstTreemember.Add(root);
+                
+                
+                var tree = lstTreemember.ToTree();
+                ltrTree.Text = this.ShowTree(tree.Childens);
             }
         }
 
-        [WebMethod]
-        public static List<object> GetChartData(string username)
+        #region "Show Tree"
+        private string ShowTree(List<MemberTree> lstTreeMember)
         {
-            MEMBERS_BC ctlMem = new MEMBERS_BC();
+            string str = "";
+            foreach (var item in lstTreeMember)
+            {
+                if (item.IsLock != null && item.IsLock == 1)
+                {
+                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/icon_lock.gif"" width=""13px"" height=""20px"" /> &nbsp;<a href=""Memberdetail.aspx?m="
+                        + item.Username
+                        + @""" target=""_blank"" title="""
+                        + item.Fullname.Trim() + @"/"
+                        + item.Phone + @""">"
+                        + item.Username + "/"
+                        + item.Fullname + "/"
+                        + item.Phone + " </a>";
+                }
+                else
+                {
+                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/file.gif"" /> &nbsp;<a href=""Memberdetail.aspx?m="
+                        + item.Username
+                        + @""" target=""_blank"" title="""
+                        + item.Fullname.Trim() + @"/"
+                        + item.Phone + @""">"
+                        + item.Username + "/"
+                        + item.Fullname + "/"
+                        + item.Phone + "</a>";
+                }
 
-            var data = ctlMem.GetChartData(username);
+                if (item.Childens.Any())
+                {
+                    str = str + "<ul>";
+                    str = str + this.ShowTree(item.Childens);
+                    str = str + "</ul>";
+                }
 
-            return data;
+                str = str + "</li>";
+            }
+
+            return str;
         }
+
+        private void PopulateTreeView(List<MEMBERS> lstMember, string ParentCodeId, TreeNode treeNode)
+        {
+            foreach (var item in lstMember)
+            {
+                TreeNode child = new TreeNode
+                {
+                    Text = item.Username,
+                    Value = item.CodeId
+                };
+
+
+                if (item.ExistsChild)
+                {
+                    dynamic lstChild = lstMember.FindAll(o => o.CodeId_Sponsor == child.Value);
+                    PopulateTreeView(lstChild, child.Value, child);
+                }
+                else
+                {
+                    treeNode.ChildNodes.Add(child);
+                }
+
+            }
+        }
+        #endregion
+
+       
+    }
+
+    public static class ExtensionMember
+    {
+        #region "Extension method"
+        public static MemberTree ToTree(this List<MemberTree> list)
+        {
+            if (list == null)
+            {
+                throw new ArgumentNullException("list");
+            }
+
+            var root = list.FirstOrDefault(x => x.CodeId_Sponsor == null);
+            if (root == null)
+            {
+                throw new InvalidOperationException("root == null");
+            }
+
+            PopulateChildren2(root, list);
+            return root;
+        }
+
+        private static void PopulateChildren2(MemberTree node, List<MemberTree> all)
+        {
+            var childs = all.Where(x => x.CodeId_Sponsor == node.CodeId).ToList();
+            foreach (var item in childs)
+            {
+                node.ExistsChild = true;
+
+                node.Childens.Add(item);
+            }
+
+            foreach (var item in childs)
+            {
+                all.Remove(item);
+            }
+
+            foreach (var item in childs)
+            {
+                PopulateChildren2(item, all);
+            }
+        }
+        #endregion
     }
 }

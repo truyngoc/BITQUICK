@@ -8,11 +8,16 @@ namespace BIT.Common
 {
     public class Constants
     {
+
         public const int PIN_MINIMUM_FOR_CREATE_ACCOUNT = 5;
         public const string PIN_TRANSACTION_TYPE_INITIAL = "INITIAL ACCOUNT";
         public const string PIN_TRANSACTION_TYPE_PH = "PH";
         public const string PIN_TRANSACTION_TYPE_GH = "GH";
         public const string PIN_TRANSACTION_TYPE_SOLD = "SOLD";
+
+        public const string KeyEncriptPass = "MHS@2013";
+        public const string ParttentPass = "Password=\\s*(.*?)\\s*;";
+        public const  string KeyEncriptRef = "MSA@2013";
 
         public enum MEMBER_STATUS
         {

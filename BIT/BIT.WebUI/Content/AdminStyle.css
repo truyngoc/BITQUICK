@@ -59,6 +59,8 @@ a, a:hover, a:focus {
     border-radius: 5px;
     -webkit-border-radius: 5px;
     background-color: #eceef1;
+
+    /*#F5921E*/
     color: #fff;
 }
 
@@ -438,14 +440,14 @@ ul.top-menu > li > a {
 .dropdown-menu.extended {
     max-width: 300px !important;
     min-width: 160px !important;
-    top: 37px;
+    top: 42px;
+    width: 235px !important;
     padding: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.176) !important;
     border: none !important;
     border-radius: 4px;
     -webkit-border-radius: 4px;
 }
-
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     /* Safari and Chrome */
@@ -485,7 +487,7 @@ ul.top-menu > li > a {
 }
 
 .dropdown-menu.extended li a {
-    padding: 15px 0 !important;
+    padding: 15px 10px !important;
     width: 100%;
     display: inline-block;
 }
@@ -647,7 +649,7 @@ ul.top-menu > li > a {
 }
 
 .log-arrow-up {
-    background: url("../images/arrow-up.png") no-repeat;
+    background: url("../img/arrow-up.png") no-repeat;
     width: 20px;
     height: 11px;
     position: absolute;
@@ -6421,7 +6423,7 @@ ul.sidebar-menu .hovered .bgslide {
 }
 
 .panel-heading {
-    background-color: #2d3fda;
+    background-color: #375A7F;
 }
 
 .form-group {
@@ -6483,10 +6485,7 @@ ul.sidebar-menu .hovered .bgslide {
     /*border-top: 20px solid #e73437;*/
 }
 
-#vision {
-    background: #e6e7e8 none repeat scroll 0 0;
-    color: #fff;
-}
+
 
 * {
     box-sizing: border-box;
@@ -6501,28 +6500,11 @@ img {
     height: 100%;
 }
 
-.txt_head {
-    background: #e73437 none repeat scroll 0 0;
-    font-size: 22px;
-    padding: 10px;
-}
-
-.navbar-inverse {
-    border-bottom: 20px solid #ffffff !important;
-    color: #fff;
-    margin-bottom: 0;
-    padding: 30px 0;
-}
-
 .carousel, .item, .active {
     height: 100%;
 }
 
-.mnvav {
-    background-color: #E10A0A !important;
-    color: #ffffff !important;
-    font-weight: bolder !important;
-}
+
 
 .state-overview .symbol {
     border-radius: 4px 0 0 4px;
@@ -6538,9 +6520,9 @@ img {
 
     .state-overview .value p {
         border-bottom: 1px solid #35567A;
-        font-weight: bold;
+        font-weight: 400;
         margin-bottom: 10.5px;
-        font-size:17px;    }
+    }
 
     .state-overview .value h1, .state-overview .value p {
         margin: 0;
@@ -6568,38 +6550,3 @@ img {
     background-color: none !important;
     border: none;
 }
-.sub-menu a span{
-    font-size: 15px;
-    font-weight: bold;
-}
-#liAdministrator, #liAdministrator:hover,  #liAdministrator:active{
-    background-color: #36597D !important;
-}
-#liAdministrator a span{
-    color: #ffffff  !important;
-}
-
-#liAdministrator a:hover,#liAdministrator a:active, #liAdministrator a:before ,  #liAdministrator a:after,.extendedadmin:hover, .extendedadmin li a:hover {
-      background-color: #36597D !important;
-      color: #ffffff  !important;
-}
-
-#liAdministrator li a.active, #liAdministrator li a:focus {
-    background: #36597D none repeat scroll 0 0;
-    color: #ffffff;
-    display: block;
-    transition: all 0.3s ease 0s;
-}
-.extendedadmin{
-    max-width: 300px !important;
-    min-width: 160px !important;
-    top: 44px;
-    padding: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.176) !important;
-    border: none !important;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    background-color: #375A7F
-}
-
-

@@ -29,14 +29,13 @@ input[type="password"] {
 }
 
 #register {
-    background: url("../images/register.jpg") repeat;
-    padding: 180px 0;
+    background-color: #2D3033;
+    padding: 50px 0;
 }
 
 .regis {
-    background-color: #e73437;
-    border-radius: 15px;
-    color: rgb(255, 255, 255);
+    background-color: #F6921E;
+    color: #ffffff !important;
     font-family: Lovelo,sans-serif;
     font-size: 18px;
     font-weight: bold;
@@ -45,12 +44,14 @@ input[type="password"] {
     text-transform: uppercase;
     width: 333px;
 }
-.regis:hover {
-    
-}
+
+    .regis:hover {
+        color: #ffffff !important;
+        background-color: #C78A2E;
+    }
 
 #footer {
-    background-color: #375A7F;
+    background-color: #E6E7E8;
     color: #fff;
     padding: 20px 0;
 }
@@ -106,7 +107,7 @@ input[type="password"] {
 
 #triangle {
     width: 0;
-    border-top: 12x solid transparent;
+    border-top: 12px solid transparent;
     border-right: 12px solid transparent;
     border-bottom: 12px solid #3399cc;
     border-left: 12px solid transparent;
@@ -154,11 +155,83 @@ input[type="submit"] {
 #social {
     float: right;
 }
+
+.navbar-brand {
+    padding: 0 4px !important;
+}
+
+    .navbar-brand img {
+        float: left;
+        position: relative;
+        top: 0 !important;
+        width: 210px;
+    }
+
 .mid {
     text-align: center;
 }
-.mitads{
-    height: 140px !important;
-    /*padding: 0 !important;
-    height: 0 !important;*/
+
+.navbar-inverse {
+    border-bottom: 20px solid #F6921E !important;
+    color: #fff !important;
+    margin-bottom: 0;
+    padding: 14px 10px !important;
+    background-color: #E6E7E8 !important;
 }
+
+.mnvav {
+    background-color: #E6E7E8 !important;
+    color: #F6921E !important;
+    font-weight: bolder;
+}
+
+#vision {
+    border-top: 10px solid #F6921E;
+    background: #000000 none repeat scroll 0 0 !important;
+    color: #fff;
+}
+
+.light {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.txt_head {
+    background: #F6921E none repeat scroll 0 0;
+    font-size: 22px;
+    padding: 10px;
+}
+
+.span3 {
+    width: 250px;
+}
+
+[class*="span"] {
+    float: left;
+    margin-left: 30px;
+    min-height: 1px;
+}
+
+.textwidget h3, .widgettitle {
+    color: #f7941d;
+    text-align: center;
+}
+
+.textwidget p {
+    color: #ffffff;
+}
+
+.textwidget a:hover, .textwidget ul li a:hover {
+    color: #ffffff !important;
+}
+
+.goog-te-gadget-simple {
+    background-color: #E6E7E8 !important;
+}
+
+.goog-te-gadget {
+    width: 50px;
+    padding: 0 10px;
+}
+
+

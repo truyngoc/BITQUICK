@@ -156,7 +156,7 @@
 
                             <!--Pin-->
                             <li class="sub-menu">
-                                <a class="" href="../Admin/PIN.aspx" style="color: #fff">
+                                <a class="" href="../Admin/PIN" style="color: #fff">
                                     <i class="fa fa-heart"></i>
                                     <span>PIN</span>
                                     <span class="bgslide"></span>
@@ -165,7 +165,7 @@
                             <!--End of Pin-->
 
                             <li class="sub-menu">
-                                <a class="" href="../Admin/PIN.aspx" style="color: #fff">
+                                <a class="" href="../Admin/SelectPackInvest.aspx" style="color: #fff">
                                     <i class="fa fa-heart"></i>
                                     <span>PACKAGE INVEST</span>
                                     <span class="bgslide"></span>

@@ -14,6 +14,9 @@
             <div class="panel-body">
                 <div class="form">
                     <div class="form-group col-lg-12">
+                        <b> LINK AFFILIATE: </b> <a href="<%=strLink%>" style="display: block; color: blue"><%=strLink%></a>
+                        <br />
+                        <br />
                         <label for="username" class="control-label col-lg-3">Email*</label>
                         <div class="col-lg-6">
                             <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control email_user" placeholder="Email" ></asp:TextBox>
@@ -101,6 +104,7 @@
                         <div class="col-lg-12" style="text-align: center;">
                             <asp:Button runat="server" ID="btnRegister" CssClass="btn btn-info" Text="Register" OnClick="btnRegister_Click" />
                         </div>
+                        <asp:Label ID="lblUserNameSponsor" runat="server" Visible="false"></asp:Label>
                     </div>
                 </div>
             </div>

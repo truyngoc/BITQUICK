@@ -18,10 +18,19 @@ namespace BIT.WebUI.Admin
     {
         public string strLink
         {
-            get { return (string)ViewState["strLink"]; }
-            set { ViewState["strLink"] = value; }
+            get
+            {
+                string text = (string)ViewState["strLink"];
+                if (text != null)
+                    return text;
+                else
+                    return string.Empty;
+            }
+            set
+            {
+                ViewState["strLink"] = value;
+            }
         }
-
         bool newRegist = false;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,13 +40,25 @@ namespace BIT.WebUI.Admin
 
                 if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    Response.Redirect("../Account/Login.aspx");
+                    //Response.Redirect("../Account/Login.aspx");
+                    string a = Request.Params[0];
+
+                    string strUserName = GiaiMa(a);
+                    MEMBERS obj = Singleton<MEMBERS_BC>.Inst.SelectItemByUserName(strUserName);
+                    if (obj == null)
+                    {
+                        Response.Redirect(Request.Url.Authority + "/Admin/Login.aspx");
+                    }
+                    else
+                    {
+                        lblUserNameSponsor.Text = obj.CodeId;
+                    }
                 }
                 else
                 {
                     dynamic h1 = Request.Url.Host;
                     dynamic h2 = Request.Url.Authority;
-                    this.strLink = h2 + "/RegisterTransfermember?ref=" + MaHoa(Singleton<BITCurrentSession>.Inst.SessionMember.Username);
+                    strLink = h2 + "/Admin/Register.aspx?ref=" + MaHoa(Singleton<BITCurrentSession>.Inst.SessionMember.Username);
 
                     Load_Category();
                 }
@@ -107,6 +128,38 @@ namespace BIT.WebUI.Admin
             ICryptoTransform cTransform = tdes.CreateEncryptor();
             byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
             return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+        }
+
+
+        public string GiaiMa(string toDecrypt)
+        {
+            string str = "";
+            try
+            {
+                byte[] keyArray = null;
+                toDecrypt = toDecrypt.Replace(" ", "+");
+                byte[] toEncryptArray = Convert.FromBase64String(toDecrypt);
+
+                MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+                keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(Constants.KeyEncriptRef));
+
+                TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+                tdes.Key = keyArray;
+                tdes.Mode = CipherMode.ECB;
+                tdes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform cTransform = tdes.CreateDecryptor();
+                byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+                str = UTF8Encoding.UTF8.GetString(resultArray);
+            }
+            catch (Exception ex)
+            {
+                str = "";
+
+            }
+            finally
+            {
+            }
+            return str;
         }
 
         #region "Get data on form"

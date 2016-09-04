@@ -4,189 +4,244 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BIT.Objects;
-using BIT.Controller;
-using BIT.Common;
+using BITQUICK.Objects;
+using BITQUICK.Controller;
+using BITQUICK.Common;
+
 using System.Text;
 
-namespace BIT.WebUI.Admin
+namespace BITQUICK.WebUI.Admin
 {
     public partial class Register : System.Web.UI.Page
     {
+        bool newRegist = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!this.IsPostBack)
-            //{
-            //    if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
-            //    {
-            //        Response.Redirect("../Admin/Login.aspx");
-            //    }
-            //    else
-            //    {
-            //        txtUserName.Attributes.Add("readonly", "readonly");
+            if (Request.QueryString["Parameter"] != null)
+            {
+                newRegist = (Server.UrlDecode(Request.QueryString["Parameter"].ToString()) == "0");
+            }
+            if (!this.IsPostBack)
+            {
+                if (newRegist)
+                {
+                    txtUserName.Attributes.Add("readonly", "readonly");
 
-            //        Load_Category();
-            //    }
-            //}
+                    Load_Category();
+                }
+                else
+                {
+                    if (!Singleton<BITQUICKCurrentSession>.Inst.isLoginUser)
+                    {
+                        Response.Redirect("../Account/Login.aspx");
+                    }
+                    else
+                    {
+                        txtUserName.Attributes.Add("readonly", "readonly");
+
+                        Load_Category();
+                    }
+                }
+            }
         }
 
-        //#region "Load danh muc"
+        #region "Load danh muc"
 
-        //public void Load_Category()
-        //{
-        //    Load_SNUOC();
-        //    Load_UpLine(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
-        //}
+        public void Load_Category()
+        {
+            if (newRegist)
+            {
+                Load_SNUOC();
+            }
+            else
+            {
+                
+                Load_SNUOC();
+                Load_UpLine(Singleton<BITQUICKCurrentSession>.Inst.SessionMember.CodeId);
+            }
+        }
 
-        //public void Load_SNUOC()
-        //{
-        //    SNUOC_BC ctlNuoc = new SNUOC_BC();
+        public void Load_SNUOC()
+        {
+            SNUOC_BC ctlNuoc = new SNUOC_BC();
 
-        //    var lst = ctlNuoc.SelectAllItems();
+            var lst = ctlNuoc.SelectAllItems();
 
-        //    ddlCountry.DataSource = lst;
-        //    ddlCountry.DataTextField = "NAME";
-        //    ddlCountry.DataValueField = "CODE";
-        //    ddlCountry.DataBind();
+            ddlCountry.DataSource = lst;
+            ddlCountry.DataTextField = "NAME";
+            ddlCountry.DataValueField = "CODE";
+            ddlCountry.DataBind();
 
-        //    SetDefaultValueDropDownList(ddlCountry);
-        //}
+            SetDefaultValueDropDownList(ddlCountry);
+        }
 
-        //public void Load_UpLine(string CodeId)
-        //{
-        //    MEMBERS_BC ctlMember = new MEMBERS_BC();
+        public void Load_UpLine(string CodeId)
+        {
+            MEMBERS_BC ctlMember = new MEMBERS_BC();
 
-        //    var lst = ctlMember.SelectUplineOfUserCreate(CodeId);
+            var lst = ctlMember.SelectUplineOfUserCreate(CodeId);
 
-        //    ddlUpLine.DataSource = lst;
-        //    ddlUpLine.DataTextField = "Username";
-        //    ddlUpLine.DataValueField = "CodeId";
-        //    ddlUpLine.DataBind();
+            //ddlUpLine.DataSource = lst;
+            //ddlUpLine.DataTextField = "Username";
+            //ddlUpLine.DataValueField = "CodeId";
+            //ddlUpLine.DataBind();
 
-        //    SetDefaultValueDropDownList(ddlUpLine);
-        //}
+            //SetDefaultValueDropDownList(ddlUpLine);
+        }
 
-        //public void SetDefaultValueDropDownList(DropDownList ddl, string text = "", string value = "")
-        //{
-        //    ddl.Items.Insert(0, new ListItem { Text = text, Value = value });
-        //}
-        //#endregion
+        public void SetDefaultValueDropDownList(DropDownList ddl, string text = "", string value = "")
+        {
+            ddl.Items.Insert(0, new ListItem { Text = text, Value = value });
+        }
+        #endregion
 
-        //#region "Get data on form"
+        #region "Get data on form"
 
-        //public MEMBERS GetDataOnForm()
-        //{
-        //    MEMBERS obj = new MEMBERS();
+        public MEMBERS GetDataOnForm()
+        {
+            MEMBERS obj = new MEMBERS();
+
+            ////obj.CodeId,// @CodeId varchar(250)
+            //obj.Username,//@Username	varchar(50)
+            //obj.Password ,//@Password	varchar(50)
+            //obj.CodeId_Sponsor,//@CodeId_Sponsor	varchar(250)
+            //obj.Password_PIN, //@Password_PIN varchar(50)
+            //obj.Fullname, //@Fullname	nvarchar(250)
+            //obj.Phone,//@Phone	varchar(50)
+            //obj.Email,//@Email	varchar(100)
+            //obj.Wallet, //@Wallet	nvarchar(250)
+            //obj.CreateDate, //@CreateDate	datetime
+            //obj.Level ,//@Level  varchar(50)
+            //obj.ExistsChild, //@ExistsChild bit
+            //obj.Status, //@Status	int
+            //obj.Country, //@Country	nvarchar(250)
+            //obj.ActiveDate , //@ActiveDate datetime
+            //obj.ExpiredDate, //@ExpiredDate datetime
+            //obj.IsLock, //@IsLock int
+            //obj.Upline //@UpLine varchar(250)
+
+
+            obj.Username = txtUserName.Text.Trim();
+            obj.Password = txtPassword.Text;
             
-        //    obj.Email = txtEmail.Text.Trim();
-        //    obj.Username = txtUserName.Text.Trim();
-        //    obj.Password = txtPassword.Text;
-        //    obj.Password_PIN = HashPassword.RandomTransactionPassword();
-        //    obj.Fullname = txtFullName.Text.Trim();
-        //    obj.Wallet = txtWallet.Text;
-        //    obj.Phone = txtPhone.Text;
-        //    obj.Country = ddlCountry.SelectedValue.ToString();
-        //    obj.UpLine = ddlUpLine.SelectedValue.ToString();
-        //    obj.CreateDate = DateTime.Today;
-        //    obj.CodeId_Sponsor = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
-        //    obj.Status = (int)Constants.MEMBER_STATUS.WaitActive;
+            if(newRegist)
+            {
+                obj.CodeId_Sponsor = "0";
+            }
+            else { obj.CodeId_Sponsor = Singleton<BITQUICKCurrentSession>.Inst.SessionMember.CodeId; }
 
-        //    return obj;
-        //}
-
-        //#endregion
-
-        //#region "Register"
-        //protected void btnRegister_Click(object sender, EventArgs e)
-        //{
-        //    MEMBERS_BC ctlMember = new MEMBERS_BC();
-        //    MEMBERS obj = GetDataOnForm();
-
-        //    try
-        //    {               
-        //        // check sponsor acc have execute PH success
-
-        //        bool bSponsorPH = true;
-        //        if (Singleton<BITCurrentSession>.Inst.SessionMember.IsAdmin == 1)
-        //            bSponsorPH = true;
-        //        else
-        //        {
-        //            bSponsorPH = ctlMember.IsExecutionPHSuccess(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId); 
-        //        }
-        //        // check exist account
-        //        bool bExistAcc = ctlMember.IsExistsItem(obj.Username);
-
-        //        if (bSponsorPH)
-        //        {
-        //            if (!bExistAcc)
-        //            {
-        //                // check sponsor PIN balance
-        //                WALLET_BC ctlWallet = new WALLET_BC();
-        //                var sponsor_wallet = ctlWallet.SelectItemByCodeId(obj.CodeId_Sponsor);
-        //                if (sponsor_wallet.PIN_Wallet > Constants.PIN_MINIMUM_FOR_CREATE_ACCOUNT)
-        //                {
-        //                    // create account
-        //                    ctlMember.InsertItem(obj);
-
-        //                    SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
-
-        //                    lblMessage.Visible = false;
-        //                    Response.Redirect("../Admin/Dashboard.aspx");
-        //                }
-        //                else
-        //                {
-        //                    lblMessage.Text = "You not enough PIN for create account";
-        //                    lblMessage.Visible = true;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                lblMessage.Text = "Username is already taken";
-        //                lblMessage.Visible = true;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            lblMessage.Text = "You can't create account member, please execute PH transaction!";
-        //            lblMessage.Visible = true;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
+            obj.Password_PIN = HashPassword.RandomTransactionPassword();
+            obj.Fullname = txtFullName.Text.Trim();
             
-        //}
+            obj.Phone = txtPhone.Text;
+            obj.Email = txtEmail.Text.Trim();
+            obj.Wallet = txtWallet.Text;
+            obj.CreateDate = DateTime.Today;
+            obj.Level = "0";
+            obj.ExistsChild = false;
+            obj.Status = (int)Constants.MEMBER_STATUS.WaitActive;
+            obj.Country = ddlCountry.SelectedValue.ToString();
+            obj.ActiveDate =DateTime.Now; //@ActiveDate datetime
+            obj.ExpiredDate = DateTime.Now.AddMonths(1); //@ExpiredDate datetime
+            obj.IsLock = 0;
+            obj.Upline = "0";
 
-        //#endregion
+            return obj;
+        }
 
-        //#region "Mail"
+        #endregion
 
-        //public void SendMailToRegisterUser(string username, string fullname, string passwordPIN, string mailto)
-        //{
-        //    string sSubject = "VIRGINBTC INFORMATON ACCOUNT";
+        #region "Register"
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            MEMBERS_BC ctlMember = new MEMBERS_BC();
+            MEMBERS obj = GetDataOnForm();
 
-        //    StringBuilder strBuilder = new StringBuilder();
+            try
+            {
+                // check sponsor acc have execute PH success
 
-        //    strBuilder.Append("<html>");
-        //    strBuilder.Append("<head></head>");
-        //    strBuilder.Append("<body>");
-        //    strBuilder.Append("<table>");
-        //    strBuilder.AppendLine("<tr><td><b>Hello  " + fullname + "</b><br/></td></tr>");
-        //    strBuilder.AppendLine("<tr><td><b>Welcome to VIRGINBTC family. </b><br/></td></tr></td></tr>");
-        //    strBuilder.AppendLine("<tr><td><b>Your username is: " + username + "</b><br/></td></tr>");
-        //    strBuilder.AppendLine("<tr><td><b>Your transaction password: " + passwordPIN + " </b><br/></td></tr>");
-        //    strBuilder.AppendLine("<tr><td><b>Please change the transaction password after first login of you to secure your account. </b><br/></td></tr>");
-        //    strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  VIRGINBTC's support to support you everything. </b><br/></td></tr>");
-        //    strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
-        //    strBuilder.AppendLine("<tr><td><b><br/>VIRGINBTC</b><br/></td></tr>");
-        //    strBuilder.Append("</table>");
-        //    strBuilder.Append("</body>");
-        //    strBuilder.Append("</html>");
+                bool bSponsorPH = true;
+                //if (Singleton<BITQUICKCurrentSession>.Inst.SessionMember.IsAdmin == 1)
+                //    bSponsorPH = true;
+                //else
+                //{
+                //    bSponsorPH = ctlMember.IsExecutionPHSuccess(Singleton<BITQUICKCurrentSession>.Inst.SessionMember.CodeId);
+                //}
+                // check exist account
+                bool bExistAcc = ctlMember.IsExistsItem(obj.Username);
 
-        //    Mail.Send(mailto, sSubject, strBuilder.ToString());
-        //}
+                if (bSponsorPH)
+                {
+                    if (!bExistAcc)
+                    {
+                        // check sponsor PIN balance
+                        //WALLET_BC ctlWallet = new WALLET_BC();
+                        //var sponsor_wallet = ctlWallet.SelectItemByCodeId(obj.CodeId_Sponsor);
+                        //if (sponsor_wallet.PIN_Wallet > Constants.PIN_MINIMUM_FOR_CREATE_ACCOUNT)
+                        //{
+                        //    // create account
+                        ctlMember.InsertItem(obj);
 
-        //#endregion
+                        SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
+
+                        lblMessage.Visible = false;
+                        Response.Redirect("../Admin/Dashboard.aspx");
+                        //}
+                        //else
+                        //{
+                        //    lblMessage.Text = "You not enough PIN for create account";
+                        //    lblMessage.Visible = true;
+                        //}
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Username is already taken";
+                        lblMessage.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblMessage.Text = "You can't create account member, please execute PH transaction!";
+                    lblMessage.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        #endregion
+
+        #region "Mail"
+
+        public void SendMailToRegisterUser(string username, string fullname, string passwordPIN, string mailto)
+        {
+            string sSubject = "VIRGINBTC INFORMATON ACCOUNT";
+
+            StringBuilder strBuilder = new StringBuilder();
+
+            strBuilder.Append("<html>");
+            strBuilder.Append("<head></head>");
+            strBuilder.Append("<body>");
+            strBuilder.Append("<table>");
+            strBuilder.AppendLine("<tr><td><b>Hello  " + fullname + "</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Welcome to VIRGINBTC family. </b><br/></td></tr></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Your username is: " + username + "</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Your transaction password: " + passwordPIN + " </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Please change the transaction password after first login of you to secure your account. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  VIRGINBTC's support to support you everything. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/>VIRGINBTC</b><br/></td></tr>");
+            strBuilder.Append("</table>");
+            strBuilder.Append("</body>");
+            strBuilder.Append("</html>");
+
+            Mail.Send(mailto, sSubject, strBuilder.ToString());
+        }
+
+        #endregion
     }
 }

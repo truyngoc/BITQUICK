@@ -1,9 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminSite.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="BIT.WebUI.Admin.Register" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminSite.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="BITQUICK.WebUI.Admin.Register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">    
     <section class="wrapper">
+        <asp:Label runat="server" ID="lblMessage" ForeColor="#cc0066" Text="*Username or Password is not valid" Visible="false"></asp:Label>
         <br />
 
         <section class="panel">
@@ -13,12 +14,9 @@
             <div class="panel-body">
                 <div class="form">
                     <div class="form-group col-lg-12">
-                        <asp:Label runat="server" ID="lblMessage" ForeColor="#cc0066" Text="*Username or Password is not valid" Visible="false"></asp:Label>
-                    </div>
-                    <div class="form-group col-lg-12">
                         <label for="username" class="control-label col-lg-3">Email*</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control email_user" placeholder="Email"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control email_user" placeholder="Email" ></asp:TextBox>
                             <asp:RequiredFieldValidator ErrorMessage="Enter your email" ControlToValidate="txtEmail" runat="server" ForeColor="#cc0066" Text="Enter your email" Display="Dynamic" />
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Email is not valid" ControlToValidate="txtEmail" ForeColor="#cc0066" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"></asp:RegularExpressionValidator>
                         </div>
@@ -100,15 +98,6 @@
                     </div>
 
                     <div class="form-group col-lg-12">
-                        <label for="country" class="control-label col-lg-3">UpLine*</label>
-                        <div class="col-lg-6">
-                            <asp:DropDownList runat="server" ID="ddlUpLine" CssClass="form-control">
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ErrorMessage="Enter your upline" ControlToValidate="ddlUpLine" runat="server" ForeColor="#cc0066" Text="Enter your upline" Display="Dynamic" />
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-12">
                         <div class="col-lg-12" style="text-align: center;">
                             <asp:Button runat="server" ID="btnRegister" CssClass="btn btn-info" Text="Register" OnClick="btnRegister_Click" />
                         </div>
@@ -129,7 +118,7 @@
         });
 
         function getUsername() {
-
+            
         };
 
     </script>

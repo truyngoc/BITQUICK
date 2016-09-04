@@ -1,4 +1,3 @@
-<<<<<<< .mine
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="BIT.WebUI.Admin.Login" %>
 <%@ Register TagPrefix="recaptcha" Namespace="Recaptcha" Assembly="Recaptcha" %>
 
@@ -83,5 +82,4 @@
     </div>
 </body>
 </html>
-=======
 

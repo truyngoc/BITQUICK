@@ -11,6 +11,22 @@ using BIT.Controller;
 namespace BIT.WebUI.Admin
 {
     public partial class Dashboard : System.Web.UI.Page
+<<<<<<< .mine
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!this.IsPostBack)
+            {
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
+                {
+                    Response.Redirect("~/Admin/Login");
+                }
+                else
+                {
+                    //BindDashboard();
+                }
+            }
+=======
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,6 +70,7 @@ namespace BIT.WebUI.Admin
             lblDownline_BTC_Left.Text = o.Total_GH_Downline_Left.ToString();
             lblDownline_BTC_Right.Text = o.Total_GH_Downline_Right.ToString();
 
+>>>>>>> .r8
         }
     }
 }

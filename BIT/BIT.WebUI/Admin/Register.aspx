@@ -47,7 +47,7 @@
                         </div>
                     </div>
 
-                    <%--<div class="form-group col-lg-12">
+                    <div class="form-group col-lg-12">
                         <label for="password" class="control-label col-lg-3">Password PIN*</label>
                         <div class="col-lg-6">
                             <asp:TextBox runat="server" ID="txtPassword_PIN" CssClass="form-control" placeholder="Password PIN" type="password"></asp:TextBox>
@@ -62,7 +62,7 @@
                             <asp:RequiredFieldValidator ErrorMessage="Enter your password PIN confirm" ControlToValidate="txtConfirmPassword_PIN" runat="server" ForeColor="#cc0066" Text="Enter your password PIN confirm" Display="Dynamic" />
                             <asp:CompareValidator ID="CompareValidator2" ControlToCompare="txtPassword_PIN" ControlToValidate="txtConfirmPassword_PIN" runat="server" ForeColor="#cc0066" ErrorMessage="Password PIN confirm is not valid"></asp:CompareValidator>
                         </div>
-                    </div>--%>
+                    </div>
 
                     <div class="form-group col-lg-12">
                         <label for="firstname" class="control-label col-lg-3">Fullname*</label>

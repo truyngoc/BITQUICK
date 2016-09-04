@@ -39,8 +39,6 @@ namespace BIT.DataHelper
             obj.ExistsChild, //@ExistsChild bit
             obj.Status, //@Status	int
             obj.Country, //@Country	nvarchar(250)
-            obj.ActiveDate, //@ActiveDate datetime
-            obj.ExpiredDate, //@ExpiredDate datetime
             obj.IsLock, //@IsLock int
             obj.Upline //@UpLine varchar(250)
                 //, obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.IsLock, obj.Status

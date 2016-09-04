@@ -53,40 +53,40 @@ namespace BIT.WebUI.Admin
         {
             if (Page.IsValid)
             {
-                string EncodedResponse = Request.Form["g-Recaptcha-Response"];
+                //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
 
-                bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "True" ? true : false);
+                //bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "True" ? true : false);
 
-                //IsCaptchaValid = true;
+                ////IsCaptchaValid = true;
 
-                if (IsCaptchaValid)
+                //if (IsCaptchaValid)
+                //{
+                //Valid Request
+                var login_info = Singleton<MEMBERS_BC>.Inst.SelectItemByUserPass(txtUserName.Text, txtPassword.Text);
+
+                if (login_info != null)
                 {
-                    //Valid Request
-                    var login_info = Singleton<MEMBERS_BC>.Inst.SelectItemByUserPass(txtUserName.Text, txtPassword.Text);
-
-                    if (login_info != null)
+                    if (login_info.IsLock == 1)
                     {
-                        if (login_info.IsLock == 1)
-                        {
-                            lblMessage.Text = "Account is locked.";
-                            lblMessage.Visible = true;
-                        }
-                        else
-                        {
-                            Singleton<BITCurrentSession>.Inst.SessionMember = login_info;
-                            lblMessage.Visible = false;
-                            Response.Redirect("~/Admin/Dashboard.aspx");
-                        }
+                        lblMessage.Text = "Account is locked.";
+                        lblMessage.Visible = true;
                     }
                     else
                     {
-                        lblMessage.Text = "*Username or password incorrect";
-                        lblMessage.Visible = true;
+                        Singleton<BITCurrentSession>.Inst.SessionMember = login_info;
+                        lblMessage.Visible = false;
+                        Response.Redirect("~/Admin/Dashboard.aspx");
                     }
                 }
-
-
+                else
+                {
+                    lblMessage.Text = "*Username or password incorrect";
+                    lblMessage.Visible = true;
+                }
             }
+
+
+            //}
         }
 
         protected void lnkLossPass_Click(object sender, EventArgs e)

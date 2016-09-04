@@ -70,7 +70,7 @@ namespace BIT.WebUI.Admin
             {
                 if (item.IsLock != null && item.IsLock == 1)
                 {
-                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/icon_lock.gif"" width=""13px"" height=""20px"" /> &nbsp;<a href=""Memberdetail.aspx?m="
+                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/icon_lock.gif"" class=""img-tree"" width=""13px"" height=""20px"" /> &nbsp;<a href=""Memberdetail.aspx?m="
                         + item.Username
                         + @""" target=""_blank"" title="""
                         + item.Fullname.Trim() + @"/"
@@ -81,7 +81,7 @@ namespace BIT.WebUI.Admin
                 }
                 else
                 {
-                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/file.gif""  width=""13px"" height=""20px""  /> &nbsp;<a href=""Memberdetail.aspx?m="
+                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/file.gif"" class=""img-tree""  width=""13px"" height=""20px""  /> &nbsp;<a href=""Memberdetail.aspx?m="
                         + item.Username
                         + @""" target=""_blank"" title="""
                         + item.Fullname.Trim() + @"/"

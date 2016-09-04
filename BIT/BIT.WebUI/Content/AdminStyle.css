@@ -222,7 +222,8 @@ a, a:hover, a:focus {
 .nav-collapse.collapse {
     display: inline;
 }
-.nav-collapse{
+
+.nav-collapse {
     background-color: #E6E7E8 !important;
     padding: 0;
 }
@@ -309,9 +310,10 @@ ul.sidebar-menu li {
         text-transform: uppercase;
         font-weight: bold;
     }
-    ul.sidebar-menu li a span{
-         color: #E73737;
-    }
+
+        ul.sidebar-menu li a span {
+            color: #E73737;
+        }
 
         ul.sidebar-menu li a.active, ul.sidebar-menu li a:focus {
             background: #f7f7f7;
@@ -747,7 +749,13 @@ ul.top-menu > li > a {
         cursor: pointer;
         display: inline-block;
         font-size: 20px;
+        border: 1px solid #F5921E;
+        border-radius: 4px;
     }
+
+.sidebar-toggle-box {
+    margin: 15px 5px;
+}
 
 
 .sidebar-closed > #sidebar > ul {
@@ -6349,7 +6357,8 @@ header.blue-bg .search {
     height: 62px;
     width: 120px;
 }
-.logo strong{
+
+.logo strong {
     color: #E73737;
 }
 
@@ -6379,7 +6388,8 @@ ul.sidebar-menu .hovered .bgslide {
     left: 0;
     top: 0;
 }
-.sub-menu a i{
+
+.sub-menu a i {
     background-color: #F5921E;
 }
 
@@ -6447,15 +6457,18 @@ ul.sidebar-menu .hovered .bgslide {
 .col-lg-12 {
     float: left;
 }
-.divdashboard{
-    background-color: #F1F1F1 !important ;
+
+.divdashboard {
+    background-color: #F1F1F1 !important;
 }
+
 .panel-heading h3, .panel-heading strong {
     color: #FFFFFF;
     margin: 5px 0 !important;
 }
-.panel-body{
-    background-color:#F1F1F1; 
+
+.panel-body {
+    background-color: #F1F1F1;
 }
 
 .panel {

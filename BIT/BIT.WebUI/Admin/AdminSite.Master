@@ -245,7 +245,7 @@
     <script src="../Scripts/Admin/myjs.js"></script>
     <%--<script src="../Scripts/Admin/jquery.js"></script>--%>
 
-    <%--<script class="include" type="text/javascript" src="../Scripts/Admin/jquery.dcjqaccordion.2.7.js"></script>--%>
+    <script class="include" type="text/javascript" src="../Scripts/Admin/jquery.dcjqaccordion.2.7.js"></script>
     <script src="../Scripts/Admin/jquery.scrollTo.min.js"></script>
     <script src="../Scripts/Admin/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="../Scripts/Admin/jquery.sparkline.js" type="text/javascript"></script>

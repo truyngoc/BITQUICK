@@ -136,10 +136,10 @@ input[type="email"], input[type="password"] {
 }
 
 input[type="submit"] {
-    width: 100%;
+    /*width: 100%;*/
     background: #3399cc;
     border: 0;
-    padding: 4%;
+    /*padding: 4%;*/
     font-family: 'Open Sans',sans-serif;
     font-size: 100%;
     color: #fff;

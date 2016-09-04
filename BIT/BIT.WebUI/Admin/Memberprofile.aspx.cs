@@ -23,7 +23,7 @@ namespace BIT.WebUI.Admin
                 }
                 else
                 {
-                    LoadUserInfor();
+                    //LoadUserInfor();
 
                     txtUserName.Attributes.Add("readonly", "readonly");
                     txtEmail.Attributes.Add("readonly", "readonly");

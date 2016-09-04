@@ -36,6 +36,7 @@
     <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=HIwpn1aMp410Y8" style="display:none" height="1" width="1" alt="" /></noscript>
     <!-- End Alexa Certify Javascript -->
     <asp:ContentPlaceHolder ID="head" runat="server">
+        
     </asp:ContentPlaceHolder>
 </head>
 <script>
@@ -66,6 +67,9 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
+                <asp:ScriptReference Path="~/Scripts/jquery-1.10.2.min.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery-treeview/jquery.treeview.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery-treeview/jquery.treeview.js" />
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
@@ -237,11 +241,11 @@
         </div>
     </form>
 
-    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <%--<script src="../Scripts/jquery-1.10.2.min.js"></script>--%>
     <script src="../Scripts/Admin/myjs.js"></script>
-    <script src="../Scripts/Admin/jquery.js"></script>
+    <%--<script src="../Scripts/Admin/jquery.js"></script>--%>
 
-    <script class="include" type="text/javascript" src="../Scripts/Admin/jquery.dcjqaccordion.2.7.js"></script>
+    <%--<script class="include" type="text/javascript" src="../Scripts/Admin/jquery.dcjqaccordion.2.7.js"></script>--%>
     <script src="../Scripts/Admin/jquery.scrollTo.min.js"></script>
     <script src="../Scripts/Admin/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="../Scripts/Admin/jquery.sparkline.js" type="text/javascript"></script>
@@ -259,7 +263,7 @@
     <script src="../Scripts/Admin/easy-pie-chart.js"></script>
     <script src="../Scripts/Admin/tree.min.js"></script>
     <script src="../Scripts/Admin/minimal.min.js"></script>
-
+      
     <script>
         //owl carousel
         $(document).ready(function () {

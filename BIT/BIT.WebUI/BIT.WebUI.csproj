@@ -109,6 +109,7 @@
     <Content Include="Admin\ChangePassword.aspx" />
     <Content Include="Admin\ChangePasswordTwo.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\SelectPackInvest.aspx" />
     <Content Include="Admin\EditAccount.aspx" />
     <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\Logout.aspx" />
@@ -390,6 +391,13 @@
     </Compile>
     <Compile Include="Admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SelectPackInvest.aspx.cs">
+      <DependentUpon>SelectPackInvest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SelectPackInvest.aspx.designer.cs">
+      <DependentUpon>SelectPackInvest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\EditAccount.aspx.cs">
       <DependentUpon>EditAccount.aspx</DependentUpon>

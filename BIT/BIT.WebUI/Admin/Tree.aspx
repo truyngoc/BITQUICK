@@ -8,22 +8,15 @@
     <script>
         $(document).ready(function () {
             //jQuery.noConflict();
-
-
-
             $("#navigation").treeview({
                 persist: "location",
                 collapsed: true,
                 animated: "medium"
             });
-            
             $("#navarea").css("display", "");
-
         });
 
     </script>
-
-
     <style type="text/css">
         .tree .tree-item, .tree .tree-folder {
             border: none !important;
@@ -35,9 +28,9 @@
                 -webkit-border-radius: 4px;
             }
 
-        .img-tree {
+        /*.img-tree {
             width:auto !important;
-        }
+        }*/
     </style>
 
     <section class="wrapper">
@@ -79,8 +72,4 @@
 
         </section>
     </section>
-
-
-
-
 </asp:Content>

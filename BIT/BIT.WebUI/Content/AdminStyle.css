@@ -6596,11 +6596,11 @@ img {
 }
 
 .treeview li img, .treeview li a {
-    float: left;
+    /*float: left;*/
 }
 
-.treeview li img {
-    width: 5%;
+.img-tree {
+    width: 5% !important;
 }
 
 .treeview li a {
@@ -6610,3 +6610,4 @@ img {
 .treeview li {
     width: 100%;
 }
+

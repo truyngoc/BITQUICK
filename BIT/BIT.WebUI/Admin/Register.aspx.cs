@@ -10,6 +10,7 @@ using BIT.Common;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace BIT.WebUI.Admin
 {
@@ -44,6 +45,10 @@ namespace BIT.WebUI.Admin
                     string a = Request.Params[0];
 
                     string strUserName = GiaiMa(a);
+                    if (String.IsNullOrEmpty(""))
+                    {
+                        return;
+                    }
                     MEMBERS obj = Singleton<MEMBERS_BC>.Inst.SelectItemByUserName(strUserName);
                     if (obj == null)
                     {
@@ -58,8 +63,8 @@ namespace BIT.WebUI.Admin
                 {
                     dynamic h1 = Request.Url.Host;
                     dynamic h2 = Request.Url.Authority;
-                    strLink = h2 + "/Admin/Register.aspx?ref=" + MaHoa(Singleton<BITCurrentSession>.Inst.SessionMember.Username);
-
+                    lblLink.Text = h2 + "/Admin/Register.aspx?ref=" + MaHoa(Singleton<BITCurrentSession>.Inst.SessionMember.Username);
+                    
                     Load_Category();
                 }
             }
@@ -198,6 +203,8 @@ namespace BIT.WebUI.Admin
         #region "Register"
         protected void btnRegister_Click(object sender, EventArgs e)
         {
+            if (Page.IsValid)
+            {
             MEMBERS_BC ctlMember = new MEMBERS_BC();
             MEMBERS obj = GetDataOnForm();
 
@@ -231,9 +238,9 @@ namespace BIT.WebUI.Admin
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw new Exception(ex.ToString);
             }
-
+                }
         }
 
         #endregion
@@ -266,5 +273,10 @@ namespace BIT.WebUI.Admin
         }
 
         #endregion
+
+        //protected void btnCopy_Click(object sender, EventArgs e)
+        //{
+        //    Clipboard.SetText(lblLink.ToString());
+        //}
     }
 }

@@ -67,7 +67,6 @@
                             <h1 class="count">
                                 <asp:Label ID="lblPIN_Wallet" runat="server" />
                             </h1>
-
                         </div>
                     </section>
                 </div>

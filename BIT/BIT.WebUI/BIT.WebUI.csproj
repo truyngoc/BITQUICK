@@ -112,6 +112,7 @@
     <Content Include="Admin\AccountManager.aspx" />
     <Content Include="Admin\ChangePassword.aspx" />
     <Content Include="Admin\ChangePasswordTwo.aspx" />
+    <Content Include="Admin\CreatePHCommunity.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\SelectPackInvest.aspx" />
     <Content Include="Admin\EditAccount.aspx" />
@@ -395,6 +396,13 @@
     </Compile>
     <Compile Include="Admin\ChangePasswordTwo.aspx.designer.cs">
       <DependentUpon>ChangePasswordTwo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CreatePHCommunity.aspx.cs">
+      <DependentUpon>CreatePHCommunity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CreatePHCommunity.aspx.designer.cs">
+      <DependentUpon>CreatePHCommunity.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

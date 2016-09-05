@@ -83,7 +83,6 @@
                     <!--logo start-->
                     <a href="../admin/Dashboard.aspx" class="logo">
                         <img src="../images/logo_BitQuick.png" />
-                        <strong>24</strong>
                     </a>
                     <!--logo end-->
                     <div class="sidebar-toggle-box">
@@ -131,9 +130,7 @@
                                     <li><a href="/Memberprofile.aspx"><span><i class=" fa fa-user"></i></span><span>Profile setting</span></a></li>
                                     <li><a href="../Admin/ChangePassword.aspx"><span><i class="fa fa-cog"></i></span><span>Change password</span></a></li>
                                     <li><a href="../Admin/ChangePasswordTwo.aspx"><span><i class="fa fa-cog"></i></span><span>Change password 2</span></a></li>
-                                    <%--<li><a href="../Admin/HistoryAll.aspx"><span><i class=" fa fa-user"></i></span><span style="padding: 0 10px;">History PH-GH</span></a></li>--%>
                                     <li style="display: none;"><a href="../Admin/CommisionMonthly.aspx"><span><i class="fa fa-unlock-alt"></i></span><span style="padding: 0 10px;">COMMISSION MONTHLY</span></a></li>
-                                    <%-- <li style="display: none;"><a href="ReCharge.aspx" style="color: #fff"><i class="fa fa-unlock-alt"></i><span style="padding: 0 10px;">RECHARGE</span></a></li>--%>
                                     <li><a href="../Admin/Login.aspx"><span><i class="fa fa-unlock-alt"></i></span><span>Logout</span></a></li>
                                 </ul>
                                 <!-- user login dropdown end -->

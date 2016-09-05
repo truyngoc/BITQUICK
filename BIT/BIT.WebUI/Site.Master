@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="../Scripts/transition.js"></script>
-    
+
 
     <!-- Bootstrap core CSS -->
     <link href="Content/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
@@ -66,8 +66,7 @@
                 </button>
                 <!---Logo--->
                 <a class="navbar-brand" href="/">
-                    <img src="images/logo_BitQuick.png"/>
-                    <strong style="color: #E73737;">24</strong>
+                    <img src="images/logo_BitQuick.png" />
                 </a>
                 <!---end of Logo--->
             </div>
@@ -153,7 +152,7 @@
     <div id="about" style="padding: 30px 0;">
         <div class="container">
             <!-- ABOUT US -->
-            <div  style="padding: 30px 0; " class="col-lg-12" >
+            <div style="padding: 30px 0;" class="col-lg-12">
                 <div class="col-lg-6">
                     <img style="border: 5px solid #404041;" src="images/pic_aboutus.jpg" />
                 </div>
@@ -273,10 +272,12 @@
                                         <a href="https://play.google.com/store/apps/details?id=com.athenabitcoin.wallet&amp;hl=en&amp;utm_source=global_co&amp;utm_medium=prtnr&amp;utm_content=Mar2515&amp;utm_campaign=PartBadge&amp;pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
                                             <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play"></a>
                                         <br>
+                                        <br>
                                         <a href="https://itunes.apple.com/us/app/athena-bitcoin/id1087704508?ls=1&amp;mt=8">
                                             <img src="images/App_Store_Badge_US-UK_135x40.svg" alt="Download on iTunes"></a>
                                         <br>
-                                        <a href="#" target="_blank">
+                                        <br>
+                                        <a href="https://blockchain.info" target="_blank">
                                             <img src="images/blockchain-logo-vector.svg" alt="Click to blockchain"></a>
                                     </div>
                                 </div>

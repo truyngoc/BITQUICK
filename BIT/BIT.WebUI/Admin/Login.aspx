@@ -42,7 +42,6 @@
         <div style="text-align: center; margin: 60px auto 0; padding: 15px;" class="logo-login">
             <a href="/" class="logo_login">
                 <img src="../images/logo_BitQuick.png" />
-                <strong>24</strong>
             </a>
         </div>
         <form style="margin-top: 20px;" class="form-signin" runat="server">

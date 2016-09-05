@@ -126,7 +126,6 @@
                                     <b class="caret" style="float: right; margin: 6px 0;"></b>
                                 </a>
                                 <ul class="dropdown-menu extended logout" style="display: none;">
-                                    <div class="log-arrow-up"></div>
                                     <li><a href="/Memberprofile.aspx"><span><i class=" fa fa-user"></i></span><span>Profile setting</span></a></li>
                                     <li><a href="../Admin/ChangePassword.aspx"><span><i class="fa fa-cog"></i></span><span>Change password</span></a></li>
                                     <li><a href="../Admin/ChangePasswordTwo.aspx"><span><i class="fa fa-cog"></i></span><span>Change password 2</span></a></li>
@@ -231,11 +230,10 @@
                 </aside>
                 <!--sidebar end-->
                 <section id="main-content">
-                    <section class="wrapper" style="margin-top: 90px;">
+                    <section class="wrapper" style="margin-top: 60px;">
                         <div>
                             <t:alert ID="talerts" runat="server" />
                             <t:notify ID="tnotifys" runat="server" />
-
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
                         </div>

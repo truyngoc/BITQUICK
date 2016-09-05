@@ -448,7 +448,7 @@ ul.top-menu > li > a {
 .dropdown-menu.extended {
     max-width: 300px !important;
     min-width: 160px !important;
-    top: 42px;
+    top: 28px;
     width: 235px !important;
     padding: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.176) !important;
@@ -749,8 +749,6 @@ ul.top-menu > li > a {
         cursor: pointer;
         display: inline-block;
         font-size: 20px;
-        border: 1px solid #F5921E;
-        border-radius: 4px;
     }
 
 .sidebar-toggle-box {
@@ -810,7 +808,7 @@ ul.top-menu > li > a {
 
 .state-overview .value {
     width: 58%;
-    padding-top: 21px;
+    padding-top: 10px;
     text-align: left;
     padding-left: 8px;
 }
@@ -6549,8 +6547,9 @@ img {
 }
 
     .state-overview .value p {
-        border-bottom: 1px solid #35567A;
-        font-weight: 400;
+        border-bottom: 1px solid #E73538;
+        font-weight: bold;
+        font-size: 12pt;
         margin-bottom: 10.5px;
     }
 
@@ -6573,10 +6572,13 @@ img {
 }
 
 .goog-te-gadget div {
-    height: 50px;
-    white-space: nowrap;
-    width: 50px;
-    background-image: url(../images/icon_translate.jpg);
+    height: 25px;
+    width: 25px;
+    background-image: url(../images/icon_translate.png);
+}
+.goog-te-gadget {
+    width: 25px;
+    padding: 10px;
 }
 
 .goog-te-gadget-simple, .goog-te-gadget div {
@@ -6592,15 +6594,19 @@ img {
 .logo_login strong {
     color: #E73737;
 }
-.treeview li img, .treeview li a{
+
+.treeview li img, .treeview li a {
     float: left;
 }
-.treeview li img{
+
+.treeview li img {
     width: 5%;
 }
-.treeview li a{
+
+.treeview li a {
     width: 95%;
 }
-.treeview li{
+
+.treeview li {
     width: 100%;
 }

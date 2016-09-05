@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="clear: both;"></div>
-    <div class="label_b">
+    <div class="label_b" style="padding: 25px 0;">
         <div class="row state-overview">
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">

@@ -201,6 +201,7 @@
     <Content Include="images\header_line.jpg" />
     <Content Include="images\hero-unit.jpg" />
     <Content Include="images\icon_translate.jpg" />
+    <Content Include="images\icon_translate.png" />
     <Content Include="images\key-icon.png" />
     <Content Include="images\loading.gif" />
     <Content Include="images\logo - BITINVEST-01.png" />

@@ -148,24 +148,24 @@
                         <strong>NOTIFICATION FOR SEPTEMPER</strong>
                     </div>
                     <div class="panel-body">
-                        Dear BitSUN Community,<br>
-                        <br>
-                        Thank you for choosing to join in BitSUN, wish you all quickly go forward to SUSTAINABILITY PROSPEROUSNESS with BitSUN.<br>
-                        It has been 4 month (exactly 12 months, because it took us 6 months for preparation, 2 months for market fund), with many difficulties both objective and subjective; what a joy and privilege when we can declare: BitSUN overcame Phase One, SCREENING Phase, the most difficult Phase of most of similar financial models.<br>
+                        Dear BitQuick24 Community,<br/>
+                        <br/>
+                        Thank you for choosing to join in BitQuick24, wish you all quickly go forward to SUSTAINABILITY PROSPEROUSNESS with BitQuick24.<br/>
+                        It has been 4 month (exactly 12 months, because it took us 6 months for preparation, 2 months for market fund), with many difficulties both objective and subjective; what a joy and privilege when we can declare: BitQuick24 overcame Phase One, SCREENING Phase, the most difficult Phase of most of similar financial models.<br/>
                         To prepare for Phase Two &ndash; PLATFORM, we will deploy some updates toward a KNOWLEDGEABLE, ACTIVE, &amp; RESPONSIBLE community:
-                        <br>
-                        -          Promotional program supports interlacedly, as a deserved reward for Leaders and active members in community.<br>
+                        <br/>
+                        -          Promotional program supports interlacedly, as a deserved reward for Leaders and active members in community.<br/>
                         -          Activating ID: To activate new ID, members must have at least 06 PIN. Leaders have the sense of initiative in managing PIN. We will limit scattered apportion littering community.
-                        <br>
-                        -          Mananging CREATE PD Mechanism: Three continuous months if you can't introduce the new member join our BitSUN community, your Create PD function will be de-active in the following month. To re-active this function (opening the following month), simply just introduce at minimum 1 new member. Managing CREATE PD Mechanism will ensure fairness for Leaders, active members. There will no place for lazy investors because the PD-GD nature does not contribute to help individual and community grow.<br>
-                        -          Utility:<br>
-                        o   Reinforce account security with Capcha 2 steps<br>
-                        o   Integrate SMS &amp; Email Marketing<br>
-                        We are quite excited with the next developing journey of BitSUN, and hope we can contribute some effort to your success, your team, and of BitSUN community.<br>
-                        Be with us to write a historial story, formation, development and  everlasting of an outstanding financial playground  out&ndash; BitSUN. And apparently, in the historial story of BitSUN will always have your sucessful and prosperous picture.<br>
-                        TEAM &ndash; Together Everyone Achieve More<br>
-                        Thanks, we love you, love your team &amp; our community!<br>
-                        BitSUN.
+                        <br/>
+                        -          Mananging CREATE PD Mechanism: Three continuous months if you can't introduce the new member join our BitQuick24 community, your Create PD function will be de-active in the following month. To re-active this function (opening the following month), simply just introduce at minimum 1 new member. Managing CREATE PD Mechanism will ensure fairness for Leaders, active members. There will no place for lazy investors because the PD-GD nature does not contribute to help individual and community grow.<br>
+                        -          Utility:<br />
+                        o   Reinforce account security with Capcha 2 steps<br/>
+                        o   Integrate SMS &amp; Email Marketing<br/>
+                        We are quite excited with the next developing journey of BitQuick24, and hope we can contribute some effort to your success, your team, and of BitQuick24 community.<br/>
+                        Be with us to write a historial story, formation, development and  everlasting of an outstanding financial playground  out&ndash; BitQuick24. And apparently, in the historial story of BitQuick24 will always have your sucessful and prosperous picture.<br/>
+                        TEAM &ndash; Together Everyone Achieve More<br/>
+                        Thanks, we love you, love your team &amp; our community!<br/>
+                        BitQuick24.
 			<p></p>
 
                     </div>
@@ -178,9 +178,9 @@
                     </div>
                     <div class="panel-body">
                         <p>
-                            Hello members!<br>
-                            Currently the amount PD - GD went into a stable process. To fit the sustainable development of Bitsun we gift for you is 6 days waiting for command activated automatic PIN instead of 9 days as before.<br>
-                            We thank you for accompanying us during the past!<br>
+                            Hello members!<br/>
+                            Currently the amount PD - GD went into a stable process. To fit the sustainable development of BitQuick24 we gift for you is 6 days waiting for command activated automatic PIN instead of 9 days as before.<br/>
+                            We thank you for accompanying us during the past!<br/>
                         </p>
 
                     </div>

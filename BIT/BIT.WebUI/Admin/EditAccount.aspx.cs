@@ -87,7 +87,7 @@ namespace BIT.WebUI.Admin
 
 
 
-        }
+        //}
 
         public void ReloadSeasion()
         {

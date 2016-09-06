@@ -44,11 +44,16 @@ namespace BIT.DataHelper
                 //, obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.IsLock, obj.Status
                 );
         }
-
         public void UpdateItem(MEMBERS obj)
         {
             defaultDB.ExecuteNonQuery("sp_MEMBERS_Update"
                 , obj.CodeId, obj.Fullname, obj.Phone, obj.Wallet);
+        }
+
+        public void UpdateExpireDate(MEMBERS obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_MEMBERS_Update_ExpireDate"
+                , obj.CodeId, obj.ActiveDate, obj.ExpiredDate);//stt =1
         }
         //UpdateLevelAndStatus - quynhld
         public void UpdateLevelAndStatus(MEMBERS obj)
@@ -71,7 +76,7 @@ namespace BIT.DataHelper
         //quynhld select by codeID
         public MEMBERS SelectItem(String CodeID)
         {
-            return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SelectItem_byCodeID"
+            return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SelectItemByCodeID"
                 , CodeID).FirstOrDefault();
         }
 

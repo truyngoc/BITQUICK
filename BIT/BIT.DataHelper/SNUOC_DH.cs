@@ -36,4 +36,71 @@ namespace BIT.DataHelper
         }
 
     }
+
+    public class PACKAGE_TRANSACTION_DH : DataAccessBase
+    {
+        public IEnumerable<PACKAGE_TRANSACTION> SelectAllItems()
+        {
+            return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectAllItems");
+        }
+
+        public PACKAGE_TRANSACTION SelectItem(int id)
+        {
+            return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectItemByID", id).FirstOrDefault();
+        }
+
+        public IEnumerable<PACKAGE_TRANSACTION> SelectAllItemsByCodeID(string codeID)
+        {
+            return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectAllItems",codeID);
+        }
+
+        public void InsertItem(PACKAGE_TRANSACTION obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_PACKAGE_TRANSACTION_Insert",
+            obj.CODEID
+           ,obj.PACKAGEID
+           ,obj.START_DATE
+           ,obj.END_DATE
+           ,obj.EXPIRED
+           ,obj.GH1
+           ,obj.GH2
+           ,obj.STATUS_GH
+           ,obj.CREATE_DATE
+           ,obj.TRANSACTION_PACKAGE
+           ,obj.AMOUNT
+           ,obj.STATUS_PH
+                
+           );
+        }
+
+        public void updateItem(PACKAGE_TRANSACTION obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_PACKAGE_TRANSACTION_UPDATE_BYID",
+                        obj.ID
+                        ,obj.CODEID
+                        , obj.PACKAGEID
+                        , obj.START_DATE
+                        , obj.END_DATE
+                        , obj.EXPIRED
+                        , obj.GH1
+                        , obj.GH2
+                        , obj.STATUS_GH
+                        , obj.CREATE_DATE
+                        , obj.TRANSACTION_PACKAGE
+                        , obj.AMOUNT
+                        , obj.STATUS_PH
+                        );
+        }
+
+        public bool isAllPackageExpire(string CodeID)
+        {
+            IDataReader dr = defaultDB.ExecuteReader("sp_PACKAGE_TRANSACTION_SelectExpiredItems"
+                , CodeID);
+
+            bool bol = dr.Read();
+            dr.Close();
+
+            return bol;
+        }
+    }
 }

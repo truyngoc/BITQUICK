@@ -31,6 +31,25 @@ namespace BIT.Objects
 
         public string PackageName {get;set;}
     }
+
+    public class PACKAGE_TRANSACTION
+    {
+        public int ID { get; set; }
+           public string CODEID  {get;set;}
+           public int PACKAGEID  {get;set;}
+           public DateTime START_DATE  {get;set;}
+           public DateTime END_DATE  {get;set;}
+           public int EXPIRED  {get;set;}
+           public DateTime GH1  {get;set;}
+           public DateTime GH2  {get;set;}
+           public int STATUS_GH  {get;set;}
+           public DateTime CREATE_DATE  {get;set;}
+           public string TRANSACTION_PACKAGE  {get;set;}
+           public decimal AMOUNT  {get;set;}
+           public int STATUS_PH  {get;set;}
+
+           public string USERNAME { get;set;}
+    }
 }
 
 

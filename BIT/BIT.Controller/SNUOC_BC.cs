@@ -37,4 +37,40 @@ namespace BIT.Controller
             return ctl.SelectAllItems().ToList();
         }
     }
+
+    public class PACKAGE_TRANSACTION_BC
+    {
+        private PACKAGE_TRANSACTION_DH ctl = new PACKAGE_TRANSACTION_DH();
+
+        public List<PACKAGE_TRANSACTION> SelectAllItems()
+        {
+            return ctl.SelectAllItems().ToList();
+        }
+
+        public void InsertItem(PACKAGE_TRANSACTION obj)
+        {
+            ctl.InsertItem(obj);
+        }
+
+        public PACKAGE_TRANSACTION SelectItem(int id)
+        {
+            return ctl.SelectItem(id);
+        }
+
+        public List<PACKAGE_TRANSACTION> SelectAllItemsByCodeID(string codeID)
+        {
+            return ctl.SelectAllItemsByCodeID(codeID).ToList<PACKAGE_TRANSACTION>();
+        }
+
+        public void updateItem(PACKAGE_TRANSACTION obj)
+        {
+             ctl.updateItem(obj);
+        }
+
+        public bool isAllPackageExpire(string CodeID)
+        {
+            return ctl.isAllPackageExpire(CodeID);
+        }
+    }
+    
 }

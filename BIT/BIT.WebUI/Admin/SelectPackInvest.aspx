@@ -10,36 +10,46 @@
                 <h3>Select Pack Invest </h3>
             </header>
             <div class="panel-body">
-                <div class="form">
+                <div class="container center_div">
                     <asp:HiddenField ID="hidCodeId" runat="server" />
                     <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">Send Bit to</label>
-                        <div class="col-lg-6">
-                        </div>
+                        <label class="control-label col-lg-3">Address to payment</label>
+                            <div class="col-lg-5">
+                                <span class="badge">
+                                    <asp:Image ID="imgAdminWallet" ImageUrl="http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=3MNyn34uN1cCBmwvcswfTaeiFAkdqtaMA2" Width="200" Height="200" runat="server" />
+                                </span>
+                                <br />
+                                <asp:Label runat="server" ID="lblAdminWallet" Text="Address: 3MNyn34uN1cCBmwvcswfTaeiFAkdqtaMA2"></asp:Label>
+                            </div>
                     </div>
                     <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">Select Pack</label>
-                        <div class="col-lg-6">
-                            <asp:DropDownList runat="server" ID="drPackSelectTion">
-                            </asp:DropDownList>
+                            <label class="control-label col-lg-3">Select Pack</label>
+                            <div class="col-lg-6">
+                                <asp:DropDownList runat="server" ID="drPackSelectTion" OnSelectedIndexChanged="drPackSelectTion_SelectedIndexChanged" AutoPostBack="true">
+                                </asp:DropDownList> BTC
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group col-lg-12">
+                            <label class="control-label col-lg-3">Select extend invest month</label>
+                            <div class="col-lg-6">
+                                <asp:DropDownList runat="server" ID="drTimeInvest" OnSelectedIndexChanged="drTimeInvest_SelectedIndexChanged" AutoPostBack="true" >
+                                    <asp:ListItem Text="1 Month" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="2 Month" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="3 Month" Value="3"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    
                     <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">Select invest time </label>
+                        <label class="control-label col-lg-3">Total Amount</label>
                         <div class="col-lg-6">
-                            <asp:DropDownList runat="server" ID="drTimeInvest">
-                                <asp:ListItem Text="1" Value="1" Selected="True"></asp:ListItem>
-                                <asp:ListItem Text="2" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="3" Value="1"></asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:TextBox runat="server" ID="txtTotalAmount" CssClass="form-control" placeholder="Total payment: Invest Pack + Extend Fee" Enabled="false">BTC</asp:TextBox>
                         </div>
                     </div>
-
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Transaction</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtTransaction" CssClass="form-control" placeholder="Ex a3cd4f936a39ac25106e77d9e2433d99c759325ea38408494be30f36c1652617"></asp:TextBox>
-                            <asp:RequiredFieldValidator ErrorMessage="Enter your phone number" ControlToValidate="txtTransaction" runat="server" ForeColor="#cc0066" Text="Enter transaction string" Display="Dynamic" />
+                            <asp:TextBox runat="server" ID="txtTransaction" CssClass="form-control" placeholder="a3cd4f936a39ac25106e77d9e2433d99c759325ea38408494be30f36c1652617"></asp:TextBox>
                         </div>
                     </div>
 
@@ -71,8 +81,9 @@
                         <HeaderTemplate>
                             <table class="table table-hover p-table">
                                 <tr>
-                                    <th>Create Time</th>
+                                    <th>Create Date</th>
                                     <th>Pack Name</th>
+                                    <th>Start Date</th>
                                     <th>Expire Date</th>
                                     <th>Date Count</th>
                                     <th>Status</th>
@@ -82,26 +93,29 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <asp:Label runat="server" ID="lblPHTime" Text=''></asp:Label>
+                                    <asp:Label runat="server" ID="lblPHTime" Text='<%# Eval("CREATE_DATE") %>'></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblAmount" Text=' '></asp:Label>
+                                    <asp:Label runat="server" ID="lblAmount" Text='<%# Eval("PACKAGEID") %>'> </asp:Label>BTC
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblDateCount" Text='' />
+                                    <asp:Label runat="server" ID="lblStartDate" Text='<%# Eval("START_DATE") %>' />
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblFull" Text=''></asp:Label>
+                                    <asp:Label runat="server" ID="lblEndDate" Text='<%# Eval("END_DATE") %>'></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label runat="server" ID="Label1" Text='<%# datecount(Eval("START_DATE")) %>'></asp:Label>
                                 </td>
                                 <td>
                                     <span class="label label-primary">
-                                        <asp:Label runat="server" ID="lblStatus" Text=''></asp:Label>
+                                        <asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("STATUS_PH")) %>'></asp:Label>
                                     </span>
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <asp:LinkButton runat="server" ID="btnGH1" Visible='true' OnClick="" CommandArgument='' type="submit" class="btn btn-success" Text="GH1" />
-                                        <asp:LinkButton runat="server" ID="btnGH2" Visible='true' OnClick="" CommandArgument='' type="submit" class="btn btn-success" Text="GH1" />
+                                        <asp:LinkButton runat="server" ID="btnGH1" Visible='<%# getGH1Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH1" OnClick="btnGH1_Click" />
+                                        <asp:LinkButton runat="server" ID="btnGH2" Visible='<%# getGH2Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' Enabled="false" CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH2" OnClick="btnGH2_Click" />
                                     </a>
                                 </td>
                             </tr>

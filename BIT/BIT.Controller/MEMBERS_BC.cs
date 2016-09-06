@@ -31,6 +31,11 @@ namespace BIT.Controller
 		{
 			ctl.UpdateItem(obj);
 		}
+        public void UpdateExpireDate(MEMBERS obj)
+		{
+            ctl.UpdateExpireDate(obj);
+		}
+        
         //quynhld 22-08
         public void UpdateLevelAndStatus(MEMBERS obj)
         {

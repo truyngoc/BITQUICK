@@ -22,6 +22,24 @@ namespace BIT.WebUI.Admin {
         protected global::System.Web.UI.WebControls.HiddenField hidCodeId;
         
         /// <summary>
+        /// imgAdminWallet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgAdminWallet;
+        
+        /// <summary>
+        /// lblAdminWallet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAdminWallet;
+        
+        /// <summary>
         /// drPackSelectTion control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace BIT.WebUI.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drTimeInvest;
+        
+        /// <summary>
+        /// txtTotalAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTotalAmount;
         
         /// <summary>
         /// txtTransaction control.

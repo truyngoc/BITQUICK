@@ -66,7 +66,7 @@ namespace BIT.WebUI.Admin
 
                 if (login_info != null)
                 {
-                    if (login_info.IsLock == 1)
+                    if (login_info.Status == 3)
                     {
                         lblMessage.Text = "Account is locked.";
                         lblMessage.Visible = true;

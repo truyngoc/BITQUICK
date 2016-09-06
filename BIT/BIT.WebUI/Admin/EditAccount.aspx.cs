@@ -25,9 +25,9 @@ namespace BIT.WebUI.Admin
                 {
                     LoadUserInfor();
 
-                    txtUserName.Attributes.Add("readonly", "readonly");
-                    txtEmail.Attributes.Add("readonly", "readonly");
-                    txtSysWallet.Attributes.Add("readonly", "readonly");
+                    //txtUserName.Attributes.Add("readonly", "readonly");
+                    //txtEmail.Attributes.Add("readonly", "readonly");
+                    //txtSysWallet.Attributes.Add("readonly", "readonly");
                 }
             }
         }
@@ -65,26 +65,25 @@ namespace BIT.WebUI.Admin
             obj.Fullname = txtFullName.Text.Trim();
             obj.Phone = txtPhone.Text.Trim();
             obj.Wallet = txtWallet.Text.Trim();
-            obj.Password_PIN = txtPasswordPIN.Text.Trim();
             return obj;
         }
 
-        public void UpdateProfile()
-        {
-            MEMBERS_BC ctlMember = new MEMBERS_BC();
+        //public void UpdateProfile()
+        //{
+        //    MEMBERS_BC ctlMember = new MEMBERS_BC();
 
-            MEMBERS obj = GetDataOnForm();
+        //    MEMBERS obj = GetDataOnForm();
 
-            //Tung: Them doan check Password 2
-            if (obj.Password_PIN == Singleton<BITCurrentSession>.Inst.SessionMember.Password_PIN)
-            {
-                ctlMember.UpdateItem(obj);
-                ShowMessageError(lblMessage, "Update profile member successful", true);
-            }
-            else
-            {
-                ShowMessageError(lblMessage, "Password PIN is invalid! ", true);
-            }
+        //    //Tung: Them doan check Password 2
+        //    if (obj.Password_PIN == Singleton<BITCurrentSession>.Inst.SessionMember.Password_PIN)
+        //    {
+        //        ctlMember.UpdateItem(obj);
+        //        ShowMessageError(lblMessage, "Update profile member successful", true);
+        //    }
+        //    else
+        //    {
+        //        ShowMessageError(lblMessage, "Password PIN is invalid! ", true);
+        //    }
 
 
 
@@ -112,12 +111,12 @@ namespace BIT.WebUI.Admin
             {
                 try
                 {
-                    UpdateProfile();
+                    //UpdateProfile();
 
-                    if (HttpContext.Current.Session["BIT_MemberID_Edit"] == null)
-                    {
-                        ReloadSeasion();
-                    }                    
+                    //if (HttpContext.Current.Session["BIT_MemberID_Edit"] == null)
+                    //{
+                    //    ReloadSeasion();
+                    //}                    
                 }
                 catch (Exception ex)
                 {

@@ -67,24 +67,6 @@ namespace BIT.WebUI.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtWallet;
         
         /// <summary>
-        /// txtSysWallet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSysWallet;
-        
-        /// <summary>
-        /// txtPasswordPIN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPasswordPIN;
-        
-        /// <summary>
         /// btnUpdate control.
         /// </summary>
         /// <remarks>

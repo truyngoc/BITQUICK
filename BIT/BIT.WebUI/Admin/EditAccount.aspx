@@ -16,7 +16,7 @@
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Username*</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtUserName" CssClass="form-control username_user" placeholder="Username"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtUserName" CssClass="form-control username_user" placeholder="Username" ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
 
@@ -46,28 +46,14 @@
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Wallet*</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtWallet" CssClass="form-control" placeholder="Wallet"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtWallet" CssClass="form-control" placeholder="Wallet" ReadOnly></asp:TextBox>
                             <asp:RequiredFieldValidator ErrorMessage="Enter your wallet" ControlToValidate="txtWallet" runat="server" ForeColor="#cc0066" Text="Enter your wallet" Display="Dynamic" />
                         </div>
                     </div>
 
                     <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">System Wallet</label>
-                        <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtSysWallet" CssClass="form-control" placeholder="System Wallet"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">Password PIN*</label>
-                        <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtPasswordPIN" CssClass="form-control" placeholder="Confirm Password PIN to update your information"  type="password"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-12">
                         <div style="text-align: center;" class="col-lg-12">
-                            <asp:Button runat="server" ID="btnUpdate" class="btn btn-info" Text="Update" OnClick="btnUpdate_Click" />
+                            <asp:Button runat="server" ID="btnUpdate" class="btn btn-info" Text="Order Update Information" OnClick="btnUpdate_Click" />
                         </div>
                     </div>
 

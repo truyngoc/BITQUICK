@@ -220,7 +220,7 @@ namespace BIT.WebUI.Admin
                 else
                     bSponsorPH = true;
 
-                bool bExistAcc = ctlMember.IsExistsItem(obj.Username);
+                bool bExistAcc = ctlMember.IsExistsItem(obj.Username,obj.Wallet);
 
                 if (bSponsorPH)
                 {

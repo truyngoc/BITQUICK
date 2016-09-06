@@ -80,10 +80,10 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SelectAllItems");
         }
 
-        public bool IsExistsItem(string user_name)
+        public bool IsExistsItem(string user_name,string wallet)
         {
             IDataReader dr = defaultDB.ExecuteReader("sp_MEMBERS_SelectItemByUserName"
-                , user_name);
+                , user_name,wallet);
 
             bool bol = dr.Read();
             dr.Close();

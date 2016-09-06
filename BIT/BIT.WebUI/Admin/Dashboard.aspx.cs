@@ -41,9 +41,9 @@ namespace BIT.WebUI.Admin
 
         public void BindDataToForm(DASHBOARD o)
         {
-            lblB_Wallet.Text = o.B_Wallet.ToString();
+            //lblB_Wallet.Text = o.B_Wallet.ToString();
             lblC_Wallet.Text = o.C_Wallet.ToString();
-            lblR_Wallet.Text = o.R_Wallet.ToString();
+            //lblR_Wallet.Text = o.R_Wallet.ToString();
             lblPIN_Wallet.Text = o.PIN_Wallet.ToString();
             lblTotalDownline.Text = o.Total_Downline.ToString();
             //lblDownline_Left.Text = o.Total_Downline_Left.ToString();

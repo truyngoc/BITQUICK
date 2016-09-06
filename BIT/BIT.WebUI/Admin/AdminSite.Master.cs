@@ -18,11 +18,11 @@ namespace BIT.WebUI.Admin
                 Response.Redirect("Login.aspx");
             else
             {
-                //lblLoginName.Text = Singleton<BITCurrentSession>.Inst.SessionMember.Fullname;
-                //if (Singleton<BITCurrentSession>.Inst.SessionMember.IsAdmin == 1)
-                //    liAdministrator.Visible = true;
-                //else
-                //    liAdministrator.Visible = false;
+                lblLoginName.Text = Singleton<BITCurrentSession>.Inst.SessionMember.Fullname;
+                if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId.Equals("0"))
+                    liAdministrator.Visible = true;
+                else
+                    liAdministrator.Visible = false;
             }
         }
     }

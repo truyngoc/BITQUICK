@@ -6,7 +6,7 @@
     <div style="clear: both;"></div>
     <div class="label_b" style="padding: 25px 0;">
         <div class="row state-overview">
-            <div class="col-lg-3 col-sm-6">
+            <%--<div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
                         <div class="symbol">
@@ -21,7 +21,7 @@
                         </div>
                     </section>
                 </div>
-            </div>
+            </div>--%>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
@@ -39,7 +39,7 @@
                     </section>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
+            <%--<div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
                         <div class="symbol">
@@ -55,7 +55,7 @@
                         </div>
                     </section>
                 </div>
-            </div>
+            </div>--%>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
@@ -146,7 +146,7 @@
                     <div class="panel-heading">
                         <strong>NOTIFICATION FOR SEPTEMPER</strong>
                     </div>
-                    <div class="panel-body">
+                    <%--<div class="panel-body">
                         Dear BitQuick24 Community,<br/>
                         <br/>
                         Thank you for choosing to join in BitQuick24, wish you all quickly go forward to SUSTAINABILITY PROSPEROUSNESS with BitQuick24.<br/>
@@ -167,7 +167,7 @@
                         BitQuick24.
 			<p></p>
 
-                    </div>
+                    </div>--%>
                 </section>
             </div>
             <div class="col-lg-4 col-sm-6">
@@ -175,14 +175,14 @@
                     <div class="panel-heading">
                         <strong>NOTIFICATION FOR AUGUST</strong>
                     </div>
-                    <div class="panel-body">
+                    <%--<div class="panel-body">
                         <p>
                             Hello members!<br/>
                             Currently the amount PD - GD went into a stable process. To fit the sustainable development of BitQuick24 we gift for you is 6 days waiting for command activated automatic PIN instead of 9 days as before.<br/>
                             We thank you for accompanying us during the past!<br/>
                         </p>
 
-                    </div>
+                    </div>--%>
                 </section>
             </div>
         </div>

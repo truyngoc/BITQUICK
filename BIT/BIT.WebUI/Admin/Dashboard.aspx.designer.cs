@@ -13,15 +13,6 @@ namespace BIT.WebUI.Admin {
     public partial class Dashboard {
         
         /// <summary>
-        /// lblB_Wallet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblB_Wallet;
-        
-        /// <summary>
         /// lblC_Wallet control.
         /// </summary>
         /// <remarks>
@@ -29,15 +20,6 @@ namespace BIT.WebUI.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblC_Wallet;
-        
-        /// <summary>
-        /// lblR_Wallet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblR_Wallet;
         
         /// <summary>
         /// lblPIN_Wallet control.

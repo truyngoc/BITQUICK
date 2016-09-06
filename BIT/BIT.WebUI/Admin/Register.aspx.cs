@@ -212,7 +212,14 @@ namespace BIT.WebUI.Admin
             {
                 // check sponsor acc have execute PH success
 
-                bool bSponsorPH = true;
+                bool bSponsorPH = false;
+                if (Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate == null)
+                    bSponsorPH = false;
+                else if (Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate < DateTime.Now)
+                    bSponsorPH = false;
+                else
+                    bSponsorPH = true;
+
                 bool bExistAcc = ctlMember.IsExistsItem(obj.Username);
 
                 if (bSponsorPH)
@@ -236,7 +243,7 @@ namespace BIT.WebUI.Admin
                     lblMessage.Visible = true;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 //throw new Exception(ex.ToString);
             }

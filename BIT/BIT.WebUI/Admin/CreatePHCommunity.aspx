@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <%--<script src="../Scripts/jquery.validate.min.js"></script>
     <script src="../Scripts/jquery.validate.unobtrusive.min.js"></script>--%>
+
+    <%--<script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+    <script src="../Scripts/jquery.validate.unobtrusive.min.js"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

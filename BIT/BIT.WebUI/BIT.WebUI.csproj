@@ -127,6 +127,8 @@
     <Content Include="Admin\Memberprofile.aspx" />
     <Content Include="Admin\Register.aspx" />
     <Content Include="Admin\Tree.aspx" />
+    <Content Include="Admin\WithDraw.aspx" />
+    <Content Include="Admin\WithdrawAdmin.aspx" />
     <Content Include="Admin\_Alerts.ascx" />
     <Content Include="Admin\_Notify.ascx" />
     <Content Include="Contact.aspx" />
@@ -501,6 +503,20 @@
     </Compile>
     <Compile Include="Admin\Tree.aspx.designer.cs">
       <DependentUpon>Tree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WithDraw.aspx.cs">
+      <DependentUpon>WithDraw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WithDraw.aspx.designer.cs">
+      <DependentUpon>WithDraw.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WithdrawAdmin.aspx.cs">
+      <DependentUpon>WithdrawAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WithdrawAdmin.aspx.designer.cs">
+      <DependentUpon>WithdrawAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\_Alerts.ascx.cs">
       <DependentUpon>_Alerts.ascx</DependentUpon>

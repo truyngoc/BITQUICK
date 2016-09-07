@@ -75,6 +75,7 @@ namespace BIT.WebUI.Admin
             Singleton<MEMBERS_BC>.Inst.UpdateExpireDate(objMem);
 
             TNotify.Alerts.Danger(string.Format("Confirmed Invest Package {0} for User {1} Completed",pck.PACKAGEID,objMem.Username ), true);
+            Response.Redirect("../admin/adminselectpackInvest.aspx");
         }
 
     }

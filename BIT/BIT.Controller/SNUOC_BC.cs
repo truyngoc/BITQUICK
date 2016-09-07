@@ -67,6 +67,15 @@ namespace BIT.Controller
              ctl.updateItem(obj);
         }
 
+        public void updateGH2(PACKAGE_TRANSACTION obj)
+        {
+            ctl.updateItem(obj);
+        }
+        public void updateGH1(PACKAGE_TRANSACTION obj)
+        {
+            ctl.updateItem(obj);
+        }
+
         public bool isAllPackageExpire(string CodeID)
         {
             return ctl.isAllPackageExpire(CodeID);

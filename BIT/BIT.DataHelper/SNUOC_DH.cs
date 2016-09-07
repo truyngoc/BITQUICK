@@ -92,6 +92,23 @@ namespace BIT.DataHelper
                         );
         }
 
+        public void updateGH1(PACKAGE_TRANSACTION obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_PACKAGE_TRANSACTION_UPDATE_GH1",
+                        obj.ID
+                        , obj.CODEID
+                        , obj.PACKAGEID
+                        );
+        }
+        public void updateGH2(PACKAGE_TRANSACTION obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_PACKAGE_TRANSACTION_UPDATE_GH2",
+                        obj.ID
+                        , obj.CODEID
+                        , obj.PACKAGEID
+                        );
+        }
+
         public bool isAllPackageExpire(string CodeID)
         {
             IDataReader dr = defaultDB.ExecuteReader("sp_PACKAGE_TRANSACTION_SelectExpiredItems"

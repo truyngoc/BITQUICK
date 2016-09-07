@@ -39,6 +39,7 @@ namespace BIT.WebUI.Admin
                     {
                         getSpackage();
                         bindDataList();
+                        getAdminWallet();
                     }
                 }
             }
@@ -106,8 +107,8 @@ namespace BIT.WebUI.Admin
                             break;
                     }
                     obj.EXPIRED = 0;
-                    obj.GH1 = DateTime.Now;
-                    obj.GH2 = DateTime.Now;
+                    obj.GH1 = DateTime.Now.AddDays(45);
+                    obj.GH2 = DateTime.Now.AddDays(90);
                     obj.STATUS_GH = 0;
                     obj.CREATE_DATE = DateTime.Now;
                     obj.TRANSACTION_PACKAGE = txtTransaction.Text;
@@ -118,7 +119,8 @@ namespace BIT.WebUI.Admin
 
                     TNotify.Alerts.Danger(string.Format("Buy Invest Package {0} Completed", drPackSelectTion.SelectedValue), true);
                     Response.Redirect("../Admin/SelectPackInvest.aspx");
-
+                    Session["PackSelect"] = null;
+                    Session["MonthSelect"] = null;
                 }
                 catch
                 {
@@ -203,11 +205,6 @@ namespace BIT.WebUI.Admin
             }
         }
 
-        private void getTotalPayment()
-        {
-
-
-        }
 
         public string getStatus(object status)
         {
@@ -263,7 +260,7 @@ namespace BIT.WebUI.Admin
             //update wallet + commission
             pck.STATUS_GH = 1;
             //update package transaction
-            Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateItem(pck);
+            Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateGH1(pck);
         }
 
         protected void btnGH2_Click(object sender, EventArgs e)
@@ -275,8 +272,15 @@ namespace BIT.WebUI.Admin
             pck.STATUS_GH = 2;
             pck.EXPIRED = 1;
             //update package_transaction
-            Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateItem(pck);
+            
+            Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateGH2(pck);
+        }
 
+        public void getAdminWallet()
+        {
+            string admWallet = Singleton<MEMBERS_BC>.Inst.SelectItem("0").Wallet;
+            imgAdminWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}",admWallet);
+            lblAdminWallet.Text = admWallet;
         }
     }
 }

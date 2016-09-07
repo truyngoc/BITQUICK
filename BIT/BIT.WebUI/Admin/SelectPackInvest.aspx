@@ -16,10 +16,10 @@
                         <label class="control-label col-lg-3">Address to payment</label>
                             <div class="col-lg-5">
                                 <span class="badge">
-                                    <asp:Image ID="imgAdminWallet" ImageUrl="http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=3MNyn34uN1cCBmwvcswfTaeiFAkdqtaMA2" Width="200" Height="200" runat="server" />
+                                    <asp:Image ID="imgAdminWallet"  Width="200" Height="200" runat="server" />
                                 </span>
                                 <br />
-                                <asp:Label runat="server" ID="lblAdminWallet" Text="Address: 3MNyn34uN1cCBmwvcswfTaeiFAkdqtaMA2"></asp:Label>
+                                <asp:Label runat="server" ID="lblAdminWallet" ></asp:Label>
                             </div>
                     </div>
                     <div class="form-group col-lg-12">
@@ -39,24 +39,22 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                    
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Total Amount</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtTotalAmount" CssClass="form-control" placeholder="Total payment: Invest Pack + Extend Fee" Enabled="false">BTC</asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtTotalAmount" CssClass="form-control" placeholder="Total payment: Invest Pack + Extend Fee" Enabled="false">1.2</asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Transaction</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtTransaction" CssClass="form-control" placeholder="a3cd4f936a39ac25106e77d9e2433d99c759325ea38408494be30f36c1652617"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtTransaction" CssClass="form-control" placeholder="8494be30f36c1652617"></asp:TextBox>
                         </div>
                     </div>
-
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Password PIN*</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtPasswordPIN" CssClass="form-control" placeholder="Confirm Password PIN to update your information" type="password"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtPasswordPIN" CssClass="form-control" type="password"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group col-lg-12">

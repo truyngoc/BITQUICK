@@ -43,6 +43,7 @@
     <Compile Include="MEMBERS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SNUOC.cs" />
+    <Compile Include="WALLET.cs" />
     <Compile Include="WITHDRAW.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

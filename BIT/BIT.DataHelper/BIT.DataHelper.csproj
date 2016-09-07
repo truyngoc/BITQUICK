@@ -51,6 +51,7 @@
     <Compile Include="MEMBERS_DH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SNUOC_DH.cs" />
+    <Compile Include="WALLET_DH.cs" />
     <Compile Include="WITHDRAW_DH.cs" />
   </ItemGroup>
   <ItemGroup>

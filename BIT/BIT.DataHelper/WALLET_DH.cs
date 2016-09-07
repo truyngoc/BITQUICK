@@ -19,41 +19,41 @@ using BIT.DataHelper;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 
 namespace BIT.DataHelper
-{
-    public class WITHDRAW_DH : DataAccessBase
+{ 
+	public class WALLET_DH : DataAccessBase
 	{	
-		public void InsertItem(WITHDRAW obj)
+		public void InsertItem(WALLET obj)
 		{
-            defaultDB.ExecuteNonQuery("sp_WITHDRAW_Insert"
+			defaultDB.ExecuteNonQuery("sp_WALLET_Insert"
                 , obj.CodeId, obj.R_Wallet, obj.C_Wallet, obj.B_Wallet, obj.PIN_Wallet);
 		}
 
-        public void UpdateItem(WITHDRAW obj)
+		public void UpdateItem(WALLET obj)
 		{
-            defaultDB.ExecuteNonQuery("sp_WITHDRAW_Update"
+			defaultDB.ExecuteNonQuery("sp_WALLET_Update"
                 , obj.ID, obj.CodeId, obj.R_Wallet, obj.C_Wallet, obj.B_Wallet, obj.PIN_Wallet);
 		}
 
 		public void DeleteItem(int ID)
 		{
-            defaultDB.ExecuteNonQuery("sp_WITHDRAW_Delete"
+			defaultDB.ExecuteNonQuery("sp_WALLET_Delete"
 				, ID);
 		}
 
-        public WITHDRAW SelectItem(int ID)
+		public WALLET SelectItem(int ID)
 		{
-            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_WITHDRAW_SelectItem"
+			return defaultDB.ExecuteSprocAccessor<WALLET>("sp_WALLET_SelectItem"
 				, ID).FirstOrDefault();
 		}
-
-        public IEnumerable<WITHDRAW> SelectAllItems()
+      
+		public IEnumerable<WALLET> SelectAllItems()
 		{
-            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_WITHDRAW_SelectAllItems");
+			return defaultDB.ExecuteSprocAccessor<WALLET>("sp_WALLET_SelectAllItems");
 		}
 
 		public bool IsExistsItem(int ID)
 		{
-            IDataReader dr = defaultDB.ExecuteReader("sp_WITHDRAW_SelectItem"
+			IDataReader dr  = defaultDB.ExecuteReader("sp_WALLET_SelectItem"
 				, ID);
 			
 			bool bol = dr.Read();
@@ -62,9 +62,9 @@ namespace BIT.DataHelper
 			return bol;
 		}
 
-        public WITHDRAW SelectItemByCodeId(string code_id)
+        public WALLET SelectItemByCodeId(string code_id)
         {
-            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_WITHDRAW_SelectItemByCodeId"
+            return defaultDB.ExecuteSprocAccessor<WALLET>("sp_WALLET_SelectItemByCodeId"
                 , code_id).FirstOrDefault();
         }
 		

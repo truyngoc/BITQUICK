@@ -14,7 +14,7 @@
                 <form enctype="multipart/form-data" class="cmxform form-horizontal tasi-form">
                     <div class="form-group col-lg-12">
                         <div class="col-md-6 col-md-offset-3">
-                            <label class="control-label col-lg-5" for="firstname">C Wallet Amount</label>
+                            <label class="control-label col-lg-5" for="firstname">Remain Amount</label>
                             <div class="col-lg-5">
                                 <asp:Label runat="server" ID="lblCWalletAmt"></asp:Label>
                             </div>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <div style="text-align: center;" class="col-lg-12">
-                            <asp:Button runat="server" ID="btnSave" class="btn btn-info" Text="Save" OnClick="btnSave_Click" />
+                            <asp:Button runat="server" ID="btnSave" class="btn btn-info" Text="Withdraw" />
                         </div>
                     </div>
                 </form>
@@ -42,6 +42,9 @@
             <label></label>
         </section>
         <section class="panel">
+            <header class="panel-heading">
+                <h3>WithDraw to BlockChain List</h3>
+            </header>
             <asp:DataList runat="server" ID="dtlWithDraw" class="table table-hover p-table">
                 <HeaderTemplate>
                     <table class="table table-hover p-table">

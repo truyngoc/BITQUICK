@@ -38,6 +38,7 @@ namespace BIT.WebUI.Admin
                     }
                     else
                     {
+                        btnCreatePH.Enabled = false;
                         // thong bao het han hoac chua dang ky goi
                         TNotify.Alerts.Warning("Package is not register or account is expired", true);
                     }
@@ -46,57 +47,61 @@ namespace BIT.WebUI.Admin
         }
 
         protected void btnCreatePH_Click(object sender, EventArgs e)
-        {
-            var ctlPH = new PH_BC();
-            var ctlMember = new MEMBERS_BC();
-
-            string codeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
-            string passwordPIN = Singleton<BITCurrentSession>.Inst.SessionMember.Password_PIN;
-
-            // check xem goi dang ky da het han chua
-            if (ctlPack.IsPackageExpire(codeId))
+        {            
+            if (Page.IsValid)
             {
-                // check quota
-                if (ctlPH.GetNumberPH(codeId) < 1)
+                var ctlPH = new PH_BC();
+                var ctlMember = new MEMBERS_BC();
+
+                string codeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+
+                // check xem goi dang ky da het han chua
+                if (ctlPack.IsPackageExpire(codeId))
                 {
-                    // tao lenh PH
-                    // check transaction pass co dung ko
-                    if (ctlMember.CheckPasswordPIN(codeId,passwordPIN))
+                    // check quota
+                    if (ctlPH.GetNumberPH(codeId) < 1)
                     {
-                        var oPH = GetPH();
-                        // Insert PH
-                        try
+                        // tao lenh PH
+                        // check transaction pass co dung ko
+                        string passPIN = txtTransPass.Text;
+                        if (ctlMember.CheckPasswordPIN(codeId, passPIN))
                         {
-                            ctlPH.InsertItem(oPH);
+                            var oPH = GetPH();
+                            // Insert PH
+                            try
+                            {
+                                ctlPH.InsertItem(oPH);
 
-                            TNotify.Toastr.Success("Create PH successfull", "Create PH", TNotify.NotifyPositions.toast_top_full_width, true);
+                                TNotify.Toastr.Success("Create PH successfull", "Create PH", TNotify.NotifyPositions.toast_top_full_width, true);
 
-                            // reload list PH
-                            this.LoadListPH();
+                                // reload list PH
+                                this.LoadListPH();                                
+                            }
+                            catch (Exception ex)
+                            {
+                                TNotify.Alerts.Danger(ex.ToString(), true);
+                            }
+
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            TNotify.Alerts.Danger(ex.ToString(), true);
+                            // thong bao password pin ko dung
+                            TNotify.Alerts.Warning("Password PIN is not valid", true);
                         }
-                        
                     }
                     else
                     {
-                        // thong bao password pin ko dung
-                        TNotify.Alerts.Warning("Password PIN is not valid", true);
+                        // thong bao het quota PH trong ngay
+                        TNotify.Alerts.Warning("Only have PH once perday", true);
                     }
                 }
                 else
-                { 
-                    // thong bao het quota PH trong ngay
-                    TNotify.Alerts.Warning("Only have PH once perday", true);
+                {
+                    // thong bao het han hoac chua dang ky goi
+                    TNotify.Alerts.Warning("Package is not register or account is expired", true);
                 }
             }
-            else
-            { 
-                // thong bao het han hoac chua dang ky goi
-                TNotify.Alerts.Warning("Package is not register or account is expired", true);
-            }
+            
         }
 
         private PH GetPH()
@@ -137,7 +142,20 @@ namespace BIT.WebUI.Admin
             }
         }
 
-
+        public string CssStatus(int status)
+        {
+            switch (status)
+            {
+                case (int)Constants.PH_STATUS.Waiting:
+                    return "label label-primary";
+                case (int)Constants.PH_STATUS.Pending:
+                    return "label label-info";
+                case (int)Constants.PH_STATUS.Success:
+                    return "label label-danger";
+                default:
+                    return "label label-primary";
+            }
+        }
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {

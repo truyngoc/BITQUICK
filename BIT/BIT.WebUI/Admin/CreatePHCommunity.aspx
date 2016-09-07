@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminSite.Master" AutoEventWireup="true" CodeBehind="CreatePHCommunity.aspx.cs" Inherits="BIT.WebUI.Admin.CreatePHCommunity" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <%--<script src="../Scripts/jquery.validate.min.js"></script>
+    <script src="../Scripts/jquery.validate.unobtrusive.min.js"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="../Scripts/jquery.validate.min.js"></script>
-    <script src="../Scripts/jquery.validate.unobtrusive.min.js"></script>
 
     <style>
         /* wider than 768px fixed width */
@@ -70,15 +70,16 @@
                         </div>
 
                         <div class="col-md-6 col-md-offset-3 margin-top-05">
-                            <label class="control-label col-lg-7">Transaction Pass:</label>
+                            <label class="control-label col-lg-7">Password PIN:</label>
                             <div class="col-lg-5">
                                 <asp:TextBox runat="server" ID="txtTransPass" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ErrorMessage="Enter password PIN" ControlToValidate="txtTransPass" runat="server" ForeColor="#cc0066" Text="Enter password PIN" Display="Dynamic" ValidationGroup="createPH" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group col-lg-12">
                         <div style="text-align: center;" class="col-lg-12">
-                            <asp:Button runat="server" ID="btnCreatePH" class="btn btn-info" Text="Create PH" OnClick="btnCreatePH_Click" />
+                            <asp:Button runat="server" ID="btnCreatePH" class="btn btn-info" Text="Create PH" OnClick="btnCreatePH_Click" ValidationGroup="createPH" />
                         </div>
                     </div>
                 </div>
@@ -87,9 +88,9 @@
         <!---End Of ss PH-->
         <!--ss Gridview PH-->
         <section class="panel">
-            <div class="form">
-                <asp:GridView ID="grdPH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="30"
-                    OnPageIndexChanging="OnPageIndexChanging" CssClass="table table-hover p-table">
+            <div class="table-responsive">
+                <asp:GridView ID="grdPH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
+                    OnPageIndexChanging="OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None">
                     <Columns>
                         <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
@@ -97,21 +98,21 @@
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Center">
+                        <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Left">
                             <ItemTemplate>
                                 <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Center">
+                        <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Left">
                             <ItemTemplate>
                                 <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Status" ItemStyle-HorizontalAlign="Center">
+                        <asp:TemplateField HeaderText="Status" ItemStyle-HorizontalAlign="Left">
                             <ItemTemplate>
-                                <asp:Label ID="lblStatus" runat="server" Text='<%# StatusToString((int)Eval("Status")) %>' />
+                                <asp:Label ID="lblStatus" runat="server" Text='<%# StatusToString((int)Eval("Status")) %>' CssClass='<%# CssStatus((int)Eval("Status")) %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -126,4 +127,6 @@
         </section>
         <!--end of ss Gridview PH-->
     </section>
+
+
 </asp:Content>

@@ -12,7 +12,7 @@
     if (alerts.Any())
     {            
 %>
-<%--<br />--%>
+<br />
 <% }
 
     foreach (var alert in alerts)

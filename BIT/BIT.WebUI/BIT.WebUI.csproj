@@ -113,9 +113,13 @@
     <Content Include="Admin\AccountManager.aspx" />
     <Content Include="Admin\ChangePassword.aspx" />
     <Content Include="Admin\ChangePasswordTwo.aspx" />
+    <Content Include="Admin\ConfirmGH.aspx" />
+    <Content Include="Admin\ConfirmPH.aspx" />
+    <Content Include="Admin\CreateCommandPH.aspx" />
     <Content Include="Admin\CreatePHCommunity.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\AdminSelectPackInvest.aspx" />
+    <Content Include="Admin\GHCommunity.aspx" />
     <Content Include="Admin\SelectPackInvest.aspx" />
     <Content Include="Admin\EditAccount.aspx" />
     <Content Include="Admin\Login.aspx" />
@@ -400,6 +404,27 @@
     <Compile Include="Admin\ChangePasswordTwo.aspx.designer.cs">
       <DependentUpon>ChangePasswordTwo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ConfirmGH.aspx.cs">
+      <DependentUpon>ConfirmGH.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ConfirmGH.aspx.designer.cs">
+      <DependentUpon>ConfirmGH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ConfirmPH.aspx.cs">
+      <DependentUpon>ConfirmPH.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ConfirmPH.aspx.designer.cs">
+      <DependentUpon>ConfirmPH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CreateCommandPH.aspx.cs">
+      <DependentUpon>CreateCommandPH.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CreateCommandPH.aspx.designer.cs">
+      <DependentUpon>CreateCommandPH.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\CreatePHCommunity.aspx.cs">
       <DependentUpon>CreatePHCommunity.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -420,6 +445,13 @@
     </Compile>
     <Compile Include="Admin\AdminSelectPackInvest.aspx.designer.cs">
       <DependentUpon>AdminSelectPackInvest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\GHCommunity.aspx.cs">
+      <DependentUpon>GHCommunity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GHCommunity.aspx.designer.cs">
+      <DependentUpon>GHCommunity.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\SelectPackInvest.aspx.cs">
       <DependentUpon>SelectPackInvest.aspx</DependentUpon>

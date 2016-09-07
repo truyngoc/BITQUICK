@@ -72,7 +72,7 @@
                             </td>
                             <td>
                                 <a href='https://blockchain.info/address/<%# Eval("wReceive") %>' target='_blank'>
-                                <span class="label label-success"><%# GHTo(Eval("wReceive")) %></span>
+                                
                                 </a>
                             </td>
                         </tr>

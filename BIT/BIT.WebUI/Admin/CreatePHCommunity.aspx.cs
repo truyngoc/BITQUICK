@@ -17,31 +17,32 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
-                string codeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
-                // load so BIT toi da cua thang nay theo goi dang ky (lay goi dk gan nhat)
-                // neu chua dang ky goi thi thong bao
-                if (ctlPack.IsPackageExpire(codeId))
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    var package = ctlPack.SelectItemByCodeId(codeId);
-
-                    lblRemainAmount.Text = package.PACKAGEID.ToString();
+                    Response.Redirect("~/Admin/Login");
                 }
                 else
                 {
-                    // thong bao het han hoac chua dang ky goi
-                    TNotify.Alerts.Warning("Package is not register or account is expired",true);
-                }
+                    string codeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+
+                    // load list PH
+                    this.LoadListPH();
+
+                    // load so BIT toi da cua thang nay theo goi dang ky (lay goi dk gan nhat)
+                    // neu chua dang ky goi thi thong bao
+                    if (ctlPack.IsPackageExpire(codeId))
+                    {
+                        var package = ctlPack.SelectItemByCodeId(codeId);
+
+                        lblRemainAmount.Text = package.PACKAGEID.ToString();
+                    }
+                    else
+                    {
+                        // thong bao het han hoac chua dang ky goi
+                        TNotify.Alerts.Warning("Package is not register or account is expired", true);
+                    }
+                }                
             }            
-        }
-
-        protected void btnDetail_Click(object sender, EventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(uplnModalContent, uplnModalContent.GetType(), "show_bootstrap_modal", "$(function () { $('#" + pnlModalContent.ClientID + "').modal('show'); });", true);
-        }
-
-        protected void btnConfirm_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ConfirmPH");
         }
 
         protected void btnCreatePH_Click(object sender, EventArgs e)
@@ -62,9 +63,22 @@ namespace BIT.WebUI.Admin
                     // check transaction pass co dung ko
                     if (ctlMember.CheckPasswordPIN(codeId,passwordPIN))
                     {
+                        var oPH = GetPH();
                         // Insert PH
+                        try
+                        {
+                            ctlPH.InsertItem(oPH);
 
-                        TNotify.Toastr.Success("Create PH successfull", "Create PH", TNotify.NotifyPositions.toast_top_full_width, true);
+                            TNotify.Toastr.Success("Create PH successfull", "Create PH", TNotify.NotifyPositions.toast_top_full_width, true);
+
+                            // reload list PH
+                            this.LoadListPH();
+                        }
+                        catch (Exception ex)
+                        {
+                            TNotify.Alerts.Danger(ex.ToString(), true);
+                        }
+                        
                     }
                     else
                     {
@@ -95,6 +109,51 @@ namespace BIT.WebUI.Admin
             oPH.Status = (int)Constants.PH_STATUS.Waiting;
 
             return oPH;
+        }
+
+        private void LoadListPH()
+        {
+            var ctlPH = new PH_BC();
+            string codeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+
+            var lstPH = ctlPH.SelectItemsByCodeId(codeId);
+
+            grdPH.DataSource = lstPH;
+            grdPH.DataBind();
+        }
+
+        public string StatusToString(int status)
+        {
+            switch (status)
+            {
+                case (int) Constants.PH_STATUS.Waiting:
+                    return Constants.PH_STATUS.Waiting.ToString();
+                case (int)Constants.PH_STATUS.Pending:
+                    return Constants.PH_STATUS.Pending.ToString();
+                case (int)Constants.PH_STATUS.Success:
+                    return Constants.PH_STATUS.Success.ToString();
+                default:
+                    return string.Empty;
+            }
+        }
+
+
+
+        protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdPH.PageIndex = e.NewPageIndex;
+            LoadListPH();
+        }
+
+
+        protected void btnDetail_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(uplnModalContent, uplnModalContent.GetType(), "show_bootstrap_modal", "$(function () { $('#" + pnlModalContent.ClientID + "').modal('show'); });", true);
+        }
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ConfirmPH");
         }
     }
 }

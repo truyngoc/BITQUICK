@@ -120,6 +120,8 @@
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\AdminSelectPackInvest.aspx" />
     <Content Include="Admin\GHCommunity.aspx" />
+    <Content Include="Admin\GH_DETAIL.aspx" />
+    <Content Include="Admin\PH_DETAIL.aspx" />
     <Content Include="Admin\SelectPackInvest.aspx" />
     <Content Include="Admin\EditAccount.aspx" />
     <Content Include="Admin\Login.aspx" />
@@ -454,6 +456,20 @@
     </Compile>
     <Compile Include="Admin\GHCommunity.aspx.designer.cs">
       <DependentUpon>GHCommunity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\GH_DETAIL.aspx.cs">
+      <DependentUpon>GH_DETAIL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GH_DETAIL.aspx.designer.cs">
+      <DependentUpon>GH_DETAIL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PH_DETAIL.aspx.cs">
+      <DependentUpon>PH_DETAIL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PH_DETAIL.aspx.designer.cs">
+      <DependentUpon>PH_DETAIL.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\SelectPackInvest.aspx.cs">
       <DependentUpon>SelectPackInvest.aspx</DependentUpon>

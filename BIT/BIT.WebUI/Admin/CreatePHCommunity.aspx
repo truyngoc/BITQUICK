@@ -87,44 +87,40 @@
         <!---End Of ss PH-->
         <!--ss Gridview PH-->
         <section class="panel">
-            <%--<asp:DataList ID="grdListPH" runat="server" class="table table-hover p-table">
-                <HeaderTemplate>--%>
-            <table class="table table-hover p-table table-responsive">
-                <tr>
-                    <th>No.</th>
-                    <th>PH Time</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-                <%--</HeaderTemplate>
-                <ItemTemplate>--%>
-                <tr>
-                    <td>1
-                    </td>
-                    <td>02/09/2016
-                            <%--<asp:Label runat="server" ID="lblPHTime" Text=' <%#Eval("Date_Send")%>'></asp:Label>--%>
-                    </td>
-                    <td>3
-                            <%--<asp:Label runat="server" ID="lblAmount" Text=' <%#Eval("Amount")%>'></asp:Label>--%>
-                    </td>
-                    <td>
-                        <span class="label label-primary">Pending
-                                <%--<asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("Status").ToString())%> '></asp:Label>--%>
-                        </span>
-                    </td>
-                    <td>
-                        <a href="#">
+            <asp:GridView ID="grdPH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="30"
+                OnPageIndexChanging="OnPageIndexChanging">
+                <Columns>
+                    <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <%# Container.DataItemIndex + 1 %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Status" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Label ID="lblStatus" runat="server" Text='<%# StatusToString((int)Eval("Status")) %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
                             <asp:LinkButton runat="server" ID="btnDetail" type="submit" class="btn btn-success" Text="Details" OnClick="btnDetail_Click" />
-                            <%--<asp:LinkButton runat="server" ID="btnReceive" Visible='<%# enableGH(Eval("Date_send"),Eval("Status")) %>' OnClick="btnReceive_Click" CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="Receive" />--%>
-                        </a>
-                    </td>
-                </tr>
-                <%--</ItemTemplate>
-                <FooterTemplate>--%>
-            </table>
-            <%-- </FooterTemplate>
-            </asp:DataList>--%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
         </section>
         <!--end of ss Gridview PH-->
         <div class="pagination"></div>
@@ -136,7 +132,7 @@
 
 
 
-    
+
     <!-- PH community details -->
     <asp:Panel ID="pnlModalContent" runat="server" CssClass="modal fade in" TabIndex="-1" role="dialog" aria-labelledby="myLabel">
         <div class="modal-dialog mydialog" role="document">

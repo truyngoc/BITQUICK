@@ -68,5 +68,10 @@ namespace BIT.DataHelper
 
             return Convert.ToInt32(iCount);
         }
+
+        public IEnumerable<PH> SelectItemsByCodeId(string CodeId)
+        {
+            return defaultDB.ExecuteSprocAccessor<PH>("sp_PH_SelectItemsByCodeId", CodeId);
+        }
 	}
 }

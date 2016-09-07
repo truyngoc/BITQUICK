@@ -13,5 +13,9 @@ namespace BIT.WebUI.Admin
         {
 
         }
+        protected void btnConfirmPH_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CreatePHCommunity");
+        }
     }
 }

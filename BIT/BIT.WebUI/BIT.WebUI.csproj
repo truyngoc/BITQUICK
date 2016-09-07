@@ -115,7 +115,7 @@
     <Content Include="Admin\ChangePasswordTwo.aspx" />
     <Content Include="Admin\ConfirmGH.aspx" />
     <Content Include="Admin\ConfirmPH.aspx" />
-    <Content Include="Admin\CreateCommandPH.aspx" />
+    <Content Include="Admin\CreateCommandPH_GH.aspx" />
     <Content Include="Admin\CreatePHCommunity.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\AdminSelectPackInvest.aspx" />
@@ -418,12 +418,12 @@
     <Compile Include="Admin\ConfirmPH.aspx.designer.cs">
       <DependentUpon>ConfirmPH.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\CreateCommandPH.aspx.cs">
-      <DependentUpon>CreateCommandPH.aspx</DependentUpon>
+    <Compile Include="Admin\CreateCommandPH_GH.aspx.cs">
+      <DependentUpon>CreateCommandPH_GH.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\CreateCommandPH.aspx.designer.cs">
-      <DependentUpon>CreateCommandPH.aspx</DependentUpon>
+    <Compile Include="Admin\CreateCommandPH_GH.aspx.designer.cs">
+      <DependentUpon>CreateCommandPH_GH.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\CreatePHCommunity.aspx.cs">
       <DependentUpon>CreatePHCommunity.aspx</DependentUpon>

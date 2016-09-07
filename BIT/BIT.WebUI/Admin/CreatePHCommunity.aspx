@@ -146,7 +146,7 @@
                     <ContentTemplate>
                         <div class="modal-header fdb-panel-header-10">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id=" myLabel ">List statement for this PH</h4>
+                            <h4 class="modal-title" id=" myLabel ">List command for this PH</h4>
                         </div>
                         <div class="modal-body">
                             <div class="table-responsive">
@@ -189,7 +189,7 @@
                                             </span>
                                         </td>
                                         <td>
-                                            <asp:LinkButton runat="server" ID="btnConfirm" type="submit" class="btn btn-success" Text="Confirm Send" OnClick="btnConfirm_Click" />
+                                            <asp:LinkButton runat="server" ID="btnConfirm" type="submit" class="btn btn-success" Text="Confirm PH" OnClick="btnConfirm_Click" />
 
                                         </td>
                                     </tr>

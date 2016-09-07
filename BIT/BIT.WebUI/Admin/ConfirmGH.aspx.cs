@@ -13,5 +13,10 @@ namespace BIT.WebUI.Admin
         {
 
         }
+
+        protected void btnConfirmGH_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GHCommunity");
+        }
     }
 }

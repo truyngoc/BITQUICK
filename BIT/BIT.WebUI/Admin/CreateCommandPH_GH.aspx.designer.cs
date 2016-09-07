@@ -11,7 +11,7 @@ namespace BIT.WebUI.Admin
 {
 
 
-    public partial class CreateCommandPH
+    public partial class CreateCommandPH_GH
     {
     }
 }

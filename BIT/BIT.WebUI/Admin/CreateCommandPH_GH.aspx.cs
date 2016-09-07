@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BIT.WebUI.Admin
 {
-    public partial class CreateCommandPH : System.Web.UI.Page
+    public partial class CreateCommandPH_GH : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

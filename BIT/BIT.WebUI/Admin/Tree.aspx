@@ -28,9 +28,9 @@
                 -webkit-border-radius: 4px;
             }
 
-        /*.img-tree {
+        .img-tree {
             width:auto !important;
-        }*/
+        }
     </style>
 
     <section class="wrapper">

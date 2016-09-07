@@ -21,7 +21,7 @@ namespace BIT.WebUI.Admin
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            
+            Response.Redirect("ConfirmPH");
         }
     }
 }

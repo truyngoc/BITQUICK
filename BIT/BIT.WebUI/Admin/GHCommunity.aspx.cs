@@ -13,5 +13,15 @@ namespace BIT.WebUI.Admin
         {
 
         }
+
+        protected void btnDetail_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(uplnModalContent, uplnModalContent.GetType(), "show_bootstrap_modal", "$(function () { $('#" + pnlModalContent.ClientID + "').modal('show'); });", true);
+        }
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ConfirmGH");
+        }
     }
 }

@@ -174,7 +174,7 @@
 
                             <!--PH-->
                             <li class="sub-menu">
-                                <a class="" href="../Admin/PH.aspx" style="color: #fff">
+                                <a class="" href="../Admin/CreatePHCommunity.aspx" style="color: #fff">
                                     <i class="fa fa-cloud-upload"></i>
                                     <span>PH</span>
                                     <span class="bgslide"></span>
@@ -184,7 +184,7 @@
 
                             <!--GH-->
                             <li class="sub-menu">
-                                <a class="" href="../Admin/GH.aspx" style="color: #fff">
+                                <a class="" href="../Admin/GHCommunity.aspx" style="color: #fff">
                                     <i class="fa fa-cloud-download"></i>
                                     <span>GH</span>
                                     <span class="bgslide"></span>
@@ -221,6 +221,7 @@
                                     <li><a href="AccountManager.aspx"><i class="fa fa-universal-access" aria-hidden="true"></i><span>ACCOUNT MANAGER</span></a></li>
                                     <li><a href="WithDraw.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>WITHDRAW MANAGER</span></a></li>
                                     <li><a href="ReCharge.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>RECHANGRE MANAGER</span></a></li>
+                                    <li><a href="CreateCommandPH_GH.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>COMMAND PH-GH</span></a></li>
                                 </ul>
                             </li>
                             <!--end of Administrator-->

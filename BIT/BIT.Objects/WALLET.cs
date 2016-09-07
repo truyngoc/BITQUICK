@@ -15,15 +15,13 @@ namespace BIT.Objects
 
         public int ID { get; set; }
 
-        public String CodeId { get; set; }
+        public String Code_Id { get; set; }
 
         public decimal? R_Wallet { get; set; }
 
         public decimal? C_Wallet { get; set; }
 
-        public decimal? B_Wallet { get; set; }
-
-        public int? PIN_Wallet { get; set; }
+        public decimal? PIN_Wallet { get; set; }
 
     }
 }

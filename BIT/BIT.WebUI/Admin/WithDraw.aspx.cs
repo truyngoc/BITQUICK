@@ -28,7 +28,8 @@ namespace BIT.WebUI.Admin
             {
                 if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId != "0")
                 {
-                    
+                    getCWalletAmount();
+                    bindDataList();
                 }
                 else
                 {
@@ -45,6 +46,36 @@ namespace BIT.WebUI.Admin
             else
                 ghStatus = "Pending";
             return ghStatus;
+        }
+
+        public void getCWalletAmount()
+        {
+            WALLET userWallet = Singleton<WALLET_BC>.Inst.SelectItemByCodeId(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
+            txtAmount.Text = userWallet.C_Wallet.ToString();
+        }
+
+        public void bindDataList()
+        {
+            List<WITHDRAW> lstWD = Singleton<WITHDRAW_BC>.Inst.SelectAllItems(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
+            dtlWithDraw.DataSource = lstWD;
+            dtlWithDraw.DataBind();
+        }
+
+        protected void btnWithDraw_Click(object sender, EventArgs e)
+        {
+            ////insert into withdraw
+            WITHDRAW objWD = new WITHDRAW();
+            objWD.CodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+            objWD.Date_Create = DateTime.Now;
+            objWD.Amount = Convert.ToDecimal( txtAmount.Text);
+            objWD.Status = 0;
+            objWD.TransactionId = string.Empty;
+            objWD.Wallet = Singleton<BITCurrentSession>.Inst.SessionMember.Wallet;
+
+            //insert
+            Singleton<WITHDRAW_BC>.Inst.InsertItem(objWD);
+            TNotify.Toastr.Warning("Withdraw Completed ", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+            Response.Redirect("../Admin/Withdraw.aspx");
         }
     }
 }

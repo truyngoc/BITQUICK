@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <div style="text-align: center;" class="col-lg-12">
-                            <asp:Button runat="server" ID="btnSave" class="btn btn-info" Text="Withdraw" />
+                            <asp:Button runat="server" ID="btnWithDraw" class="btn btn-info" Text="Withdraw" OnClick="btnWithDraw_Click" />
                         </div>
                     </div>
                 </form>
@@ -65,7 +65,7 @@
                                 <asp:Label runat="server" ID="lblGHID"><%#Eval("ID") %></asp:Label>
                             </td>
                             <td>
-                                <asp:Label runat="server" ID="lblGHTime"><%# Eval("Date_Receive") %></asp:Label>
+                                <asp:Label runat="server" ID="lblGHTime"><%# Eval("Date_Create") %></asp:Label>
                             </td>
                             <td>
                                 <asp:Label runat="server" ID="lblGHAmount"><%# Eval("Amount").ToString().Remove(6) %></asp:Label>

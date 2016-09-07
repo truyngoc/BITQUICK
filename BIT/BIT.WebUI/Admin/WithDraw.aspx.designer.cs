@@ -40,13 +40,13 @@ namespace BIT.WebUI.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtPin2;
         
         /// <summary>
-        /// btnSave control.
+        /// btnWithDraw control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.Button btnWithDraw;
         
         /// <summary>
         /// dtlWithDraw control.

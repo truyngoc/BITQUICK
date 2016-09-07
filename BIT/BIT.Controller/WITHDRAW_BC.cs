@@ -42,9 +42,9 @@ namespace BIT.Controller
 			return ctl.SelectItem(ID);
 		}
 
-        public List<WITHDRAW> SelectAllItems()
+        public List<WITHDRAW> SelectAllItems(string codeID)
 		{
-			return ctl.SelectAllItems().ToList();
+            return ctl.SelectAllItems(codeID).ToList();
 		}
 		
 		public bool IsExistsItem(int ID)
@@ -52,7 +52,7 @@ namespace BIT.Controller
 			return ctl.IsExistsItem(ID);
 		}
 
-        public WITHDRAW SelectItemByCodeId(string code_id)
+        public WITHDRAW SelectItemByCodeId(WITHDRAW code_id)
         {
             return ctl.SelectItemByCodeId(code_id);
         }

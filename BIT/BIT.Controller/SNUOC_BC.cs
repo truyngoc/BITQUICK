@@ -69,11 +69,11 @@ namespace BIT.Controller
 
         public void updateGH2(PACKAGE_TRANSACTION obj)
         {
-            ctl.updateItem(obj);
+            ctl.updateGH2(obj);
         }
         public void updateGH1(PACKAGE_TRANSACTION obj)
         {
-            ctl.updateItem(obj);
+            ctl.updateGH1(obj);
         }
 
         public bool isAllPackageExpire(string CodeID)

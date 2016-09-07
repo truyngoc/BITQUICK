@@ -223,13 +223,13 @@ namespace BIT.WebUI.Admin
 
         public string datecount(object startDate)
         {
-            return (Convert.ToDateTime(startDate).AddDays(90).DayOfYear - DateTime.Now.DayOfYear).ToString();
+            return (DateTime.Now.DayOfYear - Convert.ToDateTime(startDate).DayOfYear).ToString();
         }
 
         public bool getGH1Enable(object startDate,object statusGH)
         {
             bool gh1 = false;
-            if ((Convert.ToDateTime(startDate).AddDays(90).Day - DateTime.Now.Day) >= 45)
+            if ((DateTime.Now.DayOfYear - Convert.ToDateTime(startDate).DayOfYear) >= 45)
             {
                 if (statusGH.ToString() != "1")
                 {
@@ -241,7 +241,7 @@ namespace BIT.WebUI.Admin
         public bool getGH2Enable(object startDate,object statusGH)
         {
             bool gh2 = false;
-            if ((Convert.ToDateTime(startDate).AddDays(90).Day - DateTime.Now.Day) >= 90)
+            if ((DateTime.Now.DayOfYear - Convert.ToDateTime(startDate).DayOfYear) >= 90)
             {
                 if(statusGH.ToString() =="2")
                 {
@@ -261,6 +261,7 @@ namespace BIT.WebUI.Admin
             pck.STATUS_GH = 1;
             //update package transaction
             Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateGH1(pck);
+            Response.Redirect("../Admin/SelectPackInvest.aspx");
         }
 
         protected void btnGH2_Click(object sender, EventArgs e)
@@ -274,6 +275,7 @@ namespace BIT.WebUI.Admin
             //update package_transaction
             
             Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateGH2(pck);
+            Response.Redirect("../Admin/SelectPackInvest.aspx");
         }
 
         public void getAdminWallet()

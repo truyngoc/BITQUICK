@@ -24,14 +24,14 @@ namespace BIT.DataHelper
 	{	
 		public void InsertItem(WALLET obj)
 		{
-			defaultDB.ExecuteNonQuery("sp_WALLET_Insert"
-                , obj.CodeId, obj.R_Wallet, obj.C_Wallet, obj.B_Wallet, obj.PIN_Wallet);
+            defaultDB.ExecuteNonQuery("sp_WALLET_Insert"
+                , obj.Code_Id, obj.R_Wallet, obj.C_Wallet, obj.PIN_Wallet);
 		}
 
 		public void UpdateItem(WALLET obj)
 		{
-			defaultDB.ExecuteNonQuery("sp_WALLET_Update"
-                , obj.ID, obj.CodeId, obj.R_Wallet, obj.C_Wallet, obj.B_Wallet, obj.PIN_Wallet);
+            defaultDB.ExecuteNonQuery("sp_WALLET_Update"
+                , obj.ID, obj.Code_Id, obj.R_Wallet, obj.C_Wallet, obj.PIN_Wallet);
 		}
 
 		public void DeleteItem(int ID)

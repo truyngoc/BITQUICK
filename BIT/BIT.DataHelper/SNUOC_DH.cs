@@ -98,6 +98,7 @@ namespace BIT.DataHelper
                         obj.ID
                         , obj.CODEID
                         , obj.PACKAGEID
+                        ,obj.AMOUNT
                         );
         }
         public void updateGH2(PACKAGE_TRANSACTION obj)
@@ -106,6 +107,7 @@ namespace BIT.DataHelper
                         obj.ID
                         , obj.CODEID
                         , obj.PACKAGEID
+                        ,obj.AMOUNT
                         );
         }
 

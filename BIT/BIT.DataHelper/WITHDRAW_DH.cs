@@ -21,51 +21,77 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 namespace BIT.DataHelper
 {
     public class WITHDRAW_DH : DataAccessBase
-	{	
-		public void InsertItem(WITHDRAW obj)
-		{
+	{
+        public void InsertItem(WITHDRAW obj)
+        {
             defaultDB.ExecuteNonQuery("sp_WITHDRAW_Insert"
-                , obj.CodeId, obj.R_Wallet, obj.C_Wallet, obj.B_Wallet, obj.PIN_Wallet);
-		}
+                , obj.CodeId
+                , obj.Amount
+                , obj.Date_Create
+                , obj.Wallet
+                );
+        }
 
         public void UpdateItem(WITHDRAW obj)
-		{
-            defaultDB.ExecuteNonQuery("sp_WITHDRAW_Update"
-                , obj.ID, obj.CodeId, obj.R_Wallet, obj.C_Wallet, obj.B_Wallet, obj.PIN_Wallet);
-		}
+        {
+            defaultDB.ExecuteNonQuery("sp_RECEIVE_Update"
+                , obj.ID, obj.CodeId, Decimal.Parse(obj.Amount.ToString()), obj.Date_Create, obj.TransactionId, obj.Status, obj.Wallet);
+        }
 
-		public void DeleteItem(int ID)
-		{
-            defaultDB.ExecuteNonQuery("sp_WITHDRAW_Delete"
-				, ID);
-		}
+        public void DeleteItem(int ID)
+        {
+            defaultDB.ExecuteNonQuery("sp_WALLET_Delete"
+                , ID);
+        }
 
         public WITHDRAW SelectItem(int ID)
-		{
-            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_WITHDRAW_SelectItem"
-				, ID).FirstOrDefault();
-		}
-
-        public IEnumerable<WITHDRAW> SelectAllItems()
-		{
-            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_WITHDRAW_SelectAllItems");
-		}
-
-		public bool IsExistsItem(int ID)
-		{
-            IDataReader dr = defaultDB.ExecuteReader("sp_WITHDRAW_SelectItem"
-				, ID);
-			
-			bool bol = dr.Read();
-			dr.Close();
-			
-			return bol;
-		}
-
-        public WITHDRAW SelectItemByCodeId(string code_id)
         {
-            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_WITHDRAW_SelectItemByCodeId"
-                , code_id).FirstOrDefault();
+            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_WITHDRAW_SelectItem"
+                , ID).FirstOrDefault();
+        }
+
+        public IEnumerable<WITHDRAW> SelectAllItems(string codeID)
+        {
+            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_WITHDRAW_SelectAllItemByCodeId", codeID);
+        }
+        
+        public IEnumerable<WITHDRAW> SelectGHBlockChain()
+        {
+            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_Receive_SelectGHBlockChain");
+        }
+
+        public bool IsExistsItem(int ID)
+        {
+            IDataReader dr = defaultDB.ExecuteReader("sp_WALLET_SelectItem"
+                , ID);
+
+            bool bol = dr.Read();
+            dr.Close();
+
+            return bol;
+        }
+
+        public WITHDRAW SelectItemByCodeId(WITHDRAW obj)
+        {
+            return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_RECEIVE_SelectItemByCodeId"
+                , obj.Amount, obj.CodeId, obj.Date_Create).FirstOrDefault();
+        }
+
+        public decimal remainGHInMonth(string codeID, DateTime date)
+        {
+            object remainPH = defaultDB.ExecuteScalar("sp_RECEIVE_SelectRemainGHInMonth", codeID, date);
+            if (remainPH == DBNull.Value)
+                return 0;
+            else
+                return Convert.ToDecimal(remainPH);
+        }
+        public decimal remainGHInDay(string codeID, DateTime date)
+        {
+            object remainPH = defaultDB.ExecuteScalar("sp_RECEIVE_SelectRemainGHInDay", codeID, date);
+            if (remainPH == DBNull.Value)
+                return 0;
+            else
+                return Convert.ToDecimal(remainPH);
         }
 		
 	}

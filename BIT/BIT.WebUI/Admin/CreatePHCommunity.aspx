@@ -78,7 +78,7 @@
                     </div>
                     <div class="form-group col-lg-12">
                         <div style="text-align: center;" class="col-lg-12">
-                            <asp:Button runat="server" ID="btnCreatePH" class="btn btn-info" Text="Create PH" />
+                            <asp:Button runat="server" ID="btnCreatePH" class="btn btn-info" Text="Create PH" OnClick="btnCreatePH_Click" />
                         </div>
                     </div>
                 </div>

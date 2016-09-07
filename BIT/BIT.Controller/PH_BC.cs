@@ -51,6 +51,11 @@ namespace BIT.Controller
 		{
 			return ctl.IsExistsItem(ID);
 		}
-			
+
+        // lay so lan PH cua CodeId trong ngay (de check neu qua >=1 thi ko cho PH)
+        public int GetNumberPH(string CodeId)
+        {
+            return ctl.GetNumberPH(CodeId);
+        }
 	}
 }

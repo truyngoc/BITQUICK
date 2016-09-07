@@ -61,6 +61,12 @@ namespace BIT.DataHelper
 			
 			return bol;
 		}
-		
+
+        public int GetNumberPH(string CodeId)
+        {
+            var iCount = defaultDB.ExecuteScalar("sp_PH_GetNumberPH", CodeId);
+
+            return Convert.ToInt32(iCount);
+        }
 	}
 }

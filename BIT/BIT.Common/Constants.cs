@@ -17,7 +17,7 @@ namespace BIT.Common
 
         public const string KeyEncriptPass = "MHS@2013";
         public const string ParttentPass = "Password=\\s*(.*?)\\s*;";
-        public const  string KeyEncriptRef = "MSA@2013";
+        public const string KeyEncriptRef = "MSA@2013";
 
         public enum MEMBER_STATUS
         {
@@ -32,7 +32,19 @@ namespace BIT.Common
         public const string MEMBERS_LEVEL_V3 = "V3";
         public const string MEMBERS_LEVEL_V4 = "V4";
         public const string MEMBERS_LEVEL_V5 = "V5";
-         
 
+        public enum PH_STATUS
+        {
+            Waiting = 0,
+            Pending = 1,
+            Success = 2
+        }
+
+        public enum COMMAND_STATUS
+        {
+            Pending = 0,
+            PH_Success = 1,
+            Success = 2
+        }
     }
 }

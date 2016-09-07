@@ -228,6 +228,16 @@ namespace BIT.DataHelper
         {
             return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_Tree_GetItem_By_CodeId", CodeID);
         }
+
+        public bool CheckPasswordPIN(string CodeId, string Password_PIN)
+        {
+            var iCount = defaultDB.ExecuteScalar("sp_MEMBERS_CheckPasswordPIN", CodeId);
+
+            if (Convert.ToInt32(iCount) > 0)
+                return true;
+            else
+                return false;
+        }
         #endregion
     }
 }

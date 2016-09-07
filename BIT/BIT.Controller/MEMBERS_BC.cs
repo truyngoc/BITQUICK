@@ -158,6 +158,11 @@ namespace BIT.Controller
         {
             return ctl.Tree_GetItem_By_CodeId(CodeID).ToList();
         }
+
+        public bool CheckPasswordPIN(string CodeId, string Password_PIN)
+        {
+            return ctl.CheckPasswordPIN(CodeId, Password_PIN);
+        }
         #endregion
 	}
 }

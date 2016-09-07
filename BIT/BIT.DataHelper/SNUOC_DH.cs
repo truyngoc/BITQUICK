@@ -121,5 +121,22 @@ namespace BIT.DataHelper
 
             return bol;
         }
+
+        // TRUYBN - 07/09/2016
+        public PACKAGE_TRANSACTION SelectItemByCodeId(string CodeId)
+        {
+            return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectItemByCodeId", CodeId).FirstOrDefault();
+        }
+
+        public bool IsPackageExpire(string CodeID)
+        {
+            IDataReader dr = defaultDB.ExecuteReader("sp_PACKAGE_TRANSACTION_IsPackageExpire"
+                , CodeID);
+
+            bool bol = dr.Read();
+            dr.Close();
+
+            return bol;
+        }
     }
 }

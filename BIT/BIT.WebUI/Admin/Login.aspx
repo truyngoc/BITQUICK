@@ -59,6 +59,7 @@
                     <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-info btn-login" />
                     <span class="pull-right"><a style="color: #000;" href="#">Forgot Password ?</a></span>
                 </div>
+               
             </div>
         </form>
     </div>

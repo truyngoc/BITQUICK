@@ -231,7 +231,7 @@ namespace BIT.DataHelper
 
         public bool CheckPasswordPIN(string CodeId, string Password_PIN)
         {
-            var iCount = defaultDB.ExecuteScalar("sp_MEMBERS_CheckPasswordPIN", CodeId);
+            var iCount = defaultDB.ExecuteScalar("sp_MEMBERS_CheckPasswordPIN", CodeId, Password_PIN);
 
             if (Convert.ToInt32(iCount) > 0)
                 return true;

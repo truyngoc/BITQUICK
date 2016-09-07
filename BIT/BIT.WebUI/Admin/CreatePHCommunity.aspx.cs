@@ -57,7 +57,7 @@ namespace BIT.WebUI.Admin
             if (ctlPack.IsPackageExpire(codeId))
             {
                 // check quota
-                if (ctlPH.GetNumberPH(codeId) < 0)
+                if (ctlPH.GetNumberPH(codeId) < 1)
                 {
                     // tao lenh PH
                     // check transaction pass co dung ko
@@ -148,12 +148,8 @@ namespace BIT.WebUI.Admin
 
         protected void btnDetail_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(uplnModalContent, uplnModalContent.GetType(), "show_bootstrap_modal", "$(function () { $('#" + pnlModalContent.ClientID + "').modal('show'); });", true);
+            Response.Redirect("PH_DETAIL");
         }
 
-        protected void btnConfirm_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ConfirmPH");
-        }
     }
 }

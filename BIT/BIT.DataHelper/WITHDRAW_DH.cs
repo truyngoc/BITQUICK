@@ -37,7 +37,11 @@ namespace BIT.DataHelper
             defaultDB.ExecuteNonQuery("sp_RECEIVE_Update"
                 , obj.ID, obj.CodeId, Decimal.Parse(obj.Amount.ToString()), obj.Date_Create, obj.TransactionId, obj.Status, obj.Wallet);
         }
-
+        public void UpdateTranSactionWithdraw(WITHDRAW obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_WithDraw_UpdateTranSactionWithdraw"
+                , obj.ID,obj.CodeId, obj.Amount,obj.TransactionId);
+        }
         public void DeleteItem(int ID)
         {
             defaultDB.ExecuteNonQuery("sp_WALLET_Delete"

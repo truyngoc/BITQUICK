@@ -31,7 +31,11 @@ namespace BIT.Controller
 		{
 			ctl.UpdateItem(obj);
 		}
-
+        public void UpdateTranSactionWithdraw(WITHDRAW obj)
+		{
+			ctl.UpdateTranSactionWithdraw(obj);
+		}
+        
 		public void DeleteItem(int ID)
 		{
 			ctl.DeleteItem(ID);

@@ -22,6 +22,24 @@ namespace BIT.WebUI.Admin {
         protected global::System.Web.UI.WebControls.HiddenField hidCodeId;
         
         /// <summary>
+        /// hidMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidMonth;
+        
+        /// <summary>
+        /// hidPack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidPack;
+        
+        /// <summary>
         /// imgAdminWallet control.
         /// </summary>
         /// <remarks>

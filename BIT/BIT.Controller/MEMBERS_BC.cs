@@ -55,6 +55,11 @@ namespace BIT.Controller
         {
             return ctl.SelectItem(CodeID);
         }
+
+        public MEMBERS SelectRandomAdmin()
+        {
+            return ctl.SelectRandomAdmin();
+        }
 		public List<MEMBERS> SelectAllItems()
 		{
 			return ctl.SelectAllItems().ToList();

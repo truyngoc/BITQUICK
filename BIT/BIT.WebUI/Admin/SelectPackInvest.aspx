@@ -12,6 +12,8 @@
             <div class="panel-body">
                 <div class="container center_div">
                     <asp:HiddenField ID="hidCodeId" runat="server" />
+                    <asp:HiddenField ID="hidMonth" runat="server" />
+                    <asp:HiddenField ID="hidPack" runat="server" />
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Address to payment</label>
                             <div class="col-lg-5">
@@ -113,7 +115,7 @@
                                 <td>
                                     <a href="#">
                                         <asp:LinkButton runat="server" ID="btnGH1" Visible='<%# getGH1Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH1" OnClick="btnGH1_Click" />
-                                        <asp:LinkButton runat="server" ID="btnGH2" Visible='<%# getGH2Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' Enabled="false" CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH2" OnClick="btnGH2_Click" />
+                                        <asp:LinkButton runat="server" ID="btnGH2" Visible='<%# getGH2Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH2" OnClick="btnGH2_Click" />
                                     </a>
                                 </td>
                             </tr>

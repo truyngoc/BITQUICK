@@ -79,7 +79,11 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SelectItemByCodeID"
                 , CodeID).FirstOrDefault();
         }
-
+        public MEMBERS SelectRandomAdmin()
+        {
+            return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SelectIRandomAdmin"
+                ).FirstOrDefault();
+        }
         public IEnumerable<MEMBERS> SelectAllItems()
         {
             return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SelectAllItems");

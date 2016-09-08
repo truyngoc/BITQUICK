@@ -20,13 +20,13 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
-                if (Session["PackSelect"] != null)
+                if (hidPack.Value != string.Empty)
                 {
-                    drPackSelectTion.SelectedIndex = (int)Session["PackSelect"];
+                    drPackSelectTion.SelectedIndex = Convert.ToInt32( hidPack.Value);
                 }
-                if (Session["MonthSelect"] != null)
+                if (hidMonth.Value != string.Empty)
                 {
-                    drTimeInvest.SelectedIndex = (int)Session["MonthSelect"];
+                    drTimeInvest.SelectedIndex = Convert.ToInt32(hidMonth.Value);
                 }
                 //}
                 if (Singleton<BITCurrentSession>.Inst.isLoginUser)
@@ -45,37 +45,6 @@ namespace BIT.WebUI.Admin
             }
         }
 
-        public MEMBERS GetDataOnForm()
-        {
-            MEMBERS obj = new MEMBERS();
-
-            obj.CodeId = hidCodeId.Value;
-            //obj.Fullname = txtFullName.Text.Trim();
-            //obj.Phone = txtPhone.Text.Trim();
-            //obj.Wallet = txtWallet.Text.Trim();
-            obj.Password_PIN = txtPasswordPIN.Text.Trim();
-            return obj;
-        }
-
-        public void UpdateProfile()
-        {
-            MEMBERS_BC ctlMember = new MEMBERS_BC();
-
-            MEMBERS obj = GetDataOnForm();
-
-            //Tung: Them doan check Password 2
-            if (obj.Password_PIN == Singleton<BITCurrentSession>.Inst.SessionMember.Password_PIN)
-            {
-                ctlMember.UpdateItem(obj);
-                ShowMessageError(lblMessage, "Update profile member successful", true);
-            }
-            else
-            {
-                ShowMessageError(lblMessage, "Password PIN is invalid! ", true);
-            }
-
-        }
-
         public void ShowMessageError(Label lblMsgErr, string sMsgErr = "", bool bVisible = false)
         {
             lblMsgErr.Text = sMsgErr;
@@ -85,6 +54,11 @@ namespace BIT.WebUI.Admin
         protected void btnUpdate_Click1(object sender, EventArgs e)
         {
             //Check if invest package not expire - cannot buy new package
+            if (txtPasswordPIN.Text != Singleton<BITCurrentSession>.Inst.SessionMember.Password_PIN)
+            {
+                TNotify.Toastr.Warning("Wrong transaction password, please try again", "Error", TNotify.NotifyPositions.toast_top_full_width, true);
+                return;
+            }
             if (!Singleton<PACKAGE_TRANSACTION_BC>.Inst.isAllPackageExpire(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId))
             {
                 try
@@ -119,12 +93,11 @@ namespace BIT.WebUI.Admin
 
                     TNotify.Alerts.Danger(string.Format("Buy Invest Package {0} Completed", drPackSelectTion.SelectedValue), true);
                     Response.Redirect("../Admin/SelectPackInvest.aspx");
-                    Session["PackSelect"] = null;
-                    Session["MonthSelect"] = null;
+                    
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    TNotify.Toastr.Warning("Error occur ! Please try again", "Error", TNotify.NotifyPositions.toast_top_full_width, true);
                 }
             }
             else
@@ -152,7 +125,8 @@ namespace BIT.WebUI.Admin
 
         protected void drPackSelectTion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HttpContext.Current.Session["PackSelect"] = drPackSelectTion.SelectedIndex;
+            hidPack.Value = drPackSelectTion.SelectedIndex.ToString();
+            //HttpContext.Current.Session["PackSelect"] = drPackSelectTion.SelectedIndex;
             switch (drPackSelectTion.SelectedValue)
             {
                 case "1":
@@ -180,7 +154,8 @@ namespace BIT.WebUI.Admin
 
         protected void drTimeInvest_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HttpContext.Current.Session["MonthSelect"] = drTimeInvest.SelectedIndex;
+            hidMonth.Value = drTimeInvest.SelectedIndex.ToString();
+            //HttpContext.Current.Session["MonthSelect"] = drTimeInvest.SelectedIndex;
             switch (drPackSelectTion.SelectedValue)
             {
                 case "1":
@@ -231,7 +206,7 @@ namespace BIT.WebUI.Admin
             bool gh1 = false;
             if ((DateTime.Now.DayOfYear - Convert.ToDateTime(startDate).DayOfYear) >= 45)
             {
-                if (statusGH.ToString() != "1")
+                if (statusGH.ToString() != "1" && statusGH.ToString() != "2")
                 {
                     gh1 = true;
                 }
@@ -243,7 +218,7 @@ namespace BIT.WebUI.Admin
             bool gh2 = false;
             if ((DateTime.Now.DayOfYear - Convert.ToDateTime(startDate).DayOfYear) >= 90)
             {
-                if(statusGH.ToString() =="2")
+                if(statusGH.ToString() !="2")
                 {
                     gh2 = true;
                 }
@@ -253,34 +228,52 @@ namespace BIT.WebUI.Admin
 
         protected void btnGH1_Click(object sender, EventArgs e)
         {
-            LinkButton btn = (LinkButton)(sender);
-            string ID = btn.CommandArgument;
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+                string ID = btn.CommandArgument;
 
-            PACKAGE_TRANSACTION pck = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectItem(Convert.ToInt32(ID));
-            //update wallet + commission
-            pck.STATUS_GH = 1;
-            //update package transaction
-            Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateGH1(pck);
-            Response.Redirect("../Admin/SelectPackInvest.aspx");
+                PACKAGE_TRANSACTION pck = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectItem(Convert.ToInt32(ID));
+                //update wallet + commission
+                pck.STATUS_GH = 1;
+                //update package transaction
+                Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateGH1(pck);
+                TNotify.Alerts.Danger(string.Format("GH Fist time completed", drPackSelectTion.SelectedValue), true);
+                //TNotify.Toastr.Warning("GH Fist time completed", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                Response.Redirect("../Admin/SelectPackInvest.aspx");
+            }
+            catch(Exception ex)
+            {
+                TNotify.Toastr.Warning("Error occur ! Please try again", "Error", TNotify.NotifyPositions.toast_top_full_width, true);
+            }
         }
 
         protected void btnGH2_Click(object sender, EventArgs e)
         {
-            LinkButton btn = (LinkButton)(sender);
-            string ID = btn.CommandArgument;
-            PACKAGE_TRANSACTION pck = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectItem(Convert.ToInt32(ID));
-            //update wallet + commission
-            pck.STATUS_GH = 2;
-            pck.EXPIRED = 1;
-            //update package_transaction
-            
-            Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateGH2(pck);
-            Response.Redirect("../Admin/SelectPackInvest.aspx");
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+                string ID = btn.CommandArgument;
+                PACKAGE_TRANSACTION pck = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectItem(Convert.ToInt32(ID));
+                //update wallet + commission
+                pck.STATUS_GH = 2;
+                pck.EXPIRED = 1;
+                //update package_transaction
+
+                Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateGH2(pck);
+                Response.Redirect("../Admin/Withdraw.aspx");
+                TNotify.Toastr.Warning("GH Second time completed", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                
+            }
+            catch (Exception ex)
+            {
+                TNotify.Toastr.Warning("Error occur ! Please try again", "Error", TNotify.NotifyPositions.toast_top_full_width, true);
+            }
         }
 
         public void getAdminWallet()
         {
-            string admWallet = Singleton<MEMBERS_BC>.Inst.SelectItem("0").Wallet;
+            string admWallet = Singleton<MEMBERS_BC>.Inst.SelectRandomAdmin().Wallet;
             imgAdminWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}",admWallet);
             lblAdminWallet.Text = admWallet;
         }

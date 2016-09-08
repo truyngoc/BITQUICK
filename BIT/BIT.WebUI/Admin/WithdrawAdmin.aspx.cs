@@ -57,11 +57,13 @@ namespace BIT.WebUI.Admin
                 else
                 {
                     WITHDRAW objWdr = Singleton<WITHDRAW_BC>.Inst.SelectItem(Convert.ToInt32(lblIDCode.Text));
-                    objWdr.TransactionId = txtTrans.Text;
-                    Singleton<WITHDRAW_BC>.Inst.UpdateItem(objWdr);
+                    objWdr.TransactionId = txtTrans.Text;//update va tru luon cwallet trong store
+                    Singleton<WITHDRAW_BC>.Inst.UpdateTranSactionWithdraw(objWdr);
+
+                    TNotify.Toastr.Warning(string.Format( "Confirmed withdraw {0} BTC for user {1} !",objWdr.Amount,objWdr.username), "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                    Response.Redirect(Request.Path);
                 }
             }
-            Response.Redirect(Request.Path);
         }
 
         private void bindDLWithDraw()

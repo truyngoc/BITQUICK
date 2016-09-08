@@ -22,7 +22,7 @@
                         <div class="col-md-6 col-md-offset-3">
                             <label class="control-label col-lg-5" for="firstname">Withdraw Amount </label>
                             <div class="col-lg-5">
-                                <asp:TextBox runat="server" ID="txtAmount" Enabled="false"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtAmount"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
@@ -75,7 +75,7 @@
                             </td>
                             <td>
                                 <a href='https://blockchain.info/tx/<%# Eval("TransactionId") %>' target='_blank'>
-                                
+                                <span class="label label-success"><%# Eval("TransactionId") %></span>
                                 </a>
                             </td>
                         </tr>

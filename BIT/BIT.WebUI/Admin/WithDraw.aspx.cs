@@ -63,32 +63,45 @@ namespace BIT.WebUI.Admin
 
         protected void btnWithDraw_Click(object sender, EventArgs e)
         {
-            //check dieu kien
-            decimal withdrawAmount = Convert.ToDecimal(txtAmount.Text);
-            if(withdrawAmount > Convert.ToDecimal(lblCWalletAmt.Text))
+            try
             {
-                TNotify.Toastr.Warning("Not enought BTC to withdraw ", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
-                return;
-            }
-            if(txtPin2.Text != Singleton<BITCurrentSession>.Inst.SessionMember.Password_PIN)
-            {
-                TNotify.Toastr.Warning("Wrong transaction password", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
-                return;
-            }
+                decimal withdrawAmount = 0;
+                //check dieu kien
+                if (txtAmount.Text != string.Empty)
+                {
+                    withdrawAmount = Convert.ToDecimal(txtAmount.Text);
+                    if (withdrawAmount > Convert.ToDecimal(lblCWalletAmt.Text))
+                    {
+                        TNotify.Toastr.Warning("Not enought BTC to withdraw !", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                        return;
+                    }
+                }
+                else
+                {
+                    TNotify.Toastr.Warning("Please input amount withdraw !", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                    return;
+                }
+                if (txtPin2.Text != Singleton<BITCurrentSession>.Inst.SessionMember.Password_PIN)
+                {
+                    TNotify.Toastr.Warning("Wrong transaction password", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                    return;
+                }
 
-            ////insert into withdraw
-            WITHDRAW objWD = new WITHDRAW();
-            objWD.CodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
-            objWD.Date_Create = DateTime.Now;
-            objWD.Amount = withdrawAmount;
-            objWD.Status = 0;
-            objWD.TransactionId = string.Empty;
-            objWD.Wallet = Singleton<BITCurrentSession>.Inst.SessionMember.Wallet;
+                ////insert into withdraw
+                WITHDRAW objWD = new WITHDRAW();
+                objWD.CodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+                objWD.Date_Create = DateTime.Now;
+                objWD.Amount = withdrawAmount;
+                objWD.Status = 0;
+                objWD.TransactionId = string.Empty;
+                objWD.Wallet = Singleton<BITCurrentSession>.Inst.SessionMember.Wallet;
 
-            //insert
-            Singleton<WITHDRAW_BC>.Inst.InsertItem(objWD);
-            TNotify.Toastr.Warning("Withdraw Completed ", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
-            Response.Redirect("../Admin/Withdraw.aspx");
+                //insert
+                Singleton<WITHDRAW_BC>.Inst.InsertItem(objWD);
+                TNotify.Toastr.Warning("Withdraw Completed ", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                Response.Redirect("../Admin/Withdraw.aspx");
+            }
+            catch { }
         }
     }
 }

@@ -127,7 +127,6 @@
     <Content Include="Admin\EditAccount.aspx" />
     <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\Logout.aspx" />
-    <Content Include="Admin\Memberprofile.aspx" />
     <Content Include="Admin\Register.aspx" />
     <Content Include="Admin\Tree.aspx" />
     <Content Include="Admin\WithDraw.aspx" />
@@ -262,6 +261,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\BITQUICK.pubxml" />
     <None Include="Properties\PublishProfiles\VirginBTC.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Recaptcha.dll" />
@@ -499,13 +499,6 @@
     </Compile>
     <Compile Include="Admin\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Memberprofile.aspx.cs">
-      <DependentUpon>Memberprofile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Memberprofile.aspx.designer.cs">
-      <DependentUpon>Memberprofile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

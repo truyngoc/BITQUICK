@@ -15,6 +15,7 @@
                 <form enctype="multipart/form-data" class="cmxform form-horizontal tasi-form">
                     <div class="form-group col-lg-12">
                         <div class="col-md-6 col-md-offset-3">
+                            <asp:Label ID="lblIDCode" runat="server" Visible ="false"></asp:Label>
                             <label class="control-label col-lg-5" for="firstname">Scan QR code or insert wallet address below</label>
                             <div class="col-lg-5">
                                 <span class="badge">
@@ -74,25 +75,27 @@
                             <td><%# Eval("ID") %>
                             </td>
                             <td>
-                                <%# Eval("Date_Receive") %>                          
+                                <%# Eval("Date_Create") %>                          
                             </td>
                             <td>
                                 <%# Eval("Username") %>  
                             </td>
 
                             <td>
-                                <asp:LinkButton ID="lnkBlockchain" runat="server" OnClick="lnkBlockchain_Click" CommandArgument='<%#Eval("ReceiveWallet") %>' Text='<%#Eval("ReceiveWallet").ToString().Substring(0,4) + "........" + Eval("ReceiveWallet").ToString().Substring(Eval("ReceiveWallet").ToString().Length-4,4) %>' Font-Bold="true" ForeColor="#2d3fda"></asp:LinkButton>
+                                <asp:LinkButton ID="lnkBlockchain" runat="server" OnClick="lnkBlockchain_Click" CommandArgument='<%#Eval("Wallet") %>' Text='<%#Eval("Wallet").ToString().Substring(0,4) + "........" + Eval("Wallet").ToString().Substring(Eval("Wallet").ToString().Length-4,4) %>' Font-Bold="true" ForeColor="#2d3fda"></asp:LinkButton>
                             </td>
                             <td>
                                 <asp:Label runat="server" ID="lblAm" Text='<%# Eval("Amount").ToString().Substring(0,Eval("Amount").ToString().Length -4) %>' Font-Bold="true" ForeColor="Red"></asp:Label>
                             </td>
                             <td>
-                                <asp:LinkButton ID="lnkTransaction" runat="server" OnClick="lnkTransaction_Click" CommandArgument='<%# Eval("Transaction") %>' Text='<%#Eval("Transaction").ToString().Substring(0,4) + "........" + Eval("Transaction").ToString().Substring(Eval("Transaction").ToString().Length-4,4) %>' Font-Bold="true" ForeColor="#2d3fda"></asp:LinkButton>
+                                <asp:LinkButton ID="lnkTransaction" runat="server" OnClick="lnkTransaction_Click" CommandArgument='<%# Eval("TransactionID") %>' Text='<%#Eval("TransactionId").ToString().Substring(0,4) + "........" + Eval("TransactionId").ToString().Substring(Eval("TransactionId").ToString().Length-4,4) %>' Font-Bold="true" ForeColor="#2d3fda"></asp:LinkButton>
                             </td>
                             <td><span class="label label-primary">
-                                <%# getStatus(Eval("status")) %>
+                                <%# getStatus(Eval("Status")) %>
                             </span>
-                                <asp:LinkButton ID="lbkBtnConfirm" runat="server" Visible='<%# getConfirmVisible() %>' Text="Confirm" CommandArgument='<%# Eval("ID") %>'></asp:LinkButton>
+                                </td>
+                            <td>
+                                <asp:LinkButton ID="lbkBtnConfirm" runat="server" Visible='<%# getConfirmVisible(Eval("Status")) %>' Text="Select" CommandArgument='<%# Eval("ID") %>' class="btn btn-info" OnClick="lbkBtnConfirm_Click" ></asp:LinkButton>
                             </td>
                         </tr>
                     </tbody>

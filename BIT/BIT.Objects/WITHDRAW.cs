@@ -27,6 +27,7 @@ namespace BIT.Objects
 
         public string Wallet {get;set;}
 
+        public string username { get; set; }
     }
 }
 

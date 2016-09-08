@@ -51,7 +51,7 @@ namespace BIT.WebUI.Admin
         public void getCWalletAmount()
         {
             WALLET userWallet = Singleton<WALLET_BC>.Inst.SelectItemByCodeId(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
-            txtAmount.Text = userWallet.C_Wallet.ToString();
+            lblCWalletAmt.Text = userWallet.C_Wallet.ToString();
         }
 
         public void bindDataList()
@@ -63,11 +63,24 @@ namespace BIT.WebUI.Admin
 
         protected void btnWithDraw_Click(object sender, EventArgs e)
         {
+            //check dieu kien
+            decimal withdrawAmount = Convert.ToDecimal(txtAmount.Text);
+            if(withdrawAmount > Convert.ToDecimal(lblCWalletAmt.Text))
+            {
+                TNotify.Toastr.Warning("Not enought BTC to withdraw ", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                return;
+            }
+            if(txtPin2.Text != Singleton<BITCurrentSession>.Inst.SessionMember.Password_PIN)
+            {
+                TNotify.Toastr.Warning("Wrong transaction password", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                return;
+            }
+
             ////insert into withdraw
             WITHDRAW objWD = new WITHDRAW();
             objWD.CodeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
             objWD.Date_Create = DateTime.Now;
-            objWD.Amount = Convert.ToDecimal( txtAmount.Text);
+            objWD.Amount = withdrawAmount;
             objWD.Status = 0;
             objWD.TransactionId = string.Empty;
             objWD.Wallet = Singleton<BITCurrentSession>.Inst.SessionMember.Wallet;

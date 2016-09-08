@@ -71,10 +71,10 @@
                                 <asp:Label runat="server" ID="lblGHAmount"><%# Eval("Amount").ToString().Remove(6) %></asp:Label>
                                 BTC</td>
                             <td>
-                                <span class="label label-success"><%# getGHStatus(Eval("status")) %></span>
+                                <span class="label label-success"><%# getGHStatus(Eval("Status")) %></span>
                             </td>
                             <td>
-                                <a href='https://blockchain.info/address/<%# Eval("wReceive") %>' target='_blank'>
+                                <a href='https://blockchain.info/tx/<%# Eval("TransactionId") %>' target='_blank'>
                                 
                                 </a>
                             </td>

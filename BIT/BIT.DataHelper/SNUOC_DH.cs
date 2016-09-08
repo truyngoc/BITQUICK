@@ -110,7 +110,16 @@ namespace BIT.DataHelper
                         ,obj.AMOUNT
                         );
         }
+        public bool isExistTransaction(string transaction)
+        {
+            IDataReader dr = defaultDB.ExecuteReader("sp.PACKAGE_TRANSACTION_IsExistTransaction"
+                , transaction);
 
+            bool bol = dr.Read();
+            dr.Close();
+
+            return bol;
+        }
         public bool isAllPackageExpire(string CodeID)
         {
             IDataReader dr = defaultDB.ExecuteReader("sp_PACKAGE_TRANSACTION_SelectExpiredItems"

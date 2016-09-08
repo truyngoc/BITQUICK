@@ -76,6 +76,11 @@ namespace BIT.Controller
             ctl.updateGH1(obj);
         }
 
+        public bool isExistTransaction(string transaction)
+        {
+            return ctl.isExistTransaction(transaction);
+        }
+
         public bool isAllPackageExpire(string CodeID)
         {
             return ctl.isAllPackageExpire(CodeID);

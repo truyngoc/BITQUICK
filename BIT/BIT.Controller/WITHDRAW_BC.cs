@@ -56,5 +56,10 @@ namespace BIT.Controller
         {
             return ctl.SelectItemByCodeId(code_id);
         }
+
+        public bool isExistTransaction(string transaction)
+        {
+            return ctl.isExistTransaction(transaction);
+        }
 	}
 }

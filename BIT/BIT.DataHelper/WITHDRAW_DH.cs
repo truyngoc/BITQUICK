@@ -71,6 +71,17 @@ namespace BIT.DataHelper
             return bol;
         }
 
+        public bool isExistTransaction(string transaction)
+        {
+            IDataReader dr = defaultDB.ExecuteReader("sp_WITHDRAW_IsExistTransaction"
+                , transaction);
+
+            bool bol = dr.Read();
+            dr.Close();
+
+            return bol;
+        }
+
         public WITHDRAW SelectItemByCodeId(WITHDRAW obj)
         {
             return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_RECEIVE_SelectItemByCodeId"

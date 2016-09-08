@@ -111,12 +111,23 @@ namespace BIT.WebUI.Admin
             {
                 try
                 {
-                    //UpdateProfile();
+                    if (btnUpdate.Text == "Order Update Information (0.1BTC)")
+                    {
+                        txtEmail.Attributes.Remove("readonly");
+                        txtFullName.Attributes.Remove("readonly");
+                        txtPhone.Attributes.Remove("readonly");
+                        txtWallet.Attributes.Remove("readonly");
+                        btnUpdate.Text = "Update";
+                    }
+                    else
+                    {
+                        txtEmail.Attributes.Add("readonly", "readonly");
+                        txtFullName.Attributes.Add("readonly", "readonly");
+                        txtPhone.Attributes.Add("readonly", "readonly");
+                        txtWallet.Attributes.Add("readonly", "readonly");
+                        btnUpdate.Text = "Order Update Information (0.1BTC)";
 
-                    //if (HttpContext.Current.Session["BIT_MemberID_Edit"] == null)
-                    //{
-                    //    ReloadSeasion();
-                    //}                    
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -6,6 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Transactions;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Configuration;
 using BIT.Objects;
 using BIT.Controller;
 using BIT.Common;
@@ -66,12 +71,38 @@ namespace BIT.WebUI.Admin
             }
             set { HttpContext.Current.Session["CreateCommandPH_GH_LIST_ADMIN_GH_SELECTED"] = value; }
         }
+
+        public COMMAND COMMAND
+        {
+            get
+            {
+                if (HttpContext.Current.Session["CreateCommandPH_COMMAND"] != null)
+                {
+                    return HttpContext.Current.Session["CreateCommandPH_COMMAND"] as COMMAND;
+                }
+                return null;
+            }
+            set { HttpContext.Current.Session["CreateCommandPH_COMMAND"] = value; }
+        }
+
+        public List<COMMAND_DETAIL> LIST_COMMAND_DETAIL
+        {
+            get
+            {
+                if (HttpContext.Current.Session["CreateCommandPH_LIST_COMMAND_DETAIL"] != null)
+                {
+                    return HttpContext.Current.Session["CreateCommandPH_LIST_COMMAND_DETAIL"] as List<COMMAND_DETAIL>;
+                }
+                return null;
+            }
+            set { HttpContext.Current.Session["CreateCommandPH_LIST_COMMAND_DETAIL"] = value; }
+        }
         #endregion
 
         private PH_BC ctlPH = new PH_BC();
         private GH_BC ctlGH = new GH_BC();
-        private COMMAND command;
-        private List<COMMAND_DETAIL> _ListCommand;
+        public COMMAND command;
+        public List<COMMAND_DETAIL> _ListCommand;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -202,6 +233,8 @@ namespace BIT.WebUI.Admin
             this.ListGH = null;
             this.ListAdminGH = null;
             this.ListAdminGH_Selected = null;
+            this.COMMAND = null;
+            this.LIST_COMMAND_DETAIL = null;
             LoadListPH();
             LoadListGH();
             LoadListAdminGH();
@@ -329,6 +362,11 @@ namespace BIT.WebUI.Admin
                 XepLenh(_listPH, _listGH, ref command, ref _ListCommand);
 
                 BindCommand(_ListCommand);
+
+                // gan session
+                this.COMMAND = command;
+                this.LIST_COMMAND_DETAIL = _ListCommand;
+
             }
             else
             {
@@ -338,7 +376,28 @@ namespace BIT.WebUI.Admin
         }
         protected void btnSaveCommand_Click(object sender, EventArgs e)
         {
-     
+            try
+            {
+
+                var ctlCommand = new COMMAND_BC();
+
+                if (this.COMMAND != null && this.LIST_COMMAND_DETAIL.Count > 0)
+                {
+                    ctlCommand.InsertWithTransaction(COMMAND, LIST_COMMAND_DETAIL);
+
+                    TNotify.Toastr.Success("Create command PH - GH successfull", "Create command PH - GH", TNotify.NotifyPositions.toast_top_full_width, true);
+                }
+                else
+                {
+                    throw new Exception("Not have command detail");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TNotify.Alerts.Danger(ex.ToString(), true);
+            }
+
         }
         #endregion
 
@@ -386,7 +445,7 @@ namespace BIT.WebUI.Admin
                                     };
                                     // ----------------- //                                    
                                     _ListCommand.Add(cmd_detail);
-                                  
+
 
                                     if (g.CurrentAmount == 0)
                                     {
@@ -398,7 +457,7 @@ namespace BIT.WebUI.Admin
                                         {
                                             g.CurrentAmount = g.Amount;
                                         }
-                                    }                                    
+                                    }
                                     else
                                         g.CurrentAmount = g.Amount - p.Amount;  // neu PH het luon 1 lan
 
@@ -494,6 +553,6 @@ namespace BIT.WebUI.Admin
 
             }
         }
-        
+
     }
 }

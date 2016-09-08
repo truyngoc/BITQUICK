@@ -17,40 +17,45 @@ using BIT.Objects;
 using BIT.Common;
 
 namespace BIT.Controller
-{ 
-	public class COMMAND_BC
-	{
-		COMMAND_DH ctl = new COMMAND_DH();
-		
-		public void InsertItem(COMMAND obj)		
-		{
-			ctl.InsertItem(obj);
-		}
+{
+    public class COMMAND_BC
+    {
+        COMMAND_DH ctl = new COMMAND_DH();
 
-		public void UpdateItem(COMMAND obj)
-		{
-			ctl.UpdateItem(obj);
-		}
+        public void InsertItem(COMMAND obj)
+        {
+            ctl.InsertItem(obj);
+        }
 
-		public void DeleteItem(int ID)
-		{
-			ctl.DeleteItem(ID);
-		}
+        public void UpdateItem(COMMAND obj)
+        {
+            ctl.UpdateItem(obj);
+        }
 
-		public COMMAND SelectItem(int ID)
-		{
-			return ctl.SelectItem(ID);
-		}
+        public void DeleteItem(int ID)
+        {
+            ctl.DeleteItem(ID);
+        }
 
-		public List<COMMAND> SelectAllItems()
-		{
-			return ctl.SelectAllItems().ToList();
-		}
-		
-		public bool IsExistsItem(int ID)
-		{
-			return ctl.IsExistsItem(ID);
-		}
-			
-	}
+        public COMMAND SelectItem(int ID)
+        {
+            return ctl.SelectItem(ID);
+        }
+
+        public List<COMMAND> SelectAllItems()
+        {
+            return ctl.SelectAllItems().ToList();
+        }
+
+        public bool IsExistsItem(int ID)
+        {
+            return ctl.IsExistsItem(ID);
+        }
+
+        public void InsertWithTransaction(COMMAND _command, List<COMMAND_DETAIL> _lstCommandDetails)
+        {
+            ctl.InsertWithTransaction(_command, _lstCommandDetails);
+        }
+    }
+       
 }

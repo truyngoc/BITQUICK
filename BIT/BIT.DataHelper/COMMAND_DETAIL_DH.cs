@@ -11,6 +11,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.Sql;
+using System.Data.Common;
 using System.Linq;
 using System.Collections.Generic;
 using BIT.Objects;
@@ -27,6 +28,12 @@ namespace BIT.DataHelper
 			defaultDB.ExecuteNonQuery("sp_COMMAND_DETAIL_Insert"
 				, obj.CommandID, obj.CodeId_From, obj.CodeId_To, obj.TransactionId, obj.DateCreate, obj.ConfirmGH, obj.DateConfirmGH, obj.ConfirmPH, obj.DateConfirmPH, obj.Amount, obj.Status);
 		}
+
+        public void InsertItemWithTrans(DbTransaction trans, COMMAND_DETAIL obj)
+        {
+            defaultDB.ExecuteNonQuery(trans,"sp_COMMAND_DETAIL_Insert"
+                , obj.CommandID, obj.CodeId_From, obj.CodeId_To, obj.TransactionId, obj.DateCreate, obj.ConfirmGH, obj.DateConfirmGH, obj.ConfirmPH, obj.DateConfirmPH, obj.Amount, obj.Status);
+        }
 
 		public void UpdateItem(COMMAND_DETAIL obj)
 		{

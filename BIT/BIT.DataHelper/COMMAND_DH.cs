@@ -10,7 +10,9 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.Common;
 using System.Data.Sql;
+using System.Transactions;
 using System.Linq;
 using System.Collections.Generic;
 using BIT.Objects;
@@ -18,10 +20,19 @@ using BIT.Common;
 using BIT.DataHelper;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 
+
 namespace BIT.DataHelper
 { 
 	public class COMMAND_DH : DataAccessBase
-	{	
+	{
+        public int InsertWithTrans(DbTransaction trans, COMMAND obj)
+        {
+            var iRet = defaultDB.ExecuteScalar(trans, "sp_COMMAND_InsertReturnId"
+                , obj.CommandCode, obj.UserCreate, obj.DateCreate);
+
+            return Convert.ToInt32(iRet);
+        }
+
 		public void InsertItem(COMMAND obj)
 		{
 			defaultDB.ExecuteNonQuery("sp_COMMAND_Insert"
@@ -61,6 +72,49 @@ namespace BIT.DataHelper
 			
 			return bol;
 		}
-		
+
+
+        public void InsertWithTransaction(COMMAND _command, List<COMMAND_DETAIL> _lstCommandDetails)
+        {
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Suppress))
+            {
+                using (DbConnection connection = defaultDB.CreateConnection())
+                {
+                    connection.Open();
+                    try
+                    {
+                        using (DbTransaction transaction = connection.BeginTransaction())
+                        {
+                            try
+                            {
+                                var dhCommand = new COMMAND_DETAIL_DH();
+                                int commandId = InsertWithTrans(transaction, _command);
+
+                                // insert command details
+                                foreach (var o in _lstCommandDetails)
+                                {
+                                    o.CommandID = commandId;
+
+                                    dhCommand.InsertItemWithTrans(transaction, o);
+
+                                }
+
+                                transaction.Commit();
+                            }
+                            catch (Exception ex)
+                            {
+                                transaction.Rollback();
+                                throw ex;
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+                scope.Complete();
+            } 
+        }
 	}
 }

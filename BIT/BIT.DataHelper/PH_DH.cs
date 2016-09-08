@@ -73,5 +73,10 @@ namespace BIT.DataHelper
         {
             return defaultDB.ExecuteSprocAccessor<PH>("sp_PH_SelectItemsByCodeId", CodeId);
         }
+
+        public IEnumerable<PH_Info> SelectItemsByNumber(int numberPH)
+        {
+            return defaultDB.ExecuteSprocAccessor<PH_Info>("sp_PH_SelectItemsByNumber",numberPH);
+        }
 	}
 }

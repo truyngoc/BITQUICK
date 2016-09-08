@@ -61,6 +61,22 @@ namespace BIT.DataHelper
 			
 			return bol;
 		}
-		
+
+
+
+        public IEnumerable<GH_Info> SelectItemsByNumber(int numberGH)
+        {
+            return defaultDB.ExecuteSprocAccessor<GH_Info>("sp_GH_SelectItemsByNumber", numberGH);
+        }
+
+        public IEnumerable<GH_Info> SelectWaitingGH()
+        {
+            return defaultDB.ExecuteSprocAccessor<GH_Info>("sp_GH_SelectWaitingGH");
+        }
+
+        public IEnumerable<GH_Info> SelectAdminMemberGH()
+        {
+            return defaultDB.ExecuteSprocAccessor<GH_Info>("sp_GH_SelectAdminMemberGH");
+        }
 	}
 }

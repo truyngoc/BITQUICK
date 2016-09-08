@@ -15,36 +15,45 @@
                     <h4>PH list</h4>
                     <!--ss Gridview PH-->
                     <section class="panel">
-                        <%--<asp:DataList ID="grdListPH" runat="server" class="table table-hover p-table">
-                <HeaderTemplate>--%>
-                        <table class="table table-hover p-table table-responsive">
-                            <tr>
-                                <th>No.</th>
-                                <th>Sender</th>
-                                <th>PH Time</th>
-                                <th>Amount</th>
-                            </tr>
-                            <%--</HeaderTemplate>
-                <ItemTemplate>--%>
-                            <tr>
-                                <td>1
-                                </td>
-                                <td>AMDIN/0974747709
-                                </td>
-                                <td>02/09/2016
-                            <%--<asp:Label runat="server" ID="lblPHTime" Text=' <%#Eval("Date_Send")%>'></asp:Label>--%>
-                                </td>
-                                <td>3
-                            <%--<asp:Label runat="server" ID="lblAmount" Text=' <%#Eval("Amount")%>'></asp:Label>--%>
-                                </td>
-                            </tr>
-                            <%--</ItemTemplate>
-                <FooterTemplate>--%>
-                        </table>
-                        <%-- </FooterTemplate>
-            </asp:DataList>--%>
+                        <div class="table-responsive">
+                            <asp:GridView ID="grdPH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
+                                OnPageIndexChanging="grdPH_OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
+                                        <ItemTemplate>
+                                            <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Account" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("Username") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
                     </section>
                     <!--end of ss Gridview PH-->
+
+                    <div class="text-right">
+                        <b>Total amount PH:  </b>
+                        <asp:Label ID="lblTotalAmountPH" runat="server" CssClass="control-label" Text="5" ForeColor="Blue"></asp:Label>
+                    </div>
+
+
                 </div>
 
                 <div class="col-md-6">
@@ -52,92 +61,181 @@
                     <!--ss Gridview GH-->
                     <section class="panel">
                         <div class="table-responsive">
-                            <%--<asp:DataList ID="grdListPH" runat="server" class="table table-hover p-table">
-                <HeaderTemplate>--%>
-                            <table class="table table-hover p-table table-responsive">
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Receiver</th>
-                                    <th>GH Time</th>
-                                    <th>Amount</th>
-                                </tr>
-                                <%--</HeaderTemplate>
-                <ItemTemplate>--%>
-                                <tr>
-                                    <td>1
-                                    </td>
-                                    <td>AMDIN/0974747709
-                                    </td>
-                                    <td>02/09/2016
-                            <%--<asp:Label runat="server" ID="lblPHTime" Text=' <%#Eval("Date_Send")%>'></asp:Label>--%>
-                                    </td>
-                                    <td>3
-                            <%--<asp:Label runat="server" ID="lblAmount" Text=' <%#Eval("Amount")%>'></asp:Label>--%>
-                                    </td>
-                                </tr>
-                                <%--</ItemTemplate>
-                <FooterTemplate>--%>
-                            </table>
-                            <%-- </FooterTemplate>
-            </asp:DataList>--%>
+                            <asp:GridView ID="grdGH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
+                                OnPageIndexChanging="grdGH_OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
+                                        <ItemTemplate>
+                                            <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Account" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("Username") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
                         </div>
                     </section>
                     <!--end of ss Gridview GH-->
+
+                    <div class="text-right">
+                        <b>Total amount GH:  </b>
+                        <asp:Label ID="lblTotalAmountGH" runat="server" CssClass="control-label" Text="5" ForeColor="Blue"></asp:Label>
+                    </div>
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-4">
+                        <asp:TextBox ID="txtNumberPH" runat="server" placeholder="Number PH" CssClass="form-control col-md-1"></asp:TextBox>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Button ID="btnLoadPHbyNumber" runat="server" Text="LOAD PH" CssClass="btn btn-primary" OnClick="btnLoadPHbyNumber_Click" />
+                    </div>
+                    <div class="col-md-2">
+                        <%--<asp:Button ID="btnLoadAllPH" runat="server" Text="ALL" CssClass="btn btn-primary" />--%>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <h4>Admin account list</h4>
+                    <!--ss Gridview admin GH-->
+                    <section class="panel">
+                        <div class="table-responsive">
+                            <asp:GridView ID="grdAdminList" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
+                                OnPageIndexChanging="grdAdminList_OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
+                                        <ItemTemplate>
+                                            <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Account" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("Username") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <%--<asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />--%>
+                                            <asp:TextBox ID="txtAmount" runat="server" CssClass="form-control" placeholder="Amount of GH">5.5</asp:TextBox>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkIsSelected" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:HiddenField ID="hidCodeId" runat="server" Value='<%# Eval("CodeId") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </section>
+                    <!--end of ss Gridview admin GH-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <asp:Button ID="btnTranferToGHList" runat="server" Text="UP TO GH LIST" CssClass="btn btn-primary" OnClick="btnTranferToGHList_Click" />
+                    &nbsp;&nbsp;
+                    <asp:Button ID="btnResetAllList" runat="server" Text="RESET LIST" CssClass="btn btn-primary" OnClick="btnResetAllList_Click" />
+                </div>
+            </div>
+
+            <br />
             <div>
-                <asp:Button ID="btnCreateCommand" runat="server" Text="CREATE COMMAND" CssClass="btn btn-primary" />
+                <asp:Button ID="btnCreateCommand" runat="server" Text="CREATE COMMAND" CssClass="btn btn-primary" OnClick="btnCreateCommand_Click" OnClientClick="javascript:return confirm('Are you absolutely sure you want to create command?')" />
+                &nbsp;&nbsp;
+                <asp:Button ID="btnSaveCommand" runat="server" Text="SAVE COMMAND" CssClass="btn btn-primary" OnClick="btnSaveCommand_Click" OnClientClick="javascript:return confirm('Are you absolutely sure you want to save command?')" />
             </div>
 
             <div class="row">
                 <div class="col-md-12">
                     <h4>Command list</h4>
-                    <!--ss Gridview GH-->
+                    <!--ss Gridview Command List-->
                     <section class="panel">
                         <div class="table-responsive">
-                            <%--<asp:DataList ID="grdListPH" runat="server" class="table table-hover p-table">
-                <HeaderTemplate>--%>
-                            <table class="table table-hover p-table table-responsive">
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Sender</th>
-                                    <th>Receiver</th>
-                                    <th>CreateDate</th>
-                                    <th>Amount</th>
-                                    <th>Time remaining (hours)</th>
-                                    <th>Status</th>
-                                </tr>
-                                <%--</HeaderTemplate>
-                <ItemTemplate>--%>
-                                <tr>
-                                    <td>1
-                                    </td>
-                                    <td>AMDIN/0974747709
-                                    </td>
-                                    <td>BIRAIN/098297983
-                                    </td>
-                                    <td>02/09/2016
-                            <%--<asp:Label runat="server" ID="lblPHTime" Text=' <%#Eval("Date_Send")%>'></asp:Label>--%>
-                                    </td>
-                                    <td>3
-                            <%--<asp:Label runat="server" ID="lblAmount" Text=' <%#Eval("Amount")%>'></asp:Label>--%>
-                                    </td>
-                                    <td>12</td>
-                                    <td>
-                                        <span class="label label-primary">Pending
-                                <%--<asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("Status").ToString())%> '></asp:Label>--%>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <%--</ItemTemplate>
-                <FooterTemplate>--%>
-                            </table>
-                            <%-- </FooterTemplate>
-            </asp:DataList>--%>
+                            <asp:GridView ID="grdCommandDetails" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
+                                OnPageIndexChanging="grdCommandDetails_OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
+                                        <ItemTemplate>
+                                            <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Sender" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblSender" runat="server" Text='<%# Eval("CodeId_From") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Receiver" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblSender" runat="server" Text='<%# Eval("CodeId_To") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Create date" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("DateCreate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Status" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblStatus" runat="server" Text='<%# StatusToString((int)Eval("Status")) %>' CssClass='<%# CssStatus((int)Eval("Status")) %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                </Columns>
+                            </asp:GridView>
+
                         </div>
                     </section>
-                    <!--end of ss Gridview GH-->
+                    <!--end of ss Gridview Command List-->
                 </div>
             </div>
         </div>

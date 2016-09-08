@@ -62,5 +62,10 @@ namespace BIT.Controller
         {
             return ctl.SelectItemsByCodeId(CodeId).ToList();
         }
+
+        public List<PH_Info> SelectItemsByNumber(int numberPH)
+        {
+            return ctl.SelectItemsByNumber(numberPH).ToList();
+        }
 	}
 }

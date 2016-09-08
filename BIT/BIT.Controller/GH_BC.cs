@@ -51,6 +51,21 @@ namespace BIT.Controller
 		{
 			return ctl.IsExistsItem(ID);
 		}
-			
+
+
+        public List<GH_Info> SelectItemsByNumber(int numberGH)
+        {
+            return ctl.SelectItemsByNumber(numberGH).ToList();
+        }
+
+        public List<GH_Info> SelectWaitingGH()
+        {
+            return ctl.SelectWaitingGH().ToList();
+        }
+
+        public List<GH_Info> SelectAdminMemberGH()
+        {
+            return ctl.SelectAdminMemberGH().ToList();
+        }
 	}
 }

@@ -38,9 +38,9 @@ namespace BIT.DataHelper
             obj.Level,//@Level  varchar(50)
             obj.ExistsChild, //@ExistsChild bit
             obj.Status, //@Status	int
-            obj.Country, //@Country	nvarchar(250)
-            obj.IsLock, //@IsLock int
-            obj.Upline //@UpLine varchar(250)
+            obj.Country //@Country	nvarchar(250)
+            //obj.IsLock, //@IsLock int
+            //obj.Upline //@UpLine varchar(250)
                 //, obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.IsLock, obj.Status
                 );
         }
@@ -67,9 +67,9 @@ namespace BIT.DataHelper
                 , ID);
         }
 
-        public MEMBERS SelectItem(int ID)
+        public MEMBERS SelectItemByID(int ID)
         {
-            return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SelectItem"
+            return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SelectItemByID"
                 , ID).FirstOrDefault();
         }
 

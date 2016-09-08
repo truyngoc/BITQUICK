@@ -47,9 +47,9 @@ namespace BIT.Controller
 			ctl.DeleteItem(ID);
 		}
 
-		public MEMBERS SelectItem(int ID)
+        public MEMBERS SelectItemByID(int ID)
 		{
-			return ctl.SelectItem(ID);
+			return ctl.SelectItemByID(ID);
 		}
         public MEMBERS SelectItem(string CodeID)
         {

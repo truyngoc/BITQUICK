@@ -45,7 +45,7 @@ namespace BIT.WebUI.Admin
             }
 
             MEMBERS_BC ctlMember = new MEMBERS_BC();
-            MEMBERS obj = ctlMember.SelectItem(Id);
+            MEMBERS obj = ctlMember.SelectItemByID(Id);
 
             txtUserName.Text = obj.Username;
             txtEmail.Text = obj.Email;

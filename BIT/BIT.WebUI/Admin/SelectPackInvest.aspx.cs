@@ -181,16 +181,25 @@ namespace BIT.WebUI.Admin
         }
 
 
-        public string getStatus(object status)
+        public string getStatus(object statusPH, object statusGH)
         {
             string restring = string.Empty;
-            switch(status.ToString())
+            switch (statusPH.ToString())
             {
                 case "0":
                     restring = "Waiting Confirm";
                     break;
                 case "1":
                     restring = "Confirmed";
+                    break;
+            }
+            switch (statusGH.ToString())
+            {
+                case "1":
+                    restring = "Done GH1";
+                    break;
+                case "2":
+                    restring = "Done GH2 - Invest Pack Expired";
                     break;
             }
             return restring;

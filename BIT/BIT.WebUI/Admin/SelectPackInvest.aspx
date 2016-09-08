@@ -109,7 +109,7 @@
                                 </td>
                                 <td>
                                     <span class="label label-primary">
-                                        <asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("STATUS_PH")) %>'></asp:Label>
+                                        <asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("STATUS_PH"),Eval("STATUS_GH")) %>'></asp:Label>
                                     </span>
                                 </td>
                                 <td>

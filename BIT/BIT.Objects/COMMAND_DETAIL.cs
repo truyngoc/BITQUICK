@@ -9,35 +9,37 @@
 using System;
 
 namespace BIT.Objects
-{ 
-	public class COMMAND_DETAIL
-	{
-		
-	public int ID { get; set; }
-	
-	public int? CommandID { get; set; }
-	
-	public string CodeId_From { get; set; }
-	
-	public string CodeId_To { get; set; }
-	
-	public string TransactionId { get; set; }
-	
-	public DateTime? DateCreate { get; set; }
-	
-	public bool? ConfirmGH { get; set; }
-	
-	public DateTime? DateConfirmGH { get; set; }
-	
-	public bool? ConfirmPH { get; set; }
-	
-	public DateTime? DateConfirmPH { get; set; }
-	
-	public decimal? Amount { get; set; }
-	
-	public int? Status { get; set; }
-		
-	}
+{
+    public class COMMAND_DETAIL
+    {
+
+        public int ID { get; set; }
+
+        public int? CommandID { get; set; }
+
+        public string CodeId_From { get; set; }
+
+        public string CodeId_To { get; set; }
+
+        public string TransactionId { get; set; }
+
+        public DateTime? DateCreate { get; set; }
+
+        public bool? ConfirmGH { get; set; }
+
+        public DateTime? DateConfirmGH { get; set; }
+
+        public bool? ConfirmPH { get; set; }
+
+        public DateTime? DateConfirmPH { get; set; }
+
+        public decimal? Amount { get; set; }
+
+        public int? Status { get; set; }
+
+        public int? PH_ID { get; set; }
+        public int? GH_ID { get; set; }
+    }
 }
 
 

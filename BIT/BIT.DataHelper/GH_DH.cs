@@ -12,6 +12,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Linq;
+using System.Data.Common;
 using System.Collections.Generic;
 using BIT.Objects;
 using BIT.Common;
@@ -77,6 +78,20 @@ namespace BIT.DataHelper
         public IEnumerable<GH_Info> SelectAdminMemberGH()
         {
             return defaultDB.ExecuteSprocAccessor<GH_Info>("sp_GH_SelectAdminMemberGH");
+        }
+
+        public void UpdateStatusWithTrans(DbTransaction trans, int ID, int Status)
+        {
+            defaultDB.ExecuteNonQuery(trans, "sp_GH_UpdateStatus"
+                , ID, Status);
+        }
+
+        public int InsertAdminGHWithTrans(DbTransaction trans, GH obj)
+        {
+            var iRet = defaultDB.ExecuteScalar(trans, "sp_GH_InsertInsertAdminGHWithTrans"
+                , obj.CodeId, obj.Amount, obj.CurrentAmount, obj.CreateDate, obj.Status);
+
+            return Convert.ToInt32(iRet);
         }
 	}
 }

@@ -40,6 +40,13 @@ namespace BIT.Common
             Success = 2
         }
 
+        public enum GH_STATUS
+        {
+            Waiting = 0,
+            Pending = 1,
+            Success = 2
+        }
+
         public enum COMMAND_STATUS
         {
             Pending = 0,

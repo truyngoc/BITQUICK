@@ -26,19 +26,19 @@ namespace BIT.DataHelper
 		public void InsertItem(COMMAND_DETAIL obj)
 		{
 			defaultDB.ExecuteNonQuery("sp_COMMAND_DETAIL_Insert"
-				, obj.CommandID, obj.CodeId_From, obj.CodeId_To, obj.TransactionId, obj.DateCreate, obj.ConfirmGH, obj.DateConfirmGH, obj.ConfirmPH, obj.DateConfirmPH, obj.Amount, obj.Status);
+				, obj.CommandID, obj.CodeId_From, obj.CodeId_To, obj.TransactionId, obj.DateCreate, obj.ConfirmGH, obj.DateConfirmGH, obj.ConfirmPH, obj.DateConfirmPH, obj.Amount, obj.Status, obj.PH_ID, obj.GH_ID);
 		}
 
         public void InsertItemWithTrans(DbTransaction trans, COMMAND_DETAIL obj)
         {
             defaultDB.ExecuteNonQuery(trans,"sp_COMMAND_DETAIL_Insert"
-                , obj.CommandID, obj.CodeId_From, obj.CodeId_To, obj.TransactionId, obj.DateCreate, obj.ConfirmGH, obj.DateConfirmGH, obj.ConfirmPH, obj.DateConfirmPH, obj.Amount, obj.Status);
+                , obj.CommandID, obj.CodeId_From, obj.CodeId_To, obj.TransactionId, obj.DateCreate, obj.ConfirmGH, obj.DateConfirmGH, obj.ConfirmPH, obj.DateConfirmPH, obj.Amount, obj.Status, obj.PH_ID, obj.GH_ID);
         }
 
 		public void UpdateItem(COMMAND_DETAIL obj)
 		{
 			defaultDB.ExecuteNonQuery("sp_COMMAND_DETAIL_Update"
-				, obj.ID, obj.CommandID, obj.CodeId_From, obj.CodeId_To, obj.TransactionId, obj.DateCreate, obj.ConfirmGH, obj.DateConfirmGH, obj.ConfirmPH, obj.DateConfirmPH, obj.Amount, obj.Status);
+                , obj.ID, obj.CommandID, obj.CodeId_From, obj.CodeId_To, obj.TransactionId, obj.DateCreate, obj.ConfirmGH, obj.DateConfirmGH, obj.ConfirmPH, obj.DateConfirmPH, obj.Amount, obj.Status, obj.PH_ID, obj.GH_ID);
 		}
 
 		public void DeleteItem(int ID)

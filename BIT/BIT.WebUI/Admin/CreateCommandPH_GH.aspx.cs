@@ -72,6 +72,19 @@ namespace BIT.WebUI.Admin
             set { HttpContext.Current.Session["CreateCommandPH_GH_LIST_ADMIN_GH_SELECTED"] = value; }
         }
 
+        public List<GH_Info> ListAdminGH_FINAL
+        {
+            get
+            {
+                if (HttpContext.Current.Session["CreateCommandPH_GH_LIST_ADMIN_GH_FINAL"] != null)
+                {
+                    return HttpContext.Current.Session["CreateCommandPH_GH_LIST_ADMIN_GH_FINAL"] as List<GH_Info>;
+                }
+                return null;
+            }
+            set { HttpContext.Current.Session["CreateCommandPH_GH_LIST_ADMIN_GH_FINAL"] = value; }
+        }
+
         public COMMAND COMMAND
         {
             get
@@ -233,8 +246,10 @@ namespace BIT.WebUI.Admin
             this.ListGH = null;
             this.ListAdminGH = null;
             this.ListAdminGH_Selected = null;
+            this.ListAdminGH_FINAL = null;
             this.COMMAND = null;
             this.LIST_COMMAND_DETAIL = null;
+            
             LoadListPH();
             LoadListGH();
             LoadListAdminGH();
@@ -350,6 +365,11 @@ namespace BIT.WebUI.Admin
 
         protected void btnCreateCommand_Click(object sender, EventArgs e)
         {
+            // lay danh sach admin GH
+            var _listGH_Admin = ListGH.Where(m => System.Text.RegularExpressions.Regex.IsMatch(m.CodeId, "99.*")).ToList();
+            this.ListAdminGH_FINAL = _listGH_Admin;
+
+            // danh sach PH - GH
             var _listPH = DeepCopy<List<PH_Info>>(ListPH);
             var _listGH = DeepCopy<List<GH_Info>>(ListGH);
 
@@ -383,7 +403,9 @@ namespace BIT.WebUI.Admin
 
                 if (this.COMMAND != null && this.LIST_COMMAND_DETAIL.Count > 0)
                 {
-                    ctlCommand.InsertWithTransaction(COMMAND, LIST_COMMAND_DETAIL);
+                    ctlCommand.InsertWithTransaction(COMMAND, LIST_COMMAND_DETAIL, ListAdminGH_FINAL);
+
+                    ResetAllSessionList();
 
                     TNotify.Toastr.Success("Create command PH - GH successfull", "Create command PH - GH", TNotify.NotifyPositions.toast_top_full_width, true);
                 }
@@ -395,7 +417,7 @@ namespace BIT.WebUI.Admin
             }
             catch (Exception ex)
             {
-                TNotify.Alerts.Danger(ex.ToString(), true);
+                TNotify.Alerts.Danger(ex.Message, true);
             }
 
         }
@@ -442,6 +464,10 @@ namespace BIT.WebUI.Admin
                                         Amount = p.CurrentAmount
                                         ,
                                         Status = (int)Constants.COMMAND_STATUS.Pending
+                                        ,
+                                        PH_ID = p.ID
+                                        ,
+                                        GH_ID = g.ID
                                     };
                                     // ----------------- //                                    
                                     _ListCommand.Add(cmd_detail);
@@ -481,6 +507,10 @@ namespace BIT.WebUI.Admin
                                         Amount = g.Amount
                                         ,
                                         Status = (int)Constants.COMMAND_STATUS.Pending
+                                        ,
+                                        PH_ID = p.ID
+                                        ,
+                                        GH_ID = g.ID
                                     };
                                     // ----------------- //                                    
                                     _ListCommand.Add(cmd_detail);
@@ -512,6 +542,10 @@ namespace BIT.WebUI.Admin
                                         Amount = p.CurrentAmount
                                         ,
                                         Status = (int)Constants.COMMAND_STATUS.Pending
+                                        ,
+                                        PH_ID = p.ID
+                                        ,
+                                        GH_ID = g.ID
                                     };
                                     // ----------------- //
                                     _ListCommand.Add(cmd_detail);
@@ -536,6 +570,10 @@ namespace BIT.WebUI.Admin
                                         Amount = g.CurrentAmount
                                         ,
                                         Status = (int)Constants.COMMAND_STATUS.Pending
+                                        ,
+                                        PH_ID = p.ID
+                                        ,
+                                        GH_ID = g.ID
                                     };
                                     // ----------------- //
                                     _ListCommand.Add(cmd_detail);

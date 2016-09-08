@@ -52,9 +52,9 @@ namespace BIT.Controller
             return ctl.IsExistsItem(ID);
         }
 
-        public void InsertWithTransaction(COMMAND _command, List<COMMAND_DETAIL> _lstCommandDetails)
+        public void InsertWithTransaction(COMMAND _command, List<COMMAND_DETAIL> _lstCommandDetails, List<GH_Info> _lstGH_Admin)
         {
-            ctl.InsertWithTransaction(_command, _lstCommandDetails);
+            ctl.InsertWithTransaction(_command, _lstCommandDetails, _lstGH_Admin);
         }
     }
        

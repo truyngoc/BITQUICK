@@ -24,11 +24,6 @@ namespace BIT.WebUI.Admin
                 else
                 {
                     LoadUserInfor();
-
-                    txtEmail.Attributes.Add("readonly", "readonly");
-                    txtFullName.Attributes.Add("readonly", "readonly");
-                    txtPhone.Attributes.Add("readonly", "readonly");
-                    txtWallet.Attributes.Add("readonly", "readonly");
                 }
             }
         }
@@ -117,23 +112,9 @@ namespace BIT.WebUI.Admin
             {
                 try
                 {
-                    if (btnUpdate.Text == "Order Update Information (0.1BTC)")
-                    {
-                        txtEmail.Attributes.Remove("readonly");
-                        txtFullName.Attributes.Remove("readonly");
-                        txtPhone.Attributes.Remove("readonly");
-                        txtWallet.Attributes.Remove("readonly");
-                        btnUpdate.Text = "Update";
-                    }
-                    else
-                    {
-                        txtEmail.Attributes.Add("readonly", "readonly");
-                        txtFullName.Attributes.Add("readonly", "readonly");
-                        txtPhone.Attributes.Add("readonly", "readonly");
-                        txtWallet.Attributes.Add("readonly", "readonly");
-                        btnUpdate.Text = "Order Update Information (0.1BTC)";
-
-                    }
+                    //INSERT MEMBER EDIT
+                    //REDIRECT ORDERCHANGEINFO
+                    Response.Redirect("OrderChangeInfo.aspx");
                 }
                 catch (Exception ex)
                 {

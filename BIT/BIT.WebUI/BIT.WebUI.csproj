@@ -122,7 +122,10 @@
     <Content Include="Admin\AdminSelectPackInvest.aspx" />
     <Content Include="Admin\GHCommunity.aspx" />
     <Content Include="Admin\GH_DETAIL.aspx" />
+    <Content Include="Admin\MemberManagement.aspx" />
+    <Content Include="Admin\OrderChangeInfo.aspx" />
     <Content Include="Admin\PH_DETAIL.aspx" />
+    <Content Include="Admin\PIN.aspx" />
     <Content Include="Admin\SelectPackInvest.aspx" />
     <Content Include="Admin\EditAccount.aspx" />
     <Content Include="Admin\Login.aspx" />
@@ -465,12 +468,33 @@
     <Compile Include="Admin\GH_DETAIL.aspx.designer.cs">
       <DependentUpon>GH_DETAIL.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\MemberManagement.aspx.cs">
+      <DependentUpon>MemberManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MemberManagement.aspx.designer.cs">
+      <DependentUpon>MemberManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\OrderChangeInfo.aspx.cs">
+      <DependentUpon>OrderChangeInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\OrderChangeInfo.aspx.designer.cs">
+      <DependentUpon>OrderChangeInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PH_DETAIL.aspx.cs">
       <DependentUpon>PH_DETAIL.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\PH_DETAIL.aspx.designer.cs">
       <DependentUpon>PH_DETAIL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PIN.aspx.cs">
+      <DependentUpon>PIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PIN.aspx.designer.cs">
+      <DependentUpon>PIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\SelectPackInvest.aspx.cs">
       <DependentUpon>SelectPackInvest.aspx</DependentUpon>

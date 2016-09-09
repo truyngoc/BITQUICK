@@ -6,22 +6,6 @@
     <div style="clear: both;"></div>
     <div class="label_b" style="padding: 25px 0;">
         <div class="row state-overview">
-            <%--<div class="col-lg-3 col-sm-6">
-                <div class="flip">
-                    <section class="panel front divdashboard">
-                        <div class="symbol">
-                            <img src="../images/earn.png" />
-                        </div>
-                        <div class="value">
-                            <p>B Wallet</p>
-                            <h1 class="count">
-                                <asp:Label ID="lblB_Wallet" runat="server"></asp:Label>
-                                BTC
-                            </h1>
-                        </div>
-                    </section>
-                </div>
-            </div>--%>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
@@ -39,23 +23,7 @@
                     </section>
                 </div>
             </div>
-            <%--<div class="col-lg-3 col-sm-6">
-                <div class="flip">
-                    <section class="panel front divdashboard">
-                        <div class="symbol">
-                            <img src="../images/r.png" />
-                        </div>
-                        <div class="value">
-                            <p>R Wallet</p>
-                            <h1 class="count">
-                                <asp:Label ID="lblR_Wallet" runat="server" />
-                                BTC
-                            </h1>
 
-                        </div>
-                    </section>
-                </div>
-            </div>--%>
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
@@ -71,11 +39,7 @@
                     </section>
                 </div>
             </div>
-        </div>
-        <!--state overview end-->
 
-        <!--state overview start-->
-        <div class="row state-overview">
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
@@ -92,6 +56,7 @@
                     </section>
                 </div>
             </div>
+
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
@@ -107,6 +72,11 @@
                     </section>
                 </div>
             </div>
+        </div>
+        <!--state overview end-->
+
+        <!--state overview start-->
+        <div class="row state-overview">
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">
@@ -123,6 +93,7 @@
                     </section>
                 </div>
             </div>
+
             <div class="col-lg-3 col-sm-6">
                 <div class="flip">
                     <section class="panel front divdashboard">

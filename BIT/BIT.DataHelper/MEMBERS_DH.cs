@@ -47,7 +47,7 @@ namespace BIT.DataHelper
         public void UpdateItem(MEMBERS obj)
         {
             defaultDB.ExecuteNonQuery("sp_MEMBERS_Update"
-                , obj.CodeId, obj.Fullname, obj.Phone, obj.Wallet);
+                , obj.CodeId, obj.Fullname, obj.Phone,obj.Email, obj.Wallet);
         }
 
         public void UpdateExpireDate(MEMBERS obj)

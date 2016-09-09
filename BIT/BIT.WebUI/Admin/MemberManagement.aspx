@@ -12,7 +12,7 @@
             .rounded_corners td, .rounded_corners th {
                 border: 1px solid #A1DCF2;
                 font-family: Arial;
-                font-size: 15pt;
+                font-size: 12pt;
                 /*text-align: center;*/
                 padding: 5px;
             }
@@ -36,12 +36,12 @@
                     <div class="col-md-4">
                         <asp:Textbox runat="server" ID="txtUserName" CssClass="form-control" />
                     </div>
-                    <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-info" BackColor="#3F51B5" Text="Search" onclick="" />
+                    <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-info" BackColor="#3F51B5" Text="Search" onclick="btnSearch_Click" />
                 </div>
                 <br />
                 <div class="form">
                     <div class="rounded_corners">
-                        <asp:GridView ID="grdMEMBERS" runat="server" HeaderStyle-BackColor="#3AC0F2" Font-Size="Large" Font-Bold="true"
+                        <asp:GridView ID="grdMEMBERS" runat="server" HeaderStyle-BackColor="#3AC0F2" Font-Size="X-Small"
                             HeaderStyle-ForeColor="White" RowStyle-BackColor="#A1DCF2" AlternatingRowStyle-BackColor="White"
                             RowStyle-ForeColor="#3A3A3A" AutoGenerateColumns="false" AllowPaging="true" PageSize="30"
                             OnPageIndexChanging="OnPageIndexChanging" OnRowCommand="grdMEMBERS_RowCommand">
@@ -78,7 +78,8 @@
 
                                 <asp:TemplateField HeaderText="Wallet" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblWallet" runat="server" Text='<%# Eval("Wallet") %>' />
+                                        <%--<asp:Label ID="lblWallet" runat="server" Text='<%# Eval("Wallet") %>' />--%>
+                                        <asp:LinkButton ID="lblWallet" runat="server" OnClick="lnkBlockchain_Click" CommandArgument='<%#Eval("Wallet") %>' Text='<%#Eval("Wallet").ToString().Substring(0,4) + "........" + Eval("Wallet").ToString().Substring(Eval("Wallet").ToString().Length-4,4) %>' Font-Bold="true" ForeColor="#2d3fda"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

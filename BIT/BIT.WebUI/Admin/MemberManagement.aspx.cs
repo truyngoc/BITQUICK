@@ -16,14 +16,24 @@ namespace BIT.WebUI.Admin
         {
             if (!IsPostBack)
             {
-                if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
+                try
                 {
-                    LoadAllAcc();
+                    if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
+                    {
+                        LoadAllAcc();
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Admin/Login.aspx");
+                    }
                 }
-                else
+                catch (Exception)
                 {
                     Response.Redirect("~/Admin/Login.aspx");
+                    throw;
                 }
+                      
+
             }
         }
 
@@ -72,5 +82,30 @@ namespace BIT.WebUI.Admin
             LoadAllAcc();
         }
 
+        public string StatusToString(int status)
+        {
+            switch (status)
+            {
+                case 0:
+                    return "Wait active";
+                case 1:
+                    return "Actived";
+                case 2:
+                    return "Running";
+                case 3:
+                    return "Blocked";
+                default:
+                    return "";
+            }
+        }
+        protected void lnkBlockchain_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+            string yourValue = btn.CommandArgument;
+
+            string url = string.Format("https://blockchain.info/address/{0}", yourValue);
+            string s = "window.open('" + url + "', 'popup_window');";
+            ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);
+        }
     }
 }

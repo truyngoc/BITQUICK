@@ -23,7 +23,7 @@
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Email*</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control email_user" placeholder="Email"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control email_user" placeholder="Email" ></asp:TextBox>
                         </div>
                     </div>
 
@@ -54,6 +54,7 @@
                     <div class="form-group col-lg-12">
                         <div style="text-align: center;" class="col-lg-4">
                             <asp:Button runat="server" ID="btnUpdate" class="btn btn-info" Text="Order Update Information (0.1BTC)" OnClick="btnUpdate_Click"/>
+                            <asp:Button runat="server" ID="btnUpdateAdmin" class="btn btn-info" Text="Update" OnClick="btnUpdateAdmin_Click" Visible="false"/>
                         </div>
                     </div>
 

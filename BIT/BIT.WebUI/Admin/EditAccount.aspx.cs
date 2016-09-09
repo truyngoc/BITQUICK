@@ -31,13 +31,32 @@ namespace BIT.WebUI.Admin
         public void LoadUserInfor()
         {
             int Id;
-            if (HttpContext.Current.Session["BIT_MemberID_Edit"] != null)
+            if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId=="0")
             {
-                Id = Convert.ToInt32(HttpContext.Current.Session["BIT_MemberID_Edit"]);
+                if (Convert.ToInt32(HttpContext.Current.Session["BIT_MemberID_Edit"]) ==0)
+                {
+                    Id = Singleton<BITCurrentSession>.Inst.SessionMember.ID;
+                    
+                }
+                else
+                {
+                    Id = Convert.ToInt32(HttpContext.Current.Session["BIT_MemberID_Edit"]);
+                }
+                    
+                btnUpdateAdmin.Visible = true;
+                btnUpdate.Visible = false;
+                txtFullName.Attributes.Remove("readonly");
+                txtEmail.Attributes.Remove("readonly");
+                txtPhone.Attributes.Remove("readonly");
+                txtWallet.Attributes.Remove("readonly");
             }
             else
             {
                 Id = Singleton<BITCurrentSession>.Inst.SessionMember.ID;
+                txtFullName.Attributes.Add("readonly", "readonly");
+                txtEmail.Attributes.Add("readonly", "readonly");
+                txtPhone.Attributes.Add("readonly","readonly");
+                txtWallet.Attributes.Add("readonly","readonly");
             }
 
             MEMBERS_BC ctlMember = new MEMBERS_BC();
@@ -60,6 +79,7 @@ namespace BIT.WebUI.Admin
             obj.CodeId = hidCodeId.Value;
             obj.Fullname = txtFullName.Text.Trim();
             obj.Phone = txtPhone.Text.Trim();
+            obj.Email = txtEmail.Text.Trim();
             obj.Wallet = txtWallet.Text.Trim();
             return obj;
         }
@@ -123,5 +143,21 @@ namespace BIT.WebUI.Admin
             }
         }
 
+        protected void btnUpdateAdmin_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                try
+                {
+                    MEMBERS obj = GetDataOnForm();
+                    MEMBERS_BC ctlMember = new MEMBERS_BC();
+                    ctlMember.UpdateItem(obj);
+                }
+                catch (Exception ex)
+                {
+                    ShowMessageError(lblMessage, ex.ToString(), true);
+                }
+            }
+        }
     }
 }

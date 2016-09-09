@@ -25,7 +25,7 @@ namespace BIT.WebUI.Admin
                 {
                     //Response.Redirect("PH_DETAIL");
                     btnConfirmGH.Enabled = false;
-                    TNotify.Toastr.Information("Your session working is expired, back to PH detail for continue", "Notify", TNotify.NotifyPositions.toast_top_full_width, true);
+                    //TNotify.Toastr.Information("Your session working is expired, back to PH detail for continue", "Notify", TNotify.NotifyPositions.toast_top_full_width, true);
                 }
 
             }
@@ -68,7 +68,14 @@ namespace BIT.WebUI.Admin
                     var ctlCommandDetail = new COMMAND_DETAIL_BC();
                     try
                     {
-                        ctlCommandDetail.ConfirmGH(new COMMAND_DETAIL { ID = Convert.ToInt32(hidID.Value), ConfirmGH = true, DateConfirmGH = DateTime.Now, Status = (int)Constants.COMMAND_STATUS.Success });
+                        var cmdDetail = ctlCommandDetail.SelectItem(Convert.ToInt32(hidID.Value));
+                        cmdDetail.ConfirmGH = true;
+                        cmdDetail.DateConfirmGH = DateTime.Now;
+                        cmdDetail.Status = (int)Constants.COMMAND_STATUS.Success;
+                        //ctlCommandDetail.ConfirmGH(new COMMAND_DETAIL { ID = Convert.ToInt32(hidID.Value), ConfirmGH = true, DateConfirmGH = DateTime.Now, Status = (int)Constants.COMMAND_STATUS.Success });
+
+
+                        ctlCommandDetail.GH_CONFIRM(cmdDetail);
 
                         TNotify.Toastr.Success("Confirm GH successfull", "Confirm GH", TNotify.NotifyPositions.toast_top_full_width, true);
 

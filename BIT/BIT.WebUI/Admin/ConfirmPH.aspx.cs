@@ -37,7 +37,7 @@ namespace BIT.WebUI.Admin
                 {
                     //Response.Redirect("PH_DETAIL");
                     btnConfirmPH.Enabled = false;
-                    TNotify.Toastr.Information("Your session working is expired, back to PH detail for continue", "Notify", TNotify.NotifyPositions.toast_top_full_width, true);
+                    //TNotify.Toastr.Information("Your session working is expired, back to PH detail for continue", "Notify", TNotify.NotifyPositions.toast_top_full_width, true);
                 }
 
             }

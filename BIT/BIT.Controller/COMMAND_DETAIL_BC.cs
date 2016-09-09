@@ -71,5 +71,10 @@ namespace BIT.Controller
         {
             ctl.ConfirmGH(obj);
         }
+
+        public void GH_CONFIRM(COMMAND_DETAIL obj)
+        {
+            ctl.GH_CONFIRM(obj);
+        }
 	}
 }

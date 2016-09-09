@@ -47,7 +47,7 @@
                     <div class="form-group col-lg-12">
                         <div class="col-lg-3"></div>
                         <div class="col-lg-6">
-                            <asp:Button runat="server" ID="btnConfirmGH" class="btn btn-info" Text="CONFIRM" OnClick="btnConfirmGH_Click"  />
+                            <asp:Button runat="server" ID="btnConfirmGH" class="btn btn-info" Text="CONFIRM" OnClick="btnConfirmGH_Click" OnClientClick="javascript:return confirm('Are you absolutely sure you want to confirm GH?')"  />
                         </div>
                     </div>
                 </div>

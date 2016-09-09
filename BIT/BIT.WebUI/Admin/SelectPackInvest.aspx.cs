@@ -89,7 +89,7 @@ namespace BIT.WebUI.Admin
                     obj.AMOUNT = Convert.ToDecimal(txtTotalAmount.Text);
                     obj.STATUS_PH = 0;
 
-                    Singleton<PACKAGE_TRANSACTION_BC>.Inst.InsertItem(obj);
+                    Singleton<PACKAGE_TRANSACTION_BC>.Inst.InsertItem(obj,Convert.ToInt32(drTimeInvest.SelectedValue));
 
                     TNotify.Alerts.Danger(string.Format("Buy Invest Package {0} Completed", drPackSelectTion.SelectedValue), true);
                     Response.Redirect("../Admin/SelectPackInvest.aspx");
@@ -207,6 +207,7 @@ namespace BIT.WebUI.Admin
 
         public string datecount(object startDate)
         {
+            
             return (DateTime.Now.DayOfYear - Convert.ToDateTime(startDate).DayOfYear).ToString();
         }
 

@@ -47,9 +47,9 @@ namespace BIT.Controller
             return ctl.SelectAllItems().ToList();
         }
 
-        public void InsertItem(PACKAGE_TRANSACTION obj)
+        public void InsertItem(PACKAGE_TRANSACTION obj, int month)
         {
-            ctl.InsertItem(obj);
+            ctl.InsertItem(obj,month);
         }
 
         public PACKAGE_TRANSACTION SelectItem(int id)

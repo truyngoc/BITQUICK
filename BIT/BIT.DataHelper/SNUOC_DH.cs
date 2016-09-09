@@ -54,7 +54,7 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectAllItems",codeID);
         }
 
-        public void InsertItem(PACKAGE_TRANSACTION obj)
+        public void InsertItem(PACKAGE_TRANSACTION obj, int month)
         {
             defaultDB.ExecuteNonQuery("sp_PACKAGE_TRANSACTION_Insert",
             obj.CODEID
@@ -69,7 +69,7 @@ namespace BIT.DataHelper
            ,obj.TRANSACTION_PACKAGE
            ,obj.AMOUNT
            ,obj.STATUS_PH
-                
+           ,month     
            );
         }
 

@@ -49,7 +49,7 @@ namespace BIT.WebUI.Admin
                 imgGHWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}", member.Wallet);
                 lblGHWallet.Text = "Address: " + member.Wallet;
                 txtTotalAmount.Text = cmdDetail.Amount.ToString();
-                linkTransaction.NavigateUrl = cmdDetail.TransactionId;
+                linkTransaction.NavigateUrl = "https://blockchain.info/tx/" + cmdDetail.TransactionId;
                 linkTransaction.Text = cmdDetail.TransactionId;
             }
         }

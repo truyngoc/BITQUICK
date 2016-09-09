@@ -21,15 +21,15 @@ namespace BIT.Controller
     public class PIN_TRANSACTION_BC
 	{
         PIN_TRANSACTION_DH ctl = new PIN_TRANSACTION_DH();
-		
-		public void InsertItem(PH obj)		
+
+        public void InsertItem(PIN_TRANSACTION obj)		
 		{
 			ctl.InsertItem(obj);
 		}
 
-		public void UpdateItem(PH obj)
+        public void UpdateItem(int pin_transaction_id)
 		{
-			ctl.UpdateItem(obj);
+            ctl.UpdateItem(pin_transaction_id);
 		}
 
 		public void DeleteItem(int ID)
@@ -37,40 +37,19 @@ namespace BIT.Controller
 			ctl.DeleteItem(ID);
 		}
 
-		public PH SelectItem(int ID)
+        public PIN_TRANSACTION SelectItem(int ID)
 		{
 			return ctl.SelectItem(ID);
 		}
 
-		public List<PH> SelectAllItems()
+        public List<PIN_TRANSACTION> SelectAllItems(string codeID)
 		{
-			return ctl.SelectAllItems().ToList();
+			return ctl.SelectAllItems(codeID).ToList();
 		}
 		
 		public bool IsExistsItem(int ID)
 		{
 			return ctl.IsExistsItem(ID);
 		}
-
-        // lay so lan PH cua CodeId trong ngay (de check neu qua >=1 thi ko cho PH)
-        public int GetNumberPH(string CodeId)
-        {
-            return ctl.GetNumberPH(CodeId);
-        }
-
-        public List<PH> SelectItemsByCodeId(string CodeId)
-        {
-            return ctl.SelectItemsByCodeId(CodeId).ToList();
-        }
-
-        public List<PH_Info> SelectItemsByNumber(int numberPH)
-        {
-            return ctl.SelectItemsByNumber(numberPH).ToList();
-        }
-
-        public bool Check_Visible_DetailButton(int PH_ID)
-        {
-            return ctl.Check_Visible_DetailButton(PH_ID);
-        }
 	}
 }

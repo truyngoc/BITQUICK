@@ -12,19 +12,18 @@ namespace BIT.Objects
 {
     public class PIN_TRANSACTION
     {
-
         public int ID { get; set; }
-
-        public string CodeId { get; set; }
-
-        public decimal? Amount { get; set; }
-
-        public decimal? CurrentAmount { get; set; }
-
-        public DateTime? CreateDate { get; set; }
-
-        public int? Status { get; set; }
-
+        public int Package_TransactionID { get; set; }
+        public string CODE_ID { get; set; }
+        public int MONTH { get; set; }
+        public decimal AMOUNT { get; set; }
+        public bool CONFIRM_SEND { get; set; }
+        public int STATUS { get; set; }
+        public DateTime CREATE_DATE { get; set; }
+        public string TRANSACTION_PIN { get; set; }
+        public DateTime CONFIRM_DATE { get; set; }
+        public DateTime FROM_DATE { get; set; }
+        public DateTime TO_DATE { get; set; }
     }
 
 

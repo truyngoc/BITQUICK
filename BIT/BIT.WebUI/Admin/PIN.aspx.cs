@@ -19,10 +19,6 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
-                if (hidPack.Value != string.Empty)
-                {
-                    drPackSelectTion.SelectedIndex = Convert.ToInt32(hidPack.Value);
-                }
                 if (hidMonth.Value != string.Empty)
                 {
                     drTimeInvest.SelectedIndex = Convert.ToInt32(hidMonth.Value);
@@ -32,12 +28,12 @@ namespace BIT.WebUI.Admin
                 {
                     if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
                     {
-                        Response.Redirect("../Admin/AdminSelectPackInvest.aspx");
+                        Response.Redirect("../Admin/AdminPin.aspx");
                     }
                     else
                     {
                         loadPackInfo();
-                        getSpackage();
+                    
                         bindDataList();
                         getAdminWallet();
                     }
@@ -59,133 +55,91 @@ namespace BIT.WebUI.Admin
                 TNotify.Toastr.Warning("Wrong transaction password, please try again", "Error", TNotify.NotifyPositions.toast_top_full_width, true);
                 return;
             }
-            if (!Singleton<PACKAGE_TRANSACTION_BC>.Inst.isAllPackageExpire(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId))
+
+            try
             {
-                try
+                //get temp object to insert, start date ,end date, expired date will be update after admin confirm transaction
+                PACKAGE_TRANSACTION obj = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectActiveItem(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
+                PIN_TRANSACTION objPIN = new PIN_TRANSACTION();
+                objPIN.CODE_ID = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+                objPIN.AMOUNT = Convert.ToDecimal(txtTotalAmount.Text);
+                objPIN.CONFIRM_DATE = DateTime.Now;
+                objPIN.CONFIRM_SEND = false;
+                objPIN.CREATE_DATE = DateTime.Now;
+                objPIN.FROM_DATE = DateTime.Now;
+                switch (drTimeInvest.SelectedValue)
                 {
-                    //get temp object to insert, start date ,end date, expired date will be update after admin confirm transaction
-                    PACKAGE_TRANSACTION obj = new PACKAGE_TRANSACTION();
-                    obj.CODEID = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
-                    obj.PACKAGEID = Convert.ToInt32(drPackSelectTion.SelectedValue);
-                    obj.START_DATE = DateTime.Now;
-                    switch (drTimeInvest.SelectedValue)
-                    {
-                        case "1":
-                            obj.END_DATE = DateTime.Now.AddMonths(1);
-                            break;
-                        case "2":
-                            obj.END_DATE = DateTime.Now.AddMonths(2);
-                            break;
-                        case "3":
-                            obj.END_DATE = DateTime.Now.AddMonths(3);
-                            break;
-                    }
-                    obj.EXPIRED = 0;
-                    obj.GH1 = DateTime.Now.AddDays(45);
-                    obj.GH2 = DateTime.Now.AddDays(90);
-                    obj.STATUS_GH = 0;
-                    obj.CREATE_DATE = DateTime.Now;
-                    obj.TRANSACTION_PACKAGE = txtTransaction.Text;
-                    obj.AMOUNT = Convert.ToDecimal(txtTotalAmount.Text);
-                    obj.STATUS_PH = 0;
-
-                    Singleton<PACKAGE_TRANSACTION_BC>.Inst.InsertItem(obj, Convert.ToInt32(drTimeInvest.SelectedValue));
-
-                    TNotify.Alerts.Danger(string.Format("Buy Invest Package {0} Completed", drPackSelectTion.SelectedValue), true);
-                    Response.Redirect("../Admin/SelectPackInvest.aspx");
-
+                    case "1":
+                        objPIN.TO_DATE = DateTime.Now.AddMonths(1);
+                        break;
+                    case "2":
+                        objPIN.TO_DATE = DateTime.Now.AddMonths(2);
+                        break;
+                    case "3":
+                        objPIN.TO_DATE = DateTime.Now.AddMonths(3);
+                        break;
                 }
-                catch (Exception ex)
-                {
-                    TNotify.Toastr.Warning("Error occur ! Please try again", "Error", TNotify.NotifyPositions.toast_top_full_width, true);
-                }
+
+                objPIN.TRANSACTION_PIN = txtTransaction.Text;
+
+
+                Singleton<PIN_TRANSACTION_BC>.Inst.InsertItem(objPIN);
+
+                TNotify.Alerts.Danger(string.Format("Extend Invest Package {0} Completed", lblCurrentPack.Text), true);
+                Response.Redirect("../Admin/PIN.aspx");
+
             }
-            else
+            catch (Exception ex)
             {
-                TNotify.Alerts.Danger(string.Format("You have Invest Package not complete, please check your Invest Package !", drPackSelectTion.SelectedValue), true);
+                TNotify.Toastr.Warning("Error occur ! Please try again", "Error", TNotify.NotifyPositions.toast_top_full_width, true);
             }
         }
 
         private void loadPackInfo()
         {
             //load packinfo
+            PACKAGE_TRANSACTION pckActive = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectActiveItem(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
+            lblCurrentPack.Text = pckActive.PACKAGEID.ToString();
+
             //PIN spin = Singleton
         }
 
-        public void getSpackage()
-        {
-            List<SPACKAGE> lstPackage = Singleton<SPACKAGE_BC>.Inst.SelectAllItems();
-
-            drPackSelectTion.DataSource = lstPackage;
-            drPackSelectTion.DataValueField = "PackageID";
-            drPackSelectTion.DataTextField = "PackageID";
-            drPackSelectTion.DataBind();
-        }
 
         public void bindDataList()
         {
-            List<PACKAGE_TRANSACTION> lstPackage = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectAllItemsByCodeID(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
+            List<PIN_TRANSACTION> lstPackage = Singleton<PIN_TRANSACTION_BC>.Inst.SelectAllItems(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
             grdListPH.DataSource = lstPackage;
             grdListPH.DataBind();
-        }
-
-        protected void drPackSelectTion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            hidPack.Value = drPackSelectTion.SelectedIndex.ToString();
-            //HttpContext.Current.Session["PackSelect"] = drPackSelectTion.SelectedIndex;
-            switch (drPackSelectTion.SelectedValue)
-            {
-                case "1":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.2).ToString();
-                    break;
-                case "2":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.25).ToString();
-                    //extendValue = (decimal)0.25;
-                    break;
-                case "3":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
-                    //extendValue = (decimal)0.3;
-                    break;
-                case "4":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
-                    //extendValue = (decimal)0.3;
-                    break;
-                case "5":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
-                    //extendValue = (decimal)0.3;
-                    break;
-            }
-
         }
 
         protected void drTimeInvest_SelectedIndexChanged(object sender, EventArgs e)
         {
             hidMonth.Value = drTimeInvest.SelectedIndex.ToString();
             //HttpContext.Current.Session["MonthSelect"] = drTimeInvest.SelectedIndex;
-            switch (drPackSelectTion.SelectedValue)
+            string currentPack = lblCurrentPack.Text;
+            switch (currentPack)
             {
                 case "1":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.2).ToString();
+                    txtTotalAmount.Text = (Convert.ToInt32(drTimeInvest.SelectedValue) * 0.2).ToString();
                     break;
                 case "2":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.25).ToString();
+                    txtTotalAmount.Text = (Convert.ToInt32(drTimeInvest.SelectedValue) * 0.25).ToString();
                     //extendValue = (decimal)0.25;
                     break;
                 case "3":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
+                    txtTotalAmount.Text = (Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
                     //extendValue = (decimal)0.3;
                     break;
                 case "4":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
+                    txtTotalAmount.Text = ( Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
                     //extendValue = (decimal)0.3;
                     break;
                 case "5":
-                    txtTotalAmount.Text = (Convert.ToInt32(drPackSelectTion.SelectedValue) + Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
+                    txtTotalAmount.Text = (Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
                     //extendValue = (decimal)0.3;
                     break;
             }
         }
-
 
         public string getStatus(object statusPH)
         {
@@ -204,7 +158,6 @@ namespace BIT.WebUI.Admin
 
         public string datecount(object startDate)
         {
-
             return (DateTime.Now.DayOfYear - Convert.ToDateTime(startDate).DayOfYear).ToString();
         }
 

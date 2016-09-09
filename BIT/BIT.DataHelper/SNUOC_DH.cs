@@ -49,6 +49,12 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectItemByID", id).FirstOrDefault();
         }
 
+        public PACKAGE_TRANSACTION SelectActiveItem(string codeId)
+        {
+            return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectActivePackage", codeId).FirstOrDefault();
+        }
+        
+
         public IEnumerable<PACKAGE_TRANSACTION> SelectAllItemsByCodeID(string codeID)
         {
             return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectAllItems",codeID);

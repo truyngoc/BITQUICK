@@ -114,6 +114,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
+                                        <asp:LinkButton runat="server" ID="lnkExtend" Visible='<%# getExtendVisible( Eval("END_DATE"),Eval("STATUS_GH")) %>' type="submit" class="btn btn-success" Text="Extend" OnClick="lnkExtend_Click" />
                                         <asp:LinkButton runat="server" ID="btnGH1" Visible='<%# getGH1Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH1" OnClick="btnGH1_Click" />
                                         <asp:LinkButton runat="server" ID="btnGH2" Visible='<%# getGH2Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH2" OnClick="btnGH2_Click" />
                                     </a>

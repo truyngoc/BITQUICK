@@ -287,5 +287,20 @@ namespace BIT.WebUI.Admin
             imgAdminWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}",admWallet);
             lblAdminWallet.Text = admWallet;
         }
+
+        protected void lnkExtend_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Pin.aspx");
+        }
+
+        public bool getExtendVisible(object enddate, object statusGH)
+        {
+            bool b = false;
+            if(Convert.ToDateTime(enddate) > DateTime.Now && statusGH.ToString() != "2")
+            {
+                b = true;
+            }
+            return b;
+        }
     }
 }

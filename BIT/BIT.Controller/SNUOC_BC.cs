@@ -57,6 +57,11 @@ namespace BIT.Controller
             return ctl.SelectItem(id);
         }
 
+        public PACKAGE_TRANSACTION SelectActiveItem(string CodeID)
+        {
+            return ctl.SelectActiveItem(CodeID);
+        }
+        
         public List<PACKAGE_TRANSACTION> SelectAllItemsByCodeID(string codeID)
         {
             return ctl.SelectAllItemsByCodeID(codeID).ToList<PACKAGE_TRANSACTION>();

@@ -24,10 +24,9 @@
                             </div>
                     </div>
                     <div class="form-group col-lg-12">
-                            <label class="control-label col-lg-3">Select Pack</label>
+                            <label class="control-label col-lg-3">Selected Invest Pack</label>
                             <div class="col-lg-6">
-                                <asp:DropDownList runat="server" ID="drPackSelectTion" OnSelectedIndexChanged="drPackSelectTion_SelectedIndexChanged" AutoPostBack="true" Enabled="false">
-                                </asp:DropDownList> BTC
+                                <asp:Label ID="lblCurrentPack" runat="server"></asp:Label>
                             </div>
                         </div>
                         <div class="form-group col-lg-12">
@@ -41,7 +40,7 @@
                             </div>
                         </div>
                     <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">Total Amount</label>
+                        <label class="control-label col-lg-3">Amount</label>
                         <div class="col-lg-6">
                             <asp:TextBox runat="server" ID="txtTotalAmount" CssClass="form-control" placeholder="Total payment: Invest Pack + Extend Fee" Enabled="false">1.2</asp:TextBox>
                         </div>
@@ -95,20 +94,20 @@
                                     <asp:Label runat="server" ID="lblPHTime" Text='<%# Eval("CREATE_DATE") %>'></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblAmount" Text='<%# Eval("PACKAGEID") %>'> </asp:Label>BTC
+                                    <asp:Label runat="server" ID="lblAmount" Text=''> </asp:Label>BTC
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblStartDate" Text='<%# Eval("START_DATE") %>' />
+                                    <asp:Label runat="server" ID="lblStartDate" Text='<%# Eval("FROM_DATE") %>' />
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblEndDate" Text='<%# Eval("END_DATE") %>'></asp:Label>
+                                    <asp:Label runat="server" ID="lblEndDate" Text='<%# Eval("TO_DATE") %>'></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="Label1" Text='<%# datecount(Eval("START_DATE")) %>'></asp:Label>
+                                    <asp:Label runat="server" ID="Label1" Text='<%# datecount(Eval("CREATE_DATE")) %>'></asp:Label>
                                 </td>
                                 <td>
                                     <span class="label label-primary">
-                                        <asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("STATUS_PH"),Eval("STATUS_GH")) %>'></asp:Label>
+                                        <asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("STATUS")) %>'></asp:Label>
                                     </span>
                                 </td>
                                 <td>

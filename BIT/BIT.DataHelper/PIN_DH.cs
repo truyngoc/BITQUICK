@@ -22,17 +22,28 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 namespace BIT.DataHelper
 {
     public class PIN_TRANSACTION_DH : DataAccessBase
-	{	
-		public void InsertItem(PH obj)
+	{
+        public void InsertItem(PIN_TRANSACTION obj)
 		{
-			defaultDB.ExecuteNonQuery("sp_PH_Insert"
-				, obj.CodeId, obj.Amount, obj.CurrentAmount, obj.CreateDate, obj.Status);
+            defaultDB.ExecuteNonQuery("sp_PIN_TRANSACTION_Insert",
+                obj.Package_TransactionID
+           ,obj.CODE_ID
+           ,obj.MONTH
+           ,obj.AMOUNT
+           ,obj.CONFIRM_SEND
+           ,obj.STATUS
+           ,obj.CREATE_DATE
+           ,obj.TRANSACTION_PIN
+           ,obj.CONFIRM_DATE
+           ,obj.FROM_DATE
+           ,obj.TO_DATE
+		);
 		}
 
-		public void UpdateItem(PH obj)
+        public void UpdateItem(int pin_transaction_id)
 		{
-			defaultDB.ExecuteNonQuery("sp_PH_Update"
-				, obj.ID, obj.CodeId, obj.Amount, obj.CurrentAmount, obj.CreateDate, obj.Status);
+            defaultDB.ExecuteNonQuery("sp_PIN_TRANSACTION_Update"
+                , pin_transaction_id);
 		}
 
 		public void DeleteItem(int ID)
@@ -41,15 +52,16 @@ namespace BIT.DataHelper
 				, ID);
 		}
 
-		public PH SelectItem(int ID)
+		public PIN_TRANSACTION SelectItem(int ID)
 		{
-			return defaultDB.ExecuteSprocAccessor<PH>("sp_PH_SelectItem"
+            return defaultDB.ExecuteSprocAccessor<PIN_TRANSACTION>("sp_PIN_TRANSACTION_SelectItem"
 				, ID).FirstOrDefault();
 		}
 
-		public IEnumerable<PH> SelectAllItems()
+
+        public IEnumerable<PIN_TRANSACTION> SelectAllItems(string codeID)
 		{
-			return defaultDB.ExecuteSprocAccessor<PH>("sp_PH_SelectAllItems");
+            return defaultDB.ExecuteSprocAccessor<PIN_TRANSACTION>("sp_PIN_TRANSACTION_SelectAllItem",codeID);
 		}
 
 		public bool IsExistsItem(int ID)
@@ -75,25 +87,5 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<PH>("sp_PH_SelectItemsByCodeId", CodeId);
         }
 
-        public IEnumerable<PH_Info> SelectItemsByNumber(int numberPH)
-        {
-            return defaultDB.ExecuteSprocAccessor<PH_Info>("sp_PH_SelectItemsByNumber",numberPH);
-        }
-
-        public void UpdateStatusWithTrans(DbTransaction trans, int ID, int Status)
-        {
-            defaultDB.ExecuteNonQuery(trans, "sp_PH_UpdateStatus"
-                , ID, Status);
-        }
-
-        public bool Check_Visible_DetailButton(int PH_ID)
-        {
-            var iCount = defaultDB.ExecuteScalar("sp_PH_Check_Visible_DetailButton", PH_ID);
-
-            if (Convert.ToInt32(iCount) > 0)
-                return true;
-            else
-                return false;
-        }        
 	}
 }

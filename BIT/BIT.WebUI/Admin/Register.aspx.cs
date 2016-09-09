@@ -45,7 +45,7 @@ namespace BIT.WebUI.Admin
                     string a = Request.Params[0];
 
                     string strUserName = GiaiMa(a);
-                    if (String.IsNullOrEmpty(""))
+                    if (String.IsNullOrEmpty("strUserName"))
                     {
                         return;
                     }

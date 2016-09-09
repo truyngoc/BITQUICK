@@ -19,23 +19,30 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
-                if (hidMonth.Value != string.Empty)
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    drTimeInvest.SelectedIndex = Convert.ToInt32(hidMonth.Value);
+                    Response.Redirect("~/Admin/Login.aspx");
                 }
-                //}
-                if (Singleton<BITCurrentSession>.Inst.isLoginUser)
+                else
                 {
-                    if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
+                    if (hidMonth.Value != string.Empty)
                     {
-                        Response.Redirect("../Admin/AdminPin.aspx");
+                        drTimeInvest.SelectedIndex = Convert.ToInt32(hidMonth.Value);
                     }
-                    else
+                    //}
+                    if (Singleton<BITCurrentSession>.Inst.isLoginUser)
                     {
-                        loadPackInfo();
-                    
-                        bindDataList();
-                        getAdminWallet();
+                        if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
+                        {
+                            Response.Redirect("../Admin/AdminPin.aspx");
+                        }
+                        else
+                        {
+                            loadPackInfo();
+
+                            bindDataList();
+                            getAdminWallet();
+                        }
                     }
                 }
             }
@@ -131,7 +138,7 @@ namespace BIT.WebUI.Admin
                     //extendValue = (decimal)0.3;
                     break;
                 case "4":
-                    txtTotalAmount.Text = ( Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
+                    txtTotalAmount.Text = (Convert.ToInt32(drTimeInvest.SelectedValue) * 0.3).ToString();
                     //extendValue = (decimal)0.3;
                     break;
                 case "5":

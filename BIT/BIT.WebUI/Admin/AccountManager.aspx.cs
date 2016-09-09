@@ -16,6 +16,12 @@ namespace BIT.WebUI.Admin
         {
             if (!IsPostBack)
             {
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
+                {
+                    Response.Redirect("~/Admin/Login");
+                }
+                else
+                { }
                 //if (Singleton<BITCurrentSession>.Inst.SessionMember.IsAdmin==1)
                 //{
                 //    LoadAllAcc(); 

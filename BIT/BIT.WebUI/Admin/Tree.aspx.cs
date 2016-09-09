@@ -23,7 +23,7 @@ namespace BIT.WebUI.Admin
             {
                 if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    Response.Redirect("~/Admin/Login");
+                    Response.Redirect("~/Admin/Login.aspx");
                 }
                 else
                 {

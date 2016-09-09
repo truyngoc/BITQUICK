@@ -58,8 +58,15 @@ namespace BIT.WebUI.Admin
         {
             if (!IsPostBack)
             {
-                LoadListMember();
-                LoadCommandDetails();
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
+                {
+                    Response.Redirect("~/Admin/Login.aspx");
+                }
+                else
+                {
+                    LoadListMember();
+                    LoadCommandDetails();
+                }
             }
         }
 

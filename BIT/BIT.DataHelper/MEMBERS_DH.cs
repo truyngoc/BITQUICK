@@ -91,7 +91,7 @@ namespace BIT.DataHelper
 
         public bool IsExistsItem(string user_name,string wallet)
         {
-            IDataReader dr = defaultDB.ExecuteReader("sp_MEMBERS_SelectItemByUserName"
+            IDataReader dr = defaultDB.ExecuteReader("sp_MEMBERS_SelectItemByUserNameW"
                 , user_name,wallet);
 
             bool bol = dr.Read();

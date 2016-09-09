@@ -16,24 +16,30 @@ namespace BIT.WebUI.Admin
         {
             if (!IsPostBack)
             {
-                try
-                {
-                    if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
-                    {
-                        LoadAllAcc();
-                    }
-                    else
-                    {
-                        Response.Redirect("~/Admin/Login.aspx");
-                    }
-                }
-                catch (Exception)
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
                     Response.Redirect("~/Admin/Login.aspx");
-                    throw;
                 }
-                      
+                else
+                {
+                    try
+                    {
+                        if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
+                        {
+                            LoadAllAcc();
+                        }
+                        else
+                        {
+                            Response.Redirect("~/Admin/Login.aspx");
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Response.Redirect("~/Admin/Login.aspx");
+                        throw;
+                    }
 
+                }
             }
         }
 

@@ -20,26 +20,34 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
-                if (hidPack.Value != string.Empty)
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    drPackSelectTion.SelectedIndex = Convert.ToInt32( hidPack.Value);
+                    Response.Redirect("~/Admin/Login.aspx");
                 }
-                if (hidMonth.Value != string.Empty)
+                else
                 {
-                    drTimeInvest.SelectedIndex = Convert.ToInt32(hidMonth.Value);
-                }
-                //}
-                if (Singleton<BITCurrentSession>.Inst.isLoginUser)
-                {
-                    if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
+
+                    if (hidPack.Value != string.Empty)
                     {
-                        Response.Redirect("../Admin/AdminSelectPackInvest.aspx");
+                        drPackSelectTion.SelectedIndex = Convert.ToInt32(hidPack.Value);
                     }
-                    else
+                    if (hidMonth.Value != string.Empty)
                     {
-                        getSpackage();
-                        bindDataList();
-                        getAdminWallet();
+                        drTimeInvest.SelectedIndex = Convert.ToInt32(hidMonth.Value);
+                    }
+                    //}
+                    if (Singleton<BITCurrentSession>.Inst.isLoginUser)
+                    {
+                        if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
+                        {
+                            Response.Redirect("../Admin/AdminSelectPackInvest.aspx");
+                        }
+                        else
+                        {
+                            getSpackage();
+                            bindDataList();
+                            getAdminWallet();
+                        }
                     }
                 }
             }

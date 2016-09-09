@@ -32,7 +32,7 @@ namespace BIT.WebUI.Admin
                 ViewState["strLink"] = value;
             }
         }
-        bool newRegist = false;
+        public static bool newRegist = false;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -56,6 +56,7 @@ namespace BIT.WebUI.Admin
                     }
                     else
                     {
+                        newRegist = true;
                         lblUserNameSponsor.Text = obj.CodeId;
                     }
                 }

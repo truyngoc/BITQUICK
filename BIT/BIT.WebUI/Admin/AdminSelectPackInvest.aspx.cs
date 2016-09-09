@@ -21,6 +21,7 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
+
                 if (Singleton<BITCurrentSession>.Inst.isLoginUser && Singleton<BITCurrentSession>.Inst.SessionMember.CodeId == "0")
                 {
                     bindDataList();

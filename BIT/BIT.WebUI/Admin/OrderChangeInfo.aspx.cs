@@ -11,7 +11,12 @@ namespace BIT.WebUI.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
+            //{
+            //    Response.Redirect("~/Admin/Login.aspx");
+            //}
+            //else
+            //{ }
         }
     }
 }

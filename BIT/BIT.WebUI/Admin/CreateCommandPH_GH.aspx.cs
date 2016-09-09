@@ -133,12 +133,19 @@ namespace BIT.WebUI.Admin
         {
             if (!IsPostBack)
             {
-                ResetAllSessionList();
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
+                {
+                    Response.Redirect("~/Admin/Login.aspx");
+                }
+                else
+                {
+                    ResetAllSessionList();
 
-                LoadListPH();
-                LoadListGH();
-                LoadListAdminGH();
-                LoadListMember();
+                    LoadListPH();
+                    LoadListGH();
+                    LoadListAdminGH();
+                    LoadListMember();
+                }
             }
         }
 

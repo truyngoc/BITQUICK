@@ -46,14 +46,14 @@
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Wallet*</label>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtWallet" CssClass="form-control" placeholder="Wallet" ReadOnly></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtWallet" CssClass="form-control" placeholder="Wallet" ></asp:TextBox>
                             <asp:RequiredFieldValidator ErrorMessage="Enter your wallet" ControlToValidate="txtWallet" runat="server" ForeColor="#cc0066" Text="Enter your wallet" Display="Dynamic" />
                         </div>
                     </div>
 
                     <div class="form-group col-lg-12">
-                        <div style="text-align: center;" class="col-lg-12">
-                            <asp:Button runat="server" ID="btnUpdate" class="btn btn-info" Text="Order Update Information (0.1BTC)" OnClick="btnUpdate_Click" />
+                        <div style="text-align: center;" class="col-lg-4">
+                            <asp:Button runat="server" ID="btnUpdate" class="btn btn-info" Text="Order Update Information (0.1BTC)" OnClick="btnUpdate_Click"/>
                         </div>
                     </div>
 
@@ -72,51 +72,5 @@
             </div>
         </section>
     </section>
-    <section class="wrapper">
-                <!--ss Gridview GH-->
-        <section class="panel">
-            <div class="table-responsive" runat="server" id="divTable">
-                <%--<asp:DataList ID="grdListPH" runat="server" class="table table-hover p-table">
-                <HeaderTemplate>--%>
-                <table class="table table-hover p-table table-responsive">
-                    <tr>
-                        <th>No.</th>
-                        <th>GH Time</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                    <%--</HeaderTemplate>
-                <ItemTemplate>--%>
-                    <tr>
-                        <td>1
-                        </td>
-                        <td>
-                            <%--<asp:Label runat="server" ID="lblPHTime" Text=' <%#Eval("Date_Send")%>'></asp:Label>--%>
-                        </td>
-                        <td>3
-                            <%--<asp:Label runat="server" ID="lblAmount" Text=' <%#Eval("Amount")%>'></asp:Label>--%>
-                        </td>
-                        <td>
-                            <span class="label label-primary">Pending
-                                <%--<asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("Status").ToString())%> '></asp:Label>--%>
-                            </span>
-                        </td>
-                        <td>
-                            <a href="#">
-                                <asp:LinkButton runat="server" ID="btnDetail" type="submit" class="btn btn-success" Text="Details" OnClick="btnDetail_Click" />
-                                <%--<asp:LinkButton runat="server" ID="btnReceive" Visible='<%# enableGH(Eval("Date_send"),Eval("Status")) %>' OnClick="btnReceive_Click" CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="Receive" />--%>
-                            </a>
-                        </td>
-                    </tr>
-                    <%--</ItemTemplate>
-                <FooterTemplate>--%>
-                </table>
-                <%-- </FooterTemplate>
-            </asp:DataList>--%>
-            </div>
-        </section>
-        <!--end of ss Gridview GH-->
 
-    </section>
 </asp:Content>

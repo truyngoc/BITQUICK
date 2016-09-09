@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-12">
-                        <div class="col-lg-offset-2 col-lg-10">
+                        <div class="col-lg-offset-2 col-lg-3 ">
                             <asp:Button runat="server" ID="btnChangePass" CssClass="btn btn-info" Text="Change Password PIN" OnClick="btnChangePass_Click" />
                         </div>
                     </div>

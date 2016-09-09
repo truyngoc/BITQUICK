@@ -19,15 +19,16 @@ namespace BIT.WebUI.Admin
             {
                 if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    Response.Redirect("~/Admin/Login");
+                    Response.Redirect("~/Admin/Login.aspx");
                 }
                 else
                 {
                     LoadUserInfor();
 
-                    //txtUserName.Attributes.Add("readonly", "readonly");
-                    //txtEmail.Attributes.Add("readonly", "readonly");
-                    //txtSysWallet.Attributes.Add("readonly", "readonly");
+                    txtEmail.Attributes.Add("readonly", "readonly");
+                    txtFullName.Attributes.Add("readonly", "readonly");
+                    txtPhone.Attributes.Add("readonly", "readonly");
+                    txtWallet.Attributes.Add("readonly", "readonly");
                 }
             }
         }
@@ -103,6 +104,11 @@ namespace BIT.WebUI.Admin
         {
             lblMsgErr.Text = sMsgErr;
             lblMsgErr.Visible = bVisible;
+        }
+
+        protected void btnDetail_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

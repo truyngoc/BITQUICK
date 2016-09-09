@@ -202,13 +202,13 @@
 
                                     <asp:TemplateField HeaderText="Sender" ItemStyle-HorizontalAlign="Left">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblSender" runat="server" Text='<%# Eval("CodeId_From") %>' />
+                                            <asp:Label ID="lblSender" runat="server" Text='<%# AccountBriefInfoByCodeId(Eval("CodeId_From").ToString()) %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Receiver" ItemStyle-HorizontalAlign="Left">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblSender" runat="server" Text='<%# Eval("CodeId_To") %>' />
+                                            <asp:Label ID="lblSender" runat="server" Text='<%# AccountBriefInfoByCodeId(Eval("CodeId_To").ToString()) %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 

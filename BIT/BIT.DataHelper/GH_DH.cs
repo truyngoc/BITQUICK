@@ -93,5 +93,15 @@ namespace BIT.DataHelper
 
             return Convert.ToInt32(iRet);
         }
+
+        public bool Check_Visible_DetailButton(int GH_ID)
+        {
+            var iCount = defaultDB.ExecuteScalar("sp_GH_Check_Visible_DetailButton", GH_ID);
+
+            if (Convert.ToInt32(iCount) > 0)
+                return true;
+            else
+                return false;
+        }
 	}
 }

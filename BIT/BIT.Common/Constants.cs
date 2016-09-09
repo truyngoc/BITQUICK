@@ -37,21 +37,24 @@ namespace BIT.Common
         {
             Waiting = 0,
             Pending = 1,
-            Success = 2
+            Success = 2,
+            Expired = 3
         }
 
         public enum GH_STATUS
         {
             Waiting = 0,
             Pending = 1,
-            Success = 2
+            Success = 2,
+            Expired = 3
         }
 
         public enum COMMAND_STATUS
         {
             Pending = 0,
             PH_Success = 1,
-            Success = 2
+            Success = 2,
+            Expired = 3
         }
     }
 }

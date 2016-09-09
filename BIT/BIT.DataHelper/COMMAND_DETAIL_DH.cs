@@ -68,6 +68,22 @@ namespace BIT.DataHelper
 			
 			return bol;
 		}
-		
+
+
+        public IEnumerable<COMMAND_DETAIL> SelectItemsByPhId(int PH_ID)
+        {
+            return defaultDB.ExecuteSprocAccessor<COMMAND_DETAIL>("sp_PH_GetListCommandDetails", PH_ID);
+        }
+
+        public IEnumerable<COMMAND_DETAIL> SelectItemsByGhId(int GH_ID)
+        {
+            return defaultDB.ExecuteSprocAccessor<COMMAND_DETAIL>("sp_GH_GetListCommandDetails", GH_ID);
+        }
+
+        public void ConfirmPH(COMMAND_DETAIL obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_COMMAND_DETAIL_ConfirmPH"
+                , obj.ID, obj.TransactionId, obj.ConfirmPH, obj.DateConfirmPH, obj.Status);
+        }
 	}
 }

@@ -93,7 +93,7 @@
         <!--ss Gridview PH-->
         <section class="panel">
             <div class="table-responsive">
-                <asp:GridView ID="grdPH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
+                <asp:GridView ID="grdPH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50" OnRowCommand="grdPH_OnRowCommand"
                     OnPageIndexChanging="OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None">
                     <Columns>
                         <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
@@ -122,7 +122,7 @@
 
                         <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" ID="btnDetail" type="submit" class="btn btn-success" Text="Details" OnClick="btnDetail_Click" />
+                                <asp:LinkButton runat="server" ID="btnDetail" type="submit" class="btn btn-success" Text="Details" CommandArgument='<%# Eval("ID") %>' CommandName="CmdDetail" Visible='<%# VisibleDetailButton((int)Eval("ID")) %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

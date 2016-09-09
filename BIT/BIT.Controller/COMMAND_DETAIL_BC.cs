@@ -51,6 +51,20 @@ namespace BIT.Controller
 		{
 			return ctl.IsExistsItem(ID);
 		}
-			
+
+        public List<COMMAND_DETAIL> SelectItemsByPhId(int PH_ID)
+        {
+            return ctl.SelectItemsByPhId(PH_ID).ToList();
+        }
+
+        public List<COMMAND_DETAIL> SelectItemsByGhId(int GH_ID)
+        {
+            return ctl.SelectItemsByGhId(GH_ID).ToList();
+        }
+
+        public void ConfirmPH(COMMAND_DETAIL obj)
+        {
+            ctl.ConfirmPH(obj);
+        }
 	}
 }

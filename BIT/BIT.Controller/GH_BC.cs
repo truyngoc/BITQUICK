@@ -67,5 +67,10 @@ namespace BIT.Controller
         {
             return ctl.SelectAdminMemberGH().ToList();
         }
+
+        public bool Check_Visible_DetailButton(int GH_ID)
+        {
+            return ctl.Check_Visible_DetailButton(GH_ID);
+        }
 	}
 }

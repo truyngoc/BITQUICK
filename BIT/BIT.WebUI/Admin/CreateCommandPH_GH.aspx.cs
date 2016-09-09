@@ -110,6 +110,19 @@ namespace BIT.WebUI.Admin
             }
             set { HttpContext.Current.Session["CreateCommandPH_LIST_COMMAND_DETAIL"] = value; }
         }
+
+        public List<MEMBERS> LIST_MEMBERS
+        {
+            get
+            {
+                if (HttpContext.Current.Session["CreateCommandPH_GH_LIST_MEMBERS"] != null)
+                {
+                    return HttpContext.Current.Session["CreateCommandPH_GH_LIST_MEMBERS"] as List<MEMBERS>;
+                }
+                return null;
+            }
+            set { HttpContext.Current.Session["CreateCommandPH_GH_LIST_MEMBERS"] = value; }
+        }
         #endregion
 
         private PH_BC ctlPH = new PH_BC();
@@ -120,9 +133,12 @@ namespace BIT.WebUI.Admin
         {
             if (!IsPostBack)
             {
+                ResetAllSessionList();
+
                 LoadListPH();
                 LoadListGH();
                 LoadListAdminGH();
+                LoadListMember();
             }
         }
 
@@ -173,6 +189,14 @@ namespace BIT.WebUI.Admin
 
             grdAdminList.DataSource = ListAdminGH;
             grdAdminList.DataBind();
+        }
+
+        public void LoadListMember()
+        {
+            if (this.LIST_MEMBERS == null)
+            {
+                this.LIST_MEMBERS = Singleton<MEMBERS_BC>.Inst.SelectAllItems();
+            }
         }
 
 
@@ -249,6 +273,7 @@ namespace BIT.WebUI.Admin
             this.ListAdminGH_FINAL = null;
             this.COMMAND = null;
             this.LIST_COMMAND_DETAIL = null;
+            this.LIST_MEMBERS = null;
             
             LoadListPH();
             LoadListGH();
@@ -341,6 +366,13 @@ namespace BIT.WebUI.Admin
             }
         }
 
+        public string AccountBriefInfoByCodeId(string CodeId)
+        {
+            var user = LIST_MEMBERS.Where(m => m.CodeId == CodeId).SingleOrDefault();
+            string briefInfo = user.Username + "/" + user.Phone;
+
+            return briefInfo;
+        }
         #endregion
 
         #region "button click"
@@ -379,13 +411,14 @@ namespace BIT.WebUI.Admin
             // kiem tra danh sach PH, GH 
             if (_listPH.Count > 0 && _listGH.Count > 0)
             {
-                XepLenh(_listPH, _listGH, ref command, ref _ListCommand);
-
-                BindCommand(_ListCommand);
+                XepLenh(_listPH, _listGH, ref command, ref _ListCommand);                
 
                 // gan session
                 this.COMMAND = command;
                 this.LIST_COMMAND_DETAIL = _ListCommand;
+
+                // bind danh sach lenh
+                BindCommand(LIST_COMMAND_DETAIL);
 
             }
             else
@@ -393,6 +426,7 @@ namespace BIT.WebUI.Admin
                 // ko co thi dua ra thong bao
                 TNotify.Alerts.Danger("List GH or PH is empty", true);
             }
+            
         }
         protected void btnSaveCommand_Click(object sender, EventArgs e)
         {
@@ -419,6 +453,8 @@ namespace BIT.WebUI.Admin
             {
                 TNotify.Alerts.Danger(ex.Message, true);
             }
+
+            Response.Redirect("CreateCommandPH_GH");
 
         }
         #endregion
@@ -468,6 +504,10 @@ namespace BIT.WebUI.Admin
                                         PH_ID = p.ID
                                         ,
                                         GH_ID = g.ID
+                                        ,
+                                        ConfirmGH = false
+                                        ,
+                                        ConfirmPH = false
                                     };
                                     // ----------------- //                                    
                                     _ListCommand.Add(cmd_detail);
@@ -511,6 +551,10 @@ namespace BIT.WebUI.Admin
                                         PH_ID = p.ID
                                         ,
                                         GH_ID = g.ID
+                                        ,
+                                        ConfirmGH = false
+                                        ,
+                                        ConfirmPH = false
                                     };
                                     // ----------------- //                                    
                                     _ListCommand.Add(cmd_detail);
@@ -546,6 +590,10 @@ namespace BIT.WebUI.Admin
                                         PH_ID = p.ID
                                         ,
                                         GH_ID = g.ID
+                                        ,
+                                        ConfirmGH = false
+                                        ,
+                                        ConfirmPH = false
                                     };
                                     // ----------------- //
                                     _ListCommand.Add(cmd_detail);
@@ -574,6 +622,10 @@ namespace BIT.WebUI.Admin
                                         PH_ID = p.ID
                                         ,
                                         GH_ID = g.ID
+                                        ,
+                                        ConfirmGH = false
+                                        ,
+                                        ConfirmPH = false
                                     };
                                     // ----------------- //
                                     _ListCommand.Add(cmd_detail);

@@ -67,5 +67,10 @@ namespace BIT.Controller
         {
             return ctl.SelectItemsByNumber(numberPH).ToList();
         }
+
+        public bool Check_Visible_DetailButton(int PH_ID)
+        {
+            return ctl.Check_Visible_DetailButton(PH_ID);
+        }
 	}
 }

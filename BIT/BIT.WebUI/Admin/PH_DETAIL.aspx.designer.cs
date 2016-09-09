@@ -13,21 +13,12 @@ namespace BIT.WebUI.Admin {
     public partial class PH_DETAIL {
         
         /// <summary>
-        /// linkTransaction control.
+        /// grdCommandDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkTransaction;
-        
-        /// <summary>
-        /// btnConfirm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnConfirm;
+        protected global::System.Web.UI.WebControls.GridView grdCommandDetails;
     }
 }

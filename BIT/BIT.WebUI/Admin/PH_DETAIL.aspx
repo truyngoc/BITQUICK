@@ -8,59 +8,74 @@
         <!---ss PH-->
         <section class="panel">
             <header class="panel-heading">
-                <h3>PH - Provide Help Community</h3>
+                <h3>PH details</h3>
             </header>
             <div class="panel-body">
-                <div class="table-responsive">
-                    <%--<asp:DataList ID="grdListPH" runat="server" class="table table-hover p-table">
-                <HeaderTemplate>--%>
-                    <table class="table">
-                        <tr>
-                            <th>No.</th>
-                            <th>DateCreated</th>
-                            <th>Amount</th>
-                            <th>Receiver</th>
-                            <th>Time remaining (hours)</th>
-                            <th>Transaction</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                        <%--</HeaderTemplate>
-                <ItemTemplate>--%>
-                        <tr>
-                            <td>1
-                            </td>
-                            <td>02/09/2016
-                            <%--<asp:Label runat="server" ID="lblPHTime" Text=' <%#Eval("Date_Send")%>'></asp:Label>--%>
-                            </td>
-                            <td>3
-                            <%--<asp:Label runat="server" ID="lblAmount" Text=' <%#Eval("Amount")%>'></asp:Label>--%>
-                            </td>
-                            <td>AMDIN/0974747709
-                            </td>
-                            <td>10
-                            </td>
-                            <td>
-                                <%--<asp:TextBox ID="txtTransaction" runat="server" CssClass="form-control"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ErrorMessage="Enter transaction" ControlToValidate="txtTransaction" runat="server" ForeColor="#cc0066" Text="Enter transaction" Display="Dynamic" ValidationGroup="detailPH" />--%>
-                                <asp:HyperLink ID="linkTransaction" runat="server" NavigateUrl="https://blockchain.info/tx/7c2c5e046783d5cae6140b25569529bba4c3a36802db20af7ea860b9c07a5656" Text="view"></asp:HyperLink>
-                            </td>
-                            <td>
-                                <span class="label label-primary">Pending
-                                <%--<asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("Status").ToString())%> '></asp:Label>--%>
-                                </span>
-                            </td>
-                            <td>
-                                <asp:LinkButton runat="server" ID="btnConfirm" type="submit" class="btn btn-success" Text="Confirm PH" OnClick="btnConfirm_Click" />
+                <section class="panel">
+                        <div class="table-responsive">
+                            <asp:GridView ID="grdCommandDetails" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
+                                OnPageIndexChanging="grdCommandDetails_OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None"
+                                OnRowCommand="grdCommandDetails_OnRowCommand">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
+                                        <ItemTemplate>
+                                            <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
-                            </td>
-                        </tr>
-                        <%--</ItemTemplate>
-                <FooterTemplate>--%>
-                    </table>
-                    <%-- </FooterTemplate>
-            </asp:DataList>--%>
-                </div>
+                                    <%--<asp:TemplateField HeaderText="Sender" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblSender" runat="server" Text='<%# AccountBriefInfoByCodeId(Eval("CodeId_From").ToString()) %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+
+                                    <asp:TemplateField HeaderText="Receiver" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblSender" runat="server" Text='<%# AccountBriefInfoByCodeId(Eval("CodeId_To").ToString()) %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Create date" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("DateCreate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Time remaining (hours)" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblTimeRemaining" runat="server" Text='' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Transaction" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>                                            
+                                            <asp:HyperLink ID="linkTransaction" runat="server" NavigateUrl='<%# TransactionLink(Eval("TransactionId")) %>' Text="View" Visible='<%# visibleTransactionLink(Eval("TransactionId")) %>' target="_blank" ></asp:HyperLink>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Status" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblStatus" runat="server" Text='<%# StatusToString((int)Eval("Status")) %>' CssClass='<%# CssStatus((int)Eval("Status")) %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Left">
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnConfirm" runat="server" CommandName="cmdConfirm" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-primary" Text="CONFIRM SEND" Visible='<%# visibleConfirmButton(Eval("ConfirmPH")) %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                </Columns>
+                            </asp:GridView>
+
+                        </div>
+                    </section>
             </div>
         </section>
     </section>

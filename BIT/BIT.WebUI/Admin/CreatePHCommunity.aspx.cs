@@ -13,6 +13,7 @@ namespace BIT.WebUI.Admin
     public partial class CreatePHCommunity : System.Web.UI.Page
     {
         private PACKAGE_TRANSACTION_BC ctlPack = new PACKAGE_TRANSACTION_BC();
+        private PH_BC ctlPH = new PH_BC();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -50,7 +51,6 @@ namespace BIT.WebUI.Admin
         {            
             if (Page.IsValid)
             {
-                var ctlPH = new PH_BC();
                 var ctlMember = new MEMBERS_BC();
 
                 string codeId = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
@@ -81,7 +81,7 @@ namespace BIT.WebUI.Admin
                             {
                                 TNotify.Alerts.Danger(ex.ToString(), true);
                             }
-
+                            Response.Redirect("CreatePHCommunity");
                         }
                         else
                         {
@@ -142,6 +142,11 @@ namespace BIT.WebUI.Admin
             }
         }
 
+        public bool VisibleDetailButton(int ID)
+        {
+            return ctlPH.Check_Visible_DetailButton(ID);
+        }
+
         public string CssStatus(int status)
         {
             switch (status)
@@ -163,10 +168,16 @@ namespace BIT.WebUI.Admin
             LoadListPH();
         }
 
-
-        protected void btnDetail_Click(object sender, EventArgs e)
+        protected void grdPH_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
-            Response.Redirect("PH_DETAIL");
+            if (e.CommandName == "CmdDetail")
+            {
+                int PH_ID = Convert.ToInt32(e.CommandArgument);
+
+                Session["CreatePHCommunity_PH_ID"] = PH_ID;
+
+                Response.Redirect("PH_DETAIL");
+            }
         }
 
     }

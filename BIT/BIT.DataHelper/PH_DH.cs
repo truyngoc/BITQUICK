@@ -85,5 +85,15 @@ namespace BIT.DataHelper
             defaultDB.ExecuteNonQuery(trans, "sp_PH_UpdateStatus"
                 , ID, Status);
         }
+
+        public bool Check_Visible_DetailButton(int PH_ID)
+        {
+            var iCount = defaultDB.ExecuteScalar("sp_PH_Check_Visible_DetailButton", PH_ID);
+
+            if (Convert.ToInt32(iCount) > 0)
+                return true;
+            else
+                return false;
+        }        
 	}
 }

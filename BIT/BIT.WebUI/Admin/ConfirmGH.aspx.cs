@@ -16,18 +16,24 @@ namespace BIT.WebUI.Admin
         {
             if (!IsPostBack)
             {
-                if (Session["GH_DETAIL_COMMAND_DETAIL_ID"] != null)
+                if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    LoadDataToForm();
-                    Session["GH_DETAIL_COMMAND_DETAIL_ID"] = null;
+                    Response.Redirect("~/Admin/Login.aspx");
                 }
                 else
                 {
-                    //Response.Redirect("PH_DETAIL");
-                    btnConfirmGH.Enabled = false;
-                    //TNotify.Toastr.Information("Your session working is expired, back to PH detail for continue", "Notify", TNotify.NotifyPositions.toast_top_full_width, true);
+                    if (Session["GH_DETAIL_COMMAND_DETAIL_ID"] != null)
+                    {
+                        LoadDataToForm();
+                        Session["GH_DETAIL_COMMAND_DETAIL_ID"] = null;
+                    }
+                    else
+                    {
+                        //Response.Redirect("PH_DETAIL");
+                        btnConfirmGH.Enabled = false;
+                        //TNotify.Toastr.Information("Your session working is expired, back to PH detail for continue", "Notify", TNotify.NotifyPositions.toast_top_full_width, true);
+                    }
                 }
-
             }
         }
 

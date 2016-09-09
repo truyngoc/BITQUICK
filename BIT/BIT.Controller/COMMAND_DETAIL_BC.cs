@@ -66,5 +66,10 @@ namespace BIT.Controller
         {
             ctl.ConfirmPH(obj);
         }
+
+        public void ConfirmGH(COMMAND_DETAIL obj)
+        {
+            ctl.ConfirmGH(obj);
+        }
 	}
 }

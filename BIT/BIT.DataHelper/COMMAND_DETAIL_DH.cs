@@ -85,5 +85,11 @@ namespace BIT.DataHelper
             defaultDB.ExecuteNonQuery("sp_COMMAND_DETAIL_ConfirmPH"
                 , obj.ID, obj.TransactionId, obj.ConfirmPH, obj.DateConfirmPH, obj.Status);
         }
+
+        public void ConfirmGH(COMMAND_DETAIL obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_COMMAND_DETAIL_ConfirmGH"
+                , obj.ID, obj.ConfirmGH, obj.DateConfirmGH, obj.Status);
+        }
 	}
 }

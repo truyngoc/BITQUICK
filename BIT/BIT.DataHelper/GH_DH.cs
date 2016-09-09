@@ -103,5 +103,10 @@ namespace BIT.DataHelper
             else
                 return false;
         }
+
+        public IEnumerable<GH> SelectItemsByCodeId(string CodeId)
+        {
+            return defaultDB.ExecuteSprocAccessor<GH>("sp_GH_SelectItemsByCodeId", CodeId);
+        }
 	}
 }

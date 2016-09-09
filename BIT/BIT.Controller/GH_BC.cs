@@ -72,5 +72,10 @@ namespace BIT.Controller
         {
             return ctl.Check_Visible_DetailButton(GH_ID);
         }
+
+        public List<GH> SelectItemsByCodeId(string CodeId)
+        {
+            return ctl.SelectItemsByCodeId(CodeId).ToList();
+        }
 	}
 }

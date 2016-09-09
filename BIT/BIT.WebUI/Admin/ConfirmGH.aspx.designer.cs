@@ -13,13 +13,13 @@ namespace BIT.WebUI.Admin {
     public partial class ConfirmGH {
         
         /// <summary>
-        /// hidCodeId control.
+        /// hidID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidCodeId;
+        protected global::System.Web.UI.WebControls.HiddenField hidID;
         
         /// <summary>
         /// imgGHWallet control.

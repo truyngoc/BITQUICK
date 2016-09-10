@@ -109,10 +109,14 @@ namespace BIT.WebUI.Admin
 
         private void loadPackInfo()
         {
+            
             //load packinfo
             PACKAGE_TRANSACTION pckActive = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectActiveItem(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
-            lblCurrentPack.Text = pckActive.PACKAGEID.ToString();
-            hidPackage_transactionID.Value = pckActive.ID.ToString();
+            if (pckActive != null)
+            {
+                lblCurrentPack.Text = pckActive.PACKAGEID.ToString();
+                hidPackage_transactionID.Value = pckActive.ID.ToString();
+            }
             //PIN spin = Singleton
         }
 

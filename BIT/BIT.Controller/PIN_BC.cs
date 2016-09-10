@@ -32,6 +32,11 @@ namespace BIT.Controller
             ctl.UpdateItem(pin_transaction_id);
 		}
 
+        public void AdminConfirm(int pin_transaction_id)
+        {
+            ctl.AdminConfirm(pin_transaction_id);
+        }
+
 		public void DeleteItem(int ID)
 		{
 			ctl.DeleteItem(ID);

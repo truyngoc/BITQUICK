@@ -46,6 +46,12 @@ namespace BIT.DataHelper
                 , pin_transaction_id);
 		}
 
+        public void AdminConfirm(int pin_transaction_id)
+        {
+            defaultDB.ExecuteNonQuery("SP_PIN_TRANSACTION_ADMIN_CONFIRM"
+                , pin_transaction_id);
+        }
+
 		public void DeleteItem(int ID)
 		{
 			defaultDB.ExecuteNonQuery("sp_PH_Delete"

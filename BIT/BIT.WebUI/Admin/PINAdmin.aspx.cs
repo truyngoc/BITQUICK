@@ -12,7 +12,7 @@ using System.Text;
 
 namespace BIT.WebUI.Admin
 {
-    public partial class PIN : System.Web.UI.Page
+    public partial class PINAdmin : System.Web.UI.Page
     {
 
         protected void Page_Load(object sender, EventArgs e)

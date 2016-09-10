@@ -10,9 +10,9 @@
             </header>
             <div class="panel-body">
                 <div class="container center_div">
-                    <asp:HiddenField ID="hidCodeId" runat="server" />
+                    <asp:HiddenField ID="hidPackage_transactionID" runat="server" />
+                    <asp:HiddenField ID="hid_avaiableMonth" runat="server" Value="0" />
                     <asp:HiddenField ID="hidMonth" runat="server" />
-                    <asp:HiddenField ID="hidPack" runat="server" />
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Address to payment</label>
                             <div class="col-lg-5">

@@ -10,7 +10,7 @@
 namespace BIT.WebUI.Admin {
     
     
-    public partial class PIN {
+    public partial class PINAdmin {
         
         /// <summary>
         /// hidPackage_transactionID control.

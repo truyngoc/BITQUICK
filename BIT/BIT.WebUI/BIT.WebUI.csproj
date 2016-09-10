@@ -125,6 +125,7 @@
     <Content Include="Admin\MemberManagement.aspx" />
     <Content Include="Admin\OrderChangeInfo.aspx" />
     <Content Include="Admin\PH_DETAIL.aspx" />
+    <Content Include="Admin\PINAdmin.aspx" />
     <Content Include="Admin\PIN.aspx" />
     <Content Include="Admin\SelectPackInvest.aspx" />
     <Content Include="Admin\EditAccount.aspx" />
@@ -488,6 +489,13 @@
     </Compile>
     <Compile Include="Admin\PH_DETAIL.aspx.designer.cs">
       <DependentUpon>PH_DETAIL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PINAdmin.aspx.cs">
+      <DependentUpon>PINAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PINAdmin.aspx.designer.cs">
+      <DependentUpon>PINAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\PIN.aspx.cs">
       <DependentUpon>PIN.aspx</DependentUpon>

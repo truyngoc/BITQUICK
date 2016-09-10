@@ -213,9 +213,16 @@ namespace BIT.WebUI.Admin
             return restring;
         }
 
-        public string datecount(object startDate)
+        public string datecount(object startDate, object endate, object ID)
         {
-            
+            //return date count
+            //check if enddate = datetime.now => update status_ph to 0
+            if(Convert.ToDateTime(endate).Date == DateTime.Now.Date)
+            {
+                PACKAGE_TRANSACTION pck = Singleton<PACKAGE_TRANSACTION_BC>.Inst.SelectItem(Convert.ToInt32(ID));
+                pck.STATUS_PH = 0;
+                Singleton<PACKAGE_TRANSACTION_BC>.Inst.updateItem(pck);
+            }
             return (DateTime.Now.DayOfYear - Convert.ToDateTime(startDate).DayOfYear).ToString();
         }
 

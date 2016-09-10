@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Admin/AdminSite.Master" AutoEventWireup="true" CodeBehind="SelectPackInvest.aspx.cs" Inherits="BIT.WebUI.Admin.SelectPackInvest" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminSite.Master" AutoEventWireup="true" CodeBehind="PINAdmin.aspx.cs" Inherits="BIT.WebUI.Admin.PINAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -11,9 +10,9 @@
             </header>
             <div class="panel-body">
                 <div class="container center_div">
-                    <asp:HiddenField ID="hidCodeId" runat="server" />
+                    <asp:HiddenField ID="hidPackage_transactionID" runat="server" />
+                    <asp:HiddenField ID="hid_avaiableMonth" runat="server" Value="0" />
                     <asp:HiddenField ID="hidMonth" runat="server" />
-                    <asp:HiddenField ID="hidPack" runat="server" />
                     <div class="form-group col-lg-12">
                         <label class="control-label col-lg-3">Address to payment</label>
                             <div class="col-lg-5">
@@ -25,10 +24,9 @@
                             </div>
                     </div>
                     <div class="form-group col-lg-12">
-                            <label class="control-label col-lg-3">Select Pack</label>
+                            <label class="control-label col-lg-3">Selected Invest Pack</label>
                             <div class="col-lg-6">
-                                <asp:DropDownList runat="server" ID="drPackSelectTion" OnSelectedIndexChanged="drPackSelectTion_SelectedIndexChanged" AutoPostBack="true">
-                                </asp:DropDownList> BTC
+                                <asp:Label ID="lblCurrentPack" runat="server"></asp:Label>
                             </div>
                         </div>
                         <div class="form-group col-lg-12">
@@ -42,7 +40,7 @@
                             </div>
                         </div>
                     <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">Total Amount</label>
+                        <label class="control-label col-lg-3">Amount</label>
                         <div class="col-lg-6">
                             <asp:TextBox runat="server" ID="txtTotalAmount" CssClass="form-control" placeholder="Total payment: Invest Pack + Extend Fee" Enabled="false">1.2</asp:TextBox>
                         </div>
@@ -96,27 +94,25 @@
                                     <asp:Label runat="server" ID="lblPHTime" Text='<%# Eval("CREATE_DATE") %>'></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblAmount" Text='<%# Eval("PACKAGEID") %>'> </asp:Label>BTC
+                                    <asp:Label runat="server" ID="lblAmount" Text=''> </asp:Label>BTC
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblStartDate" Text='<%# Eval("START_DATE") %>' />
+                                    <asp:Label runat="server" ID="lblStartDate" Text='<%# Eval("FROM_DATE") %>' />
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblEndDate" Text='<%# Eval("END_DATE") %>'></asp:Label>
+                                    <asp:Label runat="server" ID="lblEndDate" Text='<%# Eval("TO_DATE") %>'></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="Label1" Text='<%# datecount(Eval("START_DATE"),Eval("END_DATE"),Eval("ID")) %>'></asp:Label>
+                                    <asp:Label runat="server" ID="Label1" Text='<%# datecount(Eval("CREATE_DATE")) %>'></asp:Label>
                                 </td>
                                 <td>
                                     <span class="label label-primary">
-                                        <asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("STATUS_PH"),Eval("STATUS_GH")) %>'></asp:Label>
+                                        <asp:Label runat="server" ID="lblStatus" Text='<%# getStatus(Eval("STATUS")) %>'></asp:Label>
                                     </span>
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <asp:LinkButton runat="server" ID="lnkExtend" Visible='<%# getExtendVisible( Eval("END_DATE"),Eval("STATUS_GH")) %>' type="submit" class="btn btn-success" Text="Extend" OnClick="lnkExtend_Click" />
-                                        <asp:LinkButton runat="server" ID="btnGH1" Visible='<%# getGH1Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH1" OnClick="btnGH1_Click" />
-                                        <asp:LinkButton runat="server" ID="btnGH2" Visible='<%# getGH2Enable(Eval("START_DATE"),Eval("STATUS_GH")) %>' CommandArgument='<%# Eval("ID") %>' type="submit" class="btn btn-success" Text="GH2" OnClick="btnGH2_Click" />
+                                        
                                     </a>
                                 </td>
                             </tr>

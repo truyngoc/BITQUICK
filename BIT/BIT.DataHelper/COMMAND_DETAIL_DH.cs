@@ -90,6 +90,11 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<COMMAND_DETAIL>("sp_COMMAND_DETAIL_SelectItemsByStatus", CommandID, Status);
         }
 
+        public IEnumerable<COMMAND_DETAIL> SelectItemsExpired()
+        {
+            return defaultDB.ExecuteSprocAccessor<COMMAND_DETAIL>("sp_COMMAND_DETAIL_SelectItemsExpired");
+        }
+
         public void ConfirmPH(COMMAND_DETAIL obj)
         {
             defaultDB.ExecuteNonQuery("sp_COMMAND_DETAIL_ConfirmPH"

@@ -72,6 +72,11 @@ namespace BIT.Controller
             return ctl.SelectItemsByStatus(CommandID, Status).ToList();
         }
 
+        public List<COMMAND_DETAIL> SelectItemsExpired()
+        {
+            return ctl.SelectItemsExpired().ToList();
+        }
+
         public void ConfirmPH(COMMAND_DETAIL obj)
         {
             ctl.ConfirmPH(obj);

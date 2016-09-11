@@ -24,8 +24,8 @@ namespace BIT.Common
                 SmtpClient smtp = new SmtpClient
                 {
                     Host = "smtp.gmail.com",
-                    Port = 25,
-                    EnableSsl = false,
+                    Port = 587,
+                    EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Timeout = 30000,
                     UseDefaultCredentials = false

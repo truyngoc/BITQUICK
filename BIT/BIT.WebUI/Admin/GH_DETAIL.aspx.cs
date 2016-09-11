@@ -133,13 +133,33 @@ namespace BIT.WebUI.Admin
             else return false;
         }
 
-        public bool visibleConfirmButton(object confirmGH, object confirmPH)
+        public bool visibleConfirmButton(object confirmGH, object confirmPH, object status)
         {
-            if (confirmGH != null && confirmPH != null && (!Convert.ToBoolean(confirmPH) || Convert.ToBoolean(confirmGH)))
+            if ((confirmGH != null && confirmPH != null && (!Convert.ToBoolean(confirmPH) || Convert.ToBoolean(confirmGH))) 
+                || (Convert.ToInt32(status) == (int)Constants.COMMAND_STATUS.Expired))
             {
                 return false;
             }
             return true;
+        }
+
+        public string showTimeRemaining(DateTime timeremain, int status)
+        {
+            if (status == (int)Constants.COMMAND_STATUS.PH_Success)
+            {
+                var currentDate = DateTime.Now;
+                var expiredDate = timeremain.AddHours(12);
+
+                if (currentDate > expiredDate)
+                    return "Expired";
+                else
+                {
+                    var remainDate = expiredDate - currentDate;
+                    string ret = remainDate.Hours.ToString("00") + ":" + remainDate.Minutes.ToString("00") + ":" + remainDate.Seconds.ToString("00");
+                    return ret;
+                }
+            }
+            return string.Empty;
         }
         #endregion
 

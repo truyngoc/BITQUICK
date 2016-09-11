@@ -3,6 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        #p_time {
+            width: 100%;
+            color: red;
+            font-size: 25px;               
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;            
+        }
+    </style>
+
     <section class="wrapper">
         <br />
         <!---ss PH-->
@@ -11,6 +21,12 @@
                 <h3>GH details</h3>
             </header>
             <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        Page refresh after <span id="p_time">30</span> seconds
+                    </div>
+
+                </div>
                 <section class="panel">
                     <div class="table-responsive">
                         <asp:GridView ID="grdCommandDetails" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
@@ -49,7 +65,7 @@
 
                                 <asp:TemplateField HeaderText="Time remaining (hours)" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblTimeRemaining" runat="server" Text='' />
+                                        <asp:Label ID="lblTimeRemaining" runat="server" Text='<%# showTimeRemaining((DateTime)Eval("DateConfirmPH"), (int)Eval("Status")) %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -67,7 +83,7 @@
 
                                 <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Button ID="btnConfirm" runat="server" CommandName="cmdConfirm" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-primary" Text="CONFIRM" Visible='<%# visibleConfirmButton(Eval("ConfirmGH"), Eval("ConfirmPH")) %>' />
+                                        <asp:Button ID="btnConfirm" runat="server" CommandName="cmdConfirm" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-primary" Text="CONFIRM" Visible='<%# visibleConfirmButton(Eval("ConfirmGH"), Eval("ConfirmPH"),Eval("Status")) %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -79,4 +95,14 @@
             </div>
         </section>
     </section>
+
+    <script type="text/javascript">
+        var jgt = 30;
+        document.getElementById('p_time').innerHTML = jgt;
+        function stime() {
+            document.getElementById('p_time').innerHTML = jgt; jgt = jgt - 1;
+            if (jgt == 0) { clearInterval(timing); location = window.location; }
+        }
+        var timing = setInterval("stime();", 1000);
+    </script>
 </asp:Content>

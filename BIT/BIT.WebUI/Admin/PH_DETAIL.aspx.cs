@@ -133,13 +133,32 @@ namespace BIT.WebUI.Admin
             else return false;
         }
 
-        public bool visibleConfirmButton(object ConfirmPH)
+        public bool visibleConfirmButton(object ConfirmPH, object status)
         {
-            if (ConfirmPH != null && Convert.ToBoolean(ConfirmPH))
+            if ((ConfirmPH != null && Convert.ToBoolean(ConfirmPH)) || (Convert.ToInt32(status) == (int)Constants.COMMAND_STATUS.Expired))
             {
                 return false;
             }
             return true;
+        }
+
+        public string showTimeRemaining(DateTime timeremain, int status)
+        {
+            if ((status != (int)Constants.COMMAND_STATUS.Success) && (status != (int)Constants.COMMAND_STATUS.PH_Success))
+            {
+                var currentDate = DateTime.Now;
+                var expiredDate = timeremain.AddHours(12);
+
+                if (currentDate > expiredDate)
+                    return "Expired";
+                else
+                {
+                    var remainDate = expiredDate - currentDate;
+                    string ret = remainDate.Hours.ToString("00") + ":" + remainDate.Minutes.ToString("00") + ":" + remainDate.Seconds.ToString("00");
+                    return ret;
+                }
+            }
+            return string.Empty;
         }
         #endregion
 
@@ -155,7 +174,7 @@ namespace BIT.WebUI.Admin
             {
                 int COMMAND_DETAIL_ID = Convert.ToInt32(e.CommandArgument);
 
-                Session["PH_DETAIL_COMMAND_DETAIL_ID"] = COMMAND_DETAIL_ID;                
+                Session["PH_DETAIL_COMMAND_DETAIL_ID"] = COMMAND_DETAIL_ID;
 
                 Response.Redirect("ConfirmPH");
             }

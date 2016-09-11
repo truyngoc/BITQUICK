@@ -313,6 +313,8 @@ ul.sidebar-menu li {
 
         ul.sidebar-menu li a span {
             color: #E73737;
+            font-weight:bolder;
+            font-size: 12pt;
         }
 
         ul.sidebar-menu li a.active, ul.sidebar-menu li a:focus {
@@ -328,7 +330,7 @@ ul.sidebar-menu li {
 
 
         ul.sidebar-menu li a i {
-            font-size: 16px;
+            font-size: 30px;
             padding: 10px;
             width: 40px;
             text-align: center;
@@ -6352,8 +6354,8 @@ header.blue-bg .search {
     }
 
 .logo img {
-    height: 48px;
-    width: 120px;
+    height: 60px;
+    width: 160px;
 }
 
 .logo strong {
@@ -6366,29 +6368,33 @@ header.blue-bg .search {
 }
 
 ul.sidebar-menu .hovered .bgslide {
-    background: -webkit-linear-gradient(left, #F5921E 0%, transparent 100%);
-    background: linear-gradient(to right, #F5921E 0%, transparent 100%);
-    color: #fff;
+    /*background: -webkit-linear-gradient(left, #F5921E 0%, transparent 100%) linear-gradient(to right, #F5921E 0%, transparent 100%);*/
+    background: #ffffff;
+    /*color: #fff;*/
     display: block;
-    -webkit-transition: all 0.3s ease;
+    /*-webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;*/
     width: 100%;
 }
 
-.bgslide {
+.sub-menu:hover{
+    background-color: #fff !important;
+}
+
+/*.bgslide {
     background: #E73737;
     width: 3px;
     position: absolute;
     height: 50px;
     left: 0;
     top: 0;
-}
+}*/
 
 .sub-menu a i {
-    background-color: #F5921E;
+    color: #E73538;
 }
 
 .fliphover {
@@ -6588,7 +6594,7 @@ img {
 
 .logo_login img {
     width: 160px;
-    height: 48px;
+    height: 40px;
 }
 
 .logo_login strong {

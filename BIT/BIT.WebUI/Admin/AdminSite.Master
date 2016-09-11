@@ -139,7 +139,7 @@
                                 <a class="" href="../Admin/Dashboard.aspx" style="color: #fff">
                                     <i class="fa fa-bar-chart-o"></i>
                                     <span>Dashboard</span>
-                                    <span class="bgslide"></span>
+                                   <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!---End of Dashboard-->
@@ -149,7 +149,7 @@
                                 <a class="" href="../Admin/Register.aspx" style="color: #fff">
                                     <i class="fa fa-user"></i>
                                     <span>SIGNUP</span>
-                                    <span class="bgslide"></span>
+                                    <%--<span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--End of SignUp-->
@@ -159,7 +159,7 @@
                                 <a class="" href="../Admin/PIN.aspx" style="color: #fff">
                                     <i class="fa fa-heart"></i>
                                     <span>PIN</span>
-                                    <span class="bgslide"></span>
+                                   <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--End of Pin-->
@@ -168,7 +168,7 @@
                                 <a class="" href="../Admin/SelectPackInvest.aspx" style="color: #fff">
                                     <i class="fa fa-heart"></i>
                                     <span>PACKAGE INVEST</span>
-                                    <span class="bgslide"></span>
+                                  <%--  <span class="bgslide"></span>--%>
                                 </a>
                             </li>
 
@@ -177,7 +177,7 @@
                                 <a class="" href="../Admin/CreatePHCommunity.aspx" style="color: #fff">
                                     <i class="fa fa-cloud-upload"></i>
                                     <span>PH</span>
-                                    <span class="bgslide"></span>
+                                   <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--end of PH-->
@@ -187,7 +187,7 @@
                                 <a class="" href="../Admin/GHCommunity.aspx" style="color: #fff">
                                     <i class="fa fa-cloud-download"></i>
                                     <span>GH</span>
-                                    <span class="bgslide"></span>
+                                   <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--End of GH-->
@@ -197,7 +197,7 @@
                                 <a class="" href="../Admin/Commission.aspx" style="color: #fff">
                                     <i class="fa fa fa-bitcoin"></i>
                                     <span>COMMISSION</span>
-                                    <span class="bgslide"></span>
+                                    <%--<span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--en of commission-->
@@ -206,7 +206,7 @@
                                 <a class="" href="../Admin/Tree.aspx" style="color: #fff">
                                     <i class="fa fa-code-fork" aria-hidden="true"></i>
                                     <span>TREE</span>
-                                    <span class="bgslide"></span>
+                                   <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--end of tree-->

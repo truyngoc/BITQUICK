@@ -113,7 +113,7 @@
             <div class="item next left">
                 <!-- Set the third background image using inline CSS below. -->
                 <div style="background-image: url('images/slide-2.jpg');" class="fill">
-                    <img src="images/slide-2.jpg" />
+                    <img src="images/slide-2.jpg" style="height:408px;" />
                 </div>
                 <div class="carousel-caption">
                 </div>
@@ -122,7 +122,7 @@
             <div class="item">
                 <!-- Set the first background image using inline CSS below. -->
                 <div style="background-image: url('images/slide-3.jpg');" class="fill">
-                    <img src="images/slide-3.jpg" />
+                    <img src="images/slide-3.jpg" style="height:408px;"/>
                 </div>
                 <div class="carousel-caption">
                 </div>
@@ -131,7 +131,7 @@
             <div class="item active left">
                 <!-- Set the second background image using inline CSS below. -->
                 <div style="background-image: url('images/slide-1.jpg');" class="fill">
-                    <img src="images/slide-1.jpg" />
+                    <img src="images/slide-1.jpg" style="height:408px;"/>
                 </div>
                 <div class="carousel-caption">
                 </div>

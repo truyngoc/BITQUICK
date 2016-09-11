@@ -36,22 +36,22 @@
             background: #375A7F;
         }
     </style>
-        <!-- Start Alexa Certify Javascript -->
-<script type="text/javascript">
-    _atrk_opts = { atrk_acct: "1ArLn1QolK1052", domain: "bitquick24.org", dynamic: true };
-    (function () { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(as, s); })();
-</script>
-<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=1ArLn1QolK1052" style="display:none" height="1" width="1" alt="" /></noscript>
-<!-- End Alexa Certify Javascript -->  
+    <!-- Start Alexa Certify Javascript -->
+    <script type="text/javascript">
+        _atrk_opts = { atrk_acct: "1ArLn1QolK1052", domain: "bitquick24.org", dynamic: true };
+        (function () { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(as, s); })();
+    </script>
+    <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=1ArLn1QolK1052" style="display:none" height="1" width="1" alt="" /></noscript>
+    <!-- End Alexa Certify Javascript -->
 </head>
 <body style="background-color: #E6E7E8;">
     <div class="container">
-        <div style="text-align: center; margin: 60px auto 0; padding: 15px;" class="logo-login">
+        <div style="text-align: center; margin: 60px auto 0; padding: 0 15px;"  class="logo-login">
             <a href="/" class="logo_login">
                 <img src="../images/logo_BitQuick.png" />
             </a>
         </div>
-        <form style="margin-top: 20px;" class="form-signin" runat="server">
+        <form style="margin-top: 1px;" class="form-signin" runat="server">
             <br />
             <div class="text-center">
                 <asp:Label runat="server" ID="lblMessage" ForeColor="#cc0066" Text="*Username or Password is not valid" Visible="false"></asp:Label>
@@ -66,7 +66,7 @@
                     <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-info btn-login" />
                     <span class="pull-right"><a style="color: #000;" href="#">Forgot Password ?</a></span>
                 </div>
-               
+
             </div>
         </form>
     </div>

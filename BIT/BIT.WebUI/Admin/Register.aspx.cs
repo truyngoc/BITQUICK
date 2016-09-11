@@ -241,18 +241,18 @@ namespace BIT.WebUI.Admin
                         else
                             bSponsorPH = true;
 
-                        bool bExistAcc = ctlMember.IsExistsItem(obj.Username, obj.Wallet,obj.Email);
+                        bool bExistAcc = ctlMember.IsExistsItem(obj.Username, obj.Wallet, obj.Email);
 
                         if (bSponsorPH)
                         {
                             if (!bExistAcc)
                             {
                                 ctlMember.InsertItem(obj);
-                                SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
+                                SendMailToRegisterUser(obj.Username, obj.Fullname,obj.Password, obj.Password_PIN, obj.Email);
                                 lblMessage.Text = "Register member " + txtUserName.Text + " success.";
                                 Response.Write("<script>alert('" + lblMessage.Text + "');</script>");
                                 lblMessage.Visible = false;
-                                Response.Redirect("../Admin/Dashboard.aspx");
+                                //Response.Redirect("../Admin/Dashboard.aspx");
                             }
                             else
                             {
@@ -283,9 +283,9 @@ namespace BIT.WebUI.Admin
 
         #region "Mail"
 
-        public void SendMailToRegisterUser(string username, string fullname, string passwordPIN, string mailto)
+        public void SendMailToRegisterUser(string username, string fullname, string password, string passwordPIN, string mailto)
         {
-            string sSubject = "BITQUICK24 INFORMATON ACCOUNT";
+            string sSubject = "BITQUICK24 Information Account";
 
             StringBuilder strBuilder = new StringBuilder();
 
@@ -294,10 +294,11 @@ namespace BIT.WebUI.Admin
             strBuilder.Append("<body>");
             strBuilder.Append("<table>");
             strBuilder.AppendLine("<tr><td><b>Hello  " + fullname + "</b><br/></td></tr>");
-            strBuilder.AppendLine("<tr><td><b>Welcome to BITQUICK24 family. </b><br/></td></tr></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Welcome to BITQUICK24 family < </b><br/></td></tr></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Your username is: " + username + "</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Your password: " + password + " </b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Your transaction password: " + passwordPIN + " </b><br/></td></tr>");
-            strBuilder.AppendLine("<tr><td><b>Please change the transaction password after first login of you to secure your account. </b><br/></td></tr>");
+            strBuilder.AppendLine("<b><a href='http://bitquick24.org'>http://bitquick24.org </a></b><br/>");
             strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  BITQUICK24's support to support you everything. </b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b><br/>BITQUICK24</b><br/></td></tr>");

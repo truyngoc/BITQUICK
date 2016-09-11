@@ -313,8 +313,8 @@ ul.sidebar-menu li {
 
         ul.sidebar-menu li a span {
             color: #E73737;
-            font-weight:bolder;
-            font-size: 12pt;
+           
+            font-size: 10pt;
         }
 
         ul.sidebar-menu li a.active, ul.sidebar-menu li a:focus {
@@ -330,7 +330,7 @@ ul.sidebar-menu li {
 
 
         ul.sidebar-menu li a i {
-            font-size: 30px;
+            font-size: 25px;
             padding: 10px;
             width: 40px;
             text-align: center;
@@ -6354,7 +6354,7 @@ header.blue-bg .search {
     }
 
 .logo img {
-    height: 60px;
+    height: 50px;
     width: 160px;
 }
 
@@ -6381,7 +6381,7 @@ ul.sidebar-menu .hovered .bgslide {
 }
 
 .sub-menu:hover{
-    background-color: #fff !important;
+   background-color: #727475 !important;
 }
 
 /*.bgslide {

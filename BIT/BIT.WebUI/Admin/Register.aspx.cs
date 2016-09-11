@@ -215,23 +215,25 @@ namespace BIT.WebUI.Admin
         {
             if (Page.IsValid)
             {
-                MEMBERS_BC ctlMember = new MEMBERS_BC();
-                MEMBERS obj = GetDataOnForm();
-
-                try
+                if (chk.Checked)
                 {
-                    // check sponsor acc have execute PH success
-                    DateTime dtExpired;
-                    bool bSponsorPH = false;
-                    if (newRegist)
+                    MEMBERS_BC ctlMember = new MEMBERS_BC();
+                    MEMBERS obj = GetDataOnForm();
+
+                    try
                     {
-                        dtExpired = Singleton<MEMBERS_BC>.Inst.SelectItem(obj.CodeId_Sponsor).ExpiredDate;
-                    }
-                    else
-                    {
-                        dtExpired = Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate;
-                    }
-                        
+                        // check sponsor acc have execute PH success
+                        DateTime dtExpired;
+                        bool bSponsorPH = false;
+                        if (newRegist)
+                        {
+                            dtExpired = Singleton<MEMBERS_BC>.Inst.SelectItem(obj.CodeId_Sponsor).ExpiredDate;
+                        }
+                        else
+                        {
+                            dtExpired = Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate;
+                        }
+
                         if (dtExpired == null)
                             bSponsorPH = false;
                         else if (dtExpired < DateTime.Now)
@@ -239,35 +241,41 @@ namespace BIT.WebUI.Admin
                         else
                             bSponsorPH = true;
 
-                    bool bExistAcc = ctlMember.IsExistsItem(obj.Username, obj.Wallet);
+                        bool bExistAcc = ctlMember.IsExistsItem(obj.Username, obj.Wallet,obj.Email);
 
-                    if (bSponsorPH)
-                    {
-                        if (!bExistAcc)
+                        if (bSponsorPH)
                         {
-                            ctlMember.InsertItem(obj);
-                            //SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
-                            lblMessage.Text = "Register member " + txtUserName.Text + " success.";
-                            Response.Write("<script>alert('"+ lblMessage.Text+"');</script>");
-                            lblMessage.Visible = false;
-                            //Response.Redirect("../Admin/Dashboard.aspx");
+                            if (!bExistAcc)
+                            {
+                                ctlMember.InsertItem(obj);
+                                SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
+                                lblMessage.Text = "Register member " + txtUserName.Text + " success.";
+                                Response.Write("<script>alert('" + lblMessage.Text + "');</script>");
+                                lblMessage.Visible = false;
+                                Response.Redirect("../Admin/Dashboard.aspx");
+                            }
+                            else
+                            {
+                                lblMessage.Text = "Username is already taken";
+                                lblMessage.Visible = true;
+                            }
                         }
                         else
                         {
-                            lblMessage.Text = "Username is already taken";
+                            lblMessage.Text = "You can't create account member, please execute Active Package Invest transaction!";
                             lblMessage.Visible = true;
                         }
                     }
-                    else
+                    catch
                     {
-                        lblMessage.Text = "You can't create account member, please execute Active Package Invest transaction!";
-                        lblMessage.Visible = true;
+                        //throw new Exception(ex.ToString);
                     }
                 }
-                catch
-                {
-                    //throw new Exception(ex.ToString);
-                }
+            }
+            else
+            {
+                lblMessage.Text = "You must to agrre our term";
+                lblMessage.Visible = true;
             }
         }
 

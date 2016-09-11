@@ -228,7 +228,7 @@ namespace BIT.WebUI.Admin
                         //oGHInfo.CreateDate = DateTime.ParseExact(row.Cells[2].Text, "dd/MM/yyyy HH:mm:ss", null);                        
 
                         oGHInfo.CodeId = codeid.Value;
-                        oGHInfo.CreateDate = DateTime.ParseExact(createdate.Text, "dd/MM/yyyy HH:mm:ss", null);
+                        oGHInfo.CreateDate = DateTime.Now;
                         oGHInfo.Username = username.Text;
                         oGHInfo.Amount = (amount.Text == string.Empty ? 0 : Convert.ToDecimal(amount.Text));
                         oGHInfo.CurrentAmount = 0;

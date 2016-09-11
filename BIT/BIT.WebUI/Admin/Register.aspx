@@ -14,7 +14,7 @@
             <div class="panel-body">
                 <div class="form">
                     <div class="col-lg-12">
-                                <asp:Label runat="server" ID="lblMessage" ForeColor="#cc0066" Text="SUCCESS" Visible="false"></asp:Label>
+                        <asp:Label runat="server" ID="lblMessage" ForeColor="#cc0066" Text="SUCCESS" Visible="false"></asp:Label>
                     </div>
                     <div class="col-lg-12">
                         <div class="col-lg-1">
@@ -125,10 +125,35 @@
                         <div class="col-lg-5">
                             <asp:DropDownList runat="server" ID="ddlCountry" CssClass="form-control">
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ErrorMessage="Enter your country" ControlToValidate="ddlCountry" runat="server" ForeColor="#cc0066" Text="Enter your country" Display="Dynamic" />
+                            <asp:RequiredFieldValidator ErrorMessage="Enter your country" ControlToValidate="ddlCountry" runat="server" ForeColor="#cc0066" value="VIET NAM" Display="Dynamic" Enabled="false" />
                         </div>
                     </div>
 
+                    <div class="col-lg-12 margin-top-05">
+                        <div class="col-lg-2">
+                            <label for="country" class="control-label">Terms of use</label>
+                        </div>
+                        <div class="col-lg-10">
+                            <asp:TextBox ID="txtTerm" runat="server" TextMode="MultiLine" Width="500px" Height="100px" Text="Registration to Investment Community BITQUICK24 is free! We do insist that you abide by the rules and policies detailed below. If you agree to the terms, please check the 'Agree with terms and conditions' checkbox and press the 'Register' button below.
+
+- Each leader/investor only use 1 ID with verified ID/passport picture.
+
+- By agreeing to these rules, you warrant that you will not break that and commit the consistent, longterm development with us.
+
+- Independent investors, voluntary and self-responsibility for investment funds
+
+- The owners of BITQUICK24 reserve the rich to block, delete any usename which commit the rules above.">
+                            </asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-2">
+                            <label for="country" class="control-label">Agree with term and condition</label>
+                        </div>
+                        <div class="col-lg-10">
+                            <asp:CheckBox ID="chk" runat="server" />
+                        </div>
+                    </div>
                     <div class="col-lg-12 margin-top-05">
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2" style="text-align: center;">

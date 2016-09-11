@@ -23,8 +23,8 @@ namespace BIT.Common
                 // smtp server address here…
                 SmtpClient smtp = new SmtpClient
                 {
-                    Host = "mail.BITQUICK24.org",
-                    Port = 578,
+                    Host = "smtp.gmail.com",
+                    Port = 25,
                     EnableSsl = false,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Timeout = 30000,

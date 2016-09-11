@@ -58,6 +58,7 @@ namespace BIT.WebUI.Admin
                     {
                         newRegist = true;
                         lblUserNameSponsor.Text = obj.CodeId;
+                        Load_Category();
                     }
                 }
                 else
@@ -65,7 +66,7 @@ namespace BIT.WebUI.Admin
                     dynamic h1 = Request.Url.Host;
                     dynamic h2 = Request.Url.Authority;
                     lblLink.Text = h2 + "/Admin/Register.aspx?ref=" + MaHoa(Singleton<BITCurrentSession>.Inst.SessionMember.Username);
-                    
+
                     Load_Category();
                 }
             }
@@ -177,9 +178,17 @@ namespace BIT.WebUI.Admin
             obj.Username = txtUserName.Text.Trim();
             obj.Password = txtPassword.Text;
 
+            if (newRegist)
+            {
+                obj.CodeId_Sponsor = lblUserNameSponsor.Text;
+                obj.Upline = Singleton<MEMBERS_BC>.Inst.SelectItem(obj.CodeId_Sponsor).Username;
+            }
+            else
+            {
+                obj.CodeId_Sponsor = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
+                obj.Upline = Singleton<BITCurrentSession>.Inst.SessionMember.Username;
+            }
 
-            obj.CodeId_Sponsor = Singleton<BITCurrentSession>.Inst.SessionMember.CodeId;
-            obj.Upline = Singleton<BITCurrentSession>.Inst.SessionMember.Username;
 
             obj.Password_PIN = txtPassword_PIN.Text;
             obj.Fullname = txtFullName.Text.Trim();
@@ -206,49 +215,58 @@ namespace BIT.WebUI.Admin
         {
             if (Page.IsValid)
             {
-            MEMBERS_BC ctlMember = new MEMBERS_BC();
-            MEMBERS obj = GetDataOnForm();
+                MEMBERS_BC ctlMember = new MEMBERS_BC();
+                MEMBERS obj = GetDataOnForm();
 
-            try
-            {
-                // check sponsor acc have execute PH success
-
-                bool bSponsorPH = false;
-                if (Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate == null)
-                    bSponsorPH = false;
-                else if (Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate < DateTime.Now)
-                    bSponsorPH = false;
-                else
-                    bSponsorPH = true;
-
-                bool bExistAcc = ctlMember.IsExistsItem(obj.Username,obj.Wallet);
-
-                if (bSponsorPH)
+                try
                 {
-                    if (!bExistAcc)
+                    // check sponsor acc have execute PH success
+                    DateTime dtExpired;
+                    bool bSponsorPH = false;
+                    if (newRegist)
                     {
-                        ctlMember.InsertItem(obj);
-                        SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
-                        lblMessage.Visible = false;
-                        Response.Redirect("../Admin/Dashboard.aspx");
+                        dtExpired = Singleton<MEMBERS_BC>.Inst.SelectItem(obj.CodeId_Sponsor).ExpiredDate;
                     }
                     else
                     {
-                        lblMessage.Text = "Username is already taken";
+                        dtExpired = Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate;
+                    }
+                        
+                        if (dtExpired == null)
+                            bSponsorPH = false;
+                        else if (dtExpired < DateTime.Now)
+                            bSponsorPH = false;
+                        else
+                            bSponsorPH = true;
+
+                    bool bExistAcc = ctlMember.IsExistsItem(obj.Username, obj.Wallet);
+
+                    if (bSponsorPH)
+                    {
+                        if (!bExistAcc)
+                        {
+                            ctlMember.InsertItem(obj);
+                            SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
+                            lblMessage.Visible = false;
+                            Response.Redirect("../Admin/Dashboard.aspx");
+                        }
+                        else
+                        {
+                            lblMessage.Text = "Username is already taken";
+                            lblMessage.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        lblMessage.Text = "You can't create account member, please execute Active Package Invest transaction!";
                         lblMessage.Visible = true;
                     }
                 }
-                else
+                catch
                 {
-                    lblMessage.Text = "You can't create account member, please execute Active Package Invest transaction!";
-                    lblMessage.Visible = true;
+                    //throw new Exception(ex.ToString);
                 }
             }
-            catch
-            {
-                //throw new Exception(ex.ToString);
-            }
-                }
         }
 
         #endregion

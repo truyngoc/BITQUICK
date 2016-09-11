@@ -60,23 +60,30 @@ namespace BIT.WebUI.Admin
 
         protected void grdMEMBERS_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            var ctlMem = new MEMBERS_BC();
-            var iD = Convert.ToInt32(e.CommandArgument);
 
+            var ctlMem = new MEMBERS_BC();
             switch (e.CommandName)
             {
+                case "lnkWallet":
+                    LinkButton btn = (LinkButton)(sender);
+                    string yourValue = btn.CommandArgument;
+
+                    string url = string.Format("https://blockchain.info/address/{0}", yourValue);
+                    string s = "window.open('" + url + "', 'popup_window');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);
+                    break;
                 case "cmdEdit":
                     HttpContext.Current.Session["BIT_MemberID_Edit"] = e.CommandArgument;
 
                     Response.Redirect("~/Admin/EditAccount");
                     break;
                 case "cmdDelete":
-                    ctlMem.DeleteItem(iD);
+                    ctlMem.DeleteItem(Convert.ToInt32(e.CommandArgument));
                     LoadAllAcc();
 
                     break;
                 case "cmdLock":
-                    ctlMem.LockAccount(iD);
+                    ctlMem.LockAccount(Convert.ToInt32(e.CommandArgument));
                     LoadAllAcc();
                     break;
             }

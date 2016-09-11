@@ -62,6 +62,16 @@ namespace BIT.Controller
             return ctl.SelectItemsByGhId(GH_ID).ToList();
         }
 
+        public List<COMMAND_DETAIL> SelectItemsByCommandId(int CommandID)
+        {
+            return ctl.SelectItemsByCommandId(CommandID).ToList();
+        }
+
+        public List<COMMAND_DETAIL> SelectItemsByStatus(int CommandID, string Status)
+        {
+            return ctl.SelectItemsByStatus(CommandID, Status).ToList();
+        }
+
         public void ConfirmPH(COMMAND_DETAIL obj)
         {
             ctl.ConfirmPH(obj);

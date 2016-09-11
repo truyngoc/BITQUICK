@@ -80,6 +80,16 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<COMMAND_DETAIL>("sp_GH_GetListCommandDetails", GH_ID);
         }
 
+        public IEnumerable<COMMAND_DETAIL> SelectItemsByCommandId(int CommandID)
+        {
+            return defaultDB.ExecuteSprocAccessor<COMMAND_DETAIL>("sp_COMMAND_DETAIL_SelectItemsByCommandId", CommandID);
+        }
+
+        public IEnumerable<COMMAND_DETAIL> SelectItemsByStatus(int CommandID, string Status)
+        {
+            return defaultDB.ExecuteSprocAccessor<COMMAND_DETAIL>("sp_COMMAND_DETAIL_SelectItemsByStatus", CommandID, Status);
+        }
+
         public void ConfirmPH(COMMAND_DETAIL obj)
         {
             defaultDB.ExecuteNonQuery("sp_COMMAND_DETAIL_ConfirmPH"

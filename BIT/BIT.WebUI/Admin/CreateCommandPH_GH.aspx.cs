@@ -323,11 +323,11 @@ namespace BIT.WebUI.Admin
 
         protected void grdCommandDetails_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            //if (_ListCommand != null)
-            //{
-            //    grdCommandDetails.PageIndex = e.NewPageIndex;
-            //    BindCommand(_ListCommand);
-            //}            
+            if (this.LIST_COMMAND_DETAIL != null)
+            {
+                grdCommandDetails.PageIndex = e.NewPageIndex;
+                BindCommand(this.LIST_COMMAND_DETAIL);
+            }            
         }
         #endregion
 

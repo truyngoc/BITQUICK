@@ -114,6 +114,9 @@
     <Content Include="Admin\AccountManager.aspx" />
     <Content Include="Admin\ChangePassword.aspx" />
     <Content Include="Admin\ChangePasswordTwo.aspx" />
+    <Content Include="Admin\COMMAND_DETAIL_EXPIRED_LIST.aspx" />
+    <Content Include="Admin\COMMAND_DETAIL_LIST.aspx" />
+    <Content Include="Admin\COMMAN_LIST.aspx" />
     <Content Include="Admin\ConfirmGH.aspx" />
     <Content Include="Admin\ConfirmPH.aspx" />
     <Content Include="Admin\CreateCommandPH_GH.aspx" />
@@ -412,6 +415,27 @@
     </Compile>
     <Compile Include="Admin\ChangePasswordTwo.aspx.designer.cs">
       <DependentUpon>ChangePasswordTwo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\COMMAND_DETAIL_EXPIRED_LIST.aspx.cs">
+      <DependentUpon>COMMAND_DETAIL_EXPIRED_LIST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\COMMAND_DETAIL_EXPIRED_LIST.aspx.designer.cs">
+      <DependentUpon>COMMAND_DETAIL_EXPIRED_LIST.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\COMMAND_DETAIL_LIST.aspx.cs">
+      <DependentUpon>COMMAND_DETAIL_LIST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\COMMAND_DETAIL_LIST.aspx.designer.cs">
+      <DependentUpon>COMMAND_DETAIL_LIST.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\COMMAN_LIST.aspx.cs">
+      <DependentUpon>COMMAN_LIST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\COMMAN_LIST.aspx.designer.cs">
+      <DependentUpon>COMMAN_LIST.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ConfirmGH.aspx.cs">
       <DependentUpon>ConfirmGH.aspx</DependentUpon>

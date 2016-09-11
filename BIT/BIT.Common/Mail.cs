@@ -24,7 +24,7 @@ namespace BIT.Common
                 SmtpClient smtp = new SmtpClient
                 {
                     Host = "mail.BITQUICK24.org",
-                    Port = 25,
+                    Port = 578,
                     EnableSsl = false,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Timeout = 30000,

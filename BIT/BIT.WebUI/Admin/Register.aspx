@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="wrapper">
-        <asp:Label runat="server" ID="lblMessage" ForeColor="#cc0066" Text="*Username or Password is not valid" Visible="false"></asp:Label>
+
         <br />
 
         <section class="panel">
@@ -14,7 +14,11 @@
             <div class="panel-body">
                 <div class="form">
                     <div class="col-lg-12">
-                        <div class="col-lg-1"></div>
+                                <asp:Label runat="server" ID="lblMessage" ForeColor="#cc0066" Text="SUCCESS" Visible="false"></asp:Label>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-1">
+                        </div>
                         <div class="col-lg-11">
                             <asp:Label runat="server"></asp:Label>
                             Đường link đăng ký tài khoản:
@@ -26,7 +30,7 @@
                             <label for="Username" class="control-label">Username*</label>
                         </div>
                         <div class="col-lg-6">
-                            <asp:TextBox runat="server" ID="txtUserName" CssClass="form-control username_user" placeholder="Username"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtUserName" CssClass="form-control" placeholder="Username"></asp:TextBox>
                             <asp:RequiredFieldValidator ErrorMessage="Enter your username" ControlToValidate="txtUserName" runat="server" ForeColor="#cc0066" Text="Enter your username" Display="Dynamic" />
                         </div>
                     </div>

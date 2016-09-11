@@ -246,9 +246,11 @@ namespace BIT.WebUI.Admin
                         if (!bExistAcc)
                         {
                             ctlMember.InsertItem(obj);
-                            SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
+                            //SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password_PIN, obj.Email);
+                            lblMessage.Text = "Register member " + txtUserName.Text + " success.";
+                            Response.Write("<script>alert('"+ lblMessage.Text+"');</script>");
                             lblMessage.Visible = false;
-                            Response.Redirect("../Admin/Dashboard.aspx");
+                            //Response.Redirect("../Admin/Dashboard.aspx");
                         }
                         else
                         {

@@ -18,7 +18,7 @@ namespace BIT.WebUI
             {
                 if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    Response.Redirect("~/Account/Logon");
+                    Response.Redirect("~/Account/Logon.aspx");
                 }
             }
         }

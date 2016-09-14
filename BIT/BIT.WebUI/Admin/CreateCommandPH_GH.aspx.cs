@@ -461,7 +461,7 @@ namespace BIT.WebUI.Admin
                 TNotify.Alerts.Danger(ex.Message, true);
             }
 
-            Response.Redirect("CreateCommandPH_GH");
+            Response.Redirect("CreateCommandPH_GH.aspx");
 
         }
         #endregion

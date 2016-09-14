@@ -23,7 +23,7 @@ namespace BIT.WebUI.Account
                 {
                     Singleton<BITCurrentSession>.Inst.SessionMember = login_info;
                     lblMessage.Visible = false;
-                    Response.Redirect("~/Admin/Dashboard");                   
+                    Response.Redirect("~/Admin/Dashboard.aspx");                   
                 }
                 else
                 {

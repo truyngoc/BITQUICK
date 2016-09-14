@@ -43,7 +43,7 @@ namespace BIT.WebUI.Admin
 
                 Session["COMMAN_LIST_COMMAND_ID"] = COMMAND_ID;
 
-                Response.Redirect("COMMAND_DETAIL_LIST");
+                Response.Redirect("COMMAND_DETAIL_LIST.aspx");
             }
         }
         #endregion

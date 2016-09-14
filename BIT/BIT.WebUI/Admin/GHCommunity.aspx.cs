@@ -92,7 +92,7 @@ namespace BIT.WebUI.Admin
 
                 Session["GHCommunity_GH_ID"] = GH_ID;
 
-                Response.Redirect("GH_DETAIL");
+                Response.Redirect("GH_DETAIL.aspx");
             }
         }
 

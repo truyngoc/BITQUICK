@@ -176,7 +176,7 @@ namespace BIT.WebUI.Admin
 
                 Session["PH_DETAIL_COMMAND_DETAIL_ID"] = COMMAND_DETAIL_ID;
 
-                Response.Redirect("ConfirmPH");
+                Response.Redirect("ConfirmPH.aspx");
             }
         }
         #endregion

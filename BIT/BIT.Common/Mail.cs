@@ -23,9 +23,12 @@ namespace BIT.Common
                 // smtp server address here…
                 SmtpClient smtp = new SmtpClient
                 {
-                    Host = "smtp.gmail.com",
+                    //Host = "smtp.gmail.com",
+                    //Port = 587,
+                    Host = "mail.bitquick24.org",
+                    //Port = 25,
                     Port = 587,
-                    EnableSsl = true,
+                    EnableSsl = false,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Timeout = 30000,
                     UseDefaultCredentials = false

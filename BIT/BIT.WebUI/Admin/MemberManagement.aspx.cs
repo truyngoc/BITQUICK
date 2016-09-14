@@ -75,7 +75,7 @@ namespace BIT.WebUI.Admin
                 case "cmdEdit":
                     HttpContext.Current.Session["BIT_MemberID_Edit"] = e.CommandArgument;
 
-                    Response.Redirect("~/Admin/EditAccount");
+                    Response.Redirect("~/Admin/EditAccount.aspx");
                     break;
                 case "cmdDelete":
                     ctlMem.DeleteItem(Convert.ToInt32(e.CommandArgument));

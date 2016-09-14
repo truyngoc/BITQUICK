@@ -18,7 +18,7 @@ namespace BIT.WebUI.Admin
             {
                 if (!Singleton<BITCurrentSession>.Inst.isLoginUser)
                 {
-                    Response.Redirect("~/Admin/Login");
+                    Response.Redirect("~/Admin/Login.aspx");
                 }
                 else
                 { }
@@ -81,7 +81,7 @@ namespace BIT.WebUI.Admin
                 case "cmdEdit":
                     HttpContext.Current.Session["BIT_MemberID_Edit"] = e.CommandArgument;
 
-                    Response.Redirect("~/Admin/EditAccount");
+                    Response.Redirect("~/Admin/EditAccount.aspx");
                     break;
                 case "cmdDelete":                    
                     ctlMem.DeleteItem(iD);

@@ -251,7 +251,7 @@ namespace BIT.WebUI.Admin
                                 SendMailToRegisterUser(obj.Username, obj.Fullname,obj.Password, obj.Password_PIN, obj.Email);
                                 lblMessage.Text = "Register member " + txtUserName.Text + " success.";
                                 Response.Write("<script>alert('" + lblMessage.Text + "');</script>");
-                                lblMessage.Visible = false;
+                                lblMessage.Visible = true;
                                 //Response.Redirect("../Admin/Dashboard.aspx");
                             }
                             else
@@ -294,7 +294,7 @@ namespace BIT.WebUI.Admin
             strBuilder.Append("<body>");
             strBuilder.Append("<table>");
             strBuilder.AppendLine("<tr><td><b>Hello  " + fullname + "</b><br/></td></tr>");
-            strBuilder.AppendLine("<tr><td><b>Welcome to BITQUICK24 family < </b><br/></td></tr></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Welcome to BITQUICK24 family </b><br/></td></tr></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Your username is: " + username + "</b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Your password: " + password + " </b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Your transaction password: " + passwordPIN + " </b><br/></td></tr>");

@@ -181,7 +181,7 @@ namespace BIT.WebUI.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("COMMAN_LIST");
+            Response.Redirect("COMMAN_LIST.aspx");
         }
 
         protected void cblStatus_SelectedIndexChanged(object sender, EventArgs e)

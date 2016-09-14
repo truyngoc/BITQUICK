@@ -85,7 +85,7 @@ namespace BIT.WebUI.Admin
 
                         TNotify.Toastr.Success("Confirm GH successfull", "Confirm GH", TNotify.NotifyPositions.toast_top_full_width, true);
 
-                        Response.Redirect("GH_DETAIL");
+                        Response.Redirect("GH_DETAIL.aspx");
                     }
                     catch (System.Threading.ThreadAbortException ex)
                     {

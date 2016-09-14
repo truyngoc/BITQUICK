@@ -81,7 +81,7 @@ namespace BIT.WebUI.Admin
                             {
                                 TNotify.Alerts.Danger(ex.ToString(), true);
                             }
-                            Response.Redirect("CreatePHCommunity");
+                            Response.Redirect("CreatePHCommunity.aspx");
                         }
                         else
                         {
@@ -176,7 +176,7 @@ namespace BIT.WebUI.Admin
 
                 Session["CreatePHCommunity_PH_ID"] = PH_ID;
 
-                Response.Redirect("PH_DETAIL");
+                Response.Redirect("PH_DETAIL.aspx");
             }
         }
 

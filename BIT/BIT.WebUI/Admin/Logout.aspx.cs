@@ -15,7 +15,7 @@ namespace BIT.WebUI.Admin
             if (!this.IsPostBack)
             {
                 Singleton<BITCurrentSession>.Inst.SignOut();
-                Response.Redirect("~/Admin/Login");
+                Response.Redirect("~/Admin/Login.aspx");
             }
         }
     }

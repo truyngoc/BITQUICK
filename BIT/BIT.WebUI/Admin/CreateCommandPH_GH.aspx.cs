@@ -11,6 +11,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Text;
 using BIT.Objects;
 using BIT.Controller;
 using BIT.Common;
@@ -446,6 +447,9 @@ namespace BIT.WebUI.Admin
                 {
                     ctlCommand.InsertWithTransaction(COMMAND, LIST_COMMAND_DETAIL, ListAdminGH_FINAL);
 
+                    // Gui mail sau khi tao lenh PH - GH thanh cong
+                    //SendMailAfterCreateCommand(LIST_COMMAND_DETAIL);
+
                     ResetAllSessionList();
 
                     TNotify.Toastr.Success("Create command PH - GH successfull", "Create command PH - GH", TNotify.NotifyPositions.toast_top_full_width, true);
@@ -650,6 +654,67 @@ namespace BIT.WebUI.Admin
 
             }
         }
+
+        
+        #region "Mail"
+        public void SendMailAfterCreateCommand(List<COMMAND_DETAIL> lstCmdDetails)
+        {
+            foreach (var d in lstCmdDetails)
+            {
+                SendMailTo_PH_GH_User(d);
+            }
+        }
+
+        public void SendMailTo_PH_GH_User(COMMAND_DETAIL command)
+        {
+            var ctlMem = new MEMBERS_BC();
+            var userFrom = ctlMem.SelectItem(command.CodeId_From);
+            var userTo = ctlMem.SelectItem(command.CodeId_To);
+
+            string sSubject = "BITQUICK24 PH-GH";
+
+            // PH
+            StringBuilder strBuilder = new StringBuilder();
+
+            strBuilder.Append("<html>");
+            strBuilder.Append("<head></head>");
+            strBuilder.Append("<body>");
+            strBuilder.Append("<table>");
+            strBuilder.AppendLine("<tr><td><b>Hello  " + userFrom.Username + "</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>You have PH with: " + userTo.Username + "/" + userTo.Phone + "</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Amount: " + command.Amount.ToString() + " BTC </b><br/></td></tr>");
+            strBuilder.AppendLine("<b><a href='http://bitquick24.org'>http://bitquick24.org </a></b><br/>");
+            strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  BITQUICK24's support to support you everything. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/>BITQUICK24</b><br/></td></tr>");
+            strBuilder.Append("</table>");
+            strBuilder.Append("</body>");
+            strBuilder.Append("</html>");
+
+            Mail.Send(userFrom.Email, sSubject, strBuilder.ToString());
+
+            // GH
+            StringBuilder strGH = new StringBuilder();
+
+            strGH.Append("<html>");
+            strGH.Append("<head></head>");
+            strGH.Append("<body>");
+            strGH.Append("<table>");
+            strGH.AppendLine("<tr><td><b>Hello  " + userTo.Username + "</b><br/></td></tr>");
+            strGH.AppendLine("<tr><td><b>you will get GH from account: " + userFrom.Username + "/" + userFrom.Phone + "</b><br/></td></tr>");
+            strGH.AppendLine("<tr><td><b>Amount: " + command.Amount.ToString() + " BTC </b><br/></td></tr>");
+            strGH.AppendLine("<b><a href='http://bitquick24.org'>http://bitquick24.org </a></b><br/>");
+            strGH.AppendLine("<tr><td><b>Please contact to your upline or  BITQUICK24's support to support you everything. </b><br/></td></tr>");
+            strGH.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
+            strGH.AppendLine("<tr><td><b><br/>BITQUICK24</b><br/></td></tr>");
+            strGH.Append("</table>");
+            strGH.Append("</body>");
+            strGH.Append("</html>");
+
+            Mail.Send(userTo.Email, sSubject, strGH.ToString());
+        }
+
+        #endregion
 
     }
 }

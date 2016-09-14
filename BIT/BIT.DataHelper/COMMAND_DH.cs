@@ -19,7 +19,7 @@ using BIT.Objects;
 using BIT.Common;
 using BIT.DataHelper;
 using Microsoft.Practices.EnterpriseLibrary.Data;
-
+using System.Text;
 
 namespace BIT.DataHelper
 { 
@@ -125,7 +125,8 @@ namespace BIT.DataHelper
                                 }
 
                                 transaction.Commit();
-                            }
+                                
+                          }
                             catch (Exception ex)
                             {
                                 transaction.Rollback();
@@ -141,5 +142,31 @@ namespace BIT.DataHelper
                 scope.Complete();
             } 
         }
+
+        public void SendMailToPH(string username, string fullname, string mailto)
+        {
+            string sSubject = "BITQUICK24 Information PH GH";
+
+            StringBuilder strBuilder = new StringBuilder();
+
+            strBuilder.Append("<html>");
+            strBuilder.Append("<head></head>");
+            strBuilder.Append("<body>");
+            strBuilder.Append("<table>");
+            strBuilder.AppendLine("<tr><td><b>Hello  " + fullname + "</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Your PH GH has been matched </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Please log on to your account " + username +" to review your transactions and complete as soon as possible. </b><br/></td></tr>");
+            strBuilder.AppendLine("<b><a href='http://bitquick24.org'>http://bitquick24.org </a></b><br/>");
+            strBuilder.AppendLine("<tr><td><b>If you have any question, please contact  to us or your upline. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/>BITQUICK24</b><br/></td></tr>");
+            strBuilder.Append("</table>");
+            strBuilder.Append("</body>");
+            strBuilder.Append("</html>");
+
+            Mail.Send(mailto, sSubject, strBuilder.ToString());
+        }
 	}
+
+
 }

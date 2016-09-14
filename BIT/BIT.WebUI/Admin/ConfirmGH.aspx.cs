@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using BIT.Objects;
 using BIT.Common;
 using BIT.Controller;
+using System.Text;
 
 namespace BIT.WebUI.Admin
 {
@@ -82,7 +83,8 @@ namespace BIT.WebUI.Admin
 
 
                         ctlCommandDetail.GH_CONFIRM(cmdDetail);
-
+                        //TUNGND: GUI MAIL CHO SENDER
+                        SendMailToSENDER(cmdDetail);
                         TNotify.Toastr.Success("Confirm GH successfull", "Confirm GH", TNotify.NotifyPositions.toast_top_full_width, true);
 
                         Response.Redirect("GH_DETAIL.aspx");
@@ -103,6 +105,35 @@ namespace BIT.WebUI.Admin
                 }
 
             }   
+        }
+
+        public void SendMailToSENDER(COMMAND_DETAIL command)
+        {
+            var ctlMem = new MEMBERS_BC();
+            var userFrom = ctlMem.SelectItem(command.CodeId_From);
+            var userTo = ctlMem.SelectItem(command.CodeId_To);
+
+            string sSubject = "BITQUICK24 PH-GH";
+
+            // PH
+            StringBuilder strBuilder = new StringBuilder();
+
+            strBuilder.Append("<html>");
+            strBuilder.Append("<head></head>");
+            strBuilder.Append("<body>");
+            strBuilder.Append("<table>");
+            strBuilder.AppendLine("<tr><td><b>Hello  " + userFrom.Username + "</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Your PH with: " + userTo.Username + "/" + userTo.Phone + " has approved. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Amount: " + command.Amount.ToString() + " BTC </b><br/></td></tr>");
+            strBuilder.AppendLine("<b><a href='http://bitquick24.org'>http://bitquick24.org </a></b><br/>");
+            strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  BITQUICK24's support to support you everything. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/>BITQUICK24</b><br/></td></tr>");
+            strBuilder.Append("</table>");
+            strBuilder.Append("</body>");
+            strBuilder.Append("</html>");
+
+            Mail.Send(userFrom.Email, sSubject, strBuilder.ToString());
         }
     }
 }

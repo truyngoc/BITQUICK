@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using BIT.Objects;
 using BIT.Common;
 using BIT.Controller;
+using System.Text;
 
 namespace BIT.WebUI.Admin
 {
@@ -82,10 +83,12 @@ namespace BIT.WebUI.Admin
                     var ctlCommandDetail = new COMMAND_DETAIL_BC();
                     try
                     {
-                        ctlCommandDetail.ConfirmPH(new COMMAND_DETAIL { ID = COMMAND_DETAIL_ID, TransactionId = txtTransaction.Text, ConfirmPH = true, DateConfirmPH = DateTime.Now, Status = (int)Constants.COMMAND_STATUS.PH_Success });
+                        COMMAND_DETAIL CMD = new COMMAND_DETAIL { ID = COMMAND_DETAIL_ID, TransactionId = txtTransaction.Text, ConfirmPH = true, DateConfirmPH = DateTime.Now, Status = (int)Constants.COMMAND_STATUS.PH_Success };
+                        ctlCommandDetail.ConfirmPH(CMD);
 
                         TNotify.Toastr.Success("Confirm PH successfull", "Confirm PH", TNotify.NotifyPositions.toast_top_full_width, true);
 
+                        SendMailToRECEIVER(CMD);
                         Response.Redirect("PH_DETAIL.aspx");
                     }
                     catch (System.Threading.ThreadAbortException ex)
@@ -103,7 +106,37 @@ namespace BIT.WebUI.Admin
                     TNotify.Alerts.Warning("Password PIN is not valid", true);
                 }
                 
-            }            
+            }
+            
+        }
+
+        public void SendMailToRECEIVER(COMMAND_DETAIL command)
+        {
+            var ctlMem = new MEMBERS_BC();
+            var userFrom = ctlMem.SelectItem(command.CodeId_From);
+            var userTo = ctlMem.SelectItem(command.CodeId_To);
+
+            string sSubject = "BITQUICK24 PH-GH";
+
+            // PH
+            StringBuilder strBuilder = new StringBuilder();
+
+            strBuilder.Append("<html>");
+            strBuilder.Append("<head></head>");
+            strBuilder.Append("<body>");
+            strBuilder.Append("<table>");
+            strBuilder.AppendLine("<tr><td><b>Hello  " + userTo.Username + "</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Your GH with: " + userFrom.Username + "/" + userFrom.Phone + " has approved. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Amount: " + command.Amount.ToString() + " BTC </b><br/></td></tr>");
+            strBuilder.AppendLine("<b><a href='http://bitquick24.org'>http://bitquick24.org </a></b><br/>");
+            strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  BITQUICK24's support to support you everything. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/>BITQUICK24</b><br/></td></tr>");
+            strBuilder.Append("</table>");
+            strBuilder.Append("</body>");
+            strBuilder.Append("</html>");
+
+            Mail.Send(userTo.Email, sSubject, strBuilder.ToString());
         }
     }
 }

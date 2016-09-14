@@ -448,7 +448,7 @@ namespace BIT.WebUI.Admin
                     ctlCommand.InsertWithTransaction(COMMAND, LIST_COMMAND_DETAIL, ListAdminGH_FINAL);
 
                     // Gui mail sau khi tao lenh PH - GH thanh cong
-                    //SendMailAfterCreateCommand(LIST_COMMAND_DETAIL);
+                    SendMailAfterCreateCommand(LIST_COMMAND_DETAIL);
 
                     ResetAllSessionList();
 

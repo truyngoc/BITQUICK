@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="COMMAND_DETAIL_DH.cs" />
     <Compile Include="COMMAND_DH.cs" />
+    <Compile Include="COMMISSION_DH.cs" />
     <Compile Include="DataAccessBase.cs" />
     <Compile Include="GH_DH.cs" />
     <Compile Include="MEMBERS_DH.cs" />

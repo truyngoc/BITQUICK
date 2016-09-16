@@ -406,7 +406,7 @@ namespace BIT.WebUI.Admin
         protected void btnCreateCommand_Click(object sender, EventArgs e)
         {
             // lay danh sach admin GH
-            var _listGH_Admin = ListGH.Where(m => System.Text.RegularExpressions.Regex.IsMatch(m.CodeId, "99.*")).ToList();
+            var _listGH_Admin = ListGH.Where(m => System.Text.RegularExpressions.Regex.IsMatch(m.CodeId, "001.*")).ToList();
             this.ListAdminGH_FINAL = _listGH_Admin;
 
             // danh sach PH - GH

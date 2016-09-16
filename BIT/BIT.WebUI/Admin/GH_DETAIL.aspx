@@ -65,7 +65,7 @@
 
                                 <asp:TemplateField HeaderText="Time remaining (hours)" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblTimeRemaining" runat="server" Text='<%# showTimeRemaining((DateTime)Eval("DateConfirmPH"), (int)Eval("Status")) %>' />
+                                        <asp:Label ID="lblTimeRemaining" runat="server" Text='<%# showTimeRemaining_TUNG(Eval("DateConfirmPH").ToString(), (int)Eval("Status")) %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

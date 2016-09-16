@@ -117,6 +117,7 @@
     <Content Include="Admin\COMMAND_DETAIL_EXPIRED_LIST.aspx" />
     <Content Include="Admin\COMMAND_DETAIL_LIST.aspx" />
     <Content Include="Admin\COMMAN_LIST.aspx" />
+    <Content Include="Admin\Commission.aspx" />
     <Content Include="Admin\ConfirmGH.aspx" />
     <Content Include="Admin\ConfirmPH.aspx" />
     <Content Include="Admin\CreateCommandPH_GH.aspx" />
@@ -437,6 +438,13 @@
     <Compile Include="Admin\COMMAN_LIST.aspx.designer.cs">
       <DependentUpon>COMMAN_LIST.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Commission.aspx.cs">
+      <DependentUpon>Commission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Commission.aspx.designer.cs">
+      <DependentUpon>Commission.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ConfirmGH.aspx.cs">
       <DependentUpon>ConfirmGH.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -670,9 +678,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>17340</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:11111/</IISUrl>
+          <IISUrl>http://localhost:1111/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:11111/</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost:1111/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

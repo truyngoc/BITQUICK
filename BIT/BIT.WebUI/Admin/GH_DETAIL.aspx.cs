@@ -145,21 +145,50 @@ namespace BIT.WebUI.Admin
 
         public string showTimeRemaining(DateTime timeremain, int status)
         {
-            if (status == (int)Constants.COMMAND_STATUS.PH_Success)
-            {
-                var currentDate = DateTime.Now;
-                var expiredDate = timeremain.AddHours(12);
-
-                if (currentDate > expiredDate)
-                    return "Expired";
-                else
+                if (status == (int)Constants.COMMAND_STATUS.PH_Success)
                 {
-                    var remainDate = expiredDate - currentDate;
-                    string ret = remainDate.Hours.ToString("00") + ":" + remainDate.Minutes.ToString("00") + ":" + remainDate.Seconds.ToString("00");
-                    return ret;
+                    var currentDate = DateTime.Now;
+                    var expiredDate = timeremain.AddHours(12);
+
+                    if (currentDate > expiredDate)
+                        return "Expired";
+                    else
+                    {
+                        var remainDate = expiredDate - currentDate;
+                        string ret = remainDate.Hours.ToString("00") + ":" + remainDate.Minutes.ToString("00") + ":" + remainDate.Seconds.ToString("00");
+                        return ret;
+                    }
                 }
+                return string.Empty;
+        }
+
+        public string showTimeRemaining_TUNG(String StrTimeremain, int status)
+        {
+            try
+            {
+                if (status == (int)Constants.COMMAND_STATUS.PH_Success)
+                {
+                    DateTime timeremain = DateTime.Parse(StrTimeremain);
+                    var currentDate = DateTime.Now;
+                    var expiredDate = timeremain.AddHours(12);
+
+                    if (currentDate > expiredDate)
+                        return "Expired";
+                    else
+                    {
+                        var remainDate = expiredDate - currentDate;
+                        string ret = remainDate.Hours.ToString("00") + ":" + remainDate.Minutes.ToString("00") + ":" + remainDate.Seconds.ToString("00");
+                        return ret;
+                    }
+                }
+                return string.Empty;
             }
-            return string.Empty;
+            catch (Exception)
+            {
+
+                return string.Empty;
+            }
+           
         }
         #endregion
 

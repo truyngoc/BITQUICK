@@ -12,7 +12,7 @@ using System.Text;
 namespace BIT.WebUI.Admin
 {
     public partial class ConfirmPH : System.Web.UI.Page
-    {        
+    {
         public int COMMAND_DETAIL_ID
         {
             get
@@ -65,7 +65,7 @@ namespace BIT.WebUI.Admin
 
                 imgGHWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}", member.Wallet);
                 lblGHWallet.Text = "Address: " + member.Wallet;
-                txtTotalAmount.Text = cmdDetail.Amount.ToString();                
+                txtTotalAmount.Text = cmdDetail.Amount.ToString();
             }
         }
 
@@ -81,9 +81,10 @@ namespace BIT.WebUI.Admin
                 if (ctlMember.CheckPasswordPIN(codeId, passPIN))
                 {
                     var ctlCommandDetail = new COMMAND_DETAIL_BC();
+                    COMMAND_DETAIL obj = ctlCommandDetail.SelectItem(COMMAND_DETAIL_ID);
                     try
                     {
-                        COMMAND_DETAIL CMD = new COMMAND_DETAIL { ID = COMMAND_DETAIL_ID, TransactionId = txtTransaction.Text, ConfirmPH = true, DateConfirmPH = DateTime.Now, Status = (int)Constants.COMMAND_STATUS.PH_Success };
+                        COMMAND_DETAIL CMD = new COMMAND_DETAIL { ID = COMMAND_DETAIL_ID, TransactionId = txtTransaction.Text, ConfirmPH = true, DateConfirmPH = DateTime.Now, Status = (int)Constants.COMMAND_STATUS.PH_Success, CodeId_From = obj.CodeId_From, CodeId_To = obj.CodeId_To };
                         ctlCommandDetail.ConfirmPH(CMD);
 
                         TNotify.Toastr.Success("Confirm PH successfull", "Confirm PH", TNotify.NotifyPositions.toast_top_full_width, true);
@@ -105,9 +106,9 @@ namespace BIT.WebUI.Admin
                     // thong bao password pin ko dung
                     TNotify.Alerts.Warning("Password PIN is not valid", true);
                 }
-                
+
             }
-            
+
         }
 
         public void SendMailToRECEIVER(COMMAND_DETAIL command)

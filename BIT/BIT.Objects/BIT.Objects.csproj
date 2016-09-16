@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="COMMAND.cs" />
     <Compile Include="COMMAND_DETAIL.cs" />
+    <Compile Include="Commission.cs" />
     <Compile Include="DASHBOARD.cs" />
     <Compile Include="GH.cs" />
     <Compile Include="MEMBERS.cs" />

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="COMMAND_BC.cs" />
     <Compile Include="COMMAND_DETAIL_BC.cs" />
+    <Compile Include="COMMISSION_BC.cs" />
     <Compile Include="GH_BC.cs" />
     <Compile Include="MEMBERS_BC.cs" />
     <Compile Include="PIN_BC.cs" />

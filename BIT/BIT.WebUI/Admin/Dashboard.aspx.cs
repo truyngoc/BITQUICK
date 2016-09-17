@@ -22,7 +22,7 @@ namespace BIT.WebUI.Admin
                 }
                 else
                 {
-                    //BindDashboard();
+                    BindDashboard();
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace BIT.WebUI.Admin
             //lblB_Wallet.Text = o.B_Wallet.ToString();
             lblC_Wallet.Text = o.C_Wallet.ToString();
             //lblR_Wallet.Text = o.R_Wallet.ToString();
-            lblPIN_Wallet.Text = o.PIN_Wallet.ToString();
+            lblPIN_Wallet.Text = Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate.ToString("dd/MM/yyyy");
             lblTotalDownline.Text = o.Total_Downline.ToString();
             //lblDownline_Left.Text = o.Total_Downline_Left.ToString();
             //lblDownline_Right.Text = o.Total_Downline_Right.ToString();

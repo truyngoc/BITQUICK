@@ -94,7 +94,7 @@ namespace BIT.DataHelper
                                 // insert admin GH
                                 foreach (var gh in _lstGH_Admin)
                                 {
-                                    var oGH = new GH { CodeId = gh.CodeId, Amount=gh.Amount, CreateDate=gh.CreateDate, CurrentAmount=(decimal)0, Status= (int)Constants.GH_STATUS.Waiting };
+                                    var oGH = new GH { CodeId = gh.CodeId, Amount=gh.Amount, CreateDate=gh.CreateDate, CurrentAmount=gh.CurrentAmount, Status= (int)Constants.GH_STATUS.Waiting };
                                     int iGHID = dhGH.InsertAdminGHWithTrans(transaction, oGH);
 
                                     foreach (var com in _lstCommandDetails)

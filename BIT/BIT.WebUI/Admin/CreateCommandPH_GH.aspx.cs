@@ -430,7 +430,7 @@ namespace BIT.WebUI.Admin
             // kiem tra danh sach PH, GH 
             if (_listPH.Count > 0 && _listGH.Count > 0)
             {
-                XepLenh(_listPH, _listGH, ref command, ref _ListCommand);                
+                XepLenh(ref _listPH, ref _listGH, ref command, ref _ListCommand);                
 
                 // gan session
                 this.COMMAND = command;
@@ -481,7 +481,7 @@ namespace BIT.WebUI.Admin
         }
         #endregion
 
-        public void XepLenh(List<PH_Info> _ListPH, List<GH_Info> _ListGH, ref COMMAND command, ref List<COMMAND_DETAIL> _ListCommand)
+        public void XepLenh(ref List<PH_Info> _ListPH, ref List<GH_Info> _ListGH, ref COMMAND command, ref List<COMMAND_DETAIL> _ListCommand)
         {
             var username = Singleton<BITCurrentSession>.Inst.SessionMember.Username;
             DateTime _datecreate = DateTime.Now;

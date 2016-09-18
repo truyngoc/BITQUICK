@@ -99,7 +99,7 @@ namespace BIT.DataHelper
 
                                     foreach (var com in _lstCommandDetails)
                                     {
-                                        if (com.GH_ID == null && com.CodeId_To == gh.CodeId)
+                                        if (com.GH_ID == 0 && com.CodeId_To == gh.CodeId)
                                         {
                                             com.GH_ID = iGHID;
                                         }

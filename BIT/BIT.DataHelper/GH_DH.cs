@@ -74,6 +74,7 @@ namespace BIT.DataHelper
         {
             return defaultDB.ExecuteSprocAccessor<GH_Info>("sp_GH_SelectWaitingGH");
         }
+        
 
         public IEnumerable<GH_Info> SelectAdminMemberGH()
         {

@@ -67,6 +67,24 @@ namespace BIT.WebUI.Admin {
         protected global::System.Web.UI.WebControls.Button btnLoadPHbyNumber;
         
         /// <summary>
+        /// txtNumberGH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumberGH;
+        
+        /// <summary>
+        /// btnLoadGHbyNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLoadGHbyNumber;
+        
+        /// <summary>
         /// grdAdminList control.
         /// </summary>
         /// <remarks>

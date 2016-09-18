@@ -179,7 +179,9 @@ namespace BIT.WebUI.Admin
         {
             if (this.ListGH == null)
             {
-                this.ListGH = ctlGH.SelectWaitingGH();
+                var numberGH = txtNumberGH.Text == string.Empty ? 0 : Convert.ToInt32(txtNumberGH.Text);
+                //this.ListGH = ctlGH.SelectWaitingGH();
+                this.ListGH = ctlGH.SelectItemsByNumber(numberGH);
             }
 
             lblTotalAmountGH.Text = ListGH.Sum(m => m.Amount).Value.ToString();
@@ -391,6 +393,15 @@ namespace BIT.WebUI.Admin
 
             // load lai theo so luong PH nhap
             LoadListPH();
+        }
+
+        protected void btnLoadGHbyNumber_Click(object sender, EventArgs e)
+        {
+            // reset list PH
+            ListGH = null;
+
+            // load lai theo so luong PH nhap
+            LoadListGH();
         }
 
         protected void btnTranferToGHList_Click(object sender, EventArgs e)

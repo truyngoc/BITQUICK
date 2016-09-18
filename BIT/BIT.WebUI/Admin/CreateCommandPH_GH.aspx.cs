@@ -288,6 +288,7 @@ namespace BIT.WebUI.Admin
             LoadListPH();
             LoadListGH();
             LoadListAdminGH();
+            LoadListMember();
             ResetCommandList();
         }
 

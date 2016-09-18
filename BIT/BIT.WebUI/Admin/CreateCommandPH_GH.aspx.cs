@@ -429,24 +429,30 @@ namespace BIT.WebUI.Admin
             this._ListCommand = new List<COMMAND_DETAIL>();
 
             // kiem tra danh sach PH, GH 
-            if (_listPH.Count > 0 && _listGH.Count > 0)
+            if (_listPH.Sum(m => m.Amount).Value == _listGH.Sum(m => m.Amount).Value)
             {
-                XepLenh(ref _listPH, ref _listGH, ref command, ref _ListCommand);                
+                if (_listPH.Count > 0 && _listGH.Count > 0)
+                {
+                    XepLenh(ref _listPH, ref _listGH, ref command, ref _ListCommand);
 
-                // gan session
-                this.COMMAND = command;
-                this.LIST_COMMAND_DETAIL = _ListCommand;
+                    // gan session
+                    this.COMMAND = command;
+                    this.LIST_COMMAND_DETAIL = _ListCommand;
 
-                // bind danh sach lenh
-                BindCommand(LIST_COMMAND_DETAIL);
+                    // bind danh sach lenh
+                    BindCommand(LIST_COMMAND_DETAIL);
 
+                }
+                else
+                {
+                    // ko co thi dua ra thong bao
+                    TNotify.Alerts.Danger("List GH or PH is empty", true);
+                }
             }
             else
             {
-                // ko co thi dua ra thong bao
-                TNotify.Alerts.Danger("List GH or PH is empty", true);
+                TNotify.Alerts.Danger("Total amount PH is not equal total amount GH", true);
             }
-            
         }
         protected void btnSaveCommand_Click(object sender, EventArgs e)
         {

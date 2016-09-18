@@ -231,7 +231,7 @@ namespace BIT.WebUI.Admin
                         //oGHInfo.CreateDate = DateTime.ParseExact(row.Cells[2].Text, "dd/MM/yyyy HH:mm:ss", null);                        
 
                         oGHInfo.CodeId = codeid.Value;
-                        oGHInfo.CreateDate = DateTime.Now;
+                        oGHInfo.CreateDate = Convert.ToDateTime("1 jan 2016");
                         oGHInfo.Username = username.Text;
                         oGHInfo.Amount = (amount.Text == string.Empty ? 0 : Convert.ToDecimal(amount.Text));
                         oGHInfo.CurrentAmount = 0;
@@ -256,7 +256,7 @@ namespace BIT.WebUI.Admin
             foreach (var o in ListAdminGH_Selected)
             {
                 ListGH.Add(o);
-
+                ListGH = ListGH.OrderBy(m => m.CreateDate).ToList();
                 // xoa duoi list admin gh
                 var oFind = ListAdminGH.Where(m => m.CodeId == o.CodeId).FirstOrDefault();
                 if (oFind != null)

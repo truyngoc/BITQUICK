@@ -134,7 +134,7 @@ namespace BIT.WebUI.Admin
 
                 //insert
                 Singleton<WITHDRAW_BC>.Inst.InsertItem(objWD);
-                TNotify.Toastr.Warning("Withdraw Completed ", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+                TNotify.Toastr.Success("Withdraw Completed ", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
                 Response.Redirect("../Admin/Withdraw.aspx");
             }
             catch { }

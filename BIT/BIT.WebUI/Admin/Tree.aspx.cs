@@ -70,24 +70,16 @@ namespace BIT.WebUI.Admin
             {
                 if (item.IsLock != null && item.IsLock == 1)
                 {
-                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/icon_lock.gif"" class=""img-tree"" width=""13px"" height=""20px"" /> &nbsp;<a href=""Memberprofile.aspx?m="
-                        + item.Username
-                        + @""" target=""_blank"" title="""
-                        + item.Fullname.Trim() + @"/"
-                        + item.Phone + @""">"
-                        + item.Username + "/"
-                        + item.Fullname + "/"
+                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/icon_lock.gif"" class=""img-tree"" width=""13px"" height=""20px"" /> &nbsp;"
+                        + item.Username + " / "
+                        + item.Fullname + " / "
                         + item.Phone + " </a>";
                 }
                 else
                 {
-                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/file.gif"" class=""img-tree""  width=""13px"" height=""20px""  /> &nbsp;<a href=""Memberprofile.aspx?m="
-                        + item.Username
-                        + @""" target=""_blank"" title="""
-                        + item.Fullname.Trim() + @"/"
-                        + item.Phone + @""">"
-                        + item.Username + "/"
-                        + item.Fullname + "/"
+                    str = str + @"<li><img src=""/Content/Tree/Styles/jquery-treeview/images/file.gif"" class=""img-tree""  width=""13px"" height=""20px""  /> &nbsp;"
+                        + item.Username + " / "
+                        + item.Fullname + " / "
                         + item.Phone + "</a>";
                 }
 

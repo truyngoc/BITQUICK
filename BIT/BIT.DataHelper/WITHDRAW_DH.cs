@@ -37,10 +37,10 @@ namespace BIT.DataHelper
             defaultDB.ExecuteNonQuery("sp_RECEIVE_Update"
                 , obj.ID, obj.CodeId, Decimal.Parse(obj.Amount.ToString()), obj.Date_Create, obj.TransactionId, obj.Status, obj.Wallet);
         }
-        public void UpdateTranSactionWithdraw(WITHDRAW obj)
+        public void UpdateTranSactionWithdraw(int ID, string CodeId, Decimal Amount)
         {
             defaultDB.ExecuteNonQuery("sp_WithDraw_UpdateTranSactionWithdraw"
-                , obj.ID,obj.CodeId, obj.Amount,obj.TransactionId);
+                , ID,CodeId, Amount);
         }
         public void DeleteItem(int ID)
         {
@@ -86,6 +86,19 @@ namespace BIT.DataHelper
             return bol;
         }
 
+        public int GetQuotaWithDraw(string CodeId)
+        {
+            try
+            {
+                return int.Parse(defaultDB.ExecuteScalar("sp_WITHDRAW_getQuota", CodeId).ToString());
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+
+        }
         public WITHDRAW SelectItemByCodeId(WITHDRAW obj)
         {
             return defaultDB.ExecuteSprocAccessor<WITHDRAW>("sp_RECEIVE_SelectItemByCodeId"

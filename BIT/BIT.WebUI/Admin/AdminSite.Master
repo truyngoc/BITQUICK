@@ -139,7 +139,7 @@
                                 <a class="" href="../Admin/Dashboard.aspx" style="color: #fff">
                                     <i class="fa fa-bar-chart-o"></i>
                                     <span>Dashboard</span>
-                                   <%-- <span class="bgslide"></span>--%>
+                                    <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!---End of Dashboard-->
@@ -159,7 +159,7 @@
                                 <a class="" href="../Admin/PIN.aspx" style="color: #fff">
                                     <i class="fa fa-heart"></i>
                                     <span>PIN</span>
-                                   <%-- <span class="bgslide"></span>--%>
+                                    <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--End of Pin-->
@@ -168,7 +168,7 @@
                                 <a class="" href="../Admin/SelectPackInvest.aspx" style="color: #fff">
                                     <i class="fa fa-heart"></i>
                                     <span>PACKAGE INVEST</span>
-                                  <%--  <span class="bgslide"></span>--%>
+                                    <%--  <span class="bgslide"></span>--%>
                                 </a>
                             </li>
 
@@ -177,7 +177,7 @@
                                 <a class="" href="../Admin/CreatePHCommunity.aspx" style="color: #fff">
                                     <i class="fa fa-cloud-upload"></i>
                                     <span>PH</span>
-                                   <%-- <span class="bgslide"></span>--%>
+                                    <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--end of PH-->
@@ -187,7 +187,7 @@
                                 <a class="" href="../Admin/GHCommunity.aspx" style="color: #fff">
                                     <i class="fa fa-cloud-download"></i>
                                     <span>GH</span>
-                                   <%-- <span class="bgslide"></span>--%>
+                                    <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--End of GH-->
@@ -206,7 +206,17 @@
                                 <a class="" href="../Admin/Tree.aspx" style="color: #fff">
                                     <i class="fa fa-code-fork" aria-hidden="true"></i>
                                     <span>TREE</span>
-                                   <%-- <span class="bgslide"></span>--%>
+                                    <%-- <span class="bgslide"></span>--%>
+                                </a>
+                            </li>
+                            <!--end of tree-->
+
+                            <!--WITHDRAW-->
+                            <li class="sub-menu">
+                                <a class="" href="../Admin/WithDraw.aspx" style="color: #fff">
+                                    <i class="fa fa-code-fork" aria-hidden="true"></i>
+                                    <span>WITHDRAW</span>
+                                    <%-- <span class="bgslide"></span>--%>
                                 </a>
                             </li>
                             <!--end of tree-->
@@ -221,7 +231,7 @@
                                     <li><a href="MemberManagement.aspx"><i class="fa fa-universal-access" aria-hidden="true"></i><span>ACCOUNT MANAGER</span></a></li>
                                     <li><a href="PINAdmin.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>PIN ACCEPT</span></a></li>
                                     <li><a href="WithDraw.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>WITHDRAW MANAGER</span></a></li>
-<%--                                    <li><a href="ReCharge.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>RECHANGRE MANAGER</span></a></li>--%>
+                                    <%--                                    <li><a href="ReCharge.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>RECHANGRE MANAGER</span></a></li>--%>
                                     <li><a href="CreateCommandPH_GH.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>COMMAND PH-GH</span></a></li>
                                     <li><a href="COMMAN_LIST.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>COMMAND LIST</span></a></li>
                                     <li><a href="COMMAND_DETAIL_EXPIRED_LIST.aspx"><i class="fa fa-money" aria-hidden="true"></i><span>PH - GH EXPIRED</span></a></li>

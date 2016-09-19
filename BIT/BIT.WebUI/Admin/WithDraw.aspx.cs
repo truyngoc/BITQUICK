@@ -29,6 +29,7 @@ namespace BIT.WebUI.Admin
                 if (Singleton<BITCurrentSession>.Inst.SessionMember.CodeId != "0")
                 {
                     getCWalletAmount();
+                    LoadAmountWithDraw();
                     bindDataList();
                 }
                 else
@@ -38,6 +39,41 @@ namespace BIT.WebUI.Admin
             }
         }
 
+        public void LoadAmountWithDraw()
+        {
+            int Quota = Singleton<WITHDRAW_BC>.Inst.GetQuotaWithDraw(Singleton<BITCurrentSession>.Inst.SessionMember.CodeId);
+            switch (Singleton<BITCurrentSession>.Inst.SessionMember.Level)
+            {
+                case "0": 
+                    txtAmount.Text = "0.3";
+                    lblQuota.Text = (1.5 - Quota).ToString();
+                    break;
+                case "1":
+                    txtAmount.Text = "0.3";
+                    lblQuota.Text = (1.5 - Quota).ToString();
+                    break;
+                case "2":
+                    txtAmount.Text = "0.5";
+                    lblQuota.Text = (15 - Quota).ToString();
+                    break;
+                case "3":
+                    txtAmount.Text = "1";
+                    lblQuota.Text = (30 - Quota).ToString();
+                    break;
+                case "4":
+                    txtAmount.Text = "1.3";
+                    lblQuota.Text = (40 - Quota).ToString();
+                    break;
+                case "5":
+                    txtAmount.Text = "1.5";
+                    lblQuota.Text = (50 - Quota).ToString();
+                    break;
+                default:
+                    break;
+            }
+            
+
+        }
         public string getGHStatus(object status)
         {
             string ghStatus = string.Empty;

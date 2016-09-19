@@ -13,24 +13,35 @@
             <div class="form">
                 <form enctype="multipart/form-data" class="cmxform form-horizontal tasi-form">
                     <div class="form-group col-lg-12">
-                        <div class="col-md-6 col-md-offset-3">
-                            <label class="control-label col-lg-5" for="firstname">Remain Amount</label>
+
+                        <div class="col-md-12 col-md-offset-3">
+                            <label class="control-label col-lg-2" for="firstname">C Wallet</label>
                             <div class="col-lg-5">
                                 <asp:Label runat="server" ID="lblCWalletAmt"></asp:Label>
                             </div>
                         </div>
-                        <div class="col-md-6 col-md-offset-3">
-                            <label class="control-label col-lg-5" for="firstname">Withdraw Amount </label>
+
+                        <div class="col-md-12 col-md-offset-3">
+                            <label class="control-label col-lg-2" for="firstname">Remain Amount / Month</label>
                             <div class="col-lg-5">
-                                <asp:TextBox runat="server" ID="txtAmount"></asp:TextBox>
+                                <asp:Label runat="server" ID="lblQuota"></asp:Label>
                             </div>
                         </div>
-                        <div class="col-md-6 col-md-offset-3">
-                            <label class="control-label col-lg-5" for="firstname">Enter PIN 2 </label>
+                                                
+                        <div class="col-md-12 col-md-offset-3">
+                            <label class="control-label col-lg-2" for="firstname">Withdraw Amount </label>
                             <div class="col-lg-5">
+                                <asp:TextBox runat="server" ID="txtAmount" readonly="true"></asp:TextBox>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 col-md-offset-3">
+                            <label class="control-label col-lg-2" for="firstname">Enter PIN 2 </label>
+                            <div class="col-lg-2">
                                 <asp:TextBox runat="server" ID="txtPin2" TextMode="Password" ></asp:TextBox>
                             </div>
                         </div>
+
                     </div>
                     <div class="form-group col-lg-12">
                         <div style="text-align: center;" class="col-lg-12">

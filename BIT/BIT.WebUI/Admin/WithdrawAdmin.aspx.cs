@@ -40,30 +40,31 @@ namespace BIT.WebUI.Admin
             }
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, GridViewCommandEventArgs e)
         {
-            if(txtTrans.Text == string.Empty)
-            {
-                TNotify.Toastr.Warning("Please input transaction string !", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
-                return;
-            }
-            else
-            {
-                if (Singleton<WITHDRAW_BC>.Inst.isExistTransaction(txtTrans.Text))
-                {
-                    TNotify.Toastr.Warning("Transaction already exist !", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
-                    return;
-                }
-                else
-                {
-                    WITHDRAW objWdr = Singleton<WITHDRAW_BC>.Inst.SelectItem(Convert.ToInt32(lblIDCode.Text));
-                    objWdr.TransactionId = txtTrans.Text;//update va tru luon cwallet trong store
-                    Singleton<WITHDRAW_BC>.Inst.UpdateTranSactionWithdraw(objWdr);
+            //if(txtTrans.Text == string.Empty)
+            //{
+            //    TNotify.Toastr.Warning("Please input transaction string !", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+            //    return;
+            //}
+            //else
+            //{
+            //    if (Singleton<WITHDRAW_BC>.Inst.isExistTransaction(txtTrans.Text))
+            //    {
+            //        TNotify.Toastr.Warning("Transaction already exist !", "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        WITHDRAW objWdr = Singleton<WITHDRAW_BC>.Inst.SelectItem(Convert.ToInt32(lblIDCode.Text));
+            //        objWdr.TransactionId = txtTrans.Text;//update va tru luon cwallet trong store
+            //        Singleton<WITHDRAW_BC>.Inst.UpdateTranSactionWithdraw(objWdr);
 
-                    TNotify.Toastr.Warning(string.Format( "Confirmed withdraw {0} BTC for user {1} !",objWdr.Amount,objWdr.username), "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
-                    Response.Redirect(Request.Path);
-                }
-            }
+            //        TNotify.Toastr.Warning(string.Format( "Confirmed withdraw {0} BTC for user {1} !",objWdr.Amount,objWdr.username), "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+            //        Response.Redirect(Request.Path);
+            //    }
+            //}
+
         }
 
         private void bindDLWithDraw()
@@ -98,45 +99,18 @@ namespace BIT.WebUI.Admin
                 return false;
         }
 
-        protected void lnkBlockchain_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)(sender);
-            string yourValue = btn.CommandArgument;
-
-            string url = string.Format("https://blockchain.info/address/{0}", yourValue);
-            string s = "window.open('" + url + "', 'popup_window');";
-            ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);
-        }
-
-        protected void lnkTransaction_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)(sender);
-            string yourValue = btn.CommandArgument;
-
-            string url = string.Format("https://blockchain.info/tx/{0}", yourValue);
-            string s = "window.open('" + url + "', 'popup_window');";
-            ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);
-
-        }
-
-        protected void lnkCheckTrans_Click(object sender, EventArgs e)
-        {
-            string url = string.Format("https://blockchain.info/tx/{0}", txtTrans.Text);
-            string s = "window.open('" + url + "', 'popup_window');";
-            ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);
-        }
-
         protected void lbkBtnConfirm_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)(sender);
-            string ID = btn.CommandArgument;
+            int ID = int.Parse(btn.CommandArgument);
+            WITHDRAW objWdr = Singleton<WITHDRAW_BC>.Inst.SelectItem(ID);
 
-            WITHDRAW objw = Singleton<WITHDRAW_BC>.Inst.SelectItem(Convert.ToInt32(ID));
-            imgQRCode.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}", objw.Wallet);
-            lblSyswallet.Text = objw.Wallet;
-            this.txtAmount.Text = objw.Amount.ToString();
-            this.txtAmount.Enabled = false;
-            lblIDCode.Text = ID;
+            string CodeID = objWdr.CodeId;
+            Decimal Amount = decimal.Parse(objWdr.Amount.ToString());
+            Singleton<WITHDRAW_BC>.Inst.UpdateTranSactionWithdraw(ID, CodeID, Amount);
+            TNotify.Toastr.Warning(string.Format("Confirmed withdraw {0} BTC for user {1} !", objWdr.Amount, objWdr.username), "Completed", TNotify.NotifyPositions.toast_top_full_width, true);
+            Response.Redirect(Request.Path);
         }
+
     }
 }

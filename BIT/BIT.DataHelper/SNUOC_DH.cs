@@ -137,7 +137,7 @@ namespace BIT.DataHelper
             return bol;
         }
 
-        // TRUYBN - 07/09/2016
+        //  - 07/09/2016
         public PACKAGE_TRANSACTION SelectItemByCodeId(string CodeId)
         {
             return defaultDB.ExecuteSprocAccessor<PACKAGE_TRANSACTION>("sp_PACKAGE_TRANSACTION_SelectItemByCodeId", CodeId).FirstOrDefault();

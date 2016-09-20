@@ -35,6 +35,12 @@ namespace BIT.DataHelper
 				, obj.ID, obj.CodeId, obj.Amount, obj.CurrentAmount, obj.CreateDate, obj.Status);
 		}
 
+        public void UpdateStatus(int ID, int Status)
+        {
+            defaultDB.ExecuteNonQuery("sp_GH_UpdateStatus"
+                , ID, Status);
+        }
+
 		public void DeleteItem(int ID)
 		{
 			defaultDB.ExecuteNonQuery("sp_GH_Delete"

@@ -32,6 +32,12 @@ namespace BIT.Controller
 			ctl.UpdateItem(obj);
 		}
 
+        public void UpdateStatus(int ID, int Status)
+        {
+            ctl.UpdateStatus(ID, Status);
+        }
+
+
 		public void DeleteItem(int ID)
 		{
 			ctl.DeleteItem(ID);

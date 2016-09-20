@@ -13,6 +13,7 @@
                 <section class="panel">
                     <div class="table-responsive">
                         <asp:GridView ID="grdCommandDetails" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
+                            OnRowCommand="grdCommandDetails_OnRowCommand"
                             OnPageIndexChanging="grdCommandDetails_OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None">
                             <Columns>
                                 <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
@@ -29,7 +30,7 @@
 
                                 <asp:TemplateField HeaderText="Receiver" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblSender" runat="server" Text='<%# AccountBriefInfoByCodeId(Eval("CodeId_To").ToString()) %>' />
+                                        <asp:Label ID="lblReceiver" runat="server" Text='<%# AccountBriefInfoByCodeId(Eval("CodeId_To").ToString()) %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -75,6 +76,18 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
+                                <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btnProcessPH" runat="server" CommandName="cmdProcessPH" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-primary" Text="PH"  OnClientClick="javascript:return confirm('Are you absolutely sure you want to process?')"
+                                            Visible='<%# visibleButton(Eval("Status")) %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btnProcessGH" runat="server" CommandName="cmdProcessGH" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-primary" Text="GH" OnClientClick="javascript:return confirm('Are you absolutely sure you want to process?')" 
+                                            Visible='<%# visibleButton(Eval("Status")) %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </div>

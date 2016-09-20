@@ -75,6 +75,10 @@ namespace BIT.WebUI.Admin
                     return Constants.COMMAND_STATUS.Success.ToString();
                 case (int)Constants.COMMAND_STATUS.Expired:
                     return Constants.COMMAND_STATUS.Expired.ToString();
+                case (int)Constants.COMMAND_STATUS.ProcessPhExpired:
+                    return Constants.COMMAND_STATUS.ProcessPhExpired.ToString();
+                case (int)Constants.COMMAND_STATUS.ProcessGhExpired:
+                    return Constants.COMMAND_STATUS.ProcessGhExpired.ToString();
                 default:
                     return string.Empty;
             }
@@ -104,6 +108,25 @@ namespace BIT.WebUI.Admin
 
             return briefInfo;
         }
+
+        public bool visibleButton(object status)
+        {
+            if (status != null)
+            {
+                int _status = Convert.ToInt32(status);
+
+                switch (_status)
+                {
+                    case (int)Constants.COMMAND_STATUS.ProcessPhExpired:
+                        return false;
+                    case (int)Constants.COMMAND_STATUS.ProcessGhExpired:
+                        return false;
+                    default:
+                        return true;
+                }
+            }
+            return true;
+        }
         #endregion
 
         protected void grdCommandDetails_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -113,6 +136,80 @@ namespace BIT.WebUI.Admin
             LoadCommandDetails();
 
         }
-       
+
+        protected void grdCommandDetails_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "cmdProcessPH")    // PH right
+            {
+                int COMMAND_ID = Convert.ToInt32(e.CommandArgument);
+
+                try
+                {
+                    var ctlCommandDetail = new COMMAND_DETAIL_BC();
+                    var oCommandDetail = ctlCommandDetail.SelectItem(COMMAND_ID);
+
+                    // confirm GH for command detail
+                    oCommandDetail.ConfirmGH = true;
+                    oCommandDetail.DateConfirmGH = DateTime.Now;
+                    oCommandDetail.Status = (int)Constants.COMMAND_STATUS.Success;
+
+                    ctlCommandDetail.GH_CONFIRM(oCommandDetail);
+
+                    // update status command detail
+                    ctlCommandDetail.UpdateStatus((int)oCommandDetail.ID, (int)Constants.COMMAND_STATUS.ProcessPhExpired);
+
+                    // lock GH
+                    var ctlMem = new MEMBERS_BC();
+                    ctlMem.LockAccount(oCommandDetail.CodeId_To);
+
+                    TNotify.Toastr.Success("Process command expired successfull", "Process command expired", TNotify.NotifyPositions.toast_top_full_width, true);
+
+                    Response.Redirect("COMMAND_DETAIL_EXPIRED_LIST.aspx");
+                }
+                catch (System.Threading.ThreadAbortException lException)
+                {
+                    // C2: catch exception nay khi redirect
+                }
+                catch (Exception ex)
+                {
+                    TNotify.Alerts.Danger(ex.ToString(), true);
+                }
+
+            }
+            else if (e.CommandName == "cmdProcessGH")   // GH right
+            {
+                int COMMAND_ID = Convert.ToInt32(e.CommandArgument);
+
+                try
+                {
+                    var ctlCommandDetail = new COMMAND_DETAIL_BC();
+                    var oCommandDetail = ctlCommandDetail.SelectItem(COMMAND_ID);
+
+                    // tranfer GH to waiting create command
+                    var ctlGH = new GH_BC();
+
+                    ctlGH.UpdateStatus((int)oCommandDetail.GH_ID, (int)Constants.GH_STATUS.Waiting);
+
+                    // update status command detail
+                    ctlCommandDetail.UpdateStatus((int)oCommandDetail.ID, (int)Constants.COMMAND_STATUS.ProcessGhExpired);
+
+                    // lock PH
+                    var ctlMem = new MEMBERS_BC();
+                    ctlMem.LockAccount(oCommandDetail.CodeId_From);
+
+                    TNotify.Toastr.Success("Process command expired successfull", "Process command expired", TNotify.NotifyPositions.toast_top_full_width, true);
+
+                    Response.Redirect("COMMAND_DETAIL_EXPIRED_LIST.aspx");
+                }
+                catch (System.Threading.ThreadAbortException lException)
+                {
+                    // C2: catch exception nay khi redirect
+                }
+                catch (Exception ex)
+                {
+                    TNotify.Alerts.Danger(ex.ToString(), true);
+                }                
+            }
+        }
     }
 }

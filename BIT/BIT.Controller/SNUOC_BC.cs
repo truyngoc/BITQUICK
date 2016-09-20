@@ -91,7 +91,7 @@ namespace BIT.Controller
             return ctl.isAllPackageExpire(CodeID);
         }
 
-        // TRUYBN - 07/09/2016
+        //  - 07/09/2016
         public PACKAGE_TRANSACTION SelectItemByCodeId(string CodeId)
         {
             return ctl.SelectItemByCodeId(CodeId);

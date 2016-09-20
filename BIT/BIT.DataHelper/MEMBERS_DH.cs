@@ -222,7 +222,7 @@ namespace BIT.DataHelper
                 , ID);
         }
 
-        #region "TRUYBN - Show Tree BITQUICK"
+        #region " - Show Tree BITQUICK"
         public IEnumerable<MEMBERS> Tree_GetData(string Username, string CodeId_Sponsor, string Fullname, string Email, string Level)
         {
             return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_Tree_GetData", Username, CodeId_Sponsor, Fullname, Email, Level);

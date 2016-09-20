@@ -54,7 +54,9 @@ namespace BIT.Common
             Pending = 0,
             PH_Success = 1,
             Success = 2,
-            Expired = 3
+            Expired = 3,
+            ProcessPhExpired = 4,
+            ProcessGhExpired = 5
         }
     }
 }

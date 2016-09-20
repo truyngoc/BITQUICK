@@ -54,6 +54,35 @@ namespace BIT.Objects
 
     }
 
+    public class MEMBERS_EDIT
+    {
+
+        public string CodeId { get; set; }
+        //[Username]			[varchar](50) NOT NULL,
+        public string Username { get; set; }
+        //[Password]			[varchar](50) NOT NULL,
+        public string Upline { get; set; }
+        //[Password]			[varchar](50) NOT NULL,
+        public string Fullname { get; set; }
+        //[Phone]				[varchar](50) NOT NULL,
+        public string Phone { get; set; }
+        //[Email]			[varchar](100) NULL,
+        public string Email { get; set; }
+
+        //[Wallet]			[nvarchar](250) NULL,
+        public string Wallet { get; set; }
+        public string WALLET_ADMIN { get; set; }
+        public string Transaction { get; set; }
+        //[CreateDate]			[datetime] NULL,
+        public DateTime? CreateDate { get; set; }
+        //[ID]			[int] IDENTITY(1,1) NOT NULL,
+        public int ID { get; set; }
+        //[Level]			[varchar](50) NOT NULL,
+        
+        public int STA { get; set; }
+        
+    }
+
     public class MemberTree
     {
         public string CodeId { get; set; }

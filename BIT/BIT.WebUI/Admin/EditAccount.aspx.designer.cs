@@ -67,6 +67,42 @@ namespace BIT.WebUI.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtWallet;
         
         /// <summary>
+        /// divBlockChain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBlockChain;
+        
+        /// <summary>
+        /// imgAdminWallet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgAdminWallet;
+        
+        /// <summary>
+        /// lblAdminWallet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAdminWallet;
+        
+        /// <summary>
+        /// txtTransaction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTransaction;
+        
+        /// <summary>
         /// btnUpdate control.
         /// </summary>
         /// <remarks>

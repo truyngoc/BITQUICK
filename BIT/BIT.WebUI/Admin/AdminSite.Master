@@ -129,7 +129,7 @@
                                     <li><a href="../Admin/EditAccount.aspx"><span><i class=" fa fa-user"></i></span><span>Profile setting</span></a></li>
                                     <li><a href="../Admin/ChangePassword.aspx"><span><i class="fa fa-cog"></i></span><span>Change password</span></a></li>
                                     <li><a href="../Admin/ChangePasswordTwo.aspx"><span><i class="fa fa-cog"></i></span><span>Change password 2</span></a></li>
-                                    <li style="display: none;"><a href="../Admin/CommisionMonthly.aspx"><span><i class="fa fa-unlock-alt"></i></span><span style="padding: 0 10px;">COMMISSION MONTHLY</span></a></li>
+                                    <li><a href="../Admin/OrderChangeInfo.aspx"><span><i class="fa fa-cog"></i></span><span>Order Edit Profile</span></a></li>
                                     <li><a href="../Admin/Login.aspx"><span><i class="fa fa-unlock-alt"></i></span><span>Logout</span></a></li>
                                 </ul>
                                 <!-- user login dropdown end -->

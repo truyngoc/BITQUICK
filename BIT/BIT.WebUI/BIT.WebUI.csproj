@@ -210,6 +210,7 @@
     <Content Include="images\earn.png" />
     <Content Include="images\edit-icon.png" />
     <Content Include="images\facebook.png" />
+    <Content Include="images\favicon.png" />
     <Content Include="images\footer.jpg" />
     <Content Include="images\GD.png" />
     <Content Include="images\GOLDEN.png" />

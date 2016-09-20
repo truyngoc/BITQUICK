@@ -28,6 +28,12 @@ namespace BIT.WebUI.Admin
             }
         }
 
+        public void getAdminWallet()
+        {
+            string admWallet = Singleton<MEMBERS_BC>.Inst.SelectRandomAdmin().Wallet;
+            imgAdminWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}", admWallet);
+            lblAdminWallet.Text = admWallet;
+        }
         public void LoadUserInfor()
         {
             int Id;
@@ -45,18 +51,20 @@ namespace BIT.WebUI.Admin
                     
                 btnUpdateAdmin.Visible = true;
                 btnUpdate.Visible = false;
-                txtFullName.Attributes.Remove("readonly");
-                txtEmail.Attributes.Remove("readonly");
-                txtPhone.Attributes.Remove("readonly");
-                txtWallet.Attributes.Remove("readonly");
+                divBlockChain.Visible = false;
+                //txtFullName.Attributes.Remove("readonly");
+                //txtEmail.Attributes.Remove("readonly");
+                //txtPhone.Attributes.Remove("readonly");
+                //txtWallet.Attributes.Remove("readonly");
             }
             else
             {
                 Id = Singleton<BITCurrentSession>.Inst.SessionMember.ID;
-                txtFullName.Attributes.Add("readonly", "readonly");
-                txtEmail.Attributes.Add("readonly", "readonly");
-                txtPhone.Attributes.Add("readonly","readonly");
-                txtWallet.Attributes.Add("readonly","readonly");
+                getAdminWallet();
+                //txtFullName.Attributes.Add("readonly", "readonly");
+                //txtEmail.Attributes.Add("readonly", "readonly");
+                //txtPhone.Attributes.Add("readonly", "readonly");
+                //txtWallet.Attributes.Add("readonly", "readonly");
             }
 
             MEMBERS_BC ctlMember = new MEMBERS_BC();
@@ -84,6 +92,20 @@ namespace BIT.WebUI.Admin
             return obj;
         }
 
+        public MEMBERS_EDIT GetDataOnFormEdit()
+        {
+            MEMBERS_EDIT obj = new MEMBERS_EDIT();
+
+            obj.CodeId = hidCodeId.Value;
+            obj.Username = txtUserName.Text;
+            obj.Fullname = txtFullName.Text.Trim();
+            obj.Phone = txtPhone.Text.Trim();
+            obj.Email = txtEmail.Text.Trim();
+            obj.Wallet = txtWallet.Text.Trim();
+            obj.Transaction = txtTransaction.Text;
+            obj.WALLET_ADMIN = lblAdminWallet.Text;
+            return obj;
+        }
         //public void UpdateProfile()
         //{
         //    MEMBERS_BC ctlMember = new MEMBERS_BC();
@@ -132,13 +154,15 @@ namespace BIT.WebUI.Admin
             {
                 try
                 {
-                    //INSERT MEMBER EDIT
-                    //REDIRECT ORDERCHANGEINFO
+                    MEMBERS_EDIT obj = GetDataOnFormEdit();
+                    Singleton<MEMBERS_BC>.Inst.InsertEditItem(obj);
+                    TNotify.Alerts.Success("Order edit account information success. Please contact to your upline to confirm.", true);
                     Response.Redirect("OrderChangeInfo.aspx");
                 }
                 catch (Exception ex)
                 {
-                    ShowMessageError(lblMessage, ex.ToString(), true);
+                    //ShowMessageError(lblMessage, ex.ToString(), true);
+                    TNotify.Alerts.Warning("Order edit account information error." + ex.ToString(), true);
                 }
             }
         }

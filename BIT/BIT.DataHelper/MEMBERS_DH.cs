@@ -44,6 +44,23 @@ namespace BIT.DataHelper
                 //, obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.IsLock, obj.Status
                 );
         }
+
+        public void InsertEditItem(MEMBERS_EDIT obj)
+        {
+            defaultDB.ExecuteNonQuery("sp_MEMBERS_EDIT_Insert",
+            obj.CodeId,// @CodeId varchar(250)
+            obj.Username,//@Username	varchar(50)
+            obj.Fullname, //@Fullname	nvarchar(250)
+            obj.Phone,//@Phone	varchar(50)
+            obj.Email,//@Email	varchar(100)
+            obj.Wallet, //@Wallet	nvarchar(250)
+            obj.Transaction,
+            obj.WALLET_ADMIN
+
+                //, obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.IsLock, obj.Status
+                );
+        }
+
         public void UpdateItem(MEMBERS obj)
         {
             defaultDB.ExecuteNonQuery("sp_MEMBERS_Update"
@@ -200,6 +217,18 @@ namespace BIT.DataHelper
         public IEnumerable<MEMBERS> SearchItemByUserName(string user_name)
         {
             return defaultDB.ExecuteSprocAccessor<MEMBERS>("sp_MEMBERS_SearchItemByUserName"
+                , user_name);
+        }
+
+        public IEnumerable<MEMBERS_EDIT> SearchItemByUserName_ADMIN(string user_name)
+        {
+            return defaultDB.ExecuteSprocAccessor<MEMBERS_EDIT>("[sp_MEMBERS_EDIT_SearchItemByUserName_ADMIN]"
+                , user_name);
+        }
+
+        public IEnumerable<MEMBERS_EDIT> SearchItemByUserName_EDIT(string user_name)
+        {
+            return defaultDB.ExecuteSprocAccessor<MEMBERS_EDIT>("[sp_MEMBERS_EDIT_SearchItemByUserName]"
                 , user_name);
         }
 

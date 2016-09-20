@@ -25,8 +25,16 @@ namespace BIT.Controller
 		public void InsertItem(MEMBERS obj)		
 		{
 			ctl.InsertItem(obj);
-		}
+		}   
 
+        /// <summary>
+        /// INSERT MEMBER EDIT
+        /// </summary>
+        /// <param name="obj"></param>
+        public void InsertEditItem(MEMBERS_EDIT obj)
+        {
+            ctl.InsertEditItem(obj);
+        }
 		public void UpdateItem(MEMBERS obj)
 		{
 			ctl.UpdateItem(obj);
@@ -133,6 +141,16 @@ namespace BIT.Controller
         public List<MEMBERS> SearchItemByUserName(string user_name)
         {
             return ctl.SearchItemByUserName(user_name).ToList();
+        }
+
+        public List<MEMBERS_EDIT> SearchItemByUserName_ADMIN(string user_name)
+        {
+            return ctl.SearchItemByUserName_ADMIN(user_name).ToList();
+        }
+
+        public List<MEMBERS_EDIT> SearchItemByUserName_EDIT(string user_name)
+        {
+            return ctl.SearchItemByUserName_EDIT(user_name).ToList();
         }
 
         public void LockAccount(int ID)

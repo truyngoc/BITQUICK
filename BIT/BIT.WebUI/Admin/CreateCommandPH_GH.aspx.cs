@@ -177,13 +177,20 @@ namespace BIT.WebUI.Admin
 
         public void LoadListGH()
         {
+
             if (this.ListGH == null)
             {
-                var numberGH = txtNumberGH.Text == string.Empty ? 0 : Convert.ToInt32(txtNumberGH.Text);
-                //this.ListGH = ctlGH.SelectWaitingGH();
-                this.ListGH = ctlGH.SelectItemsByNumber(numberGH);
+                if (txtUserName.Text.Equals(""))
+                {
+                    var numberGH = txtNumberGH.Text == string.Empty ? 0 : Convert.ToInt32(txtNumberGH.Text);
+                    //this.ListGH = ctlGH.SelectWaitingGH();
+                    this.ListGH = ctlGH.SelectItemsByNumber(numberGH);
+                }
+                else
+                {
+                    this.ListGH = ctlGH.SelectItemsByName(txtUserName.Text);
+                }
             }
-
             lblTotalAmountGH.Text = ListGH.Sum(m => m.Amount).Value.ToString();
 
             grdGH.DataSource = ListGH;

@@ -14,6 +14,7 @@ namespace BIT.WebUI.Admin
         {
             if (!this.IsPostBack)
             {
+                Register.newRegist = false;
                 Singleton<BITCurrentSession>.Inst.SignOut();
                 Response.Redirect("~/Admin/Login.aspx");
             }

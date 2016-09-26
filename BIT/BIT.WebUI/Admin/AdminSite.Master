@@ -145,7 +145,7 @@
                             <!---End of Dashboard-->
 
                             <!--SignUp-->
-                            <li class="sub-menu">
+                            <li class="sub-menu"  runat="server" id="liSignUp">
                                 <a class="" href="../Admin/Register.aspx" style="color: #fff">
                                     <i class="fa fa-user"></i>
                                     <span>SIGNUP</span>
@@ -155,7 +155,7 @@
                             <!--End of SignUp-->
 
                             <!--Pin-->
-                            <li class="sub-menu">
+                            <li class="sub-menu"  id="liPin" runat="server">
                                 <a class="" href="../Admin/PIN.aspx" style="color: #fff">
                                     <i class="fa fa-heart"></i>
                                     <span>PIN</span>
@@ -164,7 +164,7 @@
                             </li>
                             <!--End of Pin-->
 
-                            <li class="sub-menu">
+                            <li class="sub-menu"  id="liPakage" runat="server">
                                 <a class="" href="../Admin/SelectPackInvest.aspx" style="color: #fff">
                                     <i class="fa fa-heart"></i>
                                     <span>PACKAGE INVEST</span>
@@ -173,7 +173,7 @@
                             </li>
 
                             <!--PH-->
-                            <li class="sub-menu">
+                            <li class="sub-menu"  id="liPH" runat="server">
                                 <a class="" href="../Admin/CreatePHCommunity.aspx" style="color: #fff">
                                     <i class="fa fa-cloud-upload"></i>
                                     <span>PH</span>
@@ -183,7 +183,7 @@
                             <!--end of PH-->
 
                             <!--GH-->
-                            <li class="sub-menu">
+                            <li class="sub-menu"  id="liGH" runat="server">
                                 <a class="" href="../Admin/GHCommunity.aspx" style="color: #fff">
                                     <i class="fa fa-cloud-download"></i>
                                     <span>GH</span>
@@ -193,7 +193,7 @@
                             <!--End of GH-->
 
                             <!--commission-->
-                            <li class="sub-menu">
+                            <li class="sub-menu"  id="liCommission" runat="server">
                                 <a class="" href="../Admin/Commission.aspx" style="color: #fff">
                                     <i class="fa fa fa-bitcoin"></i>
                                     <span>COMMISSION</span>
@@ -212,7 +212,7 @@
                             <!--end of tree-->
 
                             <!--WITHDRAW-->
-                            <li class="sub-menu">
+                            <li class="sub-menu"  id="liWithdraw" runat="server">
                                 <a class="" href="../Admin/WithDraw.aspx" style="color: #fff">
                                     <i class="fa fa fa-bitcoin" aria-hidden="true"></i>
                                     <span>WITHDRAW</span>

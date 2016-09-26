@@ -113,8 +113,11 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="col-md-4">
-                        <asp:TextBox ID="txtNumberGH" runat="server" placeholder="Number GH" CssClass="form-control col-md-1"></asp:TextBox>
+                    <div class="col-md-2">
+                        <asp:TextBox ID="txtNumberGH" runat="server" placeholder="Number GH" CssClass="form-control col-md-1" Text="100"></asp:TextBox>
+                    </div>
+                    <div class="col-md-3">
+                        <asp:TextBox ID="txtUserName" runat="server" placeholder="UserName" CssClass="form-control col-md-1" Text=""></asp:TextBox>
                     </div>
                     <div class="col-md-2">
                         <asp:Button ID="btnLoadGHbyNumber" runat="server" Text="LOAD GH" CssClass="btn btn-primary" OnClick="btnLoadGHbyNumber_Click" />

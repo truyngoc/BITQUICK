@@ -62,6 +62,11 @@ namespace BIT.Controller
             return ctl.SelectItemsByNumber(numberGH).ToList();
         }
 
+        public List<GH_Info> SelectItemsByName(string username)
+        {
+            return ctl.SelectItemsByName(username).ToList();
+        }
+
         public List<GH_Info> SelectWaitingGH()
         {
             return ctl.SelectWaitingGH().ToList();

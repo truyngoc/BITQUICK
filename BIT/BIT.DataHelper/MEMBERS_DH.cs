@@ -45,11 +45,30 @@ namespace BIT.DataHelper
                 );
         }
 
+        public void UpdateStatusMember_Edit(string user_name)
+        {
+            defaultDB.ExecuteNonQuery("sp_UpdateStatusMember_Edit",
+user_name
+
+                //, obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.IsLock, obj.Status
+                );
+        }
+
+        public void sp_UpdateMember_Edit(string user_name)
+        {
+            defaultDB.ExecuteNonQuery("sp_UpdateMember_Edit",
+user_name
+
+                //, obj.Username, obj.Password, obj.Password_PIN, obj.CodeId_Sponsor, obj.Fullname, obj.Phone, obj.Email, obj.Wallet, obj.CreateDate, obj.Country, obj.IsLock, obj.Status
+                );
+        }
+
         public void InsertEditItem(MEMBERS_EDIT obj)
         {
             defaultDB.ExecuteNonQuery("sp_MEMBERS_EDIT_Insert",
             obj.CodeId,// @CodeId varchar(250)
             obj.Username,//@Username	varchar(50)
+            obj.Upline,
             obj.Fullname, //@Fullname	nvarchar(250)
             obj.Phone,//@Phone	varchar(50)
             obj.Email,//@Email	varchar(100)

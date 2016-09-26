@@ -23,6 +23,14 @@ namespace BIT.WebUI.Admin
                 }
                 else
                 {
+                    if (Singleton<BITCurrentSession>.Inst.SessionMember.IsLock==1)
+                    {
+                        btnUpdate.Text = "Order Unlock account (0.1BTC)";
+                    }
+                    else
+                    {
+                        btnUpdate.Text = "Order Update Information (0.1BTC)";
+                    }
                     LoadUserInfor();
                 }
             }
@@ -84,7 +92,7 @@ namespace BIT.WebUI.Admin
         {
             MEMBERS obj = new MEMBERS();
 
-            obj.CodeId = hidCodeId.Value;
+            obj.Username = txtUserName.Text;
             obj.Fullname = txtFullName.Text.Trim();
             obj.Phone = txtPhone.Text.Trim();
             obj.Email = txtEmail.Text.Trim();
@@ -104,6 +112,7 @@ namespace BIT.WebUI.Admin
             obj.Wallet = txtWallet.Text.Trim();
             obj.Transaction = txtTransaction.Text;
             obj.WALLET_ADMIN = lblAdminWallet.Text;
+            obj.Upline = Singleton<BITCurrentSession>.Inst.SessionMember.Upline;
             return obj;
         }
         //public void UpdateProfile()

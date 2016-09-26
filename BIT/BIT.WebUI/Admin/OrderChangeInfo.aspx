@@ -15,9 +15,9 @@
                     <asp:HiddenField ID="hidMonth" runat="server" />
                     <asp:HiddenField ID="hidPack" runat="server" />
                     <div class="form-group col-lg-12">
-                        <label class="control-label col-lg-3">Username</label>
                         <div class="col-lg-5">
-                            <asp:TextBox runat="server" ID="txtUsername"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtUsername" placeholder="User name"></asp:TextBox>
+                            <asp:Button runat ="server" ID="btnSearch" Text="Search" OnClick="btnSearch_Click" />
                         </div>
                     </div>
                 </div>
@@ -37,6 +37,7 @@
                                     <th>Create Date</th>
                                     <th>User name</th>
                                     <th>Upline </th>
+                                    <th>Transaction</th>
                                     <th>Status</th>
                                     <th></th>
                                 </tr>
@@ -47,10 +48,13 @@
                                     <asp:Label runat="server" ID="lblPHTime" Text='<%# Eval("CREATEDATE") %>'></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:Label runat="server" ID="lblUserName" Text='<%# Eval("UserName") %>'> </asp:Label>BTC
+                                    <asp:Label runat="server" ID="lblUserName" Text='<%# Eval("UserName") %>'> </asp:Label>
                                 </td>
                                 <td>
                                     <asp:Label runat="server" ID="lblUpline" Text='<%# Eval("Upline") %>' />
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="lnkTransaction" runat="server" OnClick="lnkTransaction_Click" CommandArgument='<%# Eval("Transaction") %>' Text='<%#Eval("Transaction").ToString() %>' Font-Bold="true" ForeColor="#2d3fda"></asp:LinkButton>
                                 </td>
                                 <td>
                                     <asp:Label runat="server" ID="lblEndDate" Text='<%# getStatus(Eval("STA").ToString()) %>' ForeColor="Red" Font-Bold="true"></asp:Label>
@@ -58,7 +62,7 @@
                                
                                 <td>
                                     <a href="#">
-                                        <asp:LinkButton runat="server" ID="btnConfirm" Visible='<%# ShowConfirm(Eval("Upline").ToString()) %>'  type="submit" class="btn btn-success" Text="Extend" OnClick="btnConfirm_Click" />
+                                        <asp:LinkButton runat="server" ID="btnConfirm" Visible='<%# ShowConfirm(Eval("Upline").ToString(),Eval("STA").ToString()) %>'  type="submit" class="btn btn-success" Text="Confirm"  CommandArgument='<%# Eval("Username") %>'  OnClick="btnConfirm_Click" />
                                     </a>
                                 </td>
                             </tr>

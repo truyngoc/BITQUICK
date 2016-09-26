@@ -148,6 +148,16 @@ namespace BIT.Controller
             return ctl.SearchItemByUserName_ADMIN(user_name).ToList();
         }
 
+        public void UpdateStatusMember_Edit(string user_name)
+        {
+            ctl.UpdateStatusMember_Edit(user_name);
+        }
+
+        public void UpdateMember_Edit(string user_name)
+        {
+            ctl.sp_UpdateMember_Edit(user_name);
+        }
+
         public List<MEMBERS_EDIT> SearchItemByUserName_EDIT(string user_name)
         {
             return ctl.SearchItemByUserName_EDIT(user_name).ToList();

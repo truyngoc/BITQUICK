@@ -53,6 +53,8 @@ namespace BIT.WebUI.Admin
                     return Constants.GH_STATUS.Pending.ToString();
                 case (int)Constants.GH_STATUS.Success:
                     return Constants.GH_STATUS.Success.ToString();
+                case (int)Constants.GH_STATUS.Expired:
+                    return Constants.GH_STATUS.Expired.ToString();
                 default:
                     return string.Empty;
             }

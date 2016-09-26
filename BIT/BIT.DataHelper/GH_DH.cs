@@ -76,6 +76,11 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<GH_Info>("sp_GH_SelectItemsByNumber", numberGH);
         }
 
+        public IEnumerable<GH_Info> SelectItemsByName(string username)
+        {
+            return defaultDB.ExecuteSprocAccessor<GH_Info>("sp_GH_SelectItemsByName", username);
+        }
+
         public IEnumerable<GH_Info> SelectWaitingGH()
         {
             return defaultDB.ExecuteSprocAccessor<GH_Info>("sp_GH_SelectWaitingGH");

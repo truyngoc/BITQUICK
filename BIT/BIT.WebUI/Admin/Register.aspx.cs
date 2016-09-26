@@ -52,7 +52,7 @@ namespace BIT.WebUI.Admin
                     MEMBERS obj = Singleton<MEMBERS_BC>.Inst.SelectItemByUserName(strUserName);
                     if (obj == null)
                     {
-                        Response.Redirect(Request.Url.Authority + "/Admin/Login.aspx");
+                        Response.Redirect("Login.aspx");
                     }
                     else
                     {
@@ -66,7 +66,7 @@ namespace BIT.WebUI.Admin
                     dynamic h1 = Request.Url.Host;
                     dynamic h2 = Request.Url.Authority;
                     lblLink.Text = h2 + "/Admin/Register.aspx?ref=" + MaHoa(Singleton<BITCurrentSession>.Inst.SessionMember.Username);
-
+                    newRegist = false;
                     Load_Category();
                 }
             }
@@ -213,69 +213,79 @@ namespace BIT.WebUI.Admin
         #region "Register"
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if (Page.IsValid)
+            try
             {
-                if (chk.Checked)
+                if (Page.IsValid)
                 {
-                    MEMBERS_BC ctlMember = new MEMBERS_BC();
-                    MEMBERS obj = GetDataOnForm();
-
-                    try
+                    if (chk.Checked)
                     {
-                        // check sponsor acc have execute PH success
-                        DateTime dtExpired;
-                        bool bSponsorPH = false;
-                        if (newRegist)
-                        {
-                            dtExpired = Singleton<MEMBERS_BC>.Inst.SelectItem(obj.CodeId_Sponsor).ExpiredDate;
-                        }
-                        else
-                        {
-                            dtExpired = Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate;
-                        }
+                        MEMBERS_BC ctlMember = new MEMBERS_BC();
+                        MEMBERS obj = GetDataOnForm();
 
-                        if (dtExpired == null)
-                            bSponsorPH = false;
-                        else if (dtExpired < DateTime.Now)
-                            bSponsorPH = false;
-                        else
-                            bSponsorPH = true;
-
-                        bool bExistAcc = ctlMember.IsExistsItem(obj.Username, obj.Wallet, obj.Email);
-
-                        if (bSponsorPH)
+                        try
                         {
-                            if (!bExistAcc)
+                            // check sponsor acc have execute PH success
+                            DateTime dtExpired;
+                            bool bSponsorPH = false;
+                            if (newRegist)
                             {
-                                ctlMember.InsertItem(obj);
-                                SendMailToRegisterUser(obj.Username, obj.Fullname,obj.Password, obj.Password_PIN, obj.Email);
-                                lblMessage.Text = "Register member " + txtUserName.Text + " success.";
-                                Response.Write("<script>alert('" + lblMessage.Text + "');</script>");
-                                lblMessage.Visible = true;
-                                //Response.Redirect("../Admin/Dashboard.aspx");
+                                dtExpired = Singleton<MEMBERS_BC>.Inst.SelectItem(obj.CodeId_Sponsor).ExpiredDate;
                             }
                             else
                             {
-                                lblMessage.Text = "Username is already taken";
+                                dtExpired = Singleton<BITCurrentSession>.Inst.SessionMember.ExpiredDate;
+                            }
+
+                            if (dtExpired == null)
+                                bSponsorPH = false;
+                            else if (dtExpired < DateTime.Now)
+                                bSponsorPH = false;
+                            else
+                                bSponsorPH = true;
+
+                            bool bExistAcc = ctlMember.IsExistsItem(obj.Username, obj.Wallet, obj.Email);
+
+                            if (bSponsorPH)
+                            {
+                                if (!bExistAcc)
+                                {
+                                    ctlMember.InsertItem(obj);
+                                    SendMailToRegisterUser(obj.Username, obj.Fullname, obj.Password, obj.Password_PIN, obj.Email);
+                                    TNotify.Alerts.Information("Register member " + txtUserName.Text + " success.");
+                                    //lblMessage.Text = "Register member " + txtUserName.Text + " success.";
+                                    //Response.Write("<script>alert('" + lblMessage.Text + "');</script>");
+                                    lblMessage.Visible = true;
+                                    //Response.Redirect("../Admin/Dashboard.aspx");
+                                }
+                                else
+                                {
+                                    lblMessage.Text = "Username is already taken";
+                                    lblMessage.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                lblMessage.Text = "You can't create account member, please execute Active Package Invest transaction!";
                                 lblMessage.Visible = true;
                             }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            lblMessage.Text = "You can't create account member, please execute Active Package Invest transaction!";
-                            lblMessage.Visible = true;
+                            throw new Exception(ex.ToString());
+                            //throw new Exception(ex.ToString);
                         }
                     }
-                    catch
-                    {
-                        //throw new Exception(ex.ToString);
-                    }
+                }
+                else
+                {
+                    lblMessage.Text = "You must to agrre our term";
+                    lblMessage.Visible = true;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                lblMessage.Text = "You must to agrre our term";
-                lblMessage.Visible = true;
+
+                throw new Exception(ex.ToString());
             }
         }
 

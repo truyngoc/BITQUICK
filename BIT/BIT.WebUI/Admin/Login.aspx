@@ -64,9 +64,10 @@
                 <div style="padding: 5px 0;">
                     <asp:Button ID="btnLogin" runat="server" Text="Login" class="btn btn-info btn-login" OnClick="btnLogin_Click" />
                     <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-info btn-login" />
-                    <span class="pull-right"><a style="color: #000;" href="#">Forgot Password ?</a></span>
                 </div>
-
+                <div>
+                    <asp:LinkButton runat="server" ID="lnkLostPass" style="color: #ED1F24;" OnClick="lnkLostPass_Click" Text="Forgot your password ? Click here"> </asp:LinkButton>
+                </div>
             </div>
         </form>
     </div>

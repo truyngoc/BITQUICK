@@ -66,17 +66,17 @@ namespace BIT.WebUI.Admin
 
                 if (login_info != null)
                 {
-                    if (login_info.Status == 3)
-                    {
-                        lblMessage.Text = "Account is locked.";
-                        lblMessage.Visible = true;
-                    }
-                    else
-                    {
+                    //if (login_info.Status == 3)
+                    //{
+                    //    lblMessage.Text = "Account is locked.";
+                    //    lblMessage.Visible = true;
+                    //}
+                    //else
+                    //{
                         Singleton<BITCurrentSession>.Inst.SessionMember = login_info;
                         lblMessage.Visible = false;
                         Response.Redirect("~/Admin/Dashboard.aspx");
-                    }
+                    //}
                 }
                 else
                 {
@@ -89,7 +89,8 @@ namespace BIT.WebUI.Admin
             //}
         }
 
-        protected void lnkLossPass_Click(object sender, EventArgs e)
+
+        protected void lnkLostPass_Click(object sender, EventArgs e)
         {
             if (txtUserName.Text == "")
             {
@@ -124,7 +125,7 @@ namespace BIT.WebUI.Admin
 
         public void SendMailToFogotPass(string username, string fullname, string password, string mailto)
         {
-            string sSubject = "BITQUICK24 INFORMATON ACCOUNT";
+            string sSubject = "BITQUICK INFORMATON ACCOUNT";
 
             StringBuilder strBuilder = new StringBuilder();
 
@@ -137,9 +138,9 @@ namespace BIT.WebUI.Admin
             strBuilder.AppendLine("<tr><td><b>Your username is: " + username + "</b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Your password: " + password + " </b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b>Please change password after first login of you to secure your account. </b><br/></td></tr><br/>");
-            strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  BITQUICK24's support to support you everything. </b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b>Please contact to your upline or  BITQUICK's support to support you everything. </b><br/></td></tr>");
             strBuilder.AppendLine("<tr><td><b><br/><br/><br/>Thanks & Best regards</b><br/></td></tr>");
-            strBuilder.AppendLine("<tr><td><b><br/>BITQUICK24</b><br/></td></tr>");
+            strBuilder.AppendLine("<tr><td><b><br/>BITQUICK</b><br/></td></tr>");
             strBuilder.Append("</table>");
             strBuilder.Append("</body>");
             strBuilder.Append("</html>");

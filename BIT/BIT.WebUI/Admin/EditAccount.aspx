@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-12" runat="server" id="divBlockChain" display="dynamic">
-                        <label class="control-label col-lg-3">Address to payment 0.1 BTC</label>
+                        <label class="control-label col-lg-3">Address to payment 0.01 BTC</label>
                         <div class="col-lg-5">
                             <span class="badge">
                                 <asp:Image ID="imgAdminWallet" Width="200" Height="200" runat="server" />

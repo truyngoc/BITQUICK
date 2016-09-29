@@ -80,6 +80,11 @@ namespace BIT.DataHelper
             return defaultDB.ExecuteSprocAccessor<PH_Info>("sp_PH_SelectItemsByNumber",numberPH);
         }
 
+        public IEnumerable<PH_Info> SelectItemsByUserNameList(string strUserName)
+        {
+            return defaultDB.ExecuteSprocAccessor<PH_Info>("sp_PH_SelectItemsByUserNameList", strUserName);
+        }
+
         public void UpdateStatusWithTrans(DbTransaction trans, int ID, int Status)
         {
             defaultDB.ExecuteNonQuery(trans, "sp_PH_UpdateStatus"

@@ -25,11 +25,11 @@ namespace BIT.WebUI.Admin
                 {
                     if (Singleton<BITCurrentSession>.Inst.SessionMember.IsLock==1)
                     {
-                        btnUpdate.Text = "Order Unlock account (0.1BTC)";
+                        btnUpdate.Text = "Order Unlock account (0.01BTC)";
                     }
                     else
                     {
-                        btnUpdate.Text = "Order Update Information (0.1BTC)";
+                        btnUpdate.Text = "Order Update Information (0.01BTC)";
                     }
                     LoadUserInfor();
                 }

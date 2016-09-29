@@ -58,6 +58,15 @@ namespace BIT.WebUI.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtNumberPH;
         
         /// <summary>
+        /// txtUserPH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUserPH;
+        
+        /// <summary>
         /// btnLoadPHbyNumber control.
         /// </summary>
         /// <remarks>

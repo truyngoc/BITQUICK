@@ -159,14 +159,28 @@ namespace BIT.WebUI.Admin
             return lstPH;
         }
 
+        private string ReplaceUserName()
+        {
+            string str = txtUserPH.Text;
+            return str;
+        }
+
+
         public void LoadListPH()
         {
-            if (this.ListPH == null)
+            string strUserName = ReplaceUserName();
+            if (String.IsNullOrEmpty(strUserName.Trim()))
             {
-                var numberPH = txtNumberPH.Text == string.Empty ? 0 : Convert.ToInt32(txtNumberPH.Text);
-                this.ListPH = ctlPH.SelectItemsByNumber(numberPH);
+                if (this.ListPH == null)
+                {
+                    var numberPH = txtNumberPH.Text == string.Empty ? 0 : Convert.ToInt32(txtNumberPH.Text);
+                    this.ListPH = ctlPH.SelectItemsByNumber(numberPH);
+                }
             }
-
+            else
+            {
+                this.ListPH = ctlPH.SelectItemsByUserNameList(strUserName);
+            }
 
             lblTotalAmountPH.Text = ListPH.Sum(m => m.Amount).Value.ToString();
 
@@ -291,7 +305,7 @@ namespace BIT.WebUI.Admin
             this.COMMAND = null;
             this.LIST_COMMAND_DETAIL = null;
             this.LIST_MEMBERS = null;
-            
+
             LoadListPH();
             LoadListGH();
             LoadListAdminGH();
@@ -338,7 +352,7 @@ namespace BIT.WebUI.Admin
             {
                 grdCommandDetails.PageIndex = e.NewPageIndex;
                 BindCommand(this.LIST_COMMAND_DETAIL);
-            }            
+            }
         }
         #endregion
 
@@ -680,7 +694,7 @@ namespace BIT.WebUI.Admin
             }
         }
 
-        
+
         #region "Mail"
         public void SendMailAfterCreateCommand(List<COMMAND_DETAIL> lstCmdDetails)
         {

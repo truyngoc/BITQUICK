@@ -102,8 +102,11 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <asp:TextBox ID="txtNumberPH" runat="server" placeholder="Number PH" CssClass="form-control col-md-1"></asp:TextBox>
+                    </div>
+                    <div class="col-md-6">
+                        <asp:TextBox ID="txtUserPH" runat="server" placeholder="UserName" CssClass="form-control col-md-1" Text=""></asp:TextBox>
                     </div>
                     <div class="col-md-2">
                         <asp:Button ID="btnLoadPHbyNumber" runat="server" Text="LOAD PH" CssClass="btn btn-primary" OnClick="btnLoadPHbyNumber_Click" />

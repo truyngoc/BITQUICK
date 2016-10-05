@@ -42,13 +42,13 @@ namespace BIT.WebUI.Admin
                 int PH_ID = Convert.ToInt32(Session["CreatePHCommunity_PH_ID"]);
                 var lstDetail = ctlCmdDetail.SelectItemsByPhId(PH_ID).ToList();
 
-                grdCommandDetails.DataSource = lstDetail;
-                grdCommandDetails.DataBind();
+                grdCMD.DataSource = lstDetail;
+                grdCMD.DataBind();
             }
             else
             {
-                grdCommandDetails.DataSource = null;
-                grdCommandDetails.DataBind();
+                grdCMD.DataSource = null;
+                grdCMD.DataBind();
             }
         }
         #endregion
@@ -163,10 +163,10 @@ namespace BIT.WebUI.Admin
         #endregion
 
         #region "grid view event"
-        protected void grdCommandDetails_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            LoadCommandDetails();
-        }
+        //protected void grdCommandDetails_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+        //    LoadCommandDetails();
+        //}
 
         protected void grdCommandDetails_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -180,6 +180,33 @@ namespace BIT.WebUI.Admin
             }
         }
         #endregion
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            //if (e.CommandName == "cmdConfirm")
+            //{
+            LinkButton btn = (LinkButton)(sender);
+            int COMMAND_DETAIL_ID = Convert.ToInt32(btn.CommandArgument);
+
+            Session["PH_DETAIL_COMMAND_DETAIL_ID"] = COMMAND_DETAIL_ID;
+
+            Response.Redirect("ConfirmPH.aspx");
+            //}
+        }
+
+        protected void grdCMD_ItemCreated(object sender, DataListItemEventArgs e)
+        {
+
+            //if (e.Item.ItemType == ListItemType.Header)
+            //{
+            //    Label TempLabel;
+            //    TempLabel = (Label)e.Item.FindControl("lblSTT");
+
+
+            //    if (TempLabel != null)
+            //        TempLabel.Text = this.m_RowCount.ToString();
+            //}
+        }
 
 
 

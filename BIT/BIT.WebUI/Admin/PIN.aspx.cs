@@ -199,7 +199,7 @@ namespace BIT.WebUI.Admin
         public void getAdminWallet()
         {
             string admWallet = Singleton<MEMBERS_BC>.Inst.SelectRandomAdmin().Wallet;
-            imgAdminWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}", admWallet);
+            imgAdminWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}", admWallet.Trim()).Trim();
             lblAdminWallet.Text = admWallet;
         }
     }

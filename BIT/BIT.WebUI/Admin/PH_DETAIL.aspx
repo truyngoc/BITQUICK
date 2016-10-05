@@ -28,7 +28,57 @@
 
                 </div>
                 <section class="panel">
-                    <div class="table-responsive">
+                    <asp:DataList ID="grdCMD" runat="server" class="table table-hover p-table">
+                        <HeaderTemplate>
+                            <table class="table table-hover p-table">
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Receiver</th>
+                                    <th>Create date </th>
+                                    <th>Amount</th>
+                                    <th>Time remaining (hours)</th>
+                                    <th>Transaction</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:Label runat="server" ID="lblSTT" Text='<%#Container.ItemIndex + 1 %> '></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblSender" runat="server" Text='<%# AccountBriefInfoByCodeId(Eval("CodeId_To").ToString()) %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("DateCreate" , "{0:dd/MM/yyyy HH:mm}") %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount").ToString().Substring(0,5) %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblTimeRemaining" runat="server" Text='<%# showTimeRemaining((DateTime)Eval("DateCreate"), (int)Eval("Status")) %>' />
+                                </td>
+                               
+                                <td>
+                                    <asp:HyperLink ID="linkTransaction" runat="server" NavigateUrl='<%# TransactionLink(Eval("TransactionId")) %>' Text="View" Visible='<%# visibleTransactionLink(Eval("TransactionId")) %>' Target="_blank"></asp:HyperLink>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblStatus" runat="server" Text='<%# StatusToString((int)Eval("Status")) %>' CssClass='<%# CssStatus((int)Eval("Status")) %>' />
+                                </td>
+                                <td>
+                                    <a href="#">
+                                        <asp:LinkButton runat="server" ID="btnConfirm" Visible='<%# visibleConfirmButton(Eval("ConfirmPH"),Eval("Status")) %>'  type="submit" class="btn btn-success" Text="CONFIRM SEND"  CommandArgument='<%# Eval("ID") %>'  OnClick="btnConfirm_Click"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </table>
+                        </FooterTemplate>
+                    </asp:DataList>
+
+                    <%--<div class="table-responsive">
                         <asp:GridView ID="grdCommandDetails" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50"
                             OnPageIndexChanging="grdCommandDetails_OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None"
                             OnRowCommand="grdCommandDetails_OnRowCommand">
@@ -43,7 +93,7 @@
                                         <ItemTemplate>
                                             <asp:Label ID="lblSender" runat="server" Text='<%# AccountBriefInfoByCodeId(Eval("CodeId_From").ToString()) %>' />
                                         </ItemTemplate>
-                                    </asp:TemplateField>--%>
+                                    </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="Receiver" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
@@ -88,9 +138,9 @@
                                 </asp:TemplateField>
 
                             </Columns>
-                        </asp:GridView>
+                        </asp:GridView>--%>
 
-                    </div>
+                    <%--</div>--%>
                 </section>
             </div>
         </section>

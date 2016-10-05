@@ -48,7 +48,7 @@
 
                                 <asp:TemplateField HeaderText="PH Date" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblDateConfirmPH" runat="server" Text='<%# Eval("DateConfirmPH" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                        <asp:Label ID="lblDateConfirmPH" runat="server" Text='<%# Eval("DateConfirmPH" , "{0:dd/MM/yyyy HH:mm}") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -60,13 +60,13 @@
 
                                 <asp:TemplateField HeaderText="GH Date" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblDateConfirmGH" runat="server" Text='<%# Eval("DateConfirmGH" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                        <asp:Label ID="lblDateConfirmGH" runat="server" Text='<%# Eval("DateConfirmGH" , "{0:dd/MM/yyyy HH:mm}") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />
+                                        <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount").ToString().Substring(0,5) %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

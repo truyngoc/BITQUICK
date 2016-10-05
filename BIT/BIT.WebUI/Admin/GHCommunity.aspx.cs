@@ -39,8 +39,8 @@ namespace BIT.WebUI.Admin
 
             var lstGH = ctlGH.SelectItemsByCodeId(codeId);
 
-            grdGH.DataSource = lstGH;
-            grdGH.DataBind();
+            grdCMD.DataSource = lstGH;
+            grdCMD.DataBind();
         }
 
         public string StatusToString(int status)
@@ -80,22 +80,31 @@ namespace BIT.WebUI.Admin
             }
         }
 
-        protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        //protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+        //    grdGH.PageIndex = e.NewPageIndex;
+        //    LoadListGH();
+        //}
+
+        //protected void grdGH_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "CmdDetail")
+        //    {
+        //        int GH_ID = Convert.ToInt32(e.CommandArgument);
+
+        //        Session["GHCommunity_GH_ID"] = GH_ID;
+
+        //        Response.Redirect("GH_DETAIL.aspx");
+        //    }
+        //}
+
+        protected void btnDetail_Click(object sender, EventArgs e)
         {
-            grdGH.PageIndex = e.NewPageIndex;
-            LoadListGH();
-        }
+            LinkButton btn = (LinkButton)(sender);
+            int GH_ID = Convert.ToInt32(btn.CommandArgument);
+            Session["GHCommunity_GH_ID"] = GH_ID;
 
-        protected void grdGH_OnRowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "CmdDetail")
-            {
-                int GH_ID = Convert.ToInt32(e.CommandArgument);
-
-                Session["GHCommunity_GH_ID"] = GH_ID;
-
-                Response.Redirect("GH_DETAIL.aspx");
-            }
+            Response.Redirect("GH_DETAIL.aspx");
         }
 
     }

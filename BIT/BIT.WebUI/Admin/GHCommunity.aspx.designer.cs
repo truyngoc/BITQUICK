@@ -13,12 +13,12 @@ namespace BIT.WebUI.Admin {
     public partial class GHCommunity {
         
         /// <summary>
-        /// grdGH control.
+        /// grdCMD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdGH;
+        protected global::System.Web.UI.WebControls.DataList grdCMD;
     }
 }

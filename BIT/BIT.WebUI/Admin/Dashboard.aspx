@@ -1,8 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminSite.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="BIT.WebUI.Admin.Dashboard" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Button ID="Button1" runat="server" Text="Fill Form in Popup" />
+    <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panl1" TargetControlID="Button1"
+        CancelControlID="Button2" BackgroundCssClass="Background">
+    </cc1:ModalPopupExtender>
+    <asp:Panel ID="Panl1" runat="server" CssClass="Popup" align="center" Style="display: none">
+        <iframe style="width: 350px; height: 300px;" id="irm1" src="Promotion.aspx" runat="server"></iframe>
+        <br />
+        <asp:Button ID="Button2" runat="server" Text="Close" />
+    </asp:Panel>
+
+
     <div style="clear: both;"></div>
     <div class="label_b" style="padding: 25px 0;">
         <div class="row state-overview">

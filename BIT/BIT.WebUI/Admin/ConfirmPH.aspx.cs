@@ -63,7 +63,7 @@ namespace BIT.WebUI.Admin
                 COMMAND_DETAIL cmdDetail = ctlCmdDetail.SelectItem(CMD_DETAIL_ID);
                 MEMBERS member = ctlMem.SelectItem(cmdDetail.CodeId_To);
 
-                imgGHWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}", member.Wallet);
+                imgGHWallet.ImageUrl = string.Format("http://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={0}", member.Wallet.Trim()).Trim();
                 lblGHWallet.Text = "Address: " + member.Wallet;
                 txtTotalAmount.Text = cmdDetail.Amount.ToString();
             }

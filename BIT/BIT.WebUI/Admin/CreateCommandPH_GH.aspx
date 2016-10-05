@@ -33,7 +33,7 @@
 
                                     <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Left">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm}") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
@@ -78,7 +78,7 @@
 
                                     <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Left">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm}") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
@@ -157,7 +157,7 @@
 
                                     <asp:TemplateField HeaderText="PH Time" ItemStyle-HorizontalAlign="Left">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm}") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
@@ -230,7 +230,7 @@
 
                                     <asp:TemplateField HeaderText="Create date" ItemStyle-HorizontalAlign="Left">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("DateCreate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                            <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("DateCreate" , "{0:dd/MM/yyyy HH:mm}") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 

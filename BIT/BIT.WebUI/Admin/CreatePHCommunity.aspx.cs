@@ -123,8 +123,8 @@ namespace BIT.WebUI.Admin
 
             var lstPH = ctlPH.SelectItemsByCodeId(codeId);
 
-            grdPH.DataSource = lstPH;
-            grdPH.DataBind();
+            grdCMD.DataSource = lstPH;
+            grdCMD.DataBind();
         }
 
         public string StatusToString(int status)
@@ -162,22 +162,32 @@ namespace BIT.WebUI.Admin
             }
         }
 
-        protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        //protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+        //    grdPH.PageIndex = e.NewPageIndex;
+        //    LoadListPH();
+        //}
+
+        //protected void grdPH_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "CmdDetail")
+        //    {
+        //        int PH_ID = Convert.ToInt32(e.CommandArgument);
+
+        //        Session["CreatePHCommunity_PH_ID"] = PH_ID;
+
+        //        Response.Redirect("PH_DETAIL.aspx");
+        //    }
+        //}
+
+        protected void btnDetail_Click(object sender, EventArgs e)
         {
-            grdPH.PageIndex = e.NewPageIndex;
-            LoadListPH();
-        }
+            LinkButton btn = (LinkButton)(sender);
+            int PH_ID = Convert.ToInt32(btn.CommandArgument);
 
-        protected void grdPH_OnRowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "CmdDetail")
-            {
-                int PH_ID = Convert.ToInt32(e.CommandArgument);
+            Session["CreatePHCommunity_PH_ID"] = PH_ID;
 
-                Session["CreatePHCommunity_PH_ID"] = PH_ID;
-
-                Response.Redirect("PH_DETAIL.aspx");
-            }
+            Response.Redirect("PH_DETAIL.aspx");
         }
 
     }

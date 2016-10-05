@@ -10,7 +10,7 @@
         /* wider than 768px fixed width */
         @media screen and (min-width: 768px) {
 
-            .modal-dialog {
+            .modal-dialog {<a href="GHCommunity.aspx">GHCommunity.aspx</a>
                 width: 975px;
             }
         }
@@ -53,8 +53,44 @@
         <div class="panel-body">
             <!--ss Gridview GH-->
             <section class="panel">
-                <div class="table-responsive">
-                    <asp:GridView ID="grdGH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50" OnRowCommand="grdGH_OnRowCommand"
+                    <asp:DataList ID="grdCMD" runat="server" class="table table-hover p-table">
+                        <HeaderTemplate>
+                            <table class="table table-hover p-table">
+                                <tr>
+                                    <th>No.</th>
+                                    <th>GH Time</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:Label runat="server" ID="lblSTT" Text='<%#Container.ItemIndex + 1 %> '></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("CreateDate" , "{0:dd/MM/yyyy HH:mm}") %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount").ToString().Substring(0,5) %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblStatus" runat="server" Text='<%# StatusToString((int)Eval("Status")) %>' CssClass='<%# CssStatus((int)Eval("Status")) %>' />
+                                </td>
+                                <td>
+                                    <a href="#">
+                                        <asp:LinkButton runat="server" ID="btnDetail" Visible='<%# VisibleDetailButton((int)Eval("ID")) %>'  type="submit" class="btn btn-success" Text="Detail"  CommandArgument='<%# Eval("ID") %>'  OnClick="btnDetail_Click"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </table>
+                        </FooterTemplate>
+                    </asp:DataList>
+
+                    <%--<asp:GridView ID="grdGH" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="50" OnRowCommand="grdGH_OnRowCommand"
                         OnPageIndexChanging="OnPageIndexChanging" CssClass="table table-hover p-table" UseAccessibleHeader="true" GridLines="None">
                         <Columns>
                             <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
@@ -87,8 +123,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
-                    </asp:GridView>
-                </div>
+                    </asp:GridView>--%>
             </section>
             <!--end of ss Gridview GH-->
         </div>

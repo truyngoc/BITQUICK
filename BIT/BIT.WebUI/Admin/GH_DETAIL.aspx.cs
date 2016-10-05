@@ -42,13 +42,13 @@ namespace BIT.WebUI.Admin
                 int GH_ID = Convert.ToInt32(Session["GHCommunity_GH_ID"]);
                 var lstDetail = ctlCmdDetail.SelectItemsByGhId(GH_ID).ToList();
 
-                grdCommandDetails.DataSource = lstDetail;
-                grdCommandDetails.DataBind();
+                grdCMD.DataSource = lstDetail;
+                grdCMD.DataBind();
             }
             else
             {
-                grdCommandDetails.DataSource = null;
-                grdCommandDetails.DataBind();
+                grdCMD.DataSource = null;
+                grdCMD.DataBind();
             }
         }
         #endregion
@@ -210,6 +210,16 @@ namespace BIT.WebUI.Admin
             }
         }
         #endregion
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+            int COMMAND_DETAIL_ID = Convert.ToInt32(btn.CommandArgument);
+
+            Session["GH_DETAIL_COMMAND_DETAIL_ID"] = COMMAND_DETAIL_ID;
+
+            Response.Redirect("ConfirmGH.aspx");
+        }
 
     }
 }

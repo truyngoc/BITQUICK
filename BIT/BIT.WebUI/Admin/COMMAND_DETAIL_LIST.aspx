@@ -49,13 +49,13 @@
 
                                 <asp:TemplateField HeaderText="Create date" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("DateCreate" , "{0:dd/MM/yyyy HH:mm:ss}") %>' />
+                                        <asp:Label ID="lblCreateDate" runat="server" Text='<%# Eval("DateCreate" , "{0:dd/MM/yyyy HH:mm}") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="Amount" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount") %>' />
+                                        <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount").ToString().Substring(0,5) %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
